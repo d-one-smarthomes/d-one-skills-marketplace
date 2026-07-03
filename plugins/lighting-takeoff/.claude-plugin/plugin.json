@@ -1,0 +1,8 @@
+{
+  "name": "lighting-takeoff",
+  "version": "1.0.0",
+  "description": "Count lighting items off an electrical/lighting layout floorplan PDF and produce a per-floor quantity spreadsheet.",
+  "author": {
+    "name": "D-One"
+  }
+}

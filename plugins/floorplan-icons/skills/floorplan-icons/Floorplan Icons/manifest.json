@@ -1,0 +1,85 @@
+{
+  "colour": "#1379C9",
+  "icons": [
+    {
+      "key": "wireless_access_point",
+      "label": "Wireless Access Point"
+    },
+    {
+      "key": "tv",
+      "label": "TV"
+    },
+    {
+      "key": "ceiling_speaker",
+      "label": "Ceiling Speaker"
+    },
+    {
+      "key": "wall_speaker",
+      "label": "Wall Speaker"
+    },
+    {
+      "key": "network_point",
+      "label": "Network Point"
+    },
+    {
+      "key": "intercom_door_station",
+      "label": "Intercom (Door Station)"
+    },
+    {
+      "key": "facial_recognition_reader",
+      "label": "Facial Recognition Reader"
+    },
+    {
+      "key": "intercom_receiver_panel",
+      "label": "Intercom Receiver Panel"
+    },
+    {
+      "key": "amplifier",
+      "label": "Amplifier"
+    },
+    {
+      "key": "server_cabinet",
+      "label": "Server Cabinet"
+    },
+    {
+      "key": "motorised_blind",
+      "label": "Motorised Blind"
+    },
+    {
+      "key": "motorised_curtain",
+      "label": "Motorised Curtain"
+    },
+    {
+      "key": "motion_sensor",
+      "label": "Motion Sensor"
+    },
+    {
+      "key": "light_switch_keypad",
+      "label": "Light Switch Keypad"
+    },
+    {
+      "key": "cctv_bullet",
+      "label": "CCTV Camera \u2014 Bullet"
+    },
+    {
+      "key": "cctv_dome",
+      "label": "CCTV Camera \u2014 Dome"
+    },
+    {
+      "key": "spotlight",
+      "label": "Spotlight"
+    },
+    {
+      "key": "audible_sounder",
+      "label": "Audible Sounder"
+    },
+    {
+      "key": "touch_panel",
+      "label": "Touch Panel"
+    },
+    {
+      "key": "exit_button",
+      "label": "Exit Button"
+    }
+  ]
+}

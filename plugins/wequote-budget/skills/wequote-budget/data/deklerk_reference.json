@@ -1,0 +1,115 @@
+{
+  "_source": "WeQuote REF:0011 — House De Klerk, Hermanus (2026)",
+  "_note": "All inc_vat totals from WeQuote. net = inc_vat / 1.15. Deltas are relative to the Included tier (usually Premium).",
+  "spec": {
+    "dimming_circuits": 79,
+    "switched_circuits": 22,
+    "dali_circuits": 2,
+    "keypads": 30,
+    "motion_sensors": 5,
+    "cctv_cameras": 8,
+    "cctv_poles": 4,
+    "aps_indoor": 10,
+    "aps_outdoor": 2,
+    "audio_zones": 1,
+    "door_stations": 1,
+    "touch_panels": 3
+  },
+  "systems": {
+    "lighting": {
+      "included_tier": "Premium",
+      "tiers": {
+        "Premium": {"inc_vat": 1535852, "net": 1335523},
+        "Mid":     {"inc_vat": 1152152, "net": 1001828},
+        "Entry":   {"inc_vat":  947692, "net":  823645}
+      },
+      "option_deltas_inc_vat": {
+        "Mid_from_Premium":   -383700,
+        "Entry_from_Premium": -588160
+      },
+      "keypad_options_inc_vat": {
+        "10kp": -208560,
+        "20kp": -189600,
+        "30kp": 0
+      }
+    },
+    "cctv": {
+      "included_tier": "Premium",
+      "tiers": {
+        "Premium": {"inc_vat": 388115, "net": 337491},
+        "Mid":     {"inc_vat": 328644, "net": 285777},
+        "Entry":   {"inc_vat": 165335, "net": 143770}
+      },
+      "option_deltas_inc_vat": {
+        "Mid_from_Premium":   -59471,
+        "Entry_from_Premium": -222780
+      }
+    },
+    "network": {
+      "included_tier": "Mid",
+      "tiers": {
+        "Premium": {"inc_vat": 298231, "net": 259331},
+        "Mid":     {"inc_vat": 175960, "net": 153009},
+        "Entry":   {"inc_vat": 146429, "net": 127330}
+      },
+      "option_deltas_inc_vat": {
+        "Premium_from_Mid": 122271,
+        "Entry_from_Mid":   -29531
+      }
+    },
+    "audio": {
+      "included_tier": "Premium",
+      "tiers": {
+        "Premium": {"inc_vat": 75456, "net": 65614},
+        "Mid":     {"inc_vat": 53176, "net": 46244},
+        "Entry":   {"inc_vat": 40046, "net": 34822}
+      },
+      "option_deltas_inc_vat": {
+        "Mid_from_Premium":   -22280,
+        "Entry_from_Premium": -35410
+      }
+    },
+    "home_theatre": {
+      "included_tier": "Entry",
+      "tiers": {
+        "Entry":   {"inc_vat": 447600, "net": 389217},
+        "Mid":     {"inc_vat": 658353, "net": 572524},
+        "Premium": {"inc_vat": 946350, "net": 822609}
+      },
+      "option_deltas_inc_vat": {
+        "Mid_from_Entry":     210753,
+        "Premium_from_Entry": 497997
+      }
+    },
+    "access_control": {
+      "included_tier": "Premium",
+      "tiers": {
+        "Premium": {"inc_vat": 263119, "net": 228799},
+        "Mid":     {"inc_vat":  53709, "net":  46704},
+        "Entry":   {"inc_vat":  48135, "net":  41857}
+      },
+      "option_deltas_inc_vat": {
+        "Mid_from_Premium":   -209410,
+        "Entry_from_Premium": -214984
+      }
+    },
+    "system_integration": {
+      "included_tier": "Entry",
+      "tiers": {
+        "Entry":   {"inc_vat":  93115, "net":  80970},
+        "Mid":     {"inc_vat": 198865, "net": 172970},
+        "Premium": {"inc_vat": 300515, "net": 261274}
+      },
+      "add_on_deltas_inc_vat": {
+        "hvac_integration":     52375,
+        "door_integration":     23155,
+        "lighting_integration": 30220,
+        "pro_processor":       101650
+      }
+    },
+    "video_distribution": {
+      "note": "Separate from proposal skill categories. Include in HT Premium or SI Premium when quoting full AV.",
+      "total": {"inc_vat": 107143, "net": 93168}
+    }
+  }
+}

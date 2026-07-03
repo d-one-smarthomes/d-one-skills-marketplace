@@ -1,0 +1,8 @@
+{
+  "name": "budget-analyzer",
+  "version": "1.0.0",
+  "description": "Analyze supplier and contractor quotes to derive per-unit budget averages for each D-One system.",
+  "author": {
+    "name": "D-One"
+  }
+}

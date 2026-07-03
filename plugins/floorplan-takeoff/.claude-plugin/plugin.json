@@ -1,0 +1,8 @@
+{
+  "name": "floorplan-takeoff",
+  "version": "1.0.0",
+  "description": "Generate a component quantities spreadsheet from an annotated floor plan PDF.",
+  "author": {
+    "name": "D-One"
+  }
+}

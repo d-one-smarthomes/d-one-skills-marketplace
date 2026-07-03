@@ -1,0 +1,8 @@
+{
+  "name": "component-schedule",
+  "version": "1.0.0",
+  "description": "Generate a D-One branded Component & Equipment Schedule PDF from a project quote.",
+  "author": {
+    "name": "D-One"
+  }
+}

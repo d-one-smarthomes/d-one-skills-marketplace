@@ -1,0 +1,23 @@
+{
+  "skill_name": "d-one-technical-file",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here is the WeQuote PDF for Price Drive (Quote 0179 R7). Please generate the full technical file — component schedule, conduit schedule, and wiring diagram. Save them all to the Technical File folder in Google Drive.",
+      "expected_output": "Three files generated: Price_Drive_Component_Schedule.pdf (branded spec doc with product photos, dimensions, system category badges, organised by room), Price_Drive_Conduit_Schedule.pdf (electrician doc with conduit sizes and cable types per device), Price_Drive_Wiring_Diagram.drawio (system schematic with core infrastructure column, coloured cable edges, and port-level labelling). Files saved to workspace with Google Drive location noted.",
+      "files": ["Price Drive reviewed (Quote 0179 R7) - Area Summary.pdf"]
+    },
+    {
+      "id": 2,
+      "prompt": "Can you make a conduit schedule for the House Prinsloo quote? Quote ref is 0252 R1.2. I just need the conduit schedule, not the other docs.",
+      "expected_output": "Single file generated: House_Prinsloo_Conduit_Schedule.pdf. Organised by floor (Ground Floor, First Floor). Each room has a navy room header. Device rows have correct conduit sizes (25mm for WiFi APs/TV points, 20mm for intercoms), destinations (Head-End for most), cable types (CAT6, Speaker Cable etc), backbox sizes (4x4 for TV points, flush round for outdoor intercoms). Level headers in dark navy. D-One branding in header/footer.",
+      "files": ["House_Prinsloo_Component_Schedule.pdf"]
+    },
+    {
+      "id": 3,
+      "prompt": "Please create the component and equipment schedule PDF for the Price Drive project. Make sure product photos are included and that each item is tagged with the right system category.",
+      "expected_output": "Price_Drive_Component_Schedule.pdf with: D-One branded cover banner (dark navy, project name, quote ref, prepared by), system category colour tabs, table with Photo/Description/Qty/Dimensions/System columns, room section headers in dark navy, product photos (or placeholders) for each item, correct system category colour badges (blue for WiFi/Network, green for Multiroom Audio, orange for Dolby Atmos etc), dimensions populated from web research, 12-month support notice at end.",
+      "files": ["Price Drive reviewed (Quote 0179 R7) - Area Summary.pdf"]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "d-one-proposal",
+  "version": "1.0.0",
+  "description": "Generate an interactive, client-facing D-One home technology proposal and publish it as a hosted link.",
+  "author": {
+    "name": "D-One"
+  }
+}

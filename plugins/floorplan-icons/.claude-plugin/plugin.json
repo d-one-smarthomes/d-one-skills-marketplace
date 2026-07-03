@@ -1,0 +1,8 @@
+{
+  "name": "floorplan-icons",
+  "version": "1.0.0",
+  "description": "Place D-One AV/tech icons onto a PDF floorplan to produce a branded equipment layout.",
+  "author": {
+    "name": "D-One"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "name": "d-one-skills",
+  "owner": {
+    "name": "D-One",
+    "email": "darren@d-one.co.za"
+  },
+  "plugins": [
+    {
+      "name": "budget-analyzer",
+      "source": "./plugins/budget-analyzer",
+      "description": "Analyze supplier and contractor quotes to derive per-unit budget averages for each D-One system."
+    },
+    {
+      "name": "component-schedule",
+      "source": "./plugins/component-schedule",
+      "description": "Generate a D-One branded Component & Equipment Schedule PDF from a project quote."
+    },
+    {
+      "name": "conduit-schedule",
+      "source": "./plugins/conduit-schedule",
+      "description": "Generate a D-One branded Conduit Schedule Excel from a project quote or annotated floorplan."
+    },
+    {
+      "name": "d-one-proposal",
+      "source": "./plugins/d-one-proposal",
+      "description": "Generate an interactive, client-facing D-One home technology proposal and publish it as a hosted link."
+    },
+    {
+      "name": "d-one-technical-file",
+      "source": "./plugins/d-one-technical-file",
+      "description": "D-One Technical File Generator: automates component schedule, conduit schedule, and wiring diagram generation from a WeQuote PDF."
+    },
+    {
+      "name": "floorplan-icons",
+      "source": "./plugins/floorplan-icons",
+      "description": "Place D-One AV/tech icons onto a PDF floorplan to produce a branded equipment layout."
+    },
+    {
+      "name": "floorplan-takeoff",
+      "source": "./plugins/floorplan-takeoff",
+      "description": "Generate a component quantities spreadsheet from an annotated floor plan PDF."
+    },
+    {
+      "name": "lighting-takeoff",
+      "source": "./plugins/lighting-takeoff",
+      "description": "Count lighting items off an electrical/lighting layout floorplan PDF and produce a per-floor quantity spreadsheet."
+    },
+    {
+      "name": "wequote-budget",
+      "source": "./plugins/wequote-budget",
+      "description": "Build accurate Entry/Mid/Premium budgets for D-One proposals from floorplan icon counts, a WeQuote URL, or manual quantities."
+    }
+  ]
+}

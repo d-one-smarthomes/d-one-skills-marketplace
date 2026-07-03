@@ -1,0 +1,8 @@
+{
+  "name": "d-one-technical-file",
+  "version": "1.0.0",
+  "description": "D-One Technical File Generator: automates component schedule, conduit schedule, and wiring diagram generation from a WeQuote PDF.",
+  "author": {
+    "name": "D-One"
+  }
+}

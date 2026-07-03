@@ -1,0 +1,8 @@
+{
+  "name": "conduit-schedule",
+  "version": "1.0.0",
+  "description": "Generate a D-One branded Conduit Schedule Excel from a project quote or annotated floorplan.",
+  "author": {
+    "name": "D-One"
+  }
+}

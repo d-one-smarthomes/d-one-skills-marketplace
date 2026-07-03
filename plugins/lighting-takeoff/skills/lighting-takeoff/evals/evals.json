@@ -1,0 +1,23 @@
+{
+  "skill_name": "lighting-takeoff",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Count the lights on this lighting layout and give me the quantities. Suggest motion sensors for the sculleries, ensuites and garages.",
+      "expected_output": "Per-floor counts of light fittings by type, LED strip runs, and switch positions, plus suggested motion sensors, in an xlsx with a tab for this floor.",
+      "files": ["12 Mountain Road - Living Level - D-One Layout.pdf"]
+    },
+    {
+      "id": 1,
+      "prompt": "Do a lighting take-off on this bedroom level plan into a spreadsheet — downlights, LED strips and switch positions, and how many motion sensors for the ensuites.",
+      "expected_output": "Per-floor counts and a spreadsheet; ensuites flagged with one sensor each.",
+      "files": ["12 Mountain Road - Bedroom Level - D-One Layout.pdf"]
+    },
+    {
+      "id": 2,
+      "prompt": "Turn this basement/entrance floorplan into a lighting quantities sheet with sensor suggestions for the garage and scullery.",
+      "expected_output": "Per-floor counts and a spreadsheet; garage and scullery flagged with sensors (2 if large/double garage).",
+      "files": ["12 Mountain Road - Basement (Entrance) - D-One Layout.pdf"]
+    }
+  ]
+}

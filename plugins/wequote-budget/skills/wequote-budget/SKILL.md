@@ -232,3 +232,23 @@ All unit prices and module rules are in:
 
 The De Klerk project (Hermanus, 2026) is the calibration source for all pricing. When
 adding new quotes, update these files so the skill improves over time.
+
+---
+
+## Changelog
+
+**2026-07-14 — two calculator bugs fixed (found on the Monterey project):**
+
+1. **Access Control wasn't tiering.** `calc_access_control()` accepted a `tier` argument
+   but never used it — every tier priced off the same flat 2N IP One rate, so Entry/Mid/
+   Premium always came out identical. Now each tier uses a distinct door station model
+   (2N IP Base / IP One / IP Verso + touch reader). See `references/unit_prices.md`.
+2. **Audio card showed the whole property's total before any room was selected.** The
+   option card was priced from `calc_audio(audio_zones, tier)` using the *full* zone
+   count from the takeoff, so merely picking a tier — before ticking anything in the
+   "which rooms would you like audio in?" panel — added the entire multi-zone total to
+   the budget. The card now prices a single reference zone (`calc_audio(1, tier)`); the
+   room-selection panel is what grows the real total as rooms are picked. The full
+   all-zones total is still available in `--verbose` detail output for internal use.
+
+Both fixes are marked `BUGFIX` inline in `scripts/calculate_budget.py`.

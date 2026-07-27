@@ -121,11 +121,19 @@
 
 ## Access Control — 2N / Savant
 
-| Component | Model | Unit Price (ex-VAT) |
-|-----------|-------|---------------------|
-| IP Video Door Station | 2N IP One | R 43,096 |
-| Surface Mount Box | — | R 1,845 |
-| Touch Panel 8" | Savant ITP-E8000V3W | R 56,670 (Premium only) |
+**Tiering fix (2026-07-14):** door station pricing now varies by tier — previously
+`calc_access_control()` ignored the `tier` argument entirely and always priced off the
+IP One rate, so Entry/Mid/Premium came out identical. Each tier now uses a distinct model:
+
+| Component | Model | Unit Price (ex-VAT) | Tier |
+|-----------|-------|---------------------|------|
+| IP Video Door Station | 2N IP Base | R 30,167 | Entry (~70% of IP One — fewer features) |
+| IP Video Door Station | 2N IP One | R 43,096 | Mid |
+| IP Video Door Station | 2N IP Verso | R 68,954 | Premium (~1.6x IP One — larger touchscreen) |
+| Surface Mount Box | — | R 1,845 | All tiers, per door |
+| Touch Panel 8" | Savant ITP-E8000V3W | R 56,670 | Premium only — bundled into the door station cost at Premium |
+
+Premium door station total = IP Verso + Touch Panel 8" + mount = R 127,469/door (before labour).
 
 ### Labour — Access Control
 
@@ -139,6 +147,16 @@
 
 ## Audio — Sonance / Sonos
 
+**Card price vs. zone panel fix (2026-07-14):** the Audio option card is priced as a
+**single reference zone** at that tier's quality level (`calc_audio(1, tier)`), NOT the
+full property zone count. Previously the card baked in the entire project's zone total
+(e.g. 24 zones on a large multi-house property), so selecting a tier alone — before
+ticking a single room in the "which rooms would you like audio in?" panel — already
+added the full whole-property cost to the budget. The room-selection panel is what's
+meant to grow the total; the card itself should only show a "from" price for one zone.
+`zone_prices.audio` (used for each additional room ticked in the panel) is unchanged —
+still `calc_audio(1, "Entry")`.
+
 | Component | Model | Unit Price (ex-VAT) |
 |-----------|-------|---------------------|
 | Ceiling speakers (Premium) | Sonance IS8 pair | R 41,974/zone |
@@ -146,6 +164,9 @@
 | Ceiling speakers (Entry est.) | — | R 31,480/zone (75%) |
 | Amplifier | Sonos Amp | R 17,390/zone |
 | Speaker cable point | — | R 1,200/zone |
+
+1-zone reference totals now shown on the option cards: Entry R 55,120 · Mid R 60,577 ·
+Premium R 65,614 (Premium matches the De Klerk reference exactly).
 
 ### Labour — Audio
 

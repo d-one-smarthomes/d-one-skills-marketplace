@@ -45,9 +45,9 @@ PRICES = {
     "ap_u7_pro_xgs":               6818,   # U7-Pro-XGS indoor (Premium, est.)
     "ap_u7_pro":                   4040,   # U7-Pro indoor (Entry, est.)
     # Access Control
-    "intercom_2n_ip_solo":        28000,   # 2N IP Solo door station (Entry)
+    "intercom_2n_ip_base":        30167,   # 2N IP Base door station (Entry — audio/video, fewer features; ~70% of IP One)
     "intercom_2n_ip_one":         43096,   # 2N IP One door station (Mid)
-    "intercom_2n_ip_verso":       58000,   # 2N IP Verso door station (Premium)
+    "intercom_2n_ip_verso":       68954,   # 2N IP Verso door station (Premium — larger touchscreen, higher-res video; ~1.6x IP One)
     "intercom_surface_mount":      1845,   # surface mount box per station
     "touch_panel_savant_8":       56670,   # Savant Touch 8" (Premium)
     # Audio
@@ -253,13 +253,21 @@ def calc_audio(zones, tier):
 
 
 def calc_access_control(door_stations, tier):
-    """2N — door stations only. Touch panels moved to system integration."""
-    intercom_price = {
-        "Entry":   PRICES["intercom_2n_ip_solo"],   # 2N IP Solo
-        "Mid":     PRICES["intercom_2n_ip_one"],    # 2N IP One
-        "Premium": PRICES["intercom_2n_ip_verso"],  # 2N IP Verso
+    """2N — door stations only. Touch panels moved to system integration.
+
+    BUGFIX: previously this always priced the door station at the flat
+    'intercom_2n_ip_one' rate regardless of tier, so Entry/Mid/Premium came
+    out identical. Now each tier uses a distinct 2N model, and Premium adds
+    a dedicated Savant touch reader per door (matching the 'Touch Panel —
+    Premium only' note in unit_prices.md).
+    """
+    door_unit_price = {
+        "Entry":   PRICES["intercom_2n_ip_base"],
+        "Mid":     PRICES["intercom_2n_ip_one"],
+        "Premium": PRICES["intercom_2n_ip_verso"] + PRICES["touch_panel_savant_8"],
     }[tier]
-    hw_doors = door_stations * (intercom_price + PRICES["intercom_surface_mount"])
+
+    hw_doors = door_stations * (door_unit_price + PRICES["intercom_surface_mount"])
     labour   = (
         LABOUR["ac_first_fix"]
         + door_stations * LABOUR["ac_second_fix_per_panel"]
@@ -267,8 +275,8 @@ def calc_access_control(door_stations, tier):
     )
 
     detail = {
-        "door_stations": door_stations,
-        "intercom_model": {"Entry": "2N IP Solo", "Mid": "2N IP One", "Premium": "2N IP Verso"}[tier],
+        "door_stations": door_stations, "tier": tier,
+        "unit_price": door_unit_price,
         "hardware": hw_doors, "labour": labour,
     }
     return hw_doors + labour, detail
@@ -385,8 +393,21 @@ def calculate_all_systems(spec):
         tier_budgets["network"][tier] = round(t)
         detail_all.setdefault("network", {})[tier] = d
 
-        t, d = calc_audio(spec.get("audio_zones", 0), tier)
+        # BUGFIX: this used to price the card at calc_audio(audio_zones, tier) --
+        # i.e. the FULL system cost for every zone found on the drawings baked
+        # straight into the option card, shown in full before the client ticks
+        # a single room checkbox. The proposal's audio zone panel is meant to be
+        # the thing that grows the total as rooms are selected (see zone_prices
+        # below) -- the card itself should show a modest "from" price for one
+        # zone at this tier's quality level, exactly like the zone panel's own
+        # per-zone increment. Full multi-zone total (all rooms selected) is kept
+        # in `detail_all` for internal reference only, not shown to the client
+        # until they actually select rooms.
+        t, d = calc_audio(1, tier)
         tier_budgets["audio"][tier] = round(t)
+        full_t, _ = calc_audio(spec.get("audio_zones", 0), tier)
+        d["zones_if_all_selected"] = spec.get("audio_zones", 0)
+        d["total_if_all_zones_selected"] = round(full_t)
         detail_all.setdefault("audio", {})[tier] = d
 
         t, d = calc_access_control(spec.get("door_stations", 0), tier)
@@ -402,17 +423,14 @@ def calculate_all_systems(spec):
         detail_all.setdefault("home-theatre", {})[tier] = d
 
     # Zone prices — per-unit cost for additional zones selected in the proposal.
-    # Audio returns a per-tier dict so the proposal JS can update displayed
-    # prices when the client switches between Entry / Mid / Premium.
+    # Audio is always calculated from 1-zone cost at Entry tier so the Sonos Amp
+    # is included regardless of whether the current spec has any audio zones.
+    audio_1z, _ = calc_audio(1, "Entry")
     zone_prices = {
         "cctv":               round(tier_budgets["cctv"]["Entry"] / max(spec.get("cctv_cameras", 1), 1)),
         "access-control":     round(tier_budgets["access-control"]["Entry"] / max(spec.get("door_stations", 1) + spec.get("touch_panels", 1), 1)),
         "network":            round(tier_budgets["network"]["Entry"] / max(spec.get("aps_indoor", 0) + spec.get("aps_outdoor", 0), 1)),
-        "audio": {
-            "Entry":   round(calc_audio(1, "Entry")[0]),
-            "Mid":     round(calc_audio(1, "Mid")[0]),
-            "Premium": round(calc_audio(1, "Premium")[0]),
-        },
+        "audio":              round(audio_1z),   # 1 zone = speakers + Sonos Amp + cable + labour
         "lighting":           round(tier_budgets["lighting"]["Entry"] / max(spec.get("keypads", 1), 1)),
         "system-integration": tier_budgets["system-integration"]["Entry"],
     }

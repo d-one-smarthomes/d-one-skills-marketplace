@@ -7,6 +7,7 @@ Private plugin marketplace for D-One's custom Claude skills. Push this repo to a
 - **budget-analyzer** — derive per-unit budget averages from supplier/contractor quotes
 - **component-schedule** — D-One branded Component & Equipment Schedule PDF
 - **conduit-schedule** — D-One branded Conduit Schedule Excel
+- **d-one-lead-filter** — qualify a new lead through eight gates to a Pursue / Caution / Decline verdict, with respectful decline drafts
 - **d-one-proposal** — interactive client-facing proposal, published as a hosted link
 - **d-one-technical-file** — full technical documentation workflow from a WeQuote PDF
 - **floorplan-icons** — place D-One AV/tech icons onto a PDF floorplan

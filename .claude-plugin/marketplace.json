@@ -21,6 +21,11 @@
       "description": "Generate a D-One branded Conduit Schedule Excel from a project quote or annotated floorplan."
     },
     {
+      "name": "d-one-lead-filter",
+      "source": "./plugins/d-one-lead-filter",
+      "description": "Qualify a new D-One lead through eight gates to a Pursue / Caution / Decline verdict, with respectful decline drafts."
+    },
+    {
       "name": "d-one-proposal",
       "source": "./plugins/d-one-proposal",
       "description": "Generate an interactive, client-facing D-One home technology proposal and publish it as a hosted link."

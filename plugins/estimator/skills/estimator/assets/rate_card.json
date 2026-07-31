@@ -1,0 +1,13 @@
+{
+  "currency": "ZAR",
+  "labour_rates_per_hour": {
+    "fix1_cabling": {"sell": 950, "cost": 475},
+    "fix2_installation": {"sell": 950, "cost": 475},
+    "programming": {"sell": 1250, "cost": 625}
+  },
+  "labour_cost_margin_note": "Cost is exactly 50% of sell price across every historical quote checked (1,773 line items, no exceptions). Always derive labour cost as sell / 2 rather than asking for it separately.",
+  "equipment_fallback_markup": 1.45,
+  "equipment_fallback_markup_note": "Median price/cost markup across 1,907 historical equipment lines, used ONLY when a SKU has no cost history in equip_cost_by_sku.json. Real historical cost is always preferred over this estimate.",
+  "rate_card_last_updated": "2026-07-31",
+  "rate_card_provenance": "Derived from the most recent (July 2026) WeQuote export lines at the time Estimator was built. Earlier quotes in the training set showed rates as low as 700/hr (fix1/fix2) and 900/hr (programming), confirming this rate card is periodically revised upward. Whoever maintains this skill should refresh these numbers when D-One's official rate card changes, and should update this file (not just verbally tell Claude) so the change persists."
+}

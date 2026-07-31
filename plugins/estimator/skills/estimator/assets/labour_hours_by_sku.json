@@ -1,0 +1,2153 @@
+{
+ "PAV-SIPA125SM-10": {
+  "desc": "IP AUDIO 125 WITH SAVANT MUSIC SERVER",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Multiroom Audio",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 4.0
+ },
+ "FNIP-6x2AD": {
+  "desc": "P5  6 channel smart dimmer",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 8,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 3.0
+ },
+ "FNIP-8x16A.v4": {
+  "desc": "P5 8 channel relay unit",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 8,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 4.0
+ },
+ "SKL-1010-00": {
+  "desc": "10 KEYPAD POWER AND CONTROLLER",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 3,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "NSTLUT11000": {
+  "desc": "Wirepath Lutron Green 304m",
+  "category": "Keypads",
+  "category_group": "Lighting Control",
+  "n_observations": 68,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "USW-LITE16P": {
+  "desc": "Ubiquiti UniFi Switch Lite 16 Port Gigabit 8PoE 45W | USW-Lite-16-POE",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "EZI-PSU-12V-5A": {
+  "desc": "EZI-PSU-12V-5A meanwell",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 19,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Camera Pole": {
+  "desc": "Camera Pole - Buried Type - 3400 Long + 500Mm In The Ground - Total 3.9M - Powder Coated Green",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 0.0
+ },
+ "NST164500WH": {
+  "desc": "Wirepath 164 Speaker Cable 152m(White)",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "CABCON": {
+  "desc": "CABCON ",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Multiroom Audio",
+  "n_observations": 59,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "NP": {
+  "desc": "Network Point",
+  "category": "Access Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 216,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 0.0
+ },
+ "CAT6": {
+  "desc": "CAT6",
+  "category": "Access Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "3x CAT6": {
+  "desc": "TV Point",
+  "category": "TVs",
+  "category_group": "High Definition TV",
+  "n_observations": 29,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "SAV-S12REM": {
+  "desc": "S12 HOST, PLUS RUNTIME, PLUS REM-4000",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 16.0
+ },
+ "CAB-42U": {
+  "desc": "Linkbasic 42U 800 Deep Cabinet 4 Fans & 3 Shelves",
+  "category": "Racks",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 16,
+  "fix1_hours": 0.0,
+  "fix2_hours": 6.0,
+  "programming_hours": 0.0
+ },
+ "SSC-0014-00": {
+  "desc": "SAVANT SMARTCONTROL 14 - SMART CONTROLLER WITH 7 GPIO AND 7 RELAY",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "DOR-FM0B-00": {
+  "desc": "FLUSH MOUNT DOOR STATION BLACK",
+  "category": "IP Video Door Stations",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "ITP-E8000V2B-00": {
+  "desc": "SAVANT TOUCH 8 INCH CONTROL SCREEN - BLACK",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "WFB-SWLV04-00": {
+  "desc": "ASCEND LOW VOLTAGE KEYPAD - 4 BUTTON (SNOW WHITE)",
+  "category": "Keypads",
+  "category_group": "Lighting Control",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "WFB-SWENGV-00": {
+  "desc": "ASCEND ENGRAVING (SNOW WHITE)",
+  "category": "Keypads",
+  "category_group": "Lighting Control",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "SDU 3kVA": {
+  "desc": "Riello Sentinel Dual 3kVA UPS",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Netman 208": {
+  "desc": "for remote monitoring of the UPS via the computer network",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "1063968A": {
+  "desc": "Klipsch Reference Premiere PRO-180-RPC-LCR White In-Ceiling Speaker",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "DRX5.4M2BMMA": {
+  "desc": "Integra DRX-5.4 9.2-Channel Network AV Receiver",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 8.0
+ },
+ "1063967A": {
+  "desc": "Klipsch Reference Premiere PRO180RPC White InCeiling Speaker",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "Klipsch Subwoofer RP1200SW EUA Black Subwoofer": {
+  "desc": "Klipsch Subwoofer RP1200SW EUA Black Subwoofer",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "9155045": {
+  "desc": "2N IP VERSO - FINGERPRINT READER",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 7,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "U7-PRO": {
+  "desc": "Ubiquiti UniFi WiFi 7 Pro Tri-Band AP | U7-Pro",
+  "category": "Access Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 23,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "93341": {
+  "desc": "SONANCE VPXT8R",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "93089": {
+  "desc": "SONANCE VP80R",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "CMNETH-DK": {
+  "desc": "CoolMasterNet HVAC Bridge (Daikin)",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 4.0
+ },
+ "CF70-75S": {
+  "desc": "Ceiling Flapout & scroll down for up to 75' TV",
+  "category": "TVs",
+  "category_group": "High Definition TV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 21.143,
+  "programming_hours": 0.0
+ },
+ "2N\u00ae Access Unit 2.0 - Fingerprint reader": {
+  "desc": "2N\u00ae Access Unit 2.0 - Fingerprint reader",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "MOTU AVB": {
+  "desc": "5 PORT AVB COMPLIANT SWITCH",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "HST-SIPA1SM-00": {
+  "desc": "IP AUDIO 1 WITH INTEGRATED HOST AND SAVANT MUSIC 2.0",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 14,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "93152": {
+  "desc": "SONANCE MARINER 64 W",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 1.0
+ },
+ "M360-W-VOLF": {
+  "desc": "MOTION SENSOR 360 WHITE- VOLT FREE (DRY CONTACT)",
+  "category": "Motion Sensors",
+  "category_group": "Lighting Control",
+  "n_observations": 27,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.5
+ },
+ "DS-7716NXI-I4/S_C": {
+  "desc": "AcuSense 16ch NVR  4 SATA up to 10TB  up to 12MP recording   16/8 alarm IO ",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 16.0
+ },
+ "HDD-4TB": {
+  "desc": "3.5\" 4000GB(4TB) hard disk drive",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "DS-2CD2647G2-LZS(3.6-9MM)": {
+  "desc": "ColorVu 4MP bullet 3.6-9mm lens  up to 60m IR  120dB WDR  1 audio/ 1 alarm I/O 12VDC/POE ",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DS-3E1518P-SI": {
+  "desc": "16 Port Gigabit Smart POE Switch",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 0.0
+ },
+ "100w Led Floodlight": {
+  "desc": "100w Led Floodlight 4kv Surge Protected - Flash",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "FF2-0S0SWM-00": {
+  "desc": "ASCEND FACEPLATE - 2 GANG (SNOW WHITE)",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "DHI-LM19-F100": {
+  "desc": "DAHUA 18.5  Industrial level monitor\u00ac\u2211 suitable for extensive 7\u221a\u00f324 continuous works\u00ac\u2211 High fidelity digital processing, brilliant and vivid video\u00ac\u2211 Suita",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "UDM-PRO": {
+  "desc": "Ubiquiti UniFi Dream Machine Pro 9 Port Gigabit with 2SFP+ | UDM-PRO",
+  "category": "Network Router",
+  "category_group": "WiFi and Network",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "USW-PRO24P": {
+  "desc": "Ubiquiti UniFi Switch Pro 24 Port 16PoE+ 8PoE++ 400W | USW-Pro-24-POE",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "USW-PRO24": {
+  "desc": "Ubiquiti UniFi Switch Pro 24 Port Gigabit 2SFP+ | USW-Pro-24",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "U7-OUTDOOR": {
+  "desc": "Ubiquiti UniFi WiFi 7 Outdoor AP",
+  "category": "Access Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "REM-4000SGI-00": {
+  "desc": "SAVANT PRO REMOTE X2 SPACE GRAY (INTERNATIONAL)",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "CBOX-M": {
+  "desc": "Slab Box",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UDM-MAX": {
+  "desc": "UDM-MAX",
+  "category": "Network Router",
+  "category_group": "WiFi and Network",
+  "n_observations": 7,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 6.0
+ },
+ "UACC-DAC-SFP10-1M": {
+  "desc": "Ubiquiti UniFi 10 Gbps 1M Direct Attach Cable",
+  "category": "Network Router",
+  "category_group": "WiFi and Network",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "USW-PRO-XG24P": {
+  "desc": "Ubiquiti UniFi Pro XG 24 Port 720W PoE Switch",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "USW-MAX24": {
+  "desc": "Ubiquiti UniFi Pro Max Switch 24 with 16 Gigabit 8x 2.5Gbps 2SFP+",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "SDH-1000": {
+  "desc": "Sentinal Dual 1kVA UPS",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "QSPS-DH-1-75-H": {
+  "desc": "Lutron QS 75W Link PS w/Harness",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 15,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HQP7-1": {
+  "desc": "Lutron HQP71 Homeworks Processor",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 6.0
+ },
+ "LQSE-4A1-D": {
+  "desc": "Lutron LQSE4A1D",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 11,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 4.0
+ },
+ "LQSE-4S5-230-D": {
+  "desc": "Lutron LQSE4S5230D",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 16,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 4.0
+ },
+ "LQSE-2DALUNV-D": {
+  "desc": "Lutron Universal Dali Module - Tuneable",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 16.0
+ },
+ "QSE-CI-WCI": {
+  "desc": "Lutron QS Wall box Closure Interface - 8in",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 38,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "QSE-IO": {
+  "desc": "Lutron QSEIO",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "UVC-G6-Entry": {
+  "desc": "G6 Entry - An intelligent door entry system with native UniFi Protect and UniFi Access integration.",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 11,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "USW-MAX24P": {
+  "desc": "Ubiquiti UniFi Pro Max Switch 24 with 16PoE 8x 2.5Gbps PoE++ 400W | ",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "U7-PRO-XGS-W": {
+  "desc": "Ubiquiti UniFi WiFi 7 Pro XGS Tri-Band White AP",
+  "category": "Access Points",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 12,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "HW-NW-KP-S1-AWH": {
+  "desc": "Lutron Alisse S1 Keypad (Arch White)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 13,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "HW-QS-B-S1": {
+  "desc": "Lutron Base unit SQ BB",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 16,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HW-NW-KP-S2-AWH": {
+  "desc": "Lutron Alisse S2 Keypad (Arch White)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "HW-NW-KP-S3-AWH": {
+  "desc": "Lutron Alisse S3 Keypad (Arch White)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 7,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "HW-QS-B-S3": {
+  "desc": "Lutron Base unit SQ BB three column",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HW-NW-KP-S1-SNE": {
+  "desc": "Lutron Alisse S1 Keypad (Satin Nickel)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 2,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "HW-NW-KP-S3-SNE": {
+  "desc": "Lutron Alisse S3 Keypad (Satin Nickel)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "UA-Hub-Door-Mini": {
+  "desc": "Door Hub Mini - Compact Access Control Hub for a single door.",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 40,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UA-Intercom-Viewer": {
+  "desc": "Monitor for UniFi Access door intercom",
+  "category": "Indoor Video Station ",
+  "category_group": "Video Distribution",
+  "n_observations": 39,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "UA-Hub-Gate": {
+  "desc": "Gate Hub - An advanced Gate Hub enabling seamless gate access control via connected Access readers or Intercom.",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "UVC-G6BPRO-W": {
+  "desc": "Ubiquiti UniFi Protect G6 Pro Bullet 8MP White IP Camera",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "UVC-G6-Turret": {
+  "desc": "G6 Turret-All-weather, tamper-resistant 4K PoE camera with a 1/1.8\" 8MP image sensor, Multi-TOPS AI Engine, and 3-axis manual adjustment for flexible ",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 29,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "UVC-AI-PTZ-B": {
+  "desc": "AI PTZ Industrial - Industrial-grade 4K PoE++ PTZ camera with enhanced AI capabilities, 22x optical zoom, and long-range adaptive IR LED night vision.",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "UVC-NVR-PRO": {
+  "desc": "Ubiquiti UniFi Protect 7 Bay 1SFP+ Gigabit Ethernet NVR Pro| UNVR Pro",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 6.0
+ },
+ "UACC-HDD8": {
+  "desc": "Ubiquiti Enterprise 3.5\" 8TB Hard Drive",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "QSE-CI-DMX": {
+  "desc": "Lutron DMX control interface Low Voltage",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 4.0
+ },
+ "MXN63QA/A": {
+  "desc": "iPad mini (A17 Pro) Wi-Fi 128GB - Space Grey",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "72350": {
+  "desc": "SONANCE CONNECT PRO WallStation Black",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "72329": {
+  "desc": "CONNECT PRO Case Mini Black (6th Gen)",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "72109": {
+  "desc": "IPORT CONNECT PoE+ Upgrade",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UACC-Pro-Bullet-Enhancer-W": {
+  "desc": "Long-range IR LED, floodlight, and radar detection accessory for the G6 Pro Bullet",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UP-AI-Horn-Speaker-W": {
+  "desc": "AI Horn Speaker - All-weather PoE 120 dB horn speaker with advanced AI alert functionality and versatile wall, corner, and pole mounting options.",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "U7-MAX": {
+  "desc": "Ubiquiti UniFi WiFi 7 Pro Max Tri-Band AP",
+  "category": "Access Points",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 79,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "U7-Pro-Outdoor": {
+  "desc": "Ubiquiti UniFi WiFi 7 Outdoor Tri-Band AP",
+  "category": "Access Points",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "UVC-G6-Pro-Entry": {
+  "desc": "All-weather, PoE+ 12MP Doorbell with enhanced AI detections, two-way audio, 3\" touch display, a secondary package camera, and integrated Access Reader",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.5
+ },
+ "D+PM": {
+  "desc": "Design + Project Management",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UVC-G6B": {
+  "desc": "G6 Bullet - All-weather 4K PoE camera with a 1/1.8\" 8MP image sensor, Multi-TOPS AI Engine, and long-range IR night vision.",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 14,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Mecer Display 32": {
+  "desc": "32\" HD Ready display",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UVC-VIEWPORT": {
+  "desc": "Ubiquiti UniFi Protect ViewPort with PoE-Input | UFP-VIEWPORT",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Mecer Display 55": {
+  "desc": "55\" 4K display",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "TVM 3405": {
+  "desc": "TVM 3405 Fixed TV Wall Mount",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "96089": {
+  "desc": "VX80R",
+  "category": "SONOS",
+  "category_group": "Sound",
+  "n_observations": 13,
+  "fix1_hours": 1.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 1.0
+ },
+ "NST184CS500WH": {
+  "desc": "Wirepath 184 Speaker Cable 152m (White)",
+  "category": "SONOS",
+  "category_group": "Sound",
+  "n_observations": 22,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "C50-Pack": {
+  "desc": "Packaged Surface-Mount Subwoofer-Satellite Loudspeaker System",
+  "category": "SONOS",
+  "category_group": "Sound",
+  "n_observations": 3,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "AMPG1EU1BLK": {
+  "desc": "Sonos AMP EU (Black) (S16)",
+  "category": "SONOS",
+  "category_group": "Sound",
+  "n_observations": 12,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "ZP5": {
+  "desc": "ZP5 - uControl Zone Processor ZP5",
+  "category": "Remotes",
+  "category_group": "System Integration",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "uControl Remote": {
+  "desc": "uControl Remote - Carbonite (Aluminium fascia)",
+  "category": "Remotes",
+  "category_group": "System Integration",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "1070647": {
+  "desc": "KLIPSCH SUBWOOFER RP-1200SW EUA BLACK SUBWOOFER",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "GHOUND03": {
+  "desc": "AQ 3.0M GREYHOUND SUBWOOFER",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "TX-RZ50": {
+  "desc": "Onkyo TX-RZ50 9.2-Channel THX Certified AV Receiver",
+  "category": "AVR",
+  "category_group": "Multiroom Audio",
+  "n_observations": 3,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 6.0
+ },
+ "1066277": {
+  "desc": "Klipsch Passive Soundbar Heritage Theater Bar 6580 Passive Soundbar",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 3.0,
+  "fix2_hours": 3.0,
+  "programming_hours": 3.0
+ },
+ "U5G-Max-Outdoor": {
+  "desc": "Ubiquiti UniFi 5G Max Outdoor Modem",
+  "category": "Network Router",
+  "category_group": "WiFi and Network",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "DHI-VTO3311Q-WP": {
+  "desc": "DAHUA IP 1 / 2 / 4-button Villa Outdoor Station \u00b7Wi-Fi Villa Door Station\n> Full metal casing design.> Customizable Number of Buttons.> Wi-Fi connecti",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "DHI-VTH2421FW-P": {
+  "desc": "DAHUA IP touch screen 7\" monitor for intercom.   7\" TFT Capacitive touch screen, 1024x600 \u00b7 IPC surveillance\u00b7 Alarm integration \u00b7",
+  "category": "Indoor Video Station ",
+  "category_group": "Video Distribution",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DH-IPC-HFW2249S-S-IL": {
+  "desc": "DAHUA 2MP Smart Dual Illumination Bullet WizSense Network Camera - 2-MP 1/2.8\" CMOS image sensor, low luminance, and high definition image.  H.265 cod",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DHI-NVR2116HS-I": {
+  "desc": "DAHUA WizSense AI 16CH NVR > New 4.0 user interface> Remote surveillance, live view and video play on mobile phone App> Max. decoding capability: 4\u00d710",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 6.0
+ },
+ "HDD-8TB": {
+  "desc": "3.5\" 8000GB(8TB) hard disk drive",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "DH-PFS4218-16GT-240": {
+  "desc": "16x10/100/1000 Base-T\u30012x1000 Base-X\uff1b\nIEEE 802.3af/802.3at/Hi-PoE\nPort 1/2 \u226460W\uff0c Port 3-16 \u226430W\nTotal\u2264240W\nWeight: 3.5kg\nDimension: 482mm \u00d7300mm \u00d744mm",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DH-IPC-HDW2249T-S-IL": {
+  "desc": "DAHUA 2MP Smart Dual Illumination Dome WizSense Network Camera 2-MP 1/2.8\" CMOS image sensor, low luminance, and high definition image. H.265 codec, h",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DHI-ASi120iE": {
+  "desc": "v",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "DEE1010B": {
+  "desc": "DAHUA Access Control Extension Module Dahua relay module allows the expansion of video door phone features for control of another door or gate. Built-",
+  "category": "IP Video Door Stations",
+  "category_group": "Video Distribution",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "PA-9940": {
+  "desc": "SP6000 K32LED UPGRADE KIT w BATT+TRANS+SIREN",
+  "category": "Alarm",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "PA-1098": {
+  "desc": "Paradox DG75+ Digiguard Pet 41Kg",
+  "category": "Alarm",
+  "category_group": "CCTV",
+  "n_observations": 9,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Alarm Cable 4 Core 100m": {
+  "desc": "Alarm Cable 4 Core 100m PA-2004",
+  "category": "Alarm",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 2.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "DOR-VERSO2SMN-00": {
+  "desc": "SAVANT - DOR-VERSO2SMN-00 - SAVANT 2N IP VERSO 2.0 DOOR STATION SURFACE MOUNT NICKEL",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 4,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DHI-ITC413-PW4D-IZ1": {
+  "desc": "Dahua Access ANPR Camera",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 4,
+  "fix1_hours": 2.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "DLC": {
+  "desc": "Door Lock Cable",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 5,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Custom Gooseneck": {
+  "desc": "Custom Gooseneck",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "93612": {
+  "desc": "SONANCE MX 86 OUTDOOR SPEAKER BLACK (1PAIR)",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 2.0
+ },
+ "SP": {
+  "desc": "Speaker Point",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 4,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "SUBG4EU1BLK": {
+  "desc": "SONOS SUB GEN4 WIRELESS SMART SUBWOOFER - BLACK",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "93616": {
+  "desc": "SONANCE MARINER MX62 SST (STEREO SPEAKER)",
+  "category": "Speaker System",
+  "category_group": "Sound",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 2.0
+ },
+ "9158106": {
+  "desc": "2N IP One Main Unit",
+  "category": "IP Video Door Stations",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "9158002": {
+  "desc": "2N\u00ae IP One - Surface mount box",
+  "category": "IP Video Door Stations",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "ITP-E5500B-30": {
+  "desc": "SAVANT TOUCH 5.5 INCH CONTROL SCREEN - BLACK",
+  "category": "In-Wall Touch Panels",
+  "category_group": "System Integration:",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "93157": {
+  "desc": "SONANCE MARINER 86 B",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 1.0
+ },
+ "93542": {
+  "desc": "SONAMP DSP 2-150 MKIII",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "Bond Bridge Pro": {
+  "desc": "Bond Bridge Pro",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "KP": {
+  "desc": "Keypad Programming",
+  "category": "Keypads",
+  "category_group": "Lighting Control",
+  "n_observations": 8,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "96006": {
+  "desc": "VX82",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 1.0
+ },
+ "LCB-LEINT-00": {
+  "desc": "LUTRON LEAP ADVANCED INTEGRATION BRIDGE",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "SSL-PROE-1YR": {
+  "desc": "SAVANT ESSENTIALS 1 YEAR SUBSCRIPTION (PRO)",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "PD644WWH": {
+  "desc": "Arteor 6 Lever Bell Press Switch - 4 X 4 White",
+  "category": "Keypads",
+  "category_group": "Lighting Control",
+  "n_observations": 36,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UA-G3-Flex-B": {
+  "desc": "Reader Flex - Third-generation NFC card reader with a keypad and Touch Pass support.",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "DS-2CD2346G2-ISU/SL(2.8MM)": {
+  "desc": "4 MP AcuSense Strobe Light and Audible Warning Fixed Turret Network Camera",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "XTND2K150": {
+  "desc": "XTND 2K 150m",
+  "category": "DSTV",
+  "category_group": " Video Distribution",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "1M Rip Cord": {
+  "desc": "1M Rip Cord",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "V10B+": {
+  "desc": "V10+ Black",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 4,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "QE8147": {
+  "desc": "QED Connect Subwoofer Cable 6m",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "3000-MICRO-BG": {
+  "desc": "SVS 3000 Micro Subwoofer (Gloss Black)",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "93608": {
+  "desc": "MARINER MX62 BLACK",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 1.0
+ },
+ "CAB-27U": {
+  "desc": "Linkbasic 27U 800 Deep Cabinet 4 Fans & 2 Shelves",
+  "category": "Racks",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 0.0
+ },
+ "CAB-15U": {
+  "desc": "Linkbasic 15U Fixed Wall Box",
+  "category": "Racks",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "USW-U210": {
+  "desc": "Ubiquiti UniFi Switch Ultra 8 Port Gigabit 1PoE Input 7 PoE Out 202W | USW-Ultra-210W",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "U7-LITE": {
+  "desc": "Ubiquiti UniFi WiFi 7 Lite Dual Band AP",
+  "category": "Access Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 3,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "DS-7764NI-M4": {
+  "desc": "Pro series  64ch NVR  4 SATA up to 16TB  POS & IOT overlay  16/9 alarm IO ",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 12.0
+ },
+ "HDD-WD-8TB_C": {
+  "desc": "Western Digital Surveillance Hard Disk  Drive 8 TB 3.5 SATA",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "DS-3E1510P-SI_C": {
+  "desc": "8 port Smart gigabit POE switch 110w POE budget  Hikvision topology management  2 SFP ports ",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "A-BB13-B01070": {
+  "desc": "MEGAnet Cs CABLE SM SSA MINI 75m 24-OD 5.6mm (100m)",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 6.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "CAB-6UO": {
+  "desc": "Scoop 6U 450mm Deep Outdoor Cabinet with 2 fans",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "5E1200UI": {
+  "desc": "EATON 5E 1200VA USB IEC GEN2",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "SAV-PROHOST": {
+  "desc": "PRO HOST, PLUS RUNTIME",
+  "category": "Controllers",
+  "category_group": "System Integration:",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 32.0
+ },
+ "3 Decoder DSTV Installation Bundle": {
+  "desc": "DSTV Hardware Bundle 100cm Galvanised Dish and Bracket, and all Cabcon required (Excluding Decoders)",
+  "category": "DSTV",
+  "category_group": " Video Distribution",
+  "n_observations": 2,
+  "fix1_hours": 2.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "RECMCEXPLORA3-UL": {
+  "desc": "RECEIVER MULTICHOICE EXPLORA ULTRA STANDALONE",
+  "category": "DSTV",
+  "category_group": " Video Distribution",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 0.5
+ },
+ "DS-2SE7C425MWG-EB/26(F0)": {
+  "desc": "TandemVu 4MP PTZ 25x optical zoom 6MP panoramic channel 200m IR Smart tracking  built-in strobe-light & siren 24VAC/Hi-POE ",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "SC-630P-SA": {
+  "desc": "Audible souding horn",
+  "category": "AI CCTV",
+  "category_group": "CCTV ",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "DOR-SM0B-00": {
+  "desc": "SURFACE MOUNT DOOR STATION BLACK",
+  "category": "IP Video Door Stations",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "LKV824P": {
+  "desc": "1\u00d74 HDMI SPLITTER WITH EXTENDER",
+  "category": "DSTV",
+  "category_group": " Video Distribution",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "IC95": {
+  "desc": "IC95 Pair Miller&Kreisel",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 2,
+  "fix1_hours": 2.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "LCR750B": {
+  "desc": "LCR750 Black Pair",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 2,
+  "fix1_hours": 2.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "LCR750CB": {
+  "desc": "LCR750C Black",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "COD&PM": {
+  "desc": "Credit of Design & Project Management",
+  "category": "Professional Services",
+  "category_group": "Professional Installation",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "CS-18C": {
+  "desc": "Custom CS-18C Skyhook Cinch White In-Ceiling Speaker 8 Inch",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 2,
+  "fix1_hours": 0.25,
+  "fix2_hours": 0.5,
+  "programming_hours": 0.25
+ },
+ "UTP-6305CU": {
+  "desc": "Scoop Unbranded 305m Box Cat6 CCA Grey UTP Cable",
+  "category": "Data Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 22,
+  "fix1_hours": 4.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "93125": {
+  "desc": "SONANCE C6R SST",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 0.5,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.5
+ },
+ "U7-PRO-XG-W": {
+  "desc": "Ubiquiti UniFi WiFi 7 Pro XG Tri-Band White AP",
+  "category": "Access Points",
+  "category_group": "WiFi and Network",
+  "n_observations": 12,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "IW950": {
+  "desc": "IW950 Miller&Kreisel",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 3,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "M40TB": {
+  "desc": "M40T Black Pair",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 1,
+  "fix1_hours": 2.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "QE3230": {
+  "desc": "QED Reference Subwoofer 40 3m",
+  "category": "Speaker System",
+  "category_group": "Dolby Atmos Surround Sound",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "SUBG4EU1 BLK": {
+  "desc": "Sonos Sub Gen 4 Black",
+  "category": "Speakers",
+  "category_group": "Multiroom Audio",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "SKYEHD65": {
+  "desc": "65\u2033 SKYE HD Platinum Series Interactive Panel",
+  "category": "Video Conferencing",
+  "category_group": "Video Conferencing",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "UA-INTERCOM": {
+  "desc": "Ubiquiti UniFi Access Intercom",
+  "category": "IP Video Door Stations",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "Ground Floor Dimensions 3000x3705 Diffuse": {
+  "desc": "Ground Floor Dimensions 3000x3705 Diffuse",
+  "category": "QS Lutron Blinds",
+  "category_group": "Professional Installation",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "First Floor Dimensions 4000x2400 Diffuse": {
+  "desc": "First Floor Dimensions 4000x2400 Diffuse",
+  "category": "QS Lutron Blinds",
+  "category_group": "Professional Installation",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "QSSC-EDU-R100": {
+  "desc": "Roller 100 EDU",
+  "category": "Cabling & Interconnects",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "QSPS-10PNL": {
+  "desc": "Lutron QSPS10PNL",
+  "category": "Cabling & Interconnects",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "QSSC-CON-RPL": {
+  "desc": "Sivoia QS Terminal Block Connector\t\t\t",
+  "category": "Cabling & Interconnects",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "QS-WLB": {
+  "desc": "Lutron Wiring Landing Board\t\t\t",
+  "category": "Cabling & Interconnects",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "PL": {
+  "desc": "Professional Labour",
+  "category": "Lutron Installation & Programming",
+  "category_group": "Lighting Control",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "INSTL": {
+  "desc": "Installation Labour",
+  "category": "Lutron Installation & Programming",
+  "category_group": "Lighting Control",
+  "n_observations": 3,
+  "fix1_hours": 42.0,
+  "fix2_hours": 6.0,
+  "programming_hours": 0.0
+ },
+ "Sivoia QS Wireless D145 Drapery Track PINCH 9300mm Width": {
+  "desc": "Sivoia QS Wireless D145 Drapery Track PINCH 9300mm Width",
+  "category": "Curtain Tracks",
+  "category_group": "Professional Installation",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Sivoia QS Wired D105 Drapery Track PINCH 3300mm Width": {
+  "desc": "Sivoia QS Wired D105 Drapery Track PINCH 3300mm Width",
+  "category": "Curtain Tracks",
+  "category_group": "Professional Installation",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HQP7-2": {
+  "desc": "Lutron 2Link Homeworks Processor\t\t",
+  "category": "Processors & Interfaces",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Sivoia QS Wireless D145 Drapery Track PINCH 2196mm Width": {
+  "desc": "Sivoia QS Wireless D145 Drapery Track PINCH 2196mm Width",
+  "category": "Curtain Tracks",
+  "category_group": "Professional Installation",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Sivoia QS Wireless D145 Drapery Track PINCH 4905mm Width": {
+  "desc": "Sivoia QS Wireless D145 Drapery Track PINCH 4905mm Width",
+  "category": "Curtain Tracks",
+  "category_group": "Professional Installation",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HQWT-S-P4W-SN-E": {
+  "desc": "Lutron HQWTSP4W Keypad Custom (S/Nickel)",
+  "category": "HW Palladiom Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HQWT-S-P44W-SNE": {
+  "desc": "Lutron HQWTSP44W Keypad Custom(S/Nickel)",
+  "category": "HW Palladiom Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 7,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "QSPS-P2-1-35V": {
+  "desc": "Lutron QSPSP2135V",
+  "category": "Cabling & Interconnects",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HDD-WD-4TB_C": {
+  "desc": "Western Digital Surveillance, 4 TB 3.5\" SATA Hard Drive",
+  "category": "Network Router",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "U6-LR": {
+  "desc": "Ubiquiti UniFi6 Long Range Dual Band WiFi 6 AP | U6-LR",
+  "category": "Network Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "SAV-S12": {
+  "desc": "S12 HOST, PLUS RUNTIME",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 16.0
+ },
+ "HQP6-1": {
+  "desc": "1 Link Processor",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "MHUBPRO2.0-4X4": {
+  "desc": "MHUB PRO 2.0 (4X4)",
+  "category": "Matrices 4K HDR",
+  "category_group": "HDTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 8.0
+ },
+ "SCSC3L": {
+  "desc": "Monitor Audio Creator C3L In-ceiling",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Sound",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DHI-NVR5232-EI": {
+  "desc": "DAHUA 32CH WizSense Network Video Recorder \u00b7 Smart H.265+/H.265/Smart H.264+/H.264/MJPEG decoding format. \u00b7 32-channel 1080p self-adaptive decoding ca",
+  "category": "NVR & HE Equipment",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "USW-24": {
+  "desc": "Ubiquiti UniFi Switch 24 Port Gigabit 2SFP | USW-24",
+  "category": "Network Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "850029050261": {
+  "desc": "SVS 3000 In-Wall Single Subwoofer system",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 8.0
+ },
+ "DH-PFS4428-24GT-370": {
+  "desc": "Dahua 24-Port PoE Gigabit Managed Switch. \u00b7 Layer 2 network management PoE switch\u00b7 Support IEEE802.3af, IEEE802.3at standard\u00b7 Network Redundancy: STP/",
+  "category": "NVR & HE Equipment",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 1.0
+ },
+ "72352": {
+  "desc": "SONANCE CONNECT PRO BaseStation Black",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "Network Point": {
+  "desc": "Network Point",
+  "category": "Network Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "HDM48PEA100": {
+  "desc": "1.0M 48G PEARL HDMI",
+  "category": "Matrices 4K HDR",
+  "category_group": "HDTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "CMNETH-LG": {
+  "desc": "CoolMasterNet HVAC Bridge (LG)",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 4.0
+ },
+ "DHI-ASI6214J-MFW": {
+  "desc": "DAHUA Face Recognition Access Control Terminal  \u00b7> 4.3-inch LCD touch screen; resolution 480 \u00d7 272> 2MP wide-angle dual lens camera; support DWDR, whi",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 7,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "MN893Z/A": {
+  "desc": "Apple TV 4K 128Gb Wifi + Ethernet (3rd Gen,2022)",
+  "category": "Matrices 4K HDR",
+  "category_group": "HDTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DH-IPC-HDW3441T-ZS": {
+  "desc": "4MP IR Vari-focal Eyeball WizSense Network Camera",
+  "category": "NVR",
+  "category_group": "WiFi and Network",
+  "n_observations": 9,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "SCSW3M": {
+  "desc": "Monitor Audio Creator W3M In-wall",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "WB800ICH1UIPVM8": {
+  "desc": "WattBox IP Power Conditioner (8 Outlets)",
+  "category": "Controllers",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "DOR-FMS-00": {
+  "desc": "FLUSH MOUNT SINGLE HEIGHT DOOR STATION SILVER",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 2.0
+ },
+ "USW-8FLEX-2.5GP": {
+  "desc": "Ubiquiti UniFi Flex 2.5G PoE 8 Port PoE with 10G Combo Uplink",
+  "category": "Network Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "UACC-PSU-210W": {
+  "desc": "Ubiquiti 54V 210W AC Power Supply",
+  "category": "Network Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UA-BUTTON": {
+  "desc": "Ubiquiti UniFi Access Button",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 28,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "RMB-SIPA12F-00": {
+  "desc": "1U FRONT RACK MOUNT BRACKET FOR SINGLE ZONE AMP",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "X15B+": {
+  "desc": "X15+ Black",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "SVS-S3WAA": {
+  "desc": "SVS Soundpath TriBand Wireless Adapter",
+  "category": "Amplifiers & Audio Matrix",
+  "category_group": "Sound",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "WFB-MGENGV-00": {
+  "desc": "SAVANT - WFB-MGENGV-00 - ASCEND ENGRAVING (SPACE GRAY)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "WFB-1GMGLV-00": {
+  "desc": "SAVANT - WFB-1GMGLV-00 - ASCEND ASSEMBLED - 1 GANG (SPACE GRAY)",
+  "category": "Keypads",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 6.0
+ },
+ "CAB-B2": {
+  "desc": "Linkbasic 19-inch Rack Mount 2U Blank Panel",
+  "category": "Shelves & PDUs",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "CAB-T300": {
+  "desc": "Linkbasic 300mm 19-inch Front Mount Tray",
+  "category": "Shelves & PDUs",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "CAB-P06": {
+  "desc": "Linkbasic 6 Way Aluminium Moulded Rack Mount PDU",
+  "category": "Shelves & PDUs",
+  "category_group": "Headend and Rack Cabinets",
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "SPANELG": {
+  "desc": "Soundlab Lutron Keypad Box 305m (Green)",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 4.0,
+  "programming_hours": 0.0
+ },
+ "FNIP-RGB&010": {
+  "desc": "P5 4 Channel Ethernet Low Voltage LED Dimmer and 0-10v Output module",
+  "category": "Panelised Lighting Controls",
+  "category_group": "Lighting Control",
+  "n_observations": 4,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 2.0
+ },
+ "DH-PFM923I-6U-C": {
+  "desc": "Dahua 305m UTP CAT6 Cable\n>305m UTP CAT6; >Support PoE long-distance transmission; >Excellent OFC with 99.97% OFC (oxygen free copper) purity; >Enviro",
+  "category": "CCTV System",
+  "category_group": "CCTV",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UA-G3-Pro-B": {
+  "desc": "Ubiquiti UniFi Access Reader G3 Pro",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 36,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "FR02": {
+  "desc": "Securi-Prod Call Point Break Glass Green",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UB-UA-HUB": {
+  "desc": "Ubiquiti UniFi Access Door Hub",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 10,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UA-G3-Intercom": {
+  "desc": "Indoor/outdoor intercom terminal for managing residential and commercial building entry requests with Touch Pass support.",
+  "category": "External Access Control Panels ",
+  "category_group": "Intercom and Access Control",
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "CB11-6": {
+  "desc": "Cable - RG6 Coaxial 75Ohm 100m Roll",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "PS49-5": {
+  "desc": "9 Channel 12VDC 10 Amp CCTV Power Supply with Battery Back-up",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "DS-2CD2T47G2H-LI 2.8MM": {
+  "desc": "Hybrid ColorVu 4MP bullet 2.8mm lens 60m hybrid IR/white light 130dB WDR 12VDC/POE ",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "HS-TF-L2/256G/P": {
+  "desc": "Hikvision 256GB surveillance SD card",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "TP-POE160S": {
+  "desc": "TP-LINK TL POE160S DUAL PORT POE+ INJECTOR",
+  "category": "AI CCTV",
+  "category_group": "CCTV",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "USW-PRO8P": {
+  "desc": "Ubiquiti UniFi Switch Pro 8 Port 6PoE+ 2PoE++ 120W | USW-Pro-8-PoE (120W)",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "UACC-DAC-0.5M": {
+  "desc": "Ubiquiti UniFi 10Gbps Direct Attach 0.5M Cable",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "USW-MAX48P": {
+  "desc": "Ubiquiti UniFi Pro Max Switch 48 with 32PoE 16x 2.5Gbps PoE++ 720W | USW-Pro-Max-48-PoE",
+  "category": "Network  Switching",
+  "category_group": "WiFi and Network",
+  "n_observations": 3,
+  "fix1_hours": 1.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ }
+}

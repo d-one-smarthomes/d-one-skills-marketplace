@@ -1,0 +1,1330 @@
+{
+ "PAV-SIPA125SM-10": {
+  "unit_cost": 63646.43,
+  "n_observations": 4
+ },
+ "FNIP-6x2AD": {
+  "unit_cost": 13253.74,
+  "n_observations": 8
+ },
+ "FNIP-8x16A.v4": {
+  "unit_cost": 6626.87,
+  "n_observations": 9
+ },
+ "SKL-1010-00": {
+  "unit_cost": 4787.4,
+  "n_observations": 3
+ },
+ "NSTLUT11000": {
+  "unit_cost": 6900.0,
+  "n_observations": 86
+ },
+ "USW-LITE16P": {
+  "unit_cost": 3995.0,
+  "n_observations": 1
+ },
+ "EZI-PSU-12V-5A": {
+  "unit_cost": 1034.99,
+  "n_observations": 20
+ },
+ "Camera Pole": {
+  "unit_cost": 1622.0,
+  "n_observations": 6
+ },
+ "NST164500WH": {
+  "unit_cost": 5496.52,
+  "n_observations": 2
+ },
+ "CABCON": {
+  "unit_cost": 1600.0,
+  "n_observations": 71
+ },
+ "NP": {
+  "unit_cost": 325.0,
+  "n_observations": 209
+ },
+ "CAT6": {
+  "unit_cost": 6.0,
+  "n_observations": 8
+ },
+ "3x CAT6": {
+  "unit_cost": 810.0,
+  "n_observations": 17
+ },
+ "SAV-S12REM": {
+  "unit_cost": 28165.31,
+  "n_observations": 2
+ },
+ "CAB-42U": {
+  "unit_cost": 6995.0,
+  "n_observations": 17
+ },
+ "SSC-0014-00": {
+  "unit_cost": 9928.7,
+  "n_observations": 3
+ },
+ "DOR-FM0B-00": {
+  "unit_cost": 25640.09,
+  "n_observations": 1
+ },
+ "ITP-E8000V2B-00": {
+  "unit_cost": 21000.0,
+  "n_observations": 10
+ },
+ "WFB-SWLV04-00": {
+  "unit_cost": 6714.79,
+  "n_observations": 10
+ },
+ "WFB-SWENGV-00": {
+  "unit_cost": 817.48,
+  "n_observations": 10
+ },
+ "SDU 3kVA": {
+  "unit_cost": 13637.0,
+  "n_observations": 3
+ },
+ "Netman 208": {
+  "unit_cost": 3350.0,
+  "n_observations": 5
+ },
+ "1063968A": {
+  "unit_cost": 7680.0,
+  "n_observations": 1
+ },
+ "DRX5.4M2BMMA": {
+  "unit_cost": 32347.3,
+  "n_observations": 1
+ },
+ "1063967A": {
+  "unit_cost": 5929.42,
+  "n_observations": 2
+ },
+ "Klipsch Subwoofer RP1200SW EUA Black Subwoofer": {
+  "unit_cost": 15651.65,
+  "n_observations": 1
+ },
+ "9155045": {
+  "unit_cost": 13551.61,
+  "n_observations": 7
+ },
+ "U7-PRO": {
+  "unit_cost": 3625.0,
+  "n_observations": 24
+ },
+ "93341": {
+  "unit_cost": 14916.0,
+  "n_observations": 1
+ },
+ "93089": {
+  "unit_cost": 4690.43,
+  "n_observations": 5
+ },
+ "CMNETH-DK": {
+  "unit_cost": 37125.0,
+  "n_observations": 2
+ },
+ "CF70-75S": {
+  "unit_cost": 82897.5,
+  "n_observations": 1
+ },
+ "2N\u00ae Access Unit 2.0 - Fingerprint reader": {
+  "unit_cost": 13939.0,
+  "n_observations": 1
+ },
+ "MOTU AVB": {
+  "unit_cost": 11118.61,
+  "n_observations": 4
+ },
+ "HST-SIPA1SM-00": {
+  "unit_cost": 13567.3,
+  "n_observations": 16
+ },
+ "93152": {
+  "unit_cost": 8869.57,
+  "n_observations": 1
+ },
+ "M360-W-VOLF": {
+  "unit_cost": 1499.99,
+  "n_observations": 39
+ },
+ "DS-7716NXI-I4/S_C": {
+  "unit_cost": 7272.62,
+  "n_observations": 1
+ },
+ "HDD-4TB": {
+  "unit_cost": 1999.0,
+  "n_observations": 1
+ },
+ "DS-2CD2647G2-LZS(3.6-9MM)": {
+  "unit_cost": 4839.18,
+  "n_observations": 2
+ },
+ "DS-3E1518P-SI": {
+  "unit_cost": 4638.75,
+  "n_observations": 2
+ },
+ "100w Led Floodlight": {
+  "unit_cost": 399.2,
+  "n_observations": 2
+ },
+ "FF2-0S0SWM-00": {
+  "unit_cost": 783.31,
+  "n_observations": 5
+ },
+ "DHI-LM19-F100": {
+  "unit_cost": 1495.0,
+  "n_observations": 3
+ },
+ "UDM-PRO": {
+  "unit_cost": 7695.0,
+  "n_observations": 5
+ },
+ "USW-PRO24P": {
+  "unit_cost": 12895.0,
+  "n_observations": 6
+ },
+ "USW-PRO24": {
+  "unit_cost": 7495.0,
+  "n_observations": 3
+ },
+ "U7-OUTDOOR": {
+  "unit_cost": 3650.0,
+  "n_observations": 11
+ },
+ "REM-4000SGI-00": {
+  "unit_cost": 12307.83,
+  "n_observations": 11
+ },
+ "CBOX-M": {
+  "unit_cost": 350.0,
+  "n_observations": 1
+ },
+ "Roller 100": {
+  "unit_cost": 22154.44,
+  "n_observations": 1
+ },
+ "QSSC-CON-RPL": {
+  "unit_cost": 208.7,
+  "n_observations": 34
+ },
+ "QSSC-EDU-R100": {
+  "unit_cost": 4565.22,
+  "n_observations": 16
+ },
+ "Roller 64": {
+  "unit_cost": 10743.04,
+  "n_observations": 1
+ },
+ "QSSC-EDU-R64": {
+  "unit_cost": 4988.72,
+  "n_observations": 18
+ },
+ "A311": {
+  "unit_cost": 20164.76,
+  "n_observations": 1
+ },
+ "86A311": {
+  "unit_cost": 4887.19,
+  "n_observations": 1
+ },
+ "A206": {
+  "unit_cost": 15570.94,
+  "n_observations": 1
+ },
+ "BCA206": {
+  "unit_cost": 11108.79,
+  "n_observations": 1
+ },
+ "A207": {
+  "unit_cost": 5462.38,
+  "n_observations": 1
+ },
+ "BCA207": {
+  "unit_cost": 3479.63,
+  "n_observations": 1
+ },
+ "A208": {
+  "unit_cost": 9233.84,
+  "n_observations": 1
+ },
+ "BCA208": {
+  "unit_cost": 5597.9,
+  "n_observations": 1
+ },
+ "A210": {
+  "unit_cost": 16887.64,
+  "n_observations": 1
+ },
+ "BCA2101": {
+  "unit_cost": 11929.61,
+  "n_observations": 1
+ },
+ "86A210": {
+  "unit_cost": 6467.23,
+  "n_observations": 1
+ },
+ "BCA210": {
+  "unit_cost": 3903.13,
+  "n_observations": 1
+ },
+ "A312": {
+  "unit_cost": 6467.23,
+  "n_observations": 1
+ },
+ "BCA312": {
+  "unit_cost": 4017.09,
+  "n_observations": 1
+ },
+ "86A312": {
+  "unit_cost": 17424.33,
+  "n_observations": 1
+ },
+ "BCA3121": {
+  "unit_cost": 12174.47,
+  "n_observations": 1
+ },
+ "A416": {
+  "unit_cost": 6467.23,
+  "n_observations": 1
+ },
+ "BCA4161": {
+  "unit_cost": 4017.09,
+  "n_observations": 1
+ },
+ "86A416": {
+  "unit_cost": 17424.33,
+  "n_observations": 1
+ },
+ "BCA416": {
+  "unit_cost": 12174.47,
+  "n_observations": 1
+ },
+ "A418": {
+  "unit_cost": 4887.19,
+  "n_observations": 1
+ },
+ "BCA418": {
+  "unit_cost": 3136.98,
+  "n_observations": 1
+ },
+ "86A418": {
+  "unit_cost": 18539.36,
+  "n_observations": 1
+ },
+ "BCA4181": {
+  "unit_cost": 12174.47,
+  "n_observations": 1
+ },
+ "A419": {
+  "unit_cost": 18204.34,
+  "n_observations": 1
+ },
+ "86A419": {
+  "unit_cost": 4708.55,
+  "n_observations": 1
+ },
+ "BCA149": {
+  "unit_cost": 12174.47,
+  "n_observations": 1
+ },
+ "A420": {
+  "unit_cost": 6216.98,
+  "n_observations": 1
+ },
+ "BCA4191": {
+  "unit_cost": 3055.36,
+  "n_observations": 1
+ },
+ "BCA420": {
+  "unit_cost": 3903.13,
+  "n_observations": 1
+ },
+ "LBI": {
+  "unit_cost": 67850.0,
+  "n_observations": 1
+ },
+ "HQP7-1": {
+  "unit_cost": 18469.57,
+  "n_observations": 5
+ },
+ "QSPS-10PNL": {
+  "unit_cost": 33390.0,
+  "n_observations": 2
+ },
+ "QSPS-DH-1-75-H": {
+  "unit_cost": 5234.78,
+  "n_observations": 18
+ },
+ "UDM-MAX": {
+  "unit_cost": 11350.0,
+  "n_observations": 8
+ },
+ "UACC-DAC-SFP10-1M": {
+  "unit_cost": 361.6,
+  "n_observations": 5
+ },
+ "USW-PRO-XG24P": {
+  "unit_cost": 31042.5,
+  "n_observations": 1
+ },
+ "USW-MAX24": {
+  "unit_cost": 8350.0,
+  "n_observations": 6
+ },
+ "SDH-1000": {
+  "unit_cost": 7606.0,
+  "n_observations": 3
+ },
+ "LQSE-4A1-D": {
+  "unit_cost": 11478.26,
+  "n_observations": 11
+ },
+ "LQSE-4S5-230-D": {
+  "unit_cost": 6000.0,
+  "n_observations": 20
+ },
+ "LQSE-2DALUNV-D": {
+  "unit_cost": 20921.74,
+  "n_observations": 7
+ },
+ "QSE-CI-WCI": {
+  "unit_cost": 4852.17,
+  "n_observations": 40
+ },
+ "QSE-IO": {
+  "unit_cost": 7080.0,
+  "n_observations": 1
+ },
+ "UVC-G6-Entry": {
+  "unit_cost": 5009.0,
+  "n_observations": 18
+ },
+ "USW-MAX24P": {
+  "unit_cost": 14195.0,
+  "n_observations": 7
+ },
+ "U7-PRO-XGS-W": {
+  "unit_cost": 5595.0,
+  "n_observations": 23
+ },
+ "HW-NW-KP-S1-AWH": {
+  "unit_cost": 5739.13,
+  "n_observations": 13
+ },
+ "HW-QS-B-S1": {
+  "unit_cost": 3234.78,
+  "n_observations": 33
+ },
+ "HW-NW-KP-S2-AWH": {
+  "unit_cost": 8191.3,
+  "n_observations": 1
+ },
+ "HW-NW-KP-S3-AWH": {
+  "unit_cost": 10643.48,
+  "n_observations": 7
+ },
+ "HW-QS-B-S3": {
+  "unit_cost": 3234.78,
+  "n_observations": 8
+ },
+ "HW-NW-KP-S1-SNE": {
+  "unit_cost": 6469.57,
+  "n_observations": 2
+ },
+ "HW-NW-KP-S3-SNE": {
+  "unit_cost": 11426.09,
+  "n_observations": 1
+ },
+ "UA-Hub-Door-Mini": {
+  "unit_cost": 2048.0,
+  "n_observations": 47
+ },
+ "UA-Intercom-Viewer": {
+  "unit_cost": 5217.39,
+  "n_observations": 41
+ },
+ "UA-Hub-Gate": {
+  "unit_cost": 5305.0,
+  "n_observations": 4
+ },
+ "UVC-G6BPRO-W": {
+  "unit_cost": 9195.0,
+  "n_observations": 3
+ },
+ "UVC-G6-Turret": {
+  "unit_cost": 3830.0,
+  "n_observations": 39
+ },
+ "UVC-AI-PTZ-B": {
+  "unit_cost": 24198.0,
+  "n_observations": 2
+ },
+ "UVC-NVR-PRO": {
+  "unit_cost": 11450.0,
+  "n_observations": 3
+ },
+ "UACC-HDD8": {
+  "unit_cost": 5329.0,
+  "n_observations": 3
+ },
+ "QSE-CI-DMX": {
+  "unit_cost": 11634.78,
+  "n_observations": 2
+ },
+ "MXN63QA/A": {
+  "unit_cost": 10173.04,
+  "n_observations": 7
+ },
+ "72350": {
+  "unit_cost": 6144.79,
+  "n_observations": 7
+ },
+ "72329": {
+  "unit_cost": 6144.79,
+  "n_observations": 8
+ },
+ "72109": {
+  "unit_cost": 1931.4,
+  "n_observations": 6
+ },
+ "UACC-Pro-Bullet-Enhancer-W": {
+  "unit_cost": 3650.0,
+  "n_observations": 1
+ },
+ "UP-AI-Horn-Speaker-W": {
+  "unit_cost": 5578.0,
+  "n_observations": 3
+ },
+ "Diffuse Screen 3930 W x 2375 H Roller 100": {
+  "unit_cost": 13846.14,
+  "n_observations": 1
+ },
+ "Diffuse Screen 3945 W x 2375 H Roller 100": {
+  "unit_cost": 13846.14,
+  "n_observations": 1
+ },
+ "QSPS-P2-1-35V": {
+  "unit_cost": 3850.0,
+  "n_observations": 2
+ },
+ "INSTL": {
+  "unit_cost": 3500.0,
+  "n_observations": 1
+ },
+ "U7-MAX": {
+  "unit_cost": 5099.0,
+  "n_observations": 79
+ },
+ "U7-Pro-Outdoor": {
+  "unit_cost": 4825.0,
+  "n_observations": 5
+ },
+ "UVC-G6-Pro-Entry": {
+  "unit_cost": 8402.0,
+  "n_observations": 2
+ },
+ "UVC-G6B": {
+  "unit_cost": 3830.0,
+  "n_observations": 14
+ },
+ "Mecer Display 32": {
+  "unit_cost": 2823.75,
+  "n_observations": 2
+ },
+ "UVC-VIEWPORT": {
+  "unit_cost": 4095.0,
+  "n_observations": 4
+ },
+ "Mecer Display 55": {
+  "unit_cost": 8312.5,
+  "n_observations": 1
+ },
+ "TVM 3405": {
+  "unit_cost": 625.57,
+  "n_observations": 1
+ },
+ "96089": {
+  "unit_cost": 6629.22,
+  "n_observations": 13
+ },
+ "NST184CS500WH": {
+  "unit_cost": 5478.26,
+  "n_observations": 23
+ },
+ "C50-Pack": {
+  "unit_cost": 14126.04,
+  "n_observations": 3
+ },
+ "AMPG1EU1BLK": {
+  "unit_cost": 13912.35,
+  "n_observations": 12
+ },
+ "ZP5": {
+  "unit_cost": 7115.33,
+  "n_observations": 1
+ },
+ "uControl Remote": {
+  "unit_cost": 8034.78,
+  "n_observations": 1
+ },
+ "1070647": {
+  "unit_cost": 11333.08,
+  "n_observations": 1
+ },
+ "GHOUND03": {
+  "unit_cost": 886.96,
+  "n_observations": 1
+ },
+ "TX-RZ50": {
+  "unit_cost": 23477.74,
+  "n_observations": 3
+ },
+ "1066277": {
+  "unit_cost": 53311.59,
+  "n_observations": 1
+ },
+ "U5G-Max-Outdoor": {
+  "unit_cost": 7499.2,
+  "n_observations": 2
+ },
+ "X15B+": {
+  "unit_cost": 101911.3,
+  "n_observations": 2
+ },
+ "SVS-S3WAA": {
+  "unit_cost": 4134.0,
+  "n_observations": 2
+ },
+ "GSM4210PD-100EUS": {
+  "unit_cost": 10555.0,
+  "n_observations": 1
+ },
+ "DHI-VTO3311Q-WP": {
+  "unit_cost": 2589.0,
+  "n_observations": 1
+ },
+ "DHI-VTH2421FW-P": {
+  "unit_cost": 1950.0,
+  "n_observations": 3
+ },
+ "DH-IPC-HFW2249S-S-IL": {
+  "unit_cost": 1247.0,
+  "n_observations": 1
+ },
+ "DHI-NVR2116HS-I": {
+  "unit_cost": 1844.4,
+  "n_observations": 1
+ },
+ "HDD-8TB": {
+  "unit_cost": 3975.0,
+  "n_observations": 2
+ },
+ "DH-PFS4218-16GT-240": {
+  "unit_cost": 4758.9,
+  "n_observations": 1
+ },
+ "DH-IPC-HDW2249T-S-IL": {
+  "unit_cost": 1186.1,
+  "n_observations": 1
+ },
+ "DHI-ASi120iE": {
+  "unit_cost": 975.0,
+  "n_observations": 4
+ },
+ "DEE1010B": {
+  "unit_cost": 732.52,
+  "n_observations": 1
+ },
+ "PA-9940": {
+  "unit_cost": 2388.37,
+  "n_observations": 1
+ },
+ "PA-1098": {
+  "unit_cost": 404.4,
+  "n_observations": 9
+ },
+ "Alarm Cable 4 Core 100m": {
+  "unit_cost": 199.0,
+  "n_observations": 1
+ },
+ "Heimdall+": {
+  "unit_cost": 928869.57,
+  "n_observations": 1
+ },
+ "MHUBS161616100A": {
+  "unit_cost": 164989.57,
+  "n_observations": 1
+ },
+ "SLIMMAX0.5M": {
+  "unit_cost": 208.17,
+  "n_observations": 1
+ },
+ "OPTFOR0.75": {
+  "unit_cost": 669.57,
+  "n_observations": 1
+ },
+ "ESN-AVB12E-01": {
+  "unit_cost": 42737.39,
+  "n_observations": 1
+ },
+ "FP33782pr": {
+  "unit_cost": 9660.26,
+  "n_observations": 3
+ },
+ "QA65S90FAEXXA": {
+  "unit_cost": 37390.43,
+  "n_observations": 1
+ },
+ "QA48S90FAEXXA": {
+  "unit_cost": 16520.87,
+  "n_observations": 6
+ },
+ "SAV-PROHOST": {
+  "unit_cost": 99132.88,
+  "n_observations": 2
+ },
+ "SSC-0012-00": {
+  "unit_cost": 12516.52,
+  "n_observations": 1
+ },
+ "AltitudeCI-8": {
+  "unit_cost": 156521.22,
+  "n_observations": 1
+ },
+ "271": {
+  "unit_cost": 59217.39,
+  "n_observations": 1
+ },
+ "271 XLR-DB25 Cable": {
+  "unit_cost": 3000.0,
+  "n_observations": 1
+ },
+ "DSP8000XE": {
+  "unit_cost": 1577826.09,
+  "n_observations": 1
+ },
+ "AP6642.GLA.B": {
+  "unit_cost": 10080.0,
+  "n_observations": 1
+ },
+ "2800-533280": {
+  "unit_cost": 7740.0,
+  "n_observations": 1
+ },
+ "Travel & Accomodation": {
+  "unit_cost": 54000.0,
+  "n_observations": 1
+ },
+ "No 626": {
+  "unit_cost": 460173.91,
+  "n_observations": 1
+ },
+ "RMB-SIPA12F-00": {
+  "unit_cost": 1090.43,
+  "n_observations": 2
+ },
+ "Courier": {
+  "unit_cost": 8000.0,
+  "n_observations": 1
+ },
+ "No 632": {
+  "unit_cost": 558782.61,
+  "n_observations": 1
+ },
+ "Sasha V": {
+  "unit_cost": 774869.57,
+  "n_observations": 1
+ },
+ "MACBOOK-AIR-13-M4-256GB": {
+  "unit_cost": 19564.35,
+  "n_observations": 1
+ },
+ "LCB-LEINT-00": {
+  "unit_cost": 9848.87,
+  "n_observations": 3
+ },
+ "SSL-PROE-1YR": {
+  "unit_cost": 10710.79,
+  "n_observations": 3
+ },
+ "DOR-VERSO2SMN-00": {
+  "unit_cost": 28935.65,
+  "n_observations": 4
+ },
+ "DHI-ITC413-PW4D-IZ1": {
+  "unit_cost": 7125.0,
+  "n_observations": 4
+ },
+ "DLC": {
+  "unit_cost": 275.0,
+  "n_observations": 5
+ },
+ "Custom Gooseneck": {
+  "unit_cost": 1725.0,
+  "n_observations": 3
+ },
+ "93612": {
+  "unit_cost": 13347.45,
+  "n_observations": 2
+ },
+ "SP": {
+  "unit_cost": 600.0,
+  "n_observations": 4
+ },
+ "SUBG4EU1BLK": {
+  "unit_cost": 13912.0,
+  "n_observations": 2
+ },
+ "93616": {
+  "unit_cost": 6868.81,
+  "n_observations": 2
+ },
+ "AN520APO": {
+  "unit_cost": 9800.0,
+  "n_observations": 2
+ },
+ "TVM 5855": {
+  "unit_cost": 4471.3,
+  "n_observations": 6
+ },
+ "9158106": {
+  "unit_cost": 18490.34,
+  "n_observations": 1
+ },
+ "9158002": {
+  "unit_cost": 1107.07,
+  "n_observations": 1
+ },
+ "ITP-E5500B-30": {
+  "unit_cost": 14650.44,
+  "n_observations": 1
+ },
+ "93157": {
+  "unit_cost": 14618.61,
+  "n_observations": 1
+ },
+ "93542": {
+  "unit_cost": 26880.0,
+  "n_observations": 1
+ },
+ "Bond Bridge Pro": {
+  "unit_cost": 7558.5,
+  "n_observations": 1
+ },
+ "96006": {
+  "unit_cost": 12895.83,
+  "n_observations": 1
+ },
+ "PD644WWH": {
+  "unit_cost": 512.52,
+  "n_observations": 36
+ },
+ "UA-G3-Flex-B": {
+  "unit_cost": 3375.0,
+  "n_observations": 3
+ },
+ "DS-2CD2346G2-ISU/SL(2.8MM)": {
+  "unit_cost": 2102.39,
+  "n_observations": 4
+ },
+ "XTND2K150": {
+  "unit_cost": 3129.91,
+  "n_observations": 5
+ },
+ "1M Rip Cord": {
+  "unit_cost": 7.5,
+  "n_observations": 10
+ },
+ "V10B+": {
+  "unit_cost": 22335.65,
+  "n_observations": 4
+ },
+ "QE8147": {
+  "unit_cost": 348.0,
+  "n_observations": 3
+ },
+ "3000-MICRO-BG": {
+  "unit_cost": 20274.0,
+  "n_observations": 1
+ },
+ "93608": {
+  "unit_cost": 8869.57,
+  "n_observations": 1
+ },
+ "CAB-27U": {
+  "unit_cost": 5595.0,
+  "n_observations": 1
+ },
+ "CAB-15U": {
+  "unit_cost": 1725.0,
+  "n_observations": 1
+ },
+ "USW-U210": {
+  "unit_cost": 3895.0,
+  "n_observations": 1
+ },
+ "U7-LITE": {
+  "unit_cost": 1975.0,
+  "n_observations": 3
+ },
+ "DS-7764NI-M4": {
+  "unit_cost": 14005.5,
+  "n_observations": 1
+ },
+ "HDD-WD-8TB_C": {
+  "unit_cost": 3644.16,
+  "n_observations": 1
+ },
+ "DS-3E1510P-SI_C": {
+  "unit_cost": 2434.86,
+  "n_observations": 1
+ },
+ "A-BB13-B01070": {
+  "unit_cost": 1001.45,
+  "n_observations": 1
+ },
+ "CAB-6UO": {
+  "unit_cost": 2895.0,
+  "n_observations": 2
+ },
+ "5E1200UI": {
+  "unit_cost": 1913.19,
+  "n_observations": 1
+ },
+ "3 Decoder DSTV Installation Bundle": {
+  "unit_cost": 13593.7,
+  "n_observations": 2
+ },
+ "RECMCEXPLORA3-UL": {
+  "unit_cost": 2347.0,
+  "n_observations": 2
+ },
+ "DS-2SE7C425MWG-EB/26(F0)": {
+  "unit_cost": 13226.66,
+  "n_observations": 1
+ },
+ "SC-630P-SA": {
+  "unit_cost": 2836.36,
+  "n_observations": 1
+ },
+ "DOR-SM0B-00": {
+  "unit_cost": 25640.09,
+  "n_observations": 4
+ },
+ "LKV824P": {
+  "unit_cost": 8504.0,
+  "n_observations": 1
+ },
+ "IC95": {
+  "unit_cost": 10961.74,
+  "n_observations": 2
+ },
+ "LCR750B": {
+  "unit_cost": 14726.73,
+  "n_observations": 2
+ },
+ "LCR750CB": {
+  "unit_cost": 7090.36,
+  "n_observations": 1
+ },
+ "CS-18C": {
+  "unit_cost": 1460.35,
+  "n_observations": 2
+ },
+ "UTP-6305CU": {
+  "unit_cost": 795.0,
+  "n_observations": 28
+ },
+ "93125": {
+  "unit_cost": 1873.04,
+  "n_observations": 1
+ },
+ "U7-PRO-XG-W": {
+  "unit_cost": 3725.0,
+  "n_observations": 12
+ },
+ "IW950": {
+  "unit_cost": 17040.0,
+  "n_observations": 3
+ },
+ "M40TB": {
+  "unit_cost": 15046.96,
+  "n_observations": 1
+ },
+ "QE3230": {
+  "unit_cost": 1626.0,
+  "n_observations": 2
+ },
+ "SUBG4EU1 BLK": {
+  "unit_cost": 13912.35,
+  "n_observations": 2
+ },
+ "SKYEHD65": {
+  "unit_cost": 34781.91,
+  "n_observations": 1
+ },
+ "UA-INTERCOM": {
+  "unit_cost": 7736.0,
+  "n_observations": 2
+ },
+ "Ground Floor Dimensions 3000x3705 Diffuse": {
+  "unit_cost": 12545.02,
+  "n_observations": 4
+ },
+ "First Floor Dimensions 4000x2400 Diffuse": {
+  "unit_cost": 12703.46,
+  "n_observations": 1
+ },
+ "QS-WLB": {
+  "unit_cost": 1460.87,
+  "n_observations": 1
+ },
+ "PL": {
+  "unit_cost": 55000.0,
+  "n_observations": 2
+ },
+ "Sivoia QS Wireless D145 Drapery Track PINCH 9300mm Width": {
+  "unit_cost": 65469.54,
+  "n_observations": 1
+ },
+ "Sivoia QS Wired D105 Drapery Track PINCH 3300mm Width": {
+  "unit_cost": 30860.82,
+  "n_observations": 1
+ },
+ "HQP7-2": {
+  "unit_cost": 28182.61,
+  "n_observations": 1
+ },
+ "Sivoia QS Wireless D145 Drapery Track PINCH 2196mm Width": {
+  "unit_cost": 32413.41,
+  "n_observations": 1
+ },
+ "Sivoia QS Wireless D145 Drapery Track PINCH 4905mm Width": {
+  "unit_cost": 43919.86,
+  "n_observations": 1
+ },
+ "HQWT-S-P4W-SN-E": {
+  "unit_cost": 7860.0,
+  "n_observations": 6
+ },
+ "HQWT-S-P44W-SNE": {
+  "unit_cost": 12060.0,
+  "n_observations": 7
+ },
+ "HDD-WD-4TB_C": {
+  "unit_cost": 1802.14,
+  "n_observations": 1
+ },
+ "U6-LR": {
+  "unit_cost": 3625.0,
+  "n_observations": 6
+ },
+ "SAV-S12": {
+  "unit_cost": 23866.96,
+  "n_observations": 1
+ },
+ "HQP6-1": {
+  "unit_cost": 13826.09,
+  "n_observations": 1
+ },
+ "MHUBPRO2.0-4X4": {
+  "unit_cost": 46956.0,
+  "n_observations": 1
+ },
+ "SCSC3L": {
+  "unit_cost": 7652.17,
+  "n_observations": 4
+ },
+ "DHI-NVR5232-EI": {
+  "unit_cost": 5899.0,
+  "n_observations": 1
+ },
+ "USW-24": {
+  "unit_cost": 4450.0,
+  "n_observations": 1
+ },
+ "850029050261": {
+  "unit_cost": 34781.48,
+  "n_observations": 2
+ },
+ "DH-PFS4428-24GT-370": {
+  "unit_cost": 6965.0,
+  "n_observations": 1
+ },
+ "72352": {
+  "unit_cost": 6083.92,
+  "n_observations": 1
+ },
+ "Network Point": {
+  "unit_cost": 225.0,
+  "n_observations": 5
+ },
+ "HDM48PEA100": {
+  "unit_cost": 486.35,
+  "n_observations": 1
+ },
+ "CMNETH-LG": {
+  "unit_cost": 32282.61,
+  "n_observations": 1
+ },
+ "DHI-ASI6214J-MFW": {
+  "unit_cost": 3301.65,
+  "n_observations": 7
+ },
+ "MN893Z/A": {
+  "unit_cost": 3066.98,
+  "n_observations": 1
+ },
+ "DH-IPC-HDW3441T-ZS": {
+  "unit_cost": 2638.0,
+  "n_observations": 9
+ },
+ "SCSW3M": {
+  "unit_cost": 11879.99,
+  "n_observations": 1
+ },
+ "WB800ICH1UIPVM8": {
+  "unit_cost": 18970.0,
+  "n_observations": 1
+ },
+ "DOR-FMS-00": {
+  "unit_cost": 24927.92,
+  "n_observations": 1
+ },
+ "USW-8FLEX-2.5GP": {
+  "unit_cost": 3825.0,
+  "n_observations": 1
+ },
+ "UACC-PSU-210W": {
+  "unit_cost": 1595.0,
+  "n_observations": 1
+ },
+ "UA-BUTTON": {
+  "unit_cost": 735.0,
+  "n_observations": 28
+ },
+ "QA85LS03FAUXXA": {
+  "unit_cost": 43477.39,
+  "n_observations": 4
+ },
+ "MU9D3SO/A": {
+  "unit_cost": 12173.04,
+  "n_observations": 2
+ },
+ "MXK83Z/A": {
+  "unit_cost": 4173.04,
+  "n_observations": 2
+ },
+ "MMMQ3Z/A": {
+  "unit_cost": 2086.09,
+  "n_observations": 2
+ },
+ "8200-231": {
+  "unit_cost": 23551.37,
+  "n_observations": 4
+ },
+ "WFB-MGENGV-00": {
+  "unit_cost": 1304.35,
+  "n_observations": 1
+ },
+ "WFB-1GMGLV-00": {
+  "unit_cost": 6881.74,
+  "n_observations": 1
+ },
+ "QA75LS03DAKXXA": {
+  "unit_cost": 26086.1,
+  "n_observations": 2
+ },
+ "1414000060": {
+  "unit_cost": 17733.91,
+  "n_observations": 1
+ },
+ "QA50Q60DAKXXA": {
+  "unit_cost": 7825.22,
+  "n_observations": 2
+ },
+ "MODELM1/N1B": {
+  "unit_cost": 14015.22,
+  "n_observations": 5
+ },
+ "QA55LS03DAKXXA": {
+  "unit_cost": 12173.04,
+  "n_observations": 3
+ },
+ "QA65LS03DAKXXA": {
+  "unit_cost": 15651.3,
+  "n_observations": 2
+ },
+ "MODELM4/EX1B": {
+  "unit_cost": 47557.32,
+  "n_observations": 2
+ },
+ "SCL2MB": {
+  "unit_cost": 8864.35,
+  "n_observations": 1
+ },
+ "SCL2MW": {
+  "unit_cost": 8864.35,
+  "n_observations": 1
+ },
+ "USW-PRO48P": {
+  "unit_cost": 20495.0,
+  "n_observations": 1
+ },
+ "TVM 5645": {
+  "unit_cost": 3850.43,
+  "n_observations": 2
+ },
+ "CINEMA70S/N1B": {
+  "unit_cost": 13080.87,
+  "n_observations": 2
+ },
+ "SB4B": {
+  "unit_cost": 13554.0,
+  "n_observations": 1
+ },
+ "BSB": {
+  "unit_cost": 552.0,
+  "n_observations": 1
+ },
+ "UA-G3-Intercom": {
+  "unit_cost": 7305.0,
+  "n_observations": 3
+ },
+ "UB-UA-HUB": {
+  "unit_cost": 4514.44,
+  "n_observations": 11
+ },
+ "FP41114": {
+  "unit_cost": 10552.43,
+  "n_observations": 1
+ },
+ "FP41033": {
+  "unit_cost": 9858.52,
+  "n_observations": 1
+ },
+ "PICTURESLIDE R75": {
+  "unit_cost": 15820.0,
+  "n_observations": 1
+ },
+ "PICTURESLIDE R65": {
+  "unit_cost": 13440.0,
+  "n_observations": 1
+ },
+ "FP29637pr": {
+  "unit_cost": 11246.35,
+  "n_observations": 4
+ },
+ "FP41106": {
+  "unit_cost": 7776.78,
+  "n_observations": 1
+ },
+ "CINEMA50/N1B": {
+  "unit_cost": 27172.48,
+  "n_observations": 1
+ },
+ "PDT-ED-1": {
+  "unit_cost": 1360.0,
+  "n_observations": 2
+ },
+ "PDW-ED-1": {
+  "unit_cost": 680.0,
+  "n_observations": 2
+ },
+ "HW-NW-KP-S2-AZE": {
+  "unit_cost": 8973.91,
+  "n_observations": 17
+ },
+ "FP43974pr": {
+  "unit_cost": 9362.87,
+  "n_observations": 1
+ },
+ "ARCG2EU1 BLK": {
+  "unit_cost": 18781.91,
+  "n_observations": 1
+ },
+ "ARCWMWW1BLK": {
+  "unit_cost": 1181.91,
+  "n_observations": 1
+ },
+ "CAB-B2": {
+  "unit_cost": 85.0,
+  "n_observations": 8
+ },
+ "CAB-T300": {
+  "unit_cost": 275.0,
+  "n_observations": 8
+ },
+ "CAB-P06": {
+  "unit_cost": 295.0,
+  "n_observations": 8
+ },
+ "SPANELG": {
+  "unit_cost": 7740.0,
+  "n_observations": 6
+ },
+ "FNIP-RGB&010": {
+  "unit_cost": 6626.87,
+  "n_observations": 4
+ },
+ "DH-PFM923I-6U-C": {
+  "unit_cost": 2185.0,
+  "n_observations": 2
+ },
+ "UA-G3-Pro-B": {
+  "unit_cost": 6960.0,
+  "n_observations": 36
+ },
+ "FR02": {
+  "unit_cost": 145.0,
+  "n_observations": 10
+ },
+ "CB11-6": {
+  "unit_cost": 334.0,
+  "n_observations": 1
+ },
+ "PS49-5": {
+  "unit_cost": 545.0,
+  "n_observations": 1
+ },
+ "DS-2CD2T47G2H-LI 2.8MM": {
+  "unit_cost": 2858.45,
+  "n_observations": 1
+ },
+ "HS-TF-L2/256G/P": {
+  "unit_cost": 531.58,
+  "n_observations": 1
+ },
+ "TP-POE160S": {
+  "unit_cost": 305.9,
+  "n_observations": 1
+ },
+ "USW-PRO8P": {
+  "unit_cost": 5195.0,
+  "n_observations": 1
+ },
+ "UACC-DAC-0.5M": {
+  "unit_cost": 275.0,
+  "n_observations": 4
+ },
+ "USW-MAX48P": {
+  "unit_cost": 21995.0,
+  "n_observations": 3
+ },
+ "SUNDRY IN7004852500000": {
+  "unit_cost": 35693.0,
+  "n_observations": 1
+ },
+ "UB-UP-USL-MOTION": {
+  "unit_cost": 933.8,
+  "n_observations": 1
+ },
+ "UB-UP-SUPERLINK": {
+  "unit_cost": 2489.06,
+  "n_observations": 1
+ },
+ "USL-Relay": {
+  "unit_cost": 725.6,
+  "n_observations": 1
+ }
+}

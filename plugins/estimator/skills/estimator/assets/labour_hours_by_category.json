@@ -1,0 +1,236 @@
+{
+ "Amplifiers & Audio Matrix": {
+  "n_observations": 50,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "Panelised Lighting Controls": {
+  "n_observations": 128,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "Keypads": {
+  "n_observations": 222,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "AI CCTV": {
+  "n_observations": 145,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Speakers": {
+  "n_observations": 47,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Access Points": {
+  "n_observations": 185,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 0.0
+ },
+ "Network Router": {
+  "n_observations": 17,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "TVs": {
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Controllers": {
+  "n_observations": 48,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Racks": {
+  "n_observations": 31,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "IP Video Door Stations": {
+  "n_observations": 72,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 0.0
+ },
+ "Speaker System": {
+  "n_observations": 51,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 1.0
+ },
+ "External Access Control Panels ": {
+  "n_observations": 158,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Motion Sensors": {
+  "n_observations": 42,
+  "fix1_hours": 0.25,
+  "fix2_hours": 0.75,
+  "programming_hours": 0.25
+ },
+ "Network  Switching": {
+  "n_observations": 92,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "Video Install & Commissioning ": {
+  "n_observations": 2,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "NVR & HE Equipment": {
+  "n_observations": 7,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Indoor Video Station ": {
+  "n_observations": 71,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "SONOS": {
+  "n_observations": 20,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.75,
+  "programming_hours": 0.0
+ },
+ "Remotes": {
+  "n_observations": 2,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 1.0
+ },
+ "AVR": {
+  "n_observations": 5,
+  "fix1_hours": 0.5,
+  "fix2_hours": 0.5,
+  "programming_hours": 6.0
+ },
+ "Alarm": {
+  "n_observations": 11,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 0.0
+ },
+ "Uncategorised": {
+  "n_observations": 2,
+  "fix1_hours": 1.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "In-Wall Touch Panels": {
+  "n_observations": 4,
+  "fix1_hours": 0.25,
+  "fix2_hours": 0.75,
+  "programming_hours": 0.5
+ },
+ "DSTV": {
+  "n_observations": 15,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.5,
+  "programming_hours": 0.5
+ },
+ "Professional Services": {
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Data Points": {
+  "n_observations": 22,
+  "fix1_hours": 2.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Video Conferencing": {
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "QS Lutron Blinds": {
+  "n_observations": 5,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Cabling & Interconnects": {
+  "n_observations": 8,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Lutron Installation & Programming": {
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Curtain Tracks": {
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "Processors & Interfaces": {
+  "n_observations": 1,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "HW Palladiom Keypads": {
+  "n_observations": 4,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ },
+ "CCTV System": {
+  "n_observations": 6,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.75,
+  "programming_hours": 0.0
+ },
+ "Network Switching": {
+  "n_observations": 17,
+  "fix1_hours": 0.0,
+  "fix2_hours": 1.0,
+  "programming_hours": 1.0
+ },
+ "Matrices 4K HDR": {
+  "n_observations": 9,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 0.0
+ },
+ "NVR": {
+  "n_observations": 9,
+  "fix1_hours": 0.0,
+  "fix2_hours": 2.0,
+  "programming_hours": 2.0
+ },
+ "Shelves & PDUs": {
+  "n_observations": 32,
+  "fix1_hours": 0.0,
+  "fix2_hours": 0.0,
+  "programming_hours": 0.0
+ }
+}

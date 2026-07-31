@@ -1,0 +1,8 @@
+{
+    "name": "estimator",
+    "version": "1.0.0",
+    "description": "Build a detailed, itemised D-One quote (equipment + labour) as an Excel spreadsheet, using D-One's real inventory pricing and historical install-hour/cost data.",
+    "author": {
+          "name": "D-One"
+    }
+}

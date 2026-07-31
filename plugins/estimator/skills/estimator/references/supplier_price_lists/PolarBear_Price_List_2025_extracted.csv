@@ -1,0 +1,104 @@
+sku,name,category,price_gbp,unit,notes
+URS-SPA-Tn-NONE,Ursium Pro Thermostat - TURN (Slave, no aBus),Ursium Thermostats,620,pc,Base unit only - excl faceplate/crown
+URS-ACM-Tn-NONE,Ursium Pro Thermostat - TURN (Master/Slave + aBUS AC control),Ursium Thermostats,685,pc,Base unit only - excl faceplate/crown
+URS-ACM-Tc-NONE,Ursium Pro Thermostat - TOUCH (Master/Slave + aBUS AC control),Ursium Thermostats,685,pc,Base unit only - excl faceplate/crown; NEW
+URS-AL-Tn-cAL-AZ,Ursium Alisse Faceplate Kit - Aged Bronze (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-AZ,Ursium Alisse Faceplate Kit - Aged Bronze (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-AL-Tn-cAL-AB,Ursium Alisse Faceplate Kit - Aged Brass (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-AB,Ursium Alisse Faceplate Kit - Aged Brass (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-AL-Tn-cAL-BRB,Ursium Alisse Faceplate Kit - Brushed Brass (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-BRB,Ursium Alisse Faceplate Kit - Brushed Brass (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-AL-Tn-cAL-SN,Ursium Alisse Faceplate Kit - Satin Nickel (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-SN,Ursium Alisse Faceplate Kit - Satin Nickel (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-AL-Tn-cAL-BC,Ursium Alisse Faceplate Kit - Bright Chrome (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-BC,Ursium Alisse Faceplate Kit - Bright Chrome (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-AL-Tn-cAL-BL,Ursium Alisse Faceplate Kit - Matt Black (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-BL,Ursium Alisse Faceplate Kit - Matt Black (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-AL-Tn-cAL-BWH,Ursium Alisse Faceplate Kit - Brilliant White (Turn),Ursium Faceplates,440,pc,Alisse finish - needs project ref
+URS-AL-Tc-cAL-BWH,Ursium Alisse Faceplate Kit - Brilliant White (Touch),Ursium Faceplates,395,pc,Alisse finish - needs project ref
+URS-EU-Tn (cPL/cOR/cFL range),Ursium Euro Faceplate Kit - standard finishes (Turn),Ursium Faceplates,270,pc,"Satin Nickel/Satin Brass/Bronze/Antique/Aged Brass tier"
+URS-EU-Tc (cPL/cOR/cFL range),Ursium Euro Faceplate Kit - standard finishes (Touch),Ursium Faceplates,230,pc,"Satin Nickel/Satin Brass/Bronze/Antique/Aged Brass tier"
+URS-EU-Tn (bright tier),Ursium Euro Faceplate Kit - bright finishes (Turn),Ursium Faceplates,330,pc,"Bright Lacquered/Unlacquered Brass, Bright Nickel/Chrome tier"
+URS-EU-Tc (bright tier),Ursium Euro Faceplate Kit - bright finishes (Touch),Ursium Faceplates,285,pc,"Bright Lacquered/Unlacquered Brass, Bright Nickel/Chrome tier"
+URS-EU-Tn (matt tier),Ursium Euro Faceplate Kit - matt black/white (Turn),Ursium Faceplates,335,pc,Matt Black/Matt White tier
+URS-EU-Tc (matt tier),Ursium Euro Faceplate Kit - matt black/white (Touch),Ursium Faceplates,290,pc,Matt Black/Matt White tier
+URS-PL-Tn (cPL/cOR/cFL range),Ursium Aplium Faceplate Kit - standard finishes (Turn),Ursium Faceplates,360,pc,"Satin Nickel/Satin Brass/Bronze/Antique/Aged Brass tier"
+URS-PL-Tc (cPL/cOR/cFL range),Ursium Aplium Faceplate Kit - standard finishes (Touch),Ursium Faceplates,315,pc,"Satin Nickel/Satin Brass/Bronze/Antique/Aged Brass tier"
+URS-PL-Tn (bright tier),Ursium Aplium Faceplate Kit - bright finishes (Turn),Ursium Faceplates,410,pc,"Bright Lacquered/Unlacquered Brass, Bright Nickel/Chrome tier"
+URS-PL-Tc (bright tier),Ursium Aplium Faceplate Kit - bright finishes (Touch),Ursium Faceplates,365,pc,"Bright Lacquered/Unlacquered Brass, Bright Nickel/Chrome tier"
+URS-PL-Tn (matt tier),Ursium Aplium Faceplate Kit - matt black/white (Turn),Ursium Faceplates,420,pc,Matt Black/Matt White tier
+URS-PL-Tc (matt tier),Ursium Aplium Faceplate Kit - matt black/white (Touch),Ursium Faceplates,375,pc,Matt Black/Matt White tier
+URS-BB-1G,Ursium Backbox 1 gang (metal),Ursium Backbox,8,pc,Standard UK backbox
+ZEN-SPA-Tn-NONE / ZEN2-SPA-Tn-NONE,Zentium Pro Thermostat (Set Point Adjuster),Zentium Thermostats,540,pc,Base unit only excl backbox/faceplate
+ZEN2-ACM-Tn-NONE,Zentium Pro Thermostat (Air Con Control Module),Zentium Thermostats,620,pc,Base unit only excl backbox/faceplate
+ZEN-FP1-ff,Zentium Single Gang Faceplate Kit incl digital crown (standard finish tier),Zentium Faceplates,255,pc,FP1 finish column - standard tier
+ZEN-FP1-ff (bright tier),Zentium Single Gang Faceplate Kit incl digital crown (bright tier),Zentium Faceplates,320,pc,FP1 bright lacquered/nickel/chrome tier
+ZEN-FP1-ff (matt tier),Zentium Single Gang Faceplate Kit incl digital crown (matt tier),Zentium Faceplates,325,pc,FP1 matt black/white tier
+ZEN-LUT-UPW-xxx-ff,Zentium Lutron Palladiom Faceplate Kit incl crown (standard tier),Zentium Faceplates,295,pc,LUT-UPW standard tier
+ZEN-LUT-UPW-xxx-ff (bright),Zentium Lutron Palladiom Faceplate Kit incl crown (bright tier),Zentium Faceplates,385,pc,LUT-UPW bright tier
+ZEN-LUT-UPW-xxx-ff (matt),Zentium Lutron Palladiom Faceplate Kit incl crown (matt tier),Zentium Faceplates,390,pc,LUT-UPW matt tier
+ZEN-LUT-PIC-xxx-ff,Zentium Lutron Pico Faceplate Kit incl crown (standard tier),Zentium Faceplates,295,pc,LUT-PIC standard tier
+ZEN-LUT-UST-xxx-ff,Zentium Lutron US SeeTouch Faceplate Kit incl crown (standard tier),Zentium Faceplates,295,pc,LUT-UST standard tier
+ZEN-LUT-IST-xxx-ff,Zentium Lutron Intl SeeTouch Faceplate Kit incl crown (standard tier),Zentium Faceplates,320,pc,LUT-IST standard tier
+ZEN-CRE-HOR-xxx-ff,Zentium Crestron Horizon Faceplate Kit incl crown (standard tier),Zentium Faceplates,295,pc,CRE-HOR standard tier
+ZEN-BB-1G,Zentium Backbox 1 gang (metal J-box style),Zentium Backbox,41,pc,Required - specific J-box style
+ZEN-BB-2G,Zentium Backbox 2 gang (metal J-box style),Zentium Backbox,48,pc,Required - specific J-box style
+ZEN-BB-IST,Zentium Backbox 2 gang for IST double plate,Zentium Backbox,52,pc,Required - specific J-box style
+ENG-SETUP,Bespoke Engraving - setup & approval fee,Engraving,650,pc,One-off per design
+ENG-01,Bespoke Engraving - 1 to 10 parts,Engraving,60,pc,Per part
+ENG-10,Bespoke Engraving - 11 to 20 parts,Engraving,50,pc,Per part
+UMC2-RS1,Universal Management Controller (9-way relay, pBUS),Controllers,630,pc,
+UMC2-ETH,Universal Management Controller (9-way relay, pBUS+aBUS, Ethernet),Controllers,795,pc,
+LIC-VTST-R-01,Single Zone Licence - Virtual Thermostat (radiant only),Controllers/Licences,130,pc,NEW - call for release schedule
+LIC-VTST-R&A-01,Single Zone Licence - Virtual Thermostat (radiant + AC via ACM),Controllers/Licences,165,pc,NEW - call for release schedule
+ZEN-MB4-GWC4-WS,Control4 Ethernet Gateway (PoE, up to 32 devices),Controllers/Gateways,200,pc,
+ZEN-MB4-GWB-0600,BACnet/IP Gateway (0600 licence),Controllers/Gateways,2225,pc,1200/3000 licence tiers POA
+ZEN-MB4-GWK-0600,Zentium KNX Gateway (0600 licence),Controllers/Gateways,2340,pc,1200/3000 licence tiers POA
+INT-DAI-RO,Zentium AC Interface - Daikin RO,AC Interfaces,415,pc,
+INT-DAI-IO,Zentium AC Interface - Daikin IO,AC Interfaces,500,pc,
+INT-FUJ-B,Zentium AC Interface - Fujitsu,AC Interfaces,415,pc,
+INT-MIT-R0,Zentium AC Interface - Mitsubishi,AC Interfaces,415,pc,
+INT-HIT,Zentium AC Interface - Hitachi,AC Interfaces,415,pc,
+INT-PAN,Zentium AC Interface - Panasonic,AC Interfaces,415,pc,
+INT-TOSH,Zentium AC Interface - Toshiba,AC Interfaces,415,pc,
+INT-LG,Zentium AC Interface - LG,AC Interfaces,415,pc,
+FCU-240V-1,Zentium 4-pipe FCU Controller 240V (1 output),Controllers,510,pc,
+FCU-240V-2,Zentium 4-pipe FCU Controller 240V (2 output),Controllers,510,pc,
+FCU-24V-1,Zentium 4-pipe FCU Controller 24V (1 output),Controllers,540,pc,
+FCU-24V-2,Zentium 4-pipe FCU Controller 24V (2 output),Controllers,540,pc,
+PR-DT1-10k3,DT Duct Temperature / Return Air Sensor,Sensors,61,pc,For use with FCU controllers
+PSU24-60,24v DIN Rail PSU - 60 watt,Power Supplies,152,pc,
+CBL-PBCTL-0250,Polar Bear Control BUS Cable - 250m reel,Cabling,290,reel,4-core 2-pair twisted 22AWG
+PR-FL-10k3-5,Floor Sensor 10K3 (5m),Sensors,31,pc,
+PR-P1-10k3-01,Pipe Strap-On Sensor 10K3 (1m),Sensors,31,pc,
+AH-DFS-230-2,UMC Actuator Head 230v AC (NC 2-wire),Actuators,52,pc,
+AH-DFS-24-2,UMC Actuator Head 24v DC (NC 2-wire),Actuators,52,pc,
+REL-OTD-01,Over Temperature Detection Relay + Floor Probe,Relays,180,pc,
+REL-240Vac,Non-Latching Relay 230v AC coil 20A/240v,Relays,92,pc,
+REL-24Vdc,Non-Latching Relay 24v DC coil 20A/240v,Relays,92,pc,
+PR-WL4-10k3-03-WHT-10PK,Flat Disc Wall Sensor White (10 pack),Sensors,310,10pk,
+PR-WL4-10k3-03-BLK-10PK,Flat Disc Wall Sensor Black (10 pack),Sensors,310,10pk,
+PR-WL4-TIP-Metals-10PK,Metal Wall Sensor Tips - metal finishes (10 pack),Sensors,275,10pk,
+PR-WL4-TIP-Painted-10PK,Metal Wall Sensor Tips - painted finishes (10 pack),Sensors,310,10pk,
+WL4-FIX-KIT-10PK,WL4 1st Fix Installation Kit (10 pack),Accessories,310,10pk,Includes plaster-over protection tip
+WL4-KIT-EXT-5PK,WL4 Pipe Extension Fix Kit (5 pack),Accessories,90,5pk,
+RTU-Rj45x8-HUB,8-port RJ45 Cable Landing Board/Hub,Cabling/Networking,285,pc,
+RTU-Rj45-NODE-10PK,Cat5/6 to Screw Terminal Node (10 pack),Cabling/Networking,235,10pk,
+RTU-RJ45x2-NODE-10PK,Daisy-Chain Cat5/6 to Screw Terminal Node (10 pack),Cabling/Networking,370,10pk,
+DC01-CAB,DIN Rail Metal Cabinet (204x554x100mm),Enclosures,210,pc,
+DEMO-FINISH-02,Demo Finishes Guide (discs/crowns/sensors),Demo Equipment,520,pc,Dealer demo kit
+DEMO-BOX-URS-AL-Tn-AZ,Ursium Alisse Demo Box - Aged Bronze (Turn),Demo Equipment,1200,pc,
+DEMO-BOX-URS-AL-Tn-BRB,Ursium Alisse Demo Box - Brushed Brass (Turn),Demo Equipment,1200,pc,
+DEMO-BOX-URS-AL-Tn-AB,Ursium Alisse Demo Box - Aged Brass (Turn),Demo Equipment,1200,pc,
+DEMO-BOX-URS-AL-Tc-BRB,Ursium Alisse Demo Box - Brushed Brass (Touch),Demo Equipment,1155,pc,
+DEMO-BOX-URS-AL-Tc-AB,Ursium Alisse Demo Box - Aged Brass (Touch),Demo Equipment,1155,pc,
+DEMO-BOX-URS-PL-Tn-SN,Ursium Aplium Demo Box - Satin Nickel (Turn),Demo Equipment,1080,pc,
+DEMO-BOX-URS-PL-Tc-SN,Ursium Aplium Demo Box - Satin Nickel (Touch),Demo Equipment,1035,pc,
+DEMO-BOX-URS-EU-Tn-SN,Ursium Euro Demo Box - Satin Nickel (Turn),Demo Equipment,1015,pc,
+DEMO-BOX-URS-EU-Tn-SB,Ursium Euro Demo Box - Satin Brass (Turn),Demo Equipment,1015,pc,
+DEMO-BOX-URS-EU-Tc-SN,Ursium Euro Demo Box - Satin Nickel (Touch),Demo Equipment,970,pc,
+DEMO-BOX-URS-EU-Tc-SB,Ursium Euro Demo Box - Satin Brass (Touch),Demo Equipment,970,pc,
+DEMO-BOX-FP1-SN,Zentium Demo Box - Satin Nickel,Demo Equipment,880,pc,
+DEMO-BOX-FP1-QB,Zentium Demo Box - Quartz Black,Demo Equipment,880,pc,
+DEMO-BOX-UPW-cPL-SN,Zentium Combination Demo Box - Palladiom/Satin Nickel,Demo Equipment,925,pc,Excludes lighting keypad
+DEMO-BOX-HOR-cOR-QB,Zentium Combination Demo Box - Horizon/Quartz Black,Demo Equipment,925,pc,Excludes lighting keypad

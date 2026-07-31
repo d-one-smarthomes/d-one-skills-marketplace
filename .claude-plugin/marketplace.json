@@ -36,6 +36,11 @@
       "description": "D-One Technical File Generator: automates component schedule, conduit schedule, and wiring diagram generation from a WeQuote PDF."
     },
     {
+      "name": "estimator",
+      "source": "./plugins/estimator",
+      "description": "Build a detailed, itemised D-One quote (equipment + labour) as an Excel spreadsheet, using D-One's real inventory pricing and historical install-hour/cost data."
+    },
+    {
       "name": "floorplan-icons",
       "source": "./plugins/floorplan-icons",
       "description": "Place D-One AV/tech icons onto a PDF floorplan to produce a branded equipment layout."

@@ -134,3 +134,59 @@ contractually final number. If the reference data in `assets/` gets stale (new
 products with no history, or D-One's rate card changes), the next person extending
 this skill should refresh it from the latest WeQuote exports rather than patching
 numbers by hand in this file.
+
+## Supplier price lists that are not yet in the active inventory
+
+`references/supplier_price_lists/` holds raw supplier price lists that haven't
+been merged into `assets/inventory.csv` yet — currently Polar Bear Design's
+2025 SRP list (thermostats/HVAC controls, GBP ex VAT), plus an extracted CSV
+of its line items. If someone asks to quote a Polar Bear product, it will show
+up as UNMATCHED against the main inventory — check this folder before telling
+them it doesn't exist, but don't silently convert GBP to ZAR or invent a
+markup. Tell the user you found it in the supplier list and ask for the
+exchange rate and markup before pricing it, then once you have that, add the
+converted line(s) to `assets/inventory.csv` so it's priced correctly next time.
+
+## Keeping `assets/` current: importing a fresh supplier price list
+
+`inventory.csv` and `equip_cost_by_sku.json` are meant to behave like one
+living spreadsheet — a single row per SKU holding the latest known price, not
+a growing pile of snapshots. When someone hands you a new supplier price
+list in D-One's own currency (ZAR) — a Scoop export, a Homemation export, a
+refreshed version of one you've already imported — merge it straight in:
+
+1. **Always store prices ex VAT, never incl VAT.** Distributors like Scoop
+   display retail incl VAT on their storefront but their exports (or the
+   columns you're given) usually carry both. If a list only gives incl-VAT
+   retail, divide by 1.15 (South African VAT) before storing anything.
+2. **Match by SKU** (case-insensitive, trimmed) against `inventory.csv`.
+   - **Existing SKU, and the current `price_zar` looks like it was set by
+     copying a distributor's incl-VAT retail price verbatim** (i.e. it's
+     within ~2% of that distributor's incl-VAT figure) — that's a past
+     mistake, not a deliberate D-One price. Overwrite `price_zar` with the
+     new ex-VAT retail figure and note the correction in `last_updated`.
+   - **Existing SKU with a normal price** (a real markup over supplier
+     cost) — leave `price_zar` alone. D-One's own sell price is a business
+     decision, not something to overwrite just because a supplier updated
+     their list. Only refresh the **cost** side (see step 3).
+   - **New SKU, not in `inventory.csv` at all** — add one new row using the
+     supplier's ex-VAT retail price as `price_zar` (best available number
+     until D-One sets its own), category `Uncategorised`, and note the
+     source and date in `last_updated`.
+3. **Always refresh `equip_cost_by_sku.json` cost for every matched SKU** to
+   the supplier's ex-VAT dealer/cost price — this is the freshest cost data
+   available and should win over an older historical-average cost. Store
+   `{"unit_cost": ..., "source": "<supplier>_pricelist", "last_updated": "<date>"}`.
+4. **One row per SKU, always.** Never append a duplicate row for a SKU that
+   already exists — upsert in place. After any import, check
+   `inv['sku'].str.strip().str.upper().duplicated().sum() == 0` before saving.
+5. **Flag, don't silently fix, margin problems.** If after refreshing cost a
+   SKU's existing `price_zar` is now below the new supplier cost, that's a
+   real pricing/margin issue — call it out to the user by name rather than
+   changing their sell price for them.
+6. Keep the original file under `references/supplier_price_lists/` for
+   provenance (what was imported, when), same as Polar Bear's.
+
+This is what makes "ask Estimator for a quote" always reflect the latest
+price you've fed it, without the reference data silently drifting out of
+sync or accumulating stale duplicate entries.

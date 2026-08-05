@@ -155,37 +155,35 @@ a growing pile of snapshots. When someone hands you a new supplier price
 list in D-One's own currency (ZAR) — a Scoop export, a Homemation export, a
 refreshed version of one you've already imported — merge it straight in:
 
-1. **Always store prices ex VAT, never incl VAT.** Distributors like Scoop
-   display retail incl VAT on their storefront but their exports (or the
-   columns you're given) usually carry both. If a list only gives incl-VAT
-   retail, divide by 1.15 (South African VAT) before storing anything.
-2. **Match by SKU** (case-insensitive, trimmed) against `inventory.csv`.
-   - **Existing SKU, and the current `price_zar` looks like it was set by
-     copying a distributor's incl-VAT retail price verbatim** (i.e. it's
-     within ~2% of that distributor's incl-VAT figure) — that's a past
-     mistake, not a deliberate D-One price. Overwrite `price_zar` with the
-     new ex-VAT retail figure and note the correction in `last_updated`.
-   - **Existing SKU with a normal price** (a real markup over supplier
-     cost) — leave `price_zar` alone. D-One's own sell price is a business
-     decision, not something to overwrite just because a supplier updated
-     their list. Only refresh the **cost** side (see step 3).
-   - **New SKU, not in `inventory.csv` at all** — add one new row using the
-     supplier's ex-VAT retail price as `price_zar` (best available number
-     until D-One sets its own), category `Uncategorised`, and note the
-     source and date in `last_updated`.
-3. **Always refresh `equip_cost_by_sku.json` cost for every matched SKU** to
-   the supplier's ex-VAT dealer/cost price — this is the freshest cost data
-   available and should win over an older historical-average cost. Store
-   `{"unit_cost": ..., "source": "<supplier>_pricelist", "last_updated": "<date>"}`.
+1. **D-One's sell price (`price_zar`) = the distributor's retail price
+   INCLUDING VAT, used as-is.** This is a deliberate house rule, decided
+   2026-08-05 (Darren + Berna): distributors like Scoop set their own retail
+   markup too thin for D-One's margin needs, so D-One takes the incl-VAT
+   number itself — not divided by 1.15 — as its own (nominally ex-VAT)
+   selling price. This applies uniformly, even where it's lower than
+   whatever price is already on file for that SKU — don't make exceptions
+   for individual items; the rule was chosen and confirmed knowing this.
+   **This reverses an earlier version of this file, which said to store the
+   ex-VAT retail figure and treat incl-VAT-as-price as a bug — it isn't a
+   bug, it's the house rule now.**
+2. **D-One's cost (`equip_cost_by_sku.json` → `unit_cost`) = the
+   distributor's dealer/trade price EXCLUDING VAT, used as-is.** This part
+   hasn't changed — always ex VAT for cost, always the freshest number from
+   the supplier's own list, overwriting any older historical-average cost.
+   Store `{"unit_cost": ..., "source": "<supplier>_pricelist", "last_updated": "<date>"}`.
+3. **Match by SKU** (case-insensitive, trimmed) against `inventory.csv`.
+   Existing SKU → update `price_zar` and `last_updated` in place. New SKU,
+   not in `inventory.csv` at all → add one new row (category
+   `Uncategorised`, note source + date in `last_updated`).
 4. **One row per SKU, always.** Never append a duplicate row for a SKU that
    already exists — upsert in place. After any import, check
    `inv['sku'].str.strip().str.upper().duplicated().sum() == 0` before saving.
-5. **Flag, don't silently fix, margin problems.** If after refreshing cost a
-   SKU's existing `price_zar` is now below the new supplier cost, that's a
-   real pricing/margin issue — call it out to the user by name rather than
-   changing their sell price for them.
-6. Keep the original file under `references/supplier_price_lists/` for
+5. Keep the original file under `references/supplier_price_lists/` for
    provenance (what was imported, when), same as Polar Bear's.
+6. If a supplier's list only shows one VAT treatment (e.g. only incl-VAT
+   retail, no separate dealer/cost column), don't guess the other number —
+   ask the user, the same way Polar Bear's GBP pricing was held back until
+   the exchange rate and markup were confirmed.
 
 This is what makes "ask Estimator for a quote" always reflect the latest
 price you've fed it, without the reference data silently drifting out of

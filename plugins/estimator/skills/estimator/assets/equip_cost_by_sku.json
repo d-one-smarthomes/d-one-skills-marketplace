@@ -111,6 +111,11 @@
     "n_observations": 12,
     "unit_cost": 15651.65
   },
+  "12-00974": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 507.59
+  },
   "1200571": {
     "n_observations": 2,
     "unit_cost": 26782.0
@@ -263,9 +268,34 @@
     "n_observations": 1,
     "unit_cost": 3325.97
   },
+  "1U-BRPANEL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 119.53
+  },
+  "20KNKS-00-000000-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8236.2
+  },
+  "20NKS-00-000000-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3680.19
+  },
   "2125.v2": {
     "n_observations": 1,
     "unit_cost": 39129.57
+  },
+  "24PORT-PATCH": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 443.7
+  },
+  "25BNKS-10-000000-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11936.93
   },
   "271": {
     "n_observations": 2,
@@ -278,6 +308,116 @@
   "2800-533280": {
     "n_observations": 3,
     "unit_cost": 7740.0
+  },
+  "293638877": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 14128.97
+  },
+  "293678615": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7707.82
+  },
+  "293678636": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8563.57
+  },
+  "293678660": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10603.61
+  },
+  "293679290": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12953.77
+  },
+  "293729628-IDEMIA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2398.97
+  },
+  "293734575": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2919.21
+  },
+  "293744571": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 49167.18
+  },
+  "293757482": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 996.95
+  },
+  "293759994": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 17653.96
+  },
+  "293760004": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2847.56
+  },
+  "293762264": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4957.19
+  },
+  "293762855": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 26068.49
+  },
+  "293777400": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 35751.83
+  },
+  "293792600": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1210.56
+  },
+  "293794774": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9916.1
+  },
+  "293799935-IDEMIA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2089.53
+  },
+  "293803151": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 22903.21
+  },
+  "293809715-IDEMIA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 64430.01
+  },
+  "293809715-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 77505.51
+  },
+  "293812840-IDEMIA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2089.53
+  },
+  "293815271-IDEMIA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5037.67
   },
   "3000-MICRO-BG": {
     "n_observations": 7,
@@ -295,13 +435,158 @@
     "n_observations": 1,
     "unit_cost": 6908.87
   },
+  "450FMT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 322.78
+  },
+  "4584": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 292.32
+  },
+  "493261010000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 783.83
+  },
+  "493262010000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 783.83
+  },
+  "493263010000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 783.83
+  },
+  "493265010000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 672.0
+  },
+  "493273010000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 783.83
+  },
+  "493310000000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2408.44
+  },
+  "493311000000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2408.44
+  },
+  "493340000000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2805.49
+  },
+  "493341000000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2805.49
+  },
+  "493390000000": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 165.69
+  },
+  "5001-1C8A17212": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6247.73
+  },
+  "5001-1C8K17212": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10951.55
+  },
+  "5001-3C8A17212": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7371.08
+  },
+  "500ZB-RD-USB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3827.51
+  },
+  "50320190-1101": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12423.76
+  },
+  "503201C0-0001": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12165.63
+  },
+  "50520190-1101": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6826.14
+  },
+  "505201C0-0001": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7046.03
+  },
+  "507201C0-0-01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6548.89
+  },
+  "507201C0-1-01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6673.17
+  },
+  "5109-4": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24.21
+  },
   "5E1200UI": {
     "n_observations": 5,
     "unit_cost": 1913.19
   },
+  "5m pole": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3056.96
+  },
   "60578": {
     "n_observations": 1,
     "unit_cost": 80420.87
+  },
+  "641-3": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9290.51
+  },
+  "641-4": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10300.63
+  },
+  "641-5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11177.85
+  },
+  "641-6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12600.0
+  },
+  "6m pole": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3588.61
   },
   "72109": {
     "n_observations": 13,
@@ -346,6 +631,16 @@
   "850062185531": {
     "n_observations": 1,
     "unit_cost": 22168.7
+  },
+  "88128LE1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3224.61
+  },
+  "88128RE1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3224.61
   },
   "91378800": {
     "n_observations": 5,
@@ -406,6 +701,11 @@
   "916201": {
     "n_observations": 15,
     "unit_cost": 10752.07
+  },
+  "9234195-NEDAP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33605.48
   },
   "92742": {
     "n_observations": 1,
@@ -635,6 +935,16 @@
     "n_observations": 17,
     "unit_cost": 14254.82
   },
+  "9567593-NEDAP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3541.54
+  },
+  "9567658-NEDAP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2184.09
+  },
   "96003": {
     "n_observations": 1,
     "unit_cost": 5834.4
@@ -684,6 +994,26 @@
     "source": "scoop_pricelist",
     "unit_cost": 475.0
   },
+  "ACC200": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 652.53
+  },
+  "ACC202": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1599.37
+  },
+  "ACC340": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 25.95
+  },
+  "ACC370": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 29.81
+  },
   "ACEG1R21BLK": {
     "n_observations": 1,
     "unit_cost": 6955.83
@@ -691,6 +1021,56 @@
   "ACOUSTIC- 60/35-B": {
     "n_observations": 3,
     "unit_cost": 320.0
+  },
+  "AE-DC2018-K2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 694.63
+  },
+  "AE-DC4328-K5(2CH)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1852.78
+  },
+  "AE-DI5052-G40 Pro": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6282.28
+  },
+  "AE-IFC00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 174.3
+  },
+  "AE-MC0108-0.3": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 166.56
+  },
+  "AE-MC0708-5.5C01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 211.72
+  },
+  "AE-MC0708-8C01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 286.7
+  },
+  "AE-VC124T-IT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 930.38
+  },
+  "AE-VC143T-ITS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 930.38
+  },
+  "AE-VC153T-IT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 930.38
   },
   "AF-11": {
     "last_updated": "2026-08-04",
@@ -715,6 +1095,61 @@
   "AGA-03TXRM-OE": {
     "n_observations": 1,
     "unit_cost": 237.0
+  },
+  "AGM731FEPS_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 506.33
+  },
+  "AGM732FEPS_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1082.34
+  },
+  "AH100-010": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 623.82
+  },
+  "AH30-RS485-G5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2649.67
+  },
+  "AH40-IP-G5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4828.49
+  },
+  "AI1016GC": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2256.89
+  },
+  "AI1024GC": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2920.68
+  },
+  "AI8016M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1194.82
+  },
+  "AI8024M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1593.1
+  },
+  "AI806M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 265.52
+  },
+  "AI8082M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 451.38
   },
   "AIR-D523X": {
     "last_updated": "2026-08-04",
@@ -846,9 +1281,99 @@
     "n_observations": 1,
     "unit_cost": 2243.0
   },
+  "AL560-500150": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 15709.68
+  },
+  "AL560-501150": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 17256.55
+  },
+  "ALHIKH13": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 31.65
+  },
+  "ALL-004": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1259.49
+  },
+  "ALL-004/D": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1391.77
+  },
+  "ALL-005": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1591.81
+  },
+  "ALL-006": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1941.52
+  },
+  "ALL-006/D": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2121.85
+  },
+  "ALL-018-088": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 160.85
+  },
+  "ALL-018-089": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 167.49
+  },
+  "ALL-018-090": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 175.06
+  },
+  "ALL-018-103": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 588.61
+  },
+  "ALL-040-958": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 51.23
+  },
+  "ALL-040-977": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 58.05
+  },
   "ALTITUDE 16": {
     "n_observations": 1,
     "unit_cost": 266000.0
+  },
+  "AM-LIC-01-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4109.9
+  },
+  "AM-LIC-02-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8219.79
+  },
+  "AM-LIC-03-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4109.9
+  },
+  "AMC-EAM-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2269.31
   },
   "AMP-F10": {
     "n_observations": 1,
@@ -931,9 +1456,119 @@
     "source": "scoop_pricelist",
     "unit_cost": 125.0
   },
+  "AP-H100B8L-EU": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5513.49
+  },
+  "AP-H100B8R-EU": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5513.49
+  },
   "AP6642.GLA.B": {
     "n_observations": 2,
     "unit_cost": 10080.0
+  },
+  "APP-ENT-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 19851.56
+  },
+  "APP-ENT10-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 79389.06
+  },
+  "APP-ENT5-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 60637.5
+  },
+  "APPU910": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2062.5
+  },
+  "APPU915": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2750.0
+  },
+  "APPU920": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1031.25
+  },
+  "APPU930": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1031.25
+  },
+  "APPU935": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1718.75
+  },
+  "APPU940": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18562.5
+  },
+  "APPU945": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18562.5
+  },
+  "APPU950": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18734.38
+  },
+  "APPU955": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18046.88
+  },
+  "APPU960": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18562.5
+  },
+  "APPU965": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33000.0
+  },
+  "APPU970": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 55000.0
+  },
+  "APU935": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3970.31
+  },
+  "APU941": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3970.31
+  },
+  "APU946": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3970.31
+  },
+  "APU951": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3970.31
+  },
+  "APU956": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3970.31
   },
   "AR2WMWW1BLK": {
     "n_observations": 4,
@@ -1027,6 +1662,16 @@
     "n_observations": 1,
     "unit_cost": 16093.0
   },
+  "AXMIS02": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 51.89
+  },
+  "Acces Portal Enterprise V.4/V5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10095.94
+  },
   "AltitudeCI-8": {
     "n_observations": 8,
     "unit_cost": 138173.91
@@ -1034,6 +1679,161 @@
   "Amplitude 16": {
     "n_observations": 3,
     "unit_cost": 155217.39
+  },
+  "B194": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 341.77
+  },
+  "B195": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 524.05
+  },
+  "B252CB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 32.03
+  },
+  "B254CB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 38.2
+  },
+  "B255": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 57.78
+  },
+  "B257": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 142.35
+  },
+  "B300": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3.44
+  },
+  "B301": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3.56
+  },
+  "B302": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3.66
+  },
+  "B303": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3.77
+  },
+  "B309": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5.59
+  },
+  "B310": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5.81
+  },
+  "B311": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6.03
+  },
+  "B312": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6.24
+  },
+  "B315": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9.58
+  },
+  "B316": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12.7
+  },
+  "B317": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 26.25
+  },
+  "B326": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.77
+  },
+  "B327": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2.34
+  },
+  "B328": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12.91
+  },
+  "B332": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.71
+  },
+  "B333": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1.01
+  },
+  "B334": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6.38
+  },
+  "B337": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.72
+  },
+  "B338": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1.08
+  },
+  "B338A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7.0
+  },
+  "B343": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.71
+  },
+  "B370": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24.37
+  },
+  "B701": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 19.24
+  },
+  "B702": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33.76
+  },
+  "B703": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 58.82
   },
   "BA13-5": {
     "n_observations": 1,
@@ -1067,6 +1867,11 @@
   "BN59-01385L/M": {
     "n_observations": 1,
     "unit_cost": 652.17
+  },
+  "BNC914": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4.8
   },
   "BOXER03": {
     "n_observations": 5,
@@ -1156,9 +1961,9 @@
     "unit_cost": 499.0
   },
   "BRUSH": {
-    "last_updated": "2026-08-04",
-    "source": "scoop_pricelist",
-    "unit_cost": 95.0
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 137.97
   },
   "BSB": {
     "n_observations": 1,
@@ -1214,9 +2019,84 @@
     "n_observations": 11,
     "unit_cost": 781.59
   },
+  "C5-BC-FT-UV-305": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2629.18
+  },
+  "C5-BC-FT-UV-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4310.13
+  },
+  "C5-BC-UT-GR-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 688.82
+  },
+  "C5-BC-UT-GR-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3081.61
+  },
+  "C5-CC-FT-UV-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 393.18
+  },
+  "C5-CC-FT-UV-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2209.57
+  },
+  "C5-CC-UT-GR-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1126.58
+  },
   "C50-Pack": {
     "n_observations": 7,
     "unit_cost": 14126.04
+  },
+  "C6-BC-FT-UV-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5791.14
+  },
+  "C6-BC-UT-GR-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 949.37
+  },
+  "C6-BC-UT-GR-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4746.84
+  },
+  "C6-CC-FT-UV-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 455.7
+  },
+  "C6-CC-FT-UV-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2031.65
+  },
+  "C6-CC-UT-GR-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 293.67
+  },
+  "C6-CC-UT-GR-305": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 936.71
+  },
+  "C6-CC-UT-GR-500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1418.99
   },
   "CA21": {
     "n_observations": 1,
@@ -1226,6 +2106,11 @@
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
     "unit_cost": 1475.0
+  },
+  "CAB-12U1S-SF-GD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2516.19
   },
   "CAB-12UO": {
     "last_updated": "2026-08-04",
@@ -1332,6 +2217,11 @@
     "source": "scoop_pricelist",
     "unit_cost": 925.0
   },
+  "CAB-4U1S-SF-GD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1625.08
+  },
   "CAB-4UMR": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -1351,6 +2241,11 @@
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
     "unit_cost": 1150.0
+  },
+  "CAB-6U1S-SF-GD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1898.9
   },
   "CAB-6UB": {
     "last_updated": "2026-08-04",
@@ -1386,6 +2281,11 @@
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
     "unit_cost": 1225.0
+  },
+  "CAB-9U1S-SF-GD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2314.99
   },
   "CAB-9UB": {
     "last_updated": "2026-08-04",
@@ -1462,6 +2362,11 @@
     "source": "scoop_pricelist",
     "unit_cost": 22.0
   },
+  "CAB-MPDU-6WAY": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 332.65
+  },
   "CAB-MR27": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -1534,6 +2439,11 @@
   "CASM160HST10TRW-12-3-7": {
     "n_observations": 2,
     "unit_cost": 310434.78
+  },
+  "CAT5U-305": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1079.75
   },
   "CAT7-1m": {
     "n_observations": 3,
@@ -1910,6 +2820,11 @@
     "n_observations": 1,
     "unit_cost": 89600.0
   },
+  "CFU-10-16A-3M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 179.43
+  },
   "CH53-1": {
     "n_observations": 1,
     "unit_cost": 167.1
@@ -1955,6 +2870,16 @@
     "source": "scoop_pricelist",
     "unit_cost": 4.0
   },
+  "CR123A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 34.18
+  },
+  "CREDIT-BLE-ONLINE-IMPRO-STid": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 75.0
+  },
   "CS-18C": {
     "n_observations": 20,
     "unit_cost": 1460.35
@@ -1978,6 +2903,316 @@
   "CWM 8.3 D": {
     "n_observations": 2,
     "unit_cost": 52273.04
+  },
+  "CX-2301A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 445.25
+  },
+  "CX-280S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 597.66
+  },
+  "CX-280ZL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 241.27
+  },
+  "CX-280ZL-U": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 258.23
+  },
+  "CX-4CORE-STRANDED-CCA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 212.66
+  },
+  "CX-500S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1169.62
+  },
+  "CX-500ZL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 385.44
+  },
+  "CX-6CORE-STRANDED-CCA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 278.48
+  },
+  "CX-860-28": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 184.81
+  },
+  "CX-8CORE-STRANDED-CCA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 329.11
+  },
+  "CX-903": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 69.62
+  },
+  "CX-907": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 150.3
+  },
+  "CX-909": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 134.66
+  },
+  "CX-923A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 153.11
+  },
+  "CX-923B": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 167.15
+  },
+  "CX-924": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 371.47
+  },
+  "CX-933": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 134.18
+  },
+  "CX-935": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 140.62
+  },
+  "CX-941D-28": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 151.46
+  },
+  "CX-952BW": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 175.44
+  },
+  "CX-955B": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 209.25
+  },
+  "CX-BALUN-P": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 38.63
+  },
+  "CX-BNC-BARREL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3.04
+  },
+  "CX-BNC-BOOT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2.03
+  },
+  "CX-BNC-ECO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2.77
+  },
+  "CX-BRACKET-14FM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 65.28
+  },
+  "CX-BRACKET-32-SWING-2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 354.43
+  },
+  "CX-BRACKET-32-T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 106.33
+  },
+  "CX-CRIMPER-RG59": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 151.9
+  },
+  "CX-CRIMPER-RJ45": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 151.9
+  },
+  "CX-DC-JACK-NOLEAD-F": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2.91
+  },
+  "CX-DC-JACK-NOLEAD-M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2.91
+  },
+  "CX-DC-JACK-TERMINAL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4.76
+  },
+  "CX-DOOR-CONTACT-W": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 120.0
+  },
+  "CX-DOORLOOP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 107.59
+  },
+  "CX-HDMI-10M-PVC-2.0": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 105.06
+  },
+  "CX-HDMI-15M-PVC-2.0": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 164.56
+  },
+  "CX-HDMI-20M-PVC-2.0": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 183.54
+  },
+  "CX-HDMI-3M-PVC-2.0": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 47.06
+  },
+  "CX-HDMI-5M-PVC-2.0": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 82.28
+  },
+  "CX-HDMI-EXTEND-120M-2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 716.23
+  },
+  "CX-HDMI-EXTEND-60M-2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 246.84
+  },
+  "CX-HDMI-EXTEND-KVM-120": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 830.7
+  },
+  "CX-HDMI-EXTEND-KVM-60": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 358.86
+  },
+  "CX-HDMI-SPLITTER-4": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 303.8
+  },
+  "CX-IPC-TESTER": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3734.18
+  },
+  "CX-LUMINOUS-B": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12.66
+  },
+  "CX-MF01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7.97
+  },
+  "CX-MF02": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7.59
+  },
+  "CX-MYLAR-0.22-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1036.71
+  },
+  "CX-PATCH-CABLE-1M-CAT5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 15.48
+  },
+  "CX-PATCH-CABLE-1M-CAT6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18.61
+  },
+  "CX-PATCH-CABLE-2M-CAT5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24.05
+  },
+  "CX-PATCH-CABLE-2M-CAT6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 22.86
+  },
+  "CX-RJ45-CAT5-THROUGH": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.95
+  },
+  "CX-RJ45-CAT6-THROUGH": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1.14
+  },
+  "CX-RJ45-WALL-CAT5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 29.11
+  },
+  "CX-RJ45-WALL-CAT6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 30.86
+  },
+  "CX-RJ45B-CAT5E": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.76
+  },
+  "CX-RJ45B-CAT6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.76
+  },
+  "CX-RJ45C-CAT5E": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.76
+  },
+  "CX-RJ45C-CAT6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 0.78
   },
   "Calkit": {
     "n_observations": 1,
@@ -2229,6 +3464,16 @@
     "n_observations": 1,
     "unit_cost": 13993.0
   },
+  "DRL-48V240W1EN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1173.09
+  },
+  "DRL-48V75W1AZ": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 429.11
+  },
   "DRX3.4M2BMMA": {
     "n_observations": 6,
     "unit_cost": 24521.74
@@ -2241,41 +3486,789 @@
     "n_observations": 12,
     "unit_cost": 53217.39
   },
+  "DS-1005KI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2737.32
+  },
+  "DS-1200KI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4876.63
+  },
+  "DS-1260ZJ": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 184.65
+  },
+  "DS-1275ZJ-SUS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 433.61
+  },
+  "DS-1280ZJ-DM46": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 190.3
+  },
+  "DS-1280ZJ-PT6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 199.78
+  },
+  "DS-1280ZJ-S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 278.11
+  },
+  "DS-1280ZJ-XS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 329.24
+  },
+  "DS-1473ZJ-155": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 821.16
+  },
+  "DS-1600KI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 15452.01
+  },
+  "DS-1602ZJ": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 274.97
+  },
+  "DS-1602ZJ-COR": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 398.16
+  },
+  "DS-1602ZJ-POLE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 399.84
+  },
+  "DS-1603ZJ-P": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 482.65
+  },
+  "DS-1603ZJ-POLE-P": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1230.46
+  },
+  "DS-1662ZJ": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 334.16
+  },
+  "DS-1LN5E-E/E": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1751.14
+  },
+  "DS-1LN6-UU": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3358.78
+  },
+  "DS-2AE4225TI-D_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4089.2
+  },
+  "DS-2CD1023G0E-I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 888.0
+  },
+  "DS-2CD1123G0E-I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 894.62
+  },
+  "DS-2CD20166G3-IUY/SL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4439.51
+  },
   "DS-2CD2021G0-LIU 2.8MM": {
-    "n_observations": 1,
-    "unit_cost": 1038.67
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1098.22
+  },
+  "DS-2CD2021G0-LIU 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1187.59
   },
   "DS-2CD2041G0-LIU 2.8MM": {
-    "n_observations": 1,
-    "unit_cost": 1092.7
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1185.8
+  },
+  "DS-2CD2041G0-LIU 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1223.91
+  },
+  "DS-2CD2046G2H-I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1861.08
+  },
+  "DS-2CD2046G2H-I 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2561.62
+  },
+  "DS-2CD2046G2H-I2U/SL 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2052.15
   },
   "DS-2CD2047G2H-LI 2.8MM": {
-    "n_observations": 1,
-    "unit_cost": 2079.06
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2081.01
+  },
+  "DS-2CD2047G2H-LI 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2073.59
+  },
+  "DS-2CD2047G3-LI2UY-2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3092.28
+  },
+  "DS-2CD2047G3-LI2UY-4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2618.48
+  },
+  "DS-2CD2047G3-LI2UY/SL-2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2876.27
+  },
+  "DS-2CD2047G3-LIY 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2998.03
+  },
+  "DS-2CD2047G3-LIY 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2295.78
+  },
+  "DS-2CD2086G2H-I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2759.09
+  },
+  "DS-2CD2087G3-LIY 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3216.8
+  },
+  "DS-2CD2121G0-LIU 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1099.54
+  },
+  "DS-2CD2141G0-LIU (4mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1641.04
   },
   "DS-2CD2141G0-LIU 2.8MM": {
-    "n_observations": 1,
-    "unit_cost": 1106.36
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1186.57
+  },
+  "DS-2CD2146G2H-I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1827.67
+  },
+  "DS-2CD2146G2H-ISU 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2028.16
+  },
+  "DS-2CD2146G2H-ISU 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2121.57
+  },
+  "DS-2CD2147G3-LIS2UY 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2784.13
+  },
+  "DS-2CD2186G2H-ISU 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3146.16
+  },
+  "DS-2CD2187G3-LIS2UY 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3621.01
+  },
+  "DS-2CD23166G3-I2UY 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5422.78
+  },
+  "DS-2CD23167G3P-LIS2UY/SL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6502.18
   },
   "DS-2CD2346G2-ISU/SL(2.8MM)": {
     "n_observations": 16,
     "unit_cost": 2102.39
   },
+  "DS-2CD2346G2H-IS2U/SL 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2430.41
+  },
+  "DS-2CD2346G2H-IU 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2877.95
+  },
+  "DS-2CD2347G2H-LI 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3227.85
+  },
   "DS-2CD2347G2H-LISU/SL 2.8MM": {
-    "n_observations": 15,
-    "unit_cost": 2588.07
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2612.01
+  },
+  "DS-2CD2347G2H-LIU 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2408.85
+  },
+  "DS-2CD2347G3-LI2UY (2.8mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2984.73
+  },
+  "DS-2CD2347G3-LI2UY (4mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2829.76
+  },
+  "DS-2CD2347G3-LIS2UY/SL (2.8mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3195.59
+  },
+  "DS-2CD2387G2P-LSU/SL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3917.49
+  },
+  "DS-2CD2387G3-LIS2UY/SL2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4650.68
+  },
+  "DS-2CD2546G2-IS(2.8MM)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2689.73
   },
   "DS-2CD2626G2-IZS (2.8-12)_C": {
-    "n_observations": 3,
-    "unit_cost": 3781.46
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3480.33
+  },
+  "DS-2CD2641G0-LIZSU(2.8-12mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2405.49
+  },
+  "DS-2CD2646G2HT-IZS(2.8-12mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4580.0
+  },
+  "DS-2CD2726G2-IZS_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3165.85
+  },
+  "DS-2CD2741G0-LIZSU 2.8-12mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2548.76
+  },
+  "DS-2CD2746G2H-IPTRZS 2.8-12mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3760.29
+  },
+  "DS-2CD2D25G1-D/NF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1943.16
+  },
+  "DS-2CD2T167G3P-LIS2UY/SL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7425.34
+  },
+  "DS-2CD2T26G2-4I (6MM)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2065.53
+  },
+  "DS-2CD2T46G2-4I 6MM_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2208.08
+  },
+  "DS-2CD2T46G2-ISU/SL_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2327.22
+  },
+  "DS-2CD2T46G2H-2I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3040.63
+  },
+  "DS-2CD2T46G2H-2I 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2277.54
+  },
+  "DS-2CD2T46G2H-4I 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2311.7
+  },
+  "DS-2CD2T46G2H-4I 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2467.58
+  },
+  "DS-2CD2T46G2H-IS2U/SL(2.8mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3037.57
+  },
+  "DS-2CD2T46G2H-IS2U/SL(4mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2519.08
+  },
+  "DS-2CD2T46G2P-ISU/SL 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2954.04
+  },
+  "DS-2CD2T47G2H-LI 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2882.38
+  },
+  "DS-2CD2T47G2H-LI 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2921.39
+  },
+  "DS-2CD2T47G3-LIS2UY/SL 4mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3496.65
+  },
+  "DS-2CD2T47G3-LIS2UY/SL-2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3577.14
+  },
+  "DS-2CD2T47G3-LIY 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3145.38
+  },
+  "DS-2CD2T47G3-LIY 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3018.29
+  },
+  "DS-2CD2T87G2P-LSU/SL(C)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4687.62
+  },
+  "DS-2CD3046G2H-LI 2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2512.09
+  },
+  "DS-2CD3046G2H-LI 4mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2460.52
+  },
+  "DS-2CD3046G3-IUY/SL-2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3585.49
+  },
+  "DS-2CD3146G2H-LISU 2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2524.96
+  },
+  "DS-2CD3346G2H-LISU/SL 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2885.57
+  },
+  "DS-2CD3646G2HT-LIZS 2.7-13.5mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5922.46
+  },
+  "DS-2CD3746G2H-LIZSU(PTRZ)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5316.91
+  },
+  "DS-2CD3956G2-ISU(1.05mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3193.59
+  },
+  "DS-2CD3T46G2H-LIS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3793.37
+  },
+  "DS-2CD3T46G2H-LIS 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3793.37
   },
   "DS-2CD3T46G2H-LISU/SL 2.8MM": {
-    "n_observations": 1,
-    "unit_cost": 3209.21
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3894.08
+  },
+  "DS-2CD3T46G2H-LISU/SL 4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3894.08
+  },
+  "DS-2CD6365G1-IVS 1.16MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8524.0
+  },
+  "DS-2CD6425G1-20 (3.7MM)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4328.25
+  },
+  "DS-2CE10DF0T-LFS 2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 386.63
+  },
+  "DS-2CE10DF0T-LPFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 442.86
+  },
+  "DS-2CE10DF3T-LFS 3.6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 562.7
+  },
+  "DS-2CE10DF3T-LPFS (2.8MM)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 681.72
+  },
+  "DS-2CE10KF0T-LPFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 519.67
+  },
+  "DS-2CE12DF0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 469.18
+  },
+  "DS-2CE12DF0T-LFS 3.6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 495.99
+  },
+  "DS-2CE12DF3T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 648.61
+  },
+  "DS-2CE12DF3T-LFS 3.6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 768.23
+  },
+  "DS-2CE12KF0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 841.82
+  },
+  "DS-2CE12KF3TP-DLS 180": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1190.78
+  },
+  "DS-2CE16D0T-EXIPF(2.8MM)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 190.61
+  },
+  "DS-2CE16D0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 305.33
+  },
+  "DS-2CE16D0T-LFS 3.6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 303.81
+  },
+  "DS-2CE16D0T-LPFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 288.58
+  },
+  "DS-2CE16D0T-LPXTS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 422.73
+  },
+  "DS-2CE16K0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 394.0
+  },
+  "DS-2CE17D0T-IT5F3.6MM_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 462.23
+  },
+  "DS-2CE17D0T-LXTS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 560.38
+  },
+  "DS-2CE17D0T-LXTS 3.6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 550.47
+  },
+  "DS-2CE17K0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 507.77
+  },
+  "DS-2CE17K0T-LFS 3.6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 569.39
+  },
+  "DS-2CE18D0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 409.9
+  },
+  "DS-2CE18D0T-LFS 6MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 404.1
+  },
+  "DS-2CE19D0T-VFIT3F 2.7-13.5MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 647.89
+  },
+  "DS-2CE19K0T-LXTSZ 2.7-13.5mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1312.04
+  },
+  "DS-2CE70DF0T-LPFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 342.75
+  },
+  "DS-2CE70DF3T-LMFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 590.04
+  },
+  "DS-2CE72DF0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 427.48
+  },
+  "DS-2CE72KF3TP-DLS 180": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1263.09
+  },
+  "DS-2CE76D0T-EXIPF(2.8MM)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 182.56
+  },
+  "DS-2CE76D0T-LMFS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 307.27
+  },
+  "DS-2CE76D0T-LPFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 266.75
+  },
+  "DS-2CE76K0T-LMFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 396.23
+  },
+  "DS-2CE78K0T-LFS 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 449.9
+  },
+  "DS-2CE79D0T-VFIT3F 2.7-13.5MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 649.43
+  },
+  "DS-2CFS04/4G(2.8mm)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1745.7
+  },
+  "DS-2CFSP4/4G-2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2151.53
+  },
+  "DS-2CFSP8-D/4G-2.8MM+4MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2910.47
+  },
+  "DS-2DE2C200IWG/W(2.8mm)(W)(O-STD)/EU": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1129.75
+  },
+  "DS-2DE2C200MWG-E 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 983.15
+  },
+  "DS-2DE2C400IWG/W": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1125.87
+  },
+  "DS-2DE2C400MWG-E 2.8MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 910.54
+  },
+  "DS-2DE4225IW-DE(T5)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6429.94
+  },
+  "DS-2DE5425IWG1-E": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6919.28
+  },
+  "DS-2DF8425IXG1-ELW": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24920.56
+  },
+  "DS-2DF8C442IXG1-EL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 26562.56
+  },
+  "DS-2FA1205-C8": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 198.84
+  },
+  "DS-2FA1208-C16": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 238.0
+  },
+  "DS-2FA1225-C4": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 146.84
+  },
+  "DS-2SE4C225MWG-E (12F0)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6503.71
+  },
+  "DS-2SE4C425MWG-E(14F0)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6898.84
+  },
+  "DS-2SE7C425MWG-EB/26(F0)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11873.51
+  },
+  "DS-2SF8C425MXG1-ELW/14 F1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 34328.81
+  },
+  "DS-2SF8C442MXG1-ELW/26(F0)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33040.18
+  },
+  "DS-2TD1228-3/QA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7245.38
   },
   "DS-2TD2138-15/QY_C": {
-    "n_observations": 2,
-    "unit_cost": 37606.0
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 30880.68
   },
   "DS-2TD2138-25/QY_C": {
     "n_observations": 1,
@@ -2285,73 +4278,1071 @@
     "n_observations": 1,
     "unit_cost": 45766.25
   },
+  "DS-2TD2608-2/QA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3976.82
+  },
+  "DS-2TD2608-2/QA/FP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3904.32
+  },
+  "DS-2TD2628-10/QA_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7472.86
+  },
+  "DS-2TD2628-3/QA_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6756.34
+  },
+  "DS-2TD2628-7/QA_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7569.95
+  },
   "DS-2TD2637-15/QY": {
-    "n_observations": 1,
-    "unit_cost": 38943.87
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 39436.84
+  },
+  "DS-2TD4137-25/WY": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 74733.81
   },
   "DS-2TD4137-50/W_C": {
     "n_observations": 1,
     "unit_cost": 95631.9
   },
+  "DS-2XC6047G0-LS 2.8mm": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3316.94
+  },
+  "DS-3E0505D-O": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 148.16
+  },
+  "DS-3E0508D-O": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 233.04
+  },
+  "DS-3E0516-E(B)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 990.41
+  },
+  "DS-3E0524-E(B)(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1219.7
+  },
+  "DS-3E0524TF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3916.34
+  },
+  "DS-3E1105P-EI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 535.37
+  },
+  "DS-3E1309P-EI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 976.39
+  },
+  "DS-3E1310HP-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1537.08
+  },
+  "DS-3E1318P-EI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2502.9
+  },
+  "DS-3E1326P-EI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3187.86
+  },
+  "DS-3E1505P-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 702.38
+  },
+  "DS-3E1508-EI(O-STD)V2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 577.73
+  },
+  "DS-3E1510P-EI(O-STD)V2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1429.42
+  },
   "DS-3E1510P-SI_C": {
-    "n_observations": 7,
-    "unit_cost": 2434.86
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2038.71
+  },
+  "DS-3E1518P-SI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4168.72
+  },
+  "DS-3E1520P-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3338.89
+  },
+  "DS-3E1524-SI-16F8T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3950.63
+  },
+  "DS-3E1528P-SI-24P4F(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5606.13
+  },
+  "DS-3E1552P-SI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9165.8
+  },
+  "DS-3E2728-HI-24T4X": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4423.44
   },
   "DS-3T0506HP-E/HS_C": {
-    "n_observations": 1,
-    "unit_cost": 1191.72
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1120.19
+  },
+  "DS-3T0510HP-E/HS_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1842.46
+  },
+  "DS-3T1512HP-SI-8P4F": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2246.1
+  },
+  "DS-3WAP5212-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 809.54
+  },
+  "DS-3WAP5312-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1005.8
+  },
+  "DS-3WAP6230-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1426.71
+  },
+  "DS-3WAP6630-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3449.92
+  },
+  "DS-3WF02-5AC/D(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1483.99
+  },
+  "DS-3WF02C-5AC/O": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 828.43
+  },
+  "DS-3WG2505-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1233.04
+  },
+  "DS-3WG2510-EI": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1465.44
+  },
+  "DS-4604ZJ-PA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 730.37
+  },
+  "DS-6910UDI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 31910.57
+  },
+  "DS-6916UDI_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 38564.99
+  },
+  "DS-7104HGHI-M1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 518.85
+  },
+  "DS-7104NI-Q1/4P_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1450.95
+  },
+  "DS-7104NI-Q1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1085.85
+  },
+  "DS-7108HGHI-M1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 645.92
   },
   "DS-7108NI-Q1/8P_C": {
-    "n_observations": 1,
-    "unit_cost": 1927.83
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1954.75
   },
   "DS-7108NI-Q1_C": {
-    "n_observations": 1,
-    "unit_cost": 978.04
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 969.52
+  },
+  "DS-7116HGHI-M1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1195.39
   },
   "DS-7608NXI-K2": {
-    "n_observations": 1,
-    "unit_cost": 1994.11
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2088.94
+  },
+  "DS-7608NXI-K2/8P": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3366.7
+  },
+  "DS-7608NXI-K2/VPro": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4255.59
+  },
+  "DS-7616NXI-K2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2311.81
   },
   "DS-7616NXI-K2/16P": {
-    "n_observations": 3,
-    "unit_cost": 4601.63
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4558.95
+  },
+  "DS-7616NXI-K2/VPro": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4040.38
+  },
+  "DS-7632NXI-K2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5702.32
+  },
+  "DS-7632NXI-K2/VPro": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10924.33
+  },
+  "DS-7716NXI-I4/16P/S_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9851.57
+  },
+  "DS-7716NXI-I4/S_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9955.97
+  },
+  "DS-7732NXI-I4/16P/S_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11925.9
+  },
+  "DS-7732NXI-I4/S_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8781.85
+  },
+  "DS-7732NXI-I4/VPro": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 22871.24
   },
   "DS-7764NI-M4": {
-    "n_observations": 1,
-    "unit_cost": 14005.5
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 21534.44
+  },
+  "DS-9632NI-M16": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 25858.42
+  },
+  "DS-9632NXI-I8/S(C)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 20636.82
+  },
+  "DS-9632NXI-I8/Vpro": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 38825.85
+  },
+  "DS-9664NI-M16": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 41111.61
   },
   "DS-9664NXI-I8/S(C)_C": {
-    "n_observations": 1,
-    "unit_cost": 25879.17
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 23984.01
   },
   "DS-D5019S0-1P0_C": {
-    "n_observations": 20,
-    "unit_cost": 1266.34
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1262.91
+  },
+  "DS-D5022F2-1V2S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1990.94
+  },
+  "DS-K1107MK_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 348.61
+  },
+  "DS-K1201AMF_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 766.82
+  },
+  "DS-K1F100-D8E_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 480.87
+  },
+  "DS-K1F600U-D6E-F(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4691.22
+  },
+  "DS-K1F820-F_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 872.32
+  },
+  "DS-K1T341CMFW": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3930.19
+  },
+  "DS-K1T341CMW": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3249.81
+  },
+  "DS-K1T342MFWX-E1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4369.22
+  },
+  "DS-K1T342MWX-E1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3079.48
+  },
+  "DS-K1T344MBFWX-E1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5693.92
+  },
+  "DS-K1T344MBWX-E1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4623.08
+  },
+  "DS-K1T502DBFWX-C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3165.56
+  },
+  "DS-K1T673DWX(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6886.44
+  },
+  "DS-K1T673DWX-E1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8894.66
+  },
+  "DS-K1T801M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 461.08
+  },
+  "DS-K1T804AMF_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1229.0
+  },
+  "DS-K1T805MBFWX": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1739.66
+  },
+  "DS-K1T807MBFWX-E1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1603.22
+  },
+  "DS-K2622X": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3715.71
+  },
+  "DS-K2624X": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4624.86
+  },
+  "DS-K3GL606WX-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5292.38
+  },
+  "DS-K4DC104": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 379.32
+  },
+  "DS-K4DC105": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 476.43
   },
   "DS-K4H258-LZ": {
-    "n_observations": 1,
-    "unit_cost": 203.32
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 197.58
   },
   "DS-K4H258S": {
-    "n_observations": 5,
-    "unit_cost": 379.8
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 350.39
+  },
+  "DS-K7IR01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 503.54
+  },
+  "DS-K7M102-M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12.91
+  },
+  "DS-KAB34X-S1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 178.82
+  },
+  "DS-KAB502-S1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 215.68
+  },
+  "DS-KAB6-W1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 268.78
+  },
+  "DS-KAB673-A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10162.56
+  },
+  "DS-KAB673-FB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 950.24
+  },
+  "DS-KAB673-P": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2796.61
+  },
+  "DS-KAB673-S1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 258.42
+  },
+  "DS-KABD8003-RS1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 242.8
+  },
+  "DS-KABD8003-RS2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 277.28
+  },
+  "DS-KABD8003-RS3": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 351.71
+  },
+  "DS-KABH6350-T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 236.32
+  },
+  "DS-KABV24-A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 72.3
+  },
+  "DS-KABV6114-RS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 108.46
   },
   "DS-KABV8113-RS": {
     "n_observations": 3,
     "unit_cost": 176.0
   },
+  "DS-KB8113-IME1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1445.16
+  },
+  "DS-KD-ACW1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 588.06
+  },
+  "DS-KD-ACW2_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 871.95
+  },
+  "DS-KD-ACW3_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1509.34
+  },
+  "DS-KD-BK_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 257.76
+  },
+  "DS-KD-DIS_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 850.24
+  },
+  "DS-KD-KK_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 515.53
+  },
+  "DS-KD-KP_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1109.28
+  },
+  "DS-KD-M_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 588.99
+  },
+  "DS-KD8003-IME1/SURFACE(B)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2014.28
+  },
+  "DS-KD8003-IME1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1530.46
+  },
+  "DS-KH6350-WTE1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2161.37
+  },
+  "DS-KH6352-WTDE6": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1346.92
+  },
+  "DS-KH9510-WTE1(B)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4331.77
+  },
+  "DS-KIS213": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1449.95
+  },
+  "DS-KIS313-P": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2491.32
+  },
+  "DS-KIS604-S_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4801.75
+  },
+  "DS-KIS611-S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4672.63
+  },
+  "DS-KM9503_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10446.81
+  },
+  "DS-KSB01-GL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 839.24
+  },
+  "DS-KSR01-GL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 529.37
+  },
+  "DS-KV6113-WPE1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1524.58
+  },
+  "DS-KV6114-MWBE1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2236.67
+  },
+  "DS-KV6124-WBE1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2236.67
+  },
+  "DS-KV8113-WME1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2175.38
+  },
+  "DS-KV8213-WME1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2274.87
+  },
+  "DS-KV8413-WME1_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2445.01
+  },
+  "DS-KV9503-WBE1(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4488.0
+  },
+  "DS-PC2002-WECKV/opener": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 232.41
+  },
+  "DS-PD451SMK-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 768.23
+  },
+  "DS-PDB-EX-SBKT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 80.75
+  },
+  "DS-PDB-EX-Shelter": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33.57
+  },
+  "DS-PDB-IN-UBKT2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 27.33
+  },
+  "DS-PDBG8-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 597.8
+  },
+  "DS-PDC10DM-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 960.25
+  },
+  "DS-PDC15-EG2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 126.53
+  },
+  "DS-PDC15-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 612.06
+  },
+  "DS-PDCL12-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 524.44
+  },
+  "DS-PDCL12DT-EG2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 413.16
+  },
+  "DS-PDCM15PF-IR_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1134.9
+  },
+  "DS-PDD12P-EG2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 276.3
+  },
+  "DS-PDD12P-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 965.49
+  },
+  "DS-PDD15AM-EG2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 393.2
+  },
+  "DS-PDEB1-EG2-WE(SINGLEBUTTON)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 273.51
+  },
+  "DS-PDMC-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 392.24
+  },
+  "DS-PDMCK-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 479.13
+  },
+  "DS-PDMCX-E-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 563.13
+  },
+  "DS-PDP15P-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 626.2
+  },
+  "DS-PDP18-EG2(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 111.77
+  },
+  "DS-PDP18-HM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 831.49
+  },
+  "DS-PDP18-HM-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1175.72
+  },
+  "DS-PDPC12P-EG2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 964.48
+  },
+  "DS-PDPC12P-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1677.19
+  },
+  "DS-PDPG12P-EG2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 838.0
+  },
+  "DS-PDQP15AM-LM-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3334.59
+  },
+  "DS-PDSMK-4BAR": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 241.44
+  },
   "DS-PDSMK-S-WE": {
     "n_observations": 6,
     "unit_cost": 809.29
+  },
+  "DS-PDTPH-E-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 642.53
+  },
+  "DS-PDTT15AM-LM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1947.43
+  },
+  "DS-PDTT15AM-LM-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2053.51
+  },
+  "DS-PDWL-E-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 536.14
+  },
+  "DS-PHA48-EP_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1435.75
+  },
+  "DS-PHA64-Kit-WE(B)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2455.75
+  },
+  "DS-PHA64-LP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1586.81
+  },
+  "DS-PK1-E-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 804.47
+  },
+  "DS-PK1-LRT-HWE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 903.89
+  },
+  "DS-PK1-LT-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1230.86
+  },
+  "DS-PKF1-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 295.09
+  },
+  "DS-PM1-D_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 232.67
+  },
+  "DS-PM1-I1-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 418.46
+  },
+  "DS-PM1-I16O2-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1492.29
+  },
+  "DS-PM1-O1H-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 462.09
+  },
+  "DS-PM1-O1L-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 384.44
+  },
+  "DS-PM1-RT-HWE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 642.71
+  },
+  "DS-PM2-S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1133.62
+  },
+  "DS-PR1-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1185.05
+  },
+  "DS-PS1-E-WE(RED INDICATOR)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1052.16
+  },
+  "DS-PS1-I-WE(RED INDICATOR)_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 609.59
+  },
+  "DS-PS1-R": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 201.42
+  },
+  "DS-PS403I-WE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1273.06
+  },
+  "DS-PT-M1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 29.7
+  },
+  "DS-PT1001-O": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 67.14
+  },
+  "DS-PWA64-Kit-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2697.58
+  },
+  "DS-PWA64-L-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1852.63
+  },
+  "DS-PWA96-KIT-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3807.2
+  },
+  "DS-PWA96-M-WE_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2753.37
+  },
+  "DS-QAE0120G1R": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 861.19
+  },
+  "DS-QAE0120G1R/BLACK": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 861.19
+  },
+  "DS-QAE0206G1-V": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 163.97
+  },
+  "DS-QAE0330G1T-V": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 617.16
+  },
+  "DS-QAE0420G1-V": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1092.3
+  },
+  "DS-QAE0A60G1-VB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1679.77
+  },
+  "DS-QAE0MG0G1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1008.38
+  },
+  "DS-QAE1A40G1-VB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2196.23
+  },
+  "DS-QAE1A80G1-VB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2519.01
+  },
+  "DS-QAZ0610G1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 850.86
+  },
+  "DS-QAZ0630G1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1344.08
   },
   "DS-QAZ1307G1T": {
     "n_observations": 3,
     "unit_cost": 4621.0
   },
+  "DS-QAZ1A500G1-VB2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7137.42
+  },
   "DS-UPS1000/SA": {
-    "n_observations": 3,
-    "unit_cost": 1131.35
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 834.18
+  },
+  "DS-UPS2000/SA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2055.78
+  },
+  "DS-UPS3000/SA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3329.1
   },
   "DSP8000 PP": {
     "n_observations": 2,
@@ -2398,6 +5389,16 @@
     "source": "scoop_pricelist",
     "unit_cost": 8195.0
   },
+  "ENC-CA4": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24.84
+  },
+  "ENC-CA5": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 56.9
+  },
   "ENVR": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -2428,8 +5429,9 @@
     "unit_cost": 2566.93
   },
   "EPS1218 DC GEL": {
-    "n_observations": 4,
-    "unit_cost": 499.4
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 505.06
   },
   "ESN-AVB12E-01": {
     "n_observations": 3,
@@ -2472,6 +5474,21 @@
   "Electrical Infrastructure": {
     "n_observations": 1,
     "unit_cost": 10617.0
+  },
+  "End-Post": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1614.87
+  },
+  "F812": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 49.22
+  },
+  "FAC109-POE-MR": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1398.39
   },
   "FAN-HT301": {
     "last_updated": "2026-08-04",
@@ -2772,6 +5789,11 @@
   "FIVE1EU1BLK": {
     "n_observations": 10,
     "unit_cost": 10434.09
+  },
+  "FLOTL352": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4303.8
   },
   "FLY-0.2": {
     "last_updated": "2026-08-04",
@@ -3138,6 +6160,11 @@
     "source": "scoop_pricelist",
     "unit_cost": 2.5
   },
+  "FM11RF08-M1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4.51
+  },
   "FNIP-12XPWM": {
     "n_observations": 1,
     "unit_cost": 7952.0
@@ -3308,9 +6335,34 @@
     "n_observations": 10,
     "unit_cost": 145.0
   },
+  "FS-355B": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 39607.59
+  },
+  "FS-356C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 78949.37
+  },
+  "FS-631": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 23924.05
+  },
+  "FS-639": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 74962.03
+  },
   "FS-805": {
     "n_observations": 2,
     "unit_cost": 14342.61
+  },
+  "FS-Boom-Pole-LED": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3907.59
   },
   "FS-LC16": {
     "last_updated": "2026-08-04",
@@ -3332,6 +6384,11 @@
     "source": "scoop_pricelist",
     "unit_cost": 150.0
   },
+  "FS-Traffic-light": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4884.49
+  },
   "FT-HSFP": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -3347,9 +6404,24 @@
     "source": "scoop_pricelist",
     "unit_cost": 75.0
   },
+  "G-MAX 8 GEL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 221.52
+  },
+  "G-MAX7": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 150.63
+  },
   "GHOUND03": {
     "n_observations": 30,
     "unit_cost": 886.96
+  },
+  "GHSS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1365.82
   },
   "GLU-GUN": {
     "last_updated": "2026-08-04",
@@ -3361,9 +6433,104 @@
     "source": "scoop_pricelist",
     "unit_cost": 5.0
   },
+  "GOOSBP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 289.89
+  },
+  "GRB909-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2359.25
+  },
+  "GS12035DC-UPS-PL": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 425.32
+  },
+  "GS1205DT-SA": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 145.23
+  },
+  "GS1210-9CH": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 462.01
+  },
+  "GS1220-18CH": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 715.19
+  },
   "GSM4210PD-100EUS": {
     "n_observations": 2,
     "unit_cost": 10555.0
+  },
+  "HCA910-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11653.48
+  },
+  "HCA930-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12266.85
+  },
+  "HCB911-5-0-GB-03            several OEM models available": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 21620.67
+  },
+  "HCD900-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3680.24
+  },
+  "HCD901-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5729.38
+  },
+  "HCD903-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6630.62
+  },
+  "HCD905-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3927.0
+  },
+  "HCD910-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4050.58
+  },
+  "HCD911-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6100.18
+  },
+  "HCM940-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3486.63
+  },
+  "HCM941-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3413.08
+  },
+  "HCX910-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5140.41
+  },
+  "HCX930-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7178.57
   },
   "HDD-2TB": {
     "n_observations": 3,
@@ -3377,17 +6544,44 @@
     "n_observations": 14,
     "unit_cost": 3975.0
   },
+  "HDD-WD-10TB_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8046.33
+  },
+  "HDD-WD-16TB Ultrastar": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7545.15
+  },
   "HDD-WD-1TB_C": {
     "n_observations": 2,
     "unit_cost": 904.26
   },
+  "HDD-WD-20TB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 13202.25
+  },
+  "HDD-WD-2TB_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2268.54
+  },
   "HDD-WD-4TB_C": {
-    "n_observations": 13,
-    "unit_cost": 1802.14
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2987.64
+  },
+  "HDD-WD-6TB_C": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3218.51
   },
   "HDD-WD-8TB_C": {
-    "n_observations": 22,
-    "unit_cost": 3644.16
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5502.63
   },
   "HDM48PEA100": {
     "n_observations": 3,
@@ -3400,6 +6594,66 @@
   "HE700R-64TB": {
     "n_observations": 2,
     "unit_cost": 164720.0
+  },
+  "HIKCENTRAL-SMARTWALL-BASE": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5576.43
+  },
+  "HM-TD2628-10/G1-T3A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9168.38
+  },
+  "HM-TD2628-7/G1/T3A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8655.8
+  },
+  "HM-TD2638-15/G1/T3Y": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 42516.61
+  },
+  "HM-TD2638-25/G0/T1Y": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 43851.89
+  },
+  "HM-TD2638-25/G1/T3Y": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 51448.1
+  },
+  "HM-TD2638-35/G1/T3Y": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 52712.38
+  },
+  "HM-TD4137-50/WY": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 90969.7
+  },
+  "HMO900-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2759.57
+  },
+  "HMO901-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2575.55
+  },
+  "HMX900-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3041.42
+  },
+  "HMX901-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2919.74
   },
   "HQP7-1": {
     "n_observations": 32,
@@ -3457,13 +6711,118 @@
     "n_observations": 19,
     "unit_cost": 5940.0
   },
+  "HRB901-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7359.69
+  },
+  "HRD900-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10426.73
+  },
+  "HRD901-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 20854.08
+  },
+  "HRK901-5-0-GB-02": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2146.13
+  },
+  "HRN900-5-0-GB-02": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1747.66
+  },
+  "HRN980-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1655.49
+  },
+  "HRR900-0-1-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1226.13
+  },
+  "HRT900-5-0-GB-01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3342.22
+  },
+  "HRW900-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1471.54
+  },
+  "HRW901-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1563.47
+  },
+  "HRW902-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1655.4
+  },
+  "HRW903-5-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1839.25
+  },
+  "HRW910-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1152.57
+  },
+  "HRW911-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1152.57
+  },
+  "HRX915-4-8-GB-00              Recommend in stock": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1545.0
+  },
+  "HRX916-4-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2575.0
+  },
+  "HRX917-4-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2575.0
+  },
+  "HRX918-4-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3862.5
+  },
   "HS-TF-L2/256G/P": {
     "n_observations": 1,
     "unit_cost": 531.58
   },
+  "HSP920-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 919.29
+  },
   "HST-SIPA1SM-00": {
     "n_observations": 138,
     "unit_cost": 13567.3
+  },
+  "HTB902-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 27944.67
+  },
+  "HTB903-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 27944.67
   },
   "HW-NW-KP-S1-AWH": {
     "n_observations": 23,
@@ -3541,6 +6900,126 @@
     "n_observations": 30,
     "unit_cost": 17.38
   },
+  "HikCentral-P-ACS-16Door/Base/Promo": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2880.53
+  },
+  "HikCentral-P-ACS-1Door": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 581.01
+  },
+  "HikCentral-P-ACS-2Door/Base/Promo": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2538.38
+  },
+  "HikCentral-P-ANPR-1Camera": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2312.43
+  },
+  "HikCentral-P-AcuSeek-1Ch/Advanced": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2429.92
+  },
+  "HikCentral-P-AcuSeek-1Ch/Real-time&Search": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1209.8
+  },
+  "HikCentral-P-AlarmPanel-1Unit": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 991.59
+  },
+  "HikCentral-P-BI Report-Module": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 14396.2
+  },
+  "HikCentral-P-DigitalSignage-1ch": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 867.65
+  },
+  "HikCentral-P-Elevator-Module": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 14367.8
+  },
+  "HikCentral-P-IndoorStation-1Unit": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 145.9
+  },
+  "HikCentral-P-MS-1 Unit": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1074.23
+  },
+  "HikCentral-P-MS-Base": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2890.86
+  },
+  "HikCentral-P-OutdoorStation-1Unit": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 664.94
+  },
+  "HikCentral-P-SMG-1Unit": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2312.43
+  },
+  "HikCentral-P-VER/HW1D/300": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 270741.57
+  },
+  "HikCentral-P-VER/HW1D/64": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 100202.73
+  },
+  "HikCentral-P-VSS-16Ch/Base/Promo": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9214.86
+  },
+  "HikCentral-P-VSS-1Ch": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 639.11
+  },
+  "HikCentral-P-VSS-1Ch/Radar": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2223.34
+  },
+  "HikCentral-P-VSS-300Ch/Base/Promo": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 128370.23
+  },
+  "HikCentral-P-VSS-64Ch/Base/Promo": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33368.2
+  },
+  "HikCentral-P-VSS-Base/0Ch": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 840.53
+  },
+  "HikCentral-P-Visitor-Module": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5732.66
+  },
   "IC-80": {
     "n_observations": 2,
     "unit_cost": 14269.57
@@ -3553,13 +7032,74 @@
     "n_observations": 8,
     "unit_cost": 2835.82
   },
+  "IDFACE/FP/M-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2955.12
+  },
+  "IDFACE/PLA/SUP-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 374.29
+  },
+  "IDFMAX/FP/M-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5890.97
+  },
   "IDS-2CD7A46G0/P-IZHS(SA)(8-32MM)(RSA)_C": {
     "n_observations": 2,
     "unit_cost": 7179.97
   },
+  "IDS-2CD7A46G2/P-IZHS(8-32MM)(O-STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8446.68
+  },
+  "IDS-2CD7A46G2/P-IZHSY 6-132MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12177.04
+  },
+  "IDS-7104HQHI-M1/S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 726.73
+  },
+  "IDS-7108HQHI-M1/S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1719.8
+  },
+  "IDS-7108HQHI-M1/T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1442.43
+  },
+  "IDS-7116HQHI-M1/T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2823.72
+  },
   "IDS-7208HQHI-M1/XT": {
-    "n_observations": 1,
-    "unit_cost": 1785.83
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1773.16
+  },
+  "IDS-7216HQHI-M2/XT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3701.19
+  },
+  "IDS-7232HQHI-M2/XT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5123.06
+  },
+  "IDS-7332HQHI-M4/S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10743.57
   },
   "IEC-C": {
     "last_updated": "2026-08-04",
@@ -3601,9 +7141,39 @@
     "n_observations": 8,
     "unit_cost": 5654.78
   },
+  "INT/KITZIP/IDFACE-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 193.17
+  },
+  "INT/KITZIP/IDUHF-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 680.53
+  },
+  "INT/SECBOXV2-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 757.45
+  },
+  "INTEL-SERVER-i7": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 39239.24
+  },
   "IPC-HFW3549T1-ZAS-PV": {
     "n_observations": 5,
     "unit_cost": 4380.45
+  },
+  "IPS900-0-0-GB-01": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1905.44
+  },
+  "IPS901-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2039.16
   },
   "IRB-1006-00": {
     "n_observations": 1,
@@ -3616,6 +7186,16 @@
   "IRED05": {
     "n_observations": 1,
     "unit_cost": 1349.55
+  },
+  "IS104GS-2F": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1696.15
+  },
+  "IS108GS-2F": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2383.54
   },
   "ISO-514AC": {
     "last_updated": "2026-08-04",
@@ -3698,6 +7278,51 @@
     "n_observations": 1,
     "unit_cost": 5874.0
   },
+  "IXPUAP935": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9625.0
+  },
+  "IXPUAP940": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24475.0
+  },
+  "IXPUAP945": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 39325.0
+  },
+  "IXPUP905": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1375.0
+  },
+  "IXPUP910": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2200.0
+  },
+  "IXPUP915": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3300.0
+  },
+  "IXPUP920": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3712.5
+  },
+  "IXPUP930": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4125.0
+  },
+  "IXPUP935": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4812.5
+  },
   "In-line Dimmer": {
     "n_observations": 199,
     "unit_cost": 2473.3
@@ -3705,6 +7330,11 @@
   "Install": {
     "n_observations": 3,
     "unit_cost": 24800.0
+  },
+  "Intel-Server": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 99175.95
   },
   "JK-01": {
     "n_observations": 3,
@@ -3883,9 +7513,55 @@
     "n_observations": 1,
     "unit_cost": 416.7
   },
+  "LFP-XTREME 100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3987.34
+  },
+  "LFP-XTREME 100-24": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12163.57
+  },
+  "LFP-XTREME 20": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1132.91
+  },
+  "LFP-XTREME 50": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2974.68
+  },
   "LFP-XTREME 8": {
-    "n_observations": 1,
-    "unit_cost": 518.75
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 505.06
+  },
+  "LIC/IDFACE/15K-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3427.85
+  },
+  "LIC/IDFACE/30K-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5876.32
+  },
+  "LIC/IDFACE/PRO-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2448.47
+  },
+  "LIC/IDFMAX/100K-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 15274.84
+  },
+  "LIC/IDFMAX/50K-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7337.91
   },
   "LINK10N/N1B": {
     "n_observations": 1,
@@ -3990,6 +7666,51 @@
     "n_observations": 2,
     "unit_cost": 19564.35
   },
+  "MAN/UHF/SUPORTE-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6223.34
+  },
+  "MARC Lite Complete": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4882.78
+  },
+  "MARC Lite Replacement Battery Pack": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1300.18
+  },
+  "MARC Mini Complete": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4360.16
+  },
+  "MARC Replacement Power supply": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 462.72
+  },
+  "MARC ViP-SP Complete": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7810.93
+  },
+  "MARC Wave Complete": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7810.93
+  },
+  "MARC Wide Complete": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7474.23
+  },
+  "MARC Wide Replacement Battery Pack": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1912.73
+  },
   "MC4-R": {
     "n_observations": 2,
     "unit_cost": 15495.65
@@ -4022,6 +7743,16 @@
     "n_observations": 1,
     "unit_cost": 6260.87
   },
+  "MID-SUB-T103": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 77.72
+  },
+  "MID-SUB-T103-ADD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 77.72
+  },
   "MISC": {
     "n_observations": 2,
     "unit_cost": 695.65
@@ -4033,6 +7764,26 @@
   "ML-ALP-1000W-57K": {
     "n_observations": 1,
     "unit_cost": 19727.83
+  },
+  "MLI901-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1758.56
+  },
+  "MLI902-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3678.08
+  },
+  "MLI903-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 7277.4
+  },
+  "MLI924-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1359.59
   },
   "MN893Z/A": {
     "n_observations": 12,
@@ -4163,6 +7914,106 @@
     "n_observations": 3,
     "unit_cost": 19635.82
   },
+  "MPB904-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1154.04
+  },
+  "MPB907-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1962.65
+  },
+  "MRB907-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 16996.32
+  },
+  "MRB918-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9272.06
+  },
+  "MRB921-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10050.22
+  },
+  "MRB925-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12755.51
+  },
+  "MRB927-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6743.24
+  },
+  "MRB929-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8527.03
+  },
+  "MRB948-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 59145.22
+  },
+  "MRB952-0-0-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 43007.35
+  },
+  "MRB957-0-0-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 27551.41
+  },
+  "MS-LPR-CAM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2125.0
+  },
+  "MW Complete Cover": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1913.32
+  },
+  "MW Mounting Bracket": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1667.61
+  },
+  "MW Mounting Bracket Black": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 702.05
+  },
+  "MW Pedestal": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2486.19
+  },
+  "MW Sunshield": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 625.44
+  },
+  "MW Tower": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5175.39
+  },
+  "MW Tower Adjustable": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5834.86
+  },
+  "MW Visor": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1027.05
+  },
   "MXN63QA/A": {
     "n_observations": 23,
     "unit_cost": 10173.04
@@ -4171,17 +8022,25 @@
     "n_observations": 52,
     "unit_cost": 9.9
   },
+  "Mecer Display 24": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2100.0
+  },
   "Mecer Display 32": {
-    "n_observations": 5,
-    "unit_cost": 2823.75
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2886.08
   },
   "Mecer Display 43": {
-    "n_observations": 2,
-    "unit_cost": 4875.0
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4708.86
   },
   "Mecer Display 55": {
-    "n_observations": 2,
-    "unit_cost": 8312.5
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8734.18
   },
   "Model S-15 L/R": {
     "n_observations": 1,
@@ -4245,6 +8104,11 @@
     "n_observations": 1161,
     "unit_cost": 6900.0
   },
+  "NTU900-0-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 73.0
+  },
   "NXLS2502-34-EU": {
     "n_observations": 1,
     "unit_cost": 15386.16
@@ -4264,6 +8128,16 @@
   "No 632": {
     "n_observations": 2,
     "unit_cost": 558782.61
+  },
+  "OCT-1000-12": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1924.72
+  },
+  "OCT-2000-24": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2340.51
   },
   "ODFS81SYS": {
     "n_observations": 9,
@@ -4312,6 +8186,11 @@
   "P100": {
     "n_observations": 1,
     "unit_cost": 231924.77
+  },
+  "P100B-100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11899.32
   },
   "P1LI58G512G11P": {
     "n_observations": 2,
@@ -4451,6 +8330,16 @@
     "n_observations": 1,
     "unit_cost": 35212.17
   },
+  "PHR903-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2053.56
+  },
+  "PHR904-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4499.81
+  },
   "PICO-WBX-ADAPT": {
     "n_observations": 32,
     "unit_cost": 140.87
@@ -4462,6 +8351,16 @@
   "PICTURESLIDE R75": {
     "n_observations": 1,
     "unit_cost": 15820.0
+  },
+  "PJK900-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2504.19
+  },
+  "PJR900-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1860.44
   },
   "PK2-2B-TBL-P02": {
     "n_observations": 2,
@@ -4498,6 +8397,16 @@
   "PLAYPR21BLK": {
     "n_observations": 1,
     "unit_cost": 6260.17
+  },
+  "PMK900-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2311.06
+  },
+  "PMR900-5-8-GB-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1667.31
   },
   "POE": {
     "last_updated": "2026-08-04",
@@ -4573,6 +8482,31 @@
     "n_observations": 10,
     "unit_cost": 9042.78
   },
+  "POS-TEXT-OL-16  with Hardware": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18253.16
+  },
+  "POS-TEXT-OL-32  with Hardware": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 26658.23
+  },
+  "POS-TEXT-OL-4 with Hardware": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9227.85
+  },
+  "POS-TEXT-OL-8 with Hardware": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 11550.63
+  },
+  "POW-302A": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 462.03
+  },
   "POW-D": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -4619,6 +8553,21 @@
     "n_observations": 1,
     "unit_cost": 68936.0
   },
+  "PS2010G": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1911.72
+  },
+  "PS3016GS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2787.92
+  },
+  "PS3024GS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3480.86
+  },
   "PS48-1": {
     "n_observations": 2,
     "unit_cost": 607.83
@@ -4630,6 +8579,16 @@
   "PS49-5": {
     "n_observations": 1,
     "unit_cost": 545.0
+  },
+  "PSE803": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 329.61
+  },
+  "PSE803BT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 539.37
   },
   "PSU-12V36W": {
     "last_updated": "2026-08-04",
@@ -4678,6 +8637,11 @@
   "PUC2530": {
     "n_observations": 1,
     "unit_cost": 3895.04
+  },
+  "PV-207": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 44.3
   },
   "PX3-PRO+LTS120AKA": {
     "n_observations": 1,
@@ -4827,6 +8791,11 @@
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
     "unit_cost": 3495.0
+  },
+  "R54270101(IMPRO)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4548.5
   },
   "R5AC-PRISMG2": {
     "last_updated": "2026-08-04",
@@ -5459,6 +9428,11 @@
     "n_observations": 79,
     "unit_cost": 12307.83
   },
+  "RFID/TAG/UHF-CID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 17.43
+  },
   "RG-EG105G": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -5659,6 +9633,21 @@
     "source": "scoop_pricelist",
     "unit_cost": 2325.0
   },
+  "RG59&P-E/100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 543.04
+  },
+  "RG59&P-E/300": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1595.94
+  },
+  "RG59&P-E/500": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2658.3
+  },
   "RJ-45": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -5786,6 +9775,36 @@
     "n_observations": 4,
     "unit_cost": 1090.43
   },
+  "RNS341": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 213.92
+  },
+  "RNS341SS-SS316L": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 301.0
+  },
+  "RNS342": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 196.75
+  },
+  "RNS342-SS316L": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 314.11
+  },
+  "RNS673": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 223.47
+  },
+  "RNS673-SS316L": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 329.41
+  },
   "ROCK11328B": {
     "n_observations": 13,
     "unit_cost": 18000.0
@@ -5837,6 +9856,11 @@
   "RZ-30": {
     "n_observations": 8,
     "unit_cost": 17738.61
+  },
+  "Reader-Adapter": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1016.77
   },
   "Roller 100 Soltis 86 Sheer 2800x2950": {
     "n_observations": 1,
@@ -6050,6 +10074,16 @@
     "n_observations": 4,
     "unit_cost": 52817.26
   },
+  "S5700-48GP-4TFR-700W": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12094.94
+  },
+  "SANDISK-SD-256GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1168.35
+  },
   "SANTHW10BG": {
     "n_observations": 1,
     "unit_cost": 26394.0
@@ -6186,6 +10220,26 @@
     "n_observations": 1,
     "unit_cost": 2634.0
   },
+  "SD-Sandisk-128GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 517.16
+  },
+  "SD-Sandisk-32GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 181.01
+  },
+  "SD-Sandisk-512GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2230.34
+  },
+  "SD-Sandisk-64GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 356.18
+  },
   "SDH-1000": {
     "n_observations": 14,
     "unit_cost": 7606.0
@@ -6197,6 +10251,16 @@
   "SDU-6000": {
     "n_observations": 3,
     "unit_cost": 32428.0
+  },
+  "SF310M-LC-500M": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 236.71
+  },
+  "SF312A-LC-10KM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 236.71
   },
   "SFP-AOC5": {
     "last_updated": "2026-08-04",
@@ -6273,6 +10337,36 @@
     "n_observations": 1,
     "unit_cost": 860.87
   },
+  "SIGMA Lite Complete Cover": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 750.0
+  },
+  "SIGMA Lite Mounting Bracket": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 490.26
+  },
+  "SIGMA Wide Complete Cover": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 878.56
+  },
+  "SIGMA Wide Mounting Bracket": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 645.98
+  },
+  "SIGNO-B-USB-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2672.52
+  },
+  "SIR128": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 51.92
+  },
   "SKL-1010-00": {
     "n_observations": 39,
     "unit_cost": 4787.4
@@ -6296,6 +10390,81 @@
   "SLIMMAX1M": {
     "n_observations": 1,
     "unit_cost": 234.26
+  },
+  "SLP935": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12031.25
+  },
+  "SLP940": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 30593.75
+  },
+  "SLP945": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 49156.25
+  },
+  "SLP950": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 67890.62
+  },
+  "SLP955": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 85937.5
+  },
+  "SLP960": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 104500.0
+  },
+  "SLP965": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 137500.0
+  },
+  "SLP970": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 192500.0
+  },
+  "SLPU940": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18562.5
+  },
+  "SLPU945": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18562.5
+  },
+  "SLPU950": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18734.38
+  },
+  "SLPU955": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18046.88
+  },
+  "SLPU960": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18562.5
+  },
+  "SLPU965": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33000.0
+  },
+  "SLPU970": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 55000.0
   },
   "SON-93124": {
     "n_observations": 16,
@@ -6379,6 +10548,31 @@
     "source": "scoop_pricelist",
     "unit_cost": 775.0
   },
+  "SS-03": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1187.5
+  },
+  "SS-07": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5000.0
+  },
+  "SS-08": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5000.0
+  },
+  "SS-21": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6250.0
+  },
+  "SS-22": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6250.0
+  },
   "SSC-0012-00": {
     "n_observations": 3,
     "unit_cost": 12516.52
@@ -6436,6 +10630,21 @@
     "n_observations": 1,
     "unit_cost": 35693.0
   },
+  "SUP-1 camera/2years upgrade": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 81.34
+  },
+  "SUP-1 camera/3years upgrade": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 123.95
+  },
+  "SUP-1camera/year upgrade": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 52.94
+  },
   "SUR55TB": {
     "n_observations": 7,
     "unit_cost": 20525.22
@@ -6487,6 +10696,16 @@
   "Single Col Poly Faceplate": {
     "n_observations": 89,
     "unit_cost": 365.22
+  },
+  "Solar Caddy-100S-BR": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8194.56
+  },
+  "SolarCaddy-200S-BR": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12025.32
   },
   "T18R": {
     "last_updated": "2026-08-04",
@@ -6607,6 +10826,46 @@
     "source": "scoop_pricelist",
     "unit_cost": 5.0
   },
+  "TKR900-1-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 27.81
+  },
+  "TKR901-1-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 43.07
+  },
+  "TKX900-1-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 23.45
+  },
+  "TLR900-1-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 24.89
+  },
+  "TMC911-4-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 74.52
+  },
+  "TMC914-4-0-NN-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 57.23
+  },
+  "TOC912-1-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18.15
+  },
+  "TOC913-1-0-NN": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 14.28
+  },
   "TOOL-CRIMP": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -6666,6 +10925,11 @@
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
     "unit_cost": 4995.0
+  },
+  "TRK900-1-1-GB": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 351.15
   },
   "TUB-AU": {
     "last_updated": "2026-08-04",
@@ -7354,6 +11618,31 @@
     "source": "scoop_pricelist",
     "unit_cost": 1450.0
   },
+  "ULT919-1-0-NN-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3144.41
+  },
+  "ULT920-1-0-NN-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 4342.28
+  },
+  "ULT936-1-0-NN-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1416.25
+  },
+  "ULT937-1-0-NN-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1416.25
+  },
+  "ULT938-1-0-NN-00": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2446.25
+  },
   "ULTE-PRO": {
     "n_observations": 1,
     "unit_cost": 5395.0
@@ -7919,6 +12208,16 @@
     "n_observations": 3,
     "unit_cost": 3375.0
   },
+  "UTP4/C5E/100": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 225.32
+  },
+  "UTP4/C5E/305": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 687.34
+  },
   "UTR": {
     "last_updated": "2026-08-04",
     "source": "scoop_pricelist",
@@ -8132,6 +12431,121 @@
     "n_observations": 35,
     "unit_cost": 15774.67
   },
+  "VAC2000HRF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6722.78
+  },
+  "VAC2000RF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 5638.61
+  },
+  "VAC2100PRF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 6181.01
+  },
+  "VAC2200HRF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 9433.54
+  },
+  "VAC5100RF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 12505.7
+  },
+  "VACC150": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 100.0
+  },
+  "VACC210": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1394.3
+  },
+  "VACC240": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3119.62
+  },
+  "VACC300": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 17.72
+  },
+  "VACC310": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 23.52
+  },
+  "VACC380": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 35.44
+  },
+  "VAVTAPP1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3101.27
+  },
+  "VBIOSEAL-VK1": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3101.27
+  },
+  "VBLC015": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1084.18
+  },
+  "VBLC015-K2": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1667.72
+  },
+  "VFOH02RF": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3681.65
+  },
+  "VFOH02SC": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3862.66
+  },
+  "VKL100S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 3325.95
+  },
+  "VL35LF-000-0000-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 13313.29
+  },
+  "VL35LF-001-0000-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 17549.33
+  },
+  "VL35LF-002-0000-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 21785.38
+  },
+  "VL70LF-000-0000-HID": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 18584.14
+  },
+  "VL70LF-002-0000-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 23004.15
+  },
   "VOSTRODT-SNS": {
     "n_observations": 1,
     "unit_cost": 11290.14
@@ -8139,6 +12553,21 @@
   "VSX935BMMP": {
     "n_observations": 1,
     "unit_cost": 12782.0
+  },
+  "VUNIS-INOUT": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 800.63
+  },
+  "VUNIS-PAYTRANS": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1200.63
+  },
+  "VUNIS-STD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2534.81
   },
   "VX62R": {
     "n_observations": 1,
@@ -8151,6 +12580,26 @@
   "VXQ88R": {
     "n_observations": 5,
     "unit_cost": 27083.48
+  },
+  "Verif (Embedded)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1743.75
+  },
+  "W60HAP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 950.91
+  },
+  "W618AP": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1258.55
+  },
+  "W668OHAP (OUTDOOR)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2573.03
   },
   "WAVE-AP": {
     "last_updated": "2026-08-04",
@@ -8305,12 +12754,14 @@
     "unit_cost": 4477.57
   },
   "WS-XL04-i5": {
-    "n_observations": 2,
-    "unit_cost": 20873.75
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 27100.0
   },
   "WS-XL04-i7": {
-    "n_observations": 2,
-    "unit_cost": 26150.0
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 30137.97
   },
   "X15B+": {
     "n_observations": 3,
@@ -8390,16 +12841,73 @@
     "unit_cost": 7115.33
   },
   "ZTP1203B": {
-    "n_observations": 1,
-    "unit_cost": 470.32
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 490.51
   },
   "ZTP1205B_C": {
-    "n_observations": 4,
-    "unit_cost": 604.06
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 621.96
   },
   "eZi-PSU-12V-5A": {
     "n_observations": 3,
     "unit_cost": 547.22
+  },
+  "iDS-2CD7A46G2/P-IZHS 2.8-12MM": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8139.34
+  },
+  "iDS-2CD7T46G2/VX3-IHSY(4/12/25mm)O-STD": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 10891.82
+  },
+  "iDS-6704NXI-S/T(STD)": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 23497.44
+  },
+  "iDS-6716NXI-M1/AF-2T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 47383.52
+  },
+  "iDS-6732NXI-M1/AF-2T": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 64616.35
+  },
+  "iDS-7116HQHI-M1/S": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 1978.62
+  },
+  "iDS-9632NXI-M8/X": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 33853.47
+  },
+  "iDS-TCM403-BI(G)/POE/1050": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 8318.61
+  },
+  "iDUHF-IMPRO": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 16616.62
+  },
+  "pStor-Picture Storage-Base": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 2880.53
+  },
+  "pStor-Video Storage-Base/1Ch": {
+    "last_updated": "2026-08-06",
+    "source": "sensor_pricelist",
+    "unit_cost": 818.58
   },
   "uControl Remote": {
     "n_observations": 1,

@@ -7133,10 +7133,6 @@
     "source": "scoop_pricelist",
     "unit_cost": 10.0
   },
-  "INSTALL": {
-    "n_observations": 2,
-    "unit_cost": 700.0
-  },
   "INT-IS-IR-WMP-1": {
     "n_observations": 8,
     "unit_cost": 5654.78
@@ -12849,10 +12845,6 @@
     "last_updated": "2026-08-06",
     "source": "sensor_pricelist",
     "unit_cost": 621.96
-  },
-  "eZi-PSU-12V-5A": {
-    "n_observations": 3,
-    "unit_cost": 547.22
   },
   "iDS-2CD7A46G2/P-IZHS 2.8-12MM": {
     "last_updated": "2026-08-06",

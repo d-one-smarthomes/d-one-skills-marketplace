@@ -1,94 +1,36 @@
-# D-One Module Sizing Rules
+# D-One Module & Sizing Rules (v2)
 
-**Core rule: hardware comes in fixed-capacity modules. Always round UP.**
+**Core rule: hardware comes in fixed-capacity modules / limited-capacity units. Always round UP.**
+These are implemented in `scripts/calculate_budget.py` (`derive()`), driven off the plan counts.
 
----
+## Lighting — Lutron HomeWorks
+- Dimming modules = `ceil(dimming_circuits / 4)` (LQSE-4A5, 4 channels)
+- Switch modules  = `ceil(switched_circuits / 4)` (LQSE-4S5, 4 channels)
+- DALI modules    = `ceil(dali_circuits / 2)` (LQSE-2DAL, 2 channels) + 1 terminal kit + 1 harness each
+- Link power supply = `ceil(total_modules / 21)`  *(calibrated to the reference; confirm real Lutron QS power-budget rule)*
+- Wire reels = `ceil(total_circuits × 10m / 304m reel)`
+- Keypad controllers (Savant, Mid) = `ceil(keypads / 10)` (SKL-1010-00 hosts 10 keypads)
 
-## 1. Lutron HomeWorks — Dimmer & Switch Modules
+## CCTV — Ubiquiti UniFi Protect
+- NVR count = `ceil(total_cameras / 4K-limit)` — official Ubiquiti 4K max: **UVC-NVR/UNVR = 18, UNVR-G2 = 30**
+- HDD count is a per-tier quantity (retention rule TBD)
 
-`modules_needed = ceil(circuits / channels_per_module)`
+## Network — Ubiquiti
+- PoE devices = APs (indoor+outdoor) + other PoE devices (cameras, intercoms, readers) from the plan
+- PoE switches (USW-…-48) = `ceil(PoE_devices × 1.5 / 48)`  — **+50% growth headroom**
+- Core switches (USW-…-24) = `max(1, ceil((all_devices × 1.5 − PoE_ports) / 24))`
+- DAC uplinks = 1 per switch = core + PoE switches
+- 5G modem = client tick-box (optional)
 
-| Module | Channels | Price | Round to |
-|--------|----------|-------|----------|
-| LQSE-4A5-230-D (dimmer) | 4 | R 24,261 | next multiple of 4 |
-| LQSE-4S5-230-D (switch) | 4 | R 10,000 | next multiple of 4 |
-| LQSE-2DALUNV-D (DALI) | 2 | R 34,870 | next multiple of 2 |
+## Audio — per zone
+- `audio_zones = ceil(speaker positions / 2)` (stereo pairs); each zone = speakers + amp + speaker point
+- Outdoor zones = Sonance Patio 4.1 checkbox, tier-independent
 
-```
-9 dimming circuits → ceil(9/4) = 3 modules → 12 channels (3 wasted)
-Cost: 3 × R24,261 = R72,783
-```
+## Access Control / System Integration
+- Access control: 1 network point per reader/viewer; hub excluded (rack)
+- SI: touch-panel & SmartControl quantities are client dropdowns; HVAC/Door/Lighting are checkboxes
 
-Power supplies: 1 per ~12 modules → `ceil(total_modules / 12)`
-
----
-
-## 2. CCTV — NVR Camera Capacity
-
-`nvrs = ceil(cameras / 15)` — UNVR-G2 handles max 15 cameras
-`hdds = ceil(cameras / 8)`  — 1 × 8TB HDD per 8 cameras (30-day retention)
-
----
-
-## 3. Network — Switch Port Sizing
-
-```
-poe_devices = aps_indoor + aps_outdoor + cameras
-poe_ports   = ceil(poe_devices × 1.2)   # 20% headroom
-poe_switches = ceil(poe_ports / 48)     # USW-MAX48P
-```
-Always add 1 × USW-MAX24 as core/aggregation switch.
-
----
-
-## 4. Audio — Stereo Zones
-
-Speakers always in stereo pairs. `audio_zones = ceil(speaker_icons / 2)`
-1 Sonos Amp per zone — no sharing.
-
----
-
-## 5. Lighting — Circuit Estimation from Keypads
-
-When electrical drawings aren't available:
-```
-dimming_circuits  = ceil(keypads × 2.5 / 4) × 4
-switched_circuits = ceil(keypads × 0.7 / 4) × 4
-dali_circuits     = keypads // 10
-```
-Based on De Klerk: 30 keypads → 79 dim + 22 sw + 2 DALI = 103 circuits.
-
----
-
-## 6. Lighting — Tier Scaling
-
-| Tier | Circuit scale | Keypad scale |
-|------|--------------|--------------|
-| Premium | 100% | 30 keypads |
-| Mid | ~75% | ~20 keypads |
-| Entry | ~50% | ~10 keypads |
-
----
-
-## Python Reference
-
-```python
-import math
-
-def modules_needed(circuits, channels_per_module):
-    if circuits <= 0: return 0
-    return math.ceil(circuits / channels_per_module)
-
-dim_modules  = modules_needed(dimming_circuits, 4)
-sw_modules   = modules_needed(switched_circuits, 4)
-dali_modules = modules_needed(dali_circuits, 2)
-ps_count     = math.ceil((dim_modules + sw_modules + dali_modules) / 12)
-
-nvr_count    = math.ceil(cameras / 15)
-hdd_count    = math.ceil(cameras / 8)
-
-poe_switches = math.ceil(math.ceil((aps + cameras) * 1.2) / 48)
-audio_zones  = math.ceil((ceiling_speakers + wall_speakers) / 2)
-```
-
-**Accuracy:** Using these rules, the calculator matches De Klerk actual WeQuote totals to within 0.2%.
+## Global
+- Network point per field device @ R1,650 (rack gear excluded)
+- Design + PM: 1h each per hardware unit @ R1,250 (accessory SKUs excluded — see `_design_pm_accessory_exclusions`)
+- Labour rates from the estimator rate card (R950 fix, R1,250 programming)

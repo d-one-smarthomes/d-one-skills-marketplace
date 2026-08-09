@@ -62,28 +62,18 @@ drawings, and budget numbers.
 
 ---
 
-## Step 3 — Build the images folder
+## Step 3 — Proposal images (hosted, hot-linked)
 
-Check `assets/images/` for any system photos organised into subfolders:
-```
-assets/images/
-├── cctv/
-├── access-control/
-├── network/
-├── audio/
-├── home-theatre/
-├── lighting/
-└── system-integration/
-```
+Each option card's photo is **hot-linked from a live image host**, not baked into the
+skill. The host mirrors D-One's image library at stable URLs:
 
-For each system, use up to 3 images (one per tier if available, otherwise the best available
-image for that system). Images will be embedded as base64 in the HTML so the page is
-fully self-contained. If no images exist for a system yet, show a branded placeholder with
-the D-One colour (#1379C9).
+    <base_url>/<system-slug>/<tier>.jpg
+    e.g. https://d-one-proposal-images.netlify.app/cctv/entry.jpg
 
-**Image format priority:** When multiple formats exist for the same tier (e.g. `entry.webp`,
-`entry.png`, `entry.jpg`), prefer in this order: `.webp` → `.png` → `.jpg`. The `.webp` and
-`.png` files are D-One's curated brand images; `.jpg` files are fallbacks.
+`base_url` lives in `config/image_host.json`. Because the proposal only references URLs,
+**changing a photo never touches this skill** — you replace the source file and re-publish
+the host (see "Where proposal images come from" below). If `base_url` is blank, generation
+falls back to the bundled base64 images in `assets/images/` (self-contained, offline-safe).
 
 ---
 
@@ -315,21 +305,48 @@ Example:
 
 ---
 
-## Adding photos over time
+## Where proposal images come from
 
-Photos are stored in `assets/images/[system]/`. To add photos for a system:
-1. Create the subfolder if it doesn't exist
-2. Drop images in (JPG or PNG, ideally under 500KB each for fast loading)
-3. Name them `entry.jpg`, `mid.jpg`, `premium.jpg` where possible
+**Option photos are hot-linked from a live image host** — the proposal HTML references
+URLs, so the images are decoupled from the skill entirely. Change a photo and every
+proposal (new *and* already-sent) updates; the skill is never edited or re-packaged.
 
-The skill will automatically pick them up on the next proposal generation. No other changes
-are needed.
+- **Host:** a dedicated Netlify site, `https://d-one-proposal-images.netlify.app`
+  (set in `config/image_host.json` > `base_url`).
+- **URL scheme:** `<base_url>/<system-slug>/<tier>.jpg`
+  (e.g. `.../lighting/premium.jpg`). System slugs: `cctv`, `access-control`, `network`,
+  `audio`, `home-theatre`, `lighting`, `system-integration`. Tiers: `entry|mid|premium`.
 
----
+### WHERE TO CHANGE THE PHOTOS  ← read this
 
-## Cover image auto-detection
+The single source of truth is the Google Drive folder:
 
-Place a `cover.png` (or any image file with "cover" in the name — `cover.jpg`, `cover.webp`, etc.) in the project output folder (the same folder as `index.html`) and it will be used automatically as the proposal cover image without needing to pass `--cover` on the command line. If `--cover` is passed explicitly it takes priority. If no cover image is found the proposal renders with a placeholder.
+    Claude Cowork / Images / Proposal skill images
+    (full path in config/image_host.json > "source_folder")
+
+organised as `<Category>/<System>/<Tier>/` with **exactly one image per Tier folder**
+(any format — jpg/png/webp — and any filename). To change a proposal photo:
+
+1. Drop the new image into the right `Category/System/Tier` folder, removing the old one
+   (keep one file per folder).
+2. Re-publish the host — on a machine that can see the Drive folder and reach Netlify
+   (i.e. the Mac): `python3 scripts/publish_images.py`
+   (or `--dry-run` to preview the mapping without deploying). This normalises every image
+   to `<system-slug>/<tier>.jpg` and pushes the whole folder to the host.
+
+That's it — no skill edit, no re-package, no reinstall. The `Category/System → slug`
+mapping lives in `config/image_host.json > slug_map`.
+
+### Resolution order in `generate.py`
+
+1. `DONE_PROPOSAL_IMAGE_BASE_URL` env var, if set.
+2. `config/image_host.json` > `base_url` (the default — hot-links the host).
+3. If `base_url` is blank/unset → falls back to a baked-in base64 image from the external
+   Drive folder (`config/image_source.json`) or the bundled `assets/images/` — the
+   self-contained, offline-safe path.
+
+The bundled `assets/images/` set is retained only as that offline fallback; the live host
+is the source everyone actually sees.
 
 ---
 
@@ -337,6 +354,12 @@ Place a `cover.png` (or any image file with "cover" in the name — `cover.jpg`,
 
 - All copy comes from `references/content.md` — keep it up to date as D-One's offering evolves
 - The Netlify token is in `config/netlify.json` — do not share the packaged skill file publicly
+- Proposal option photos are hot-linked from the live host (`config/image_host.json` >
+  `base_url`); the bundled `assets/images/` set is only an offline fallback used when
+  `base_url` is blank. See "Where proposal images come from" above
+- To change a photo: replace it in the Drive `source_folder` (one image per
+  `Category/System/Tier`), then run `python3 scripts/publish_images.py`. No skill edit or
+  reinstall needed — see "Where proposal images come from" above
 - If the component counting skill has been run on drawings, its output can be passed directly
   as the budget numbers for this skill
 - Budgets are shown as estimates, not fixed prices — the footer disclaimer handles this

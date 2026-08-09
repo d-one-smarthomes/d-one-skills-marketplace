@@ -14,7 +14,6 @@ import argparse
 import json
 
 SKILL_DIR  = os.path.join(os.path.dirname(__file__), '..')
-IMAGES_DIR = os.path.join(SKILL_DIR, 'assets', 'images')
 LOGO_PATH  = os.path.join(SKILL_DIR, 'assets', 'logo.png')
 
 SYSTEMS = [
@@ -105,30 +104,196 @@ def img_b64(path):
         data = base64.b64encode(f.read()).decode()
     return f"data:{mime};base64,{data}"
 
-def best_image(system_slug, tier_name):
-    """Return base64 data URI for the most recently modified image for this system+tier.
-    Matches exact filenames (entry.webp) AND prefixed variants (entry_clean.png, entry_trim.png).
-    Always picks the newest file by mtime so replacements just need a later timestamp.
+# ── IMAGE SOURCE ─────────────────────────────────────────────────────────
+#
+# Images are BAKED INTO this skill at assets/images/<system>/<tier>.<ext> —
+# that's what makes the skill self-contained: anyone who installs it gets
+# working proposals immediately, with zero path configuration.
+#
+# Darren also gets an optional live convenience on top of that: if
+# config/image_source.json points at a folder that actually exists on THIS
+# machine (his Google Drive sync), that folder is used instead — so he can
+# preview a new photo before running scripts/sync_images_from_drive.py to
+# bake it in for everyone else. On any other machine that path won't exist,
+# so this silently and correctly falls through to the bundled images —
+# no per-teammate configuration needed.
+#
+# Resolution order:
+#   1. DONE_PROPOSAL_IMAGES_ROOT env var, if set — must resolve, or error
+#      (explicit override always wins; mainly for testing)
+#   2. "images_root" in config/image_source.json, IF that path exists on
+#      this machine — Darren's live-preview convenience
+#   3. assets/images/ bundled in this skill — the reliable default
+#
+# Folder structure when using the EXTERNAL source (#1 or #2), matching
+# Darren's Drive folder:
+#   <root>/<Category>/<System>/<Tier>/<one image file>
+# Folder structure for the BUNDLED source (#3):
+#   assets/images/<system-slug>/<tier>.<ext>   e.g. assets/images/lighting/premium.jpeg
+#
+# See SKILL.md > "Where proposal images come from" and
+# scripts/sync_images_from_drive.py to update the bundled images later.
+IMAGE_SOURCE_CONFIG_PATH = os.path.join(SKILL_DIR, 'config', 'image_source.json')
+BUNDLED_IMAGES_DIR = os.path.join(SKILL_DIR, 'assets', 'images')
+
+# ── LIVE IMAGE HOST (hot-linked) ──────────────────────────────────────────────
+# Preferred source for the per-tier option photos: a hosted image site whose
+# URLs are stable, so the proposal HTML just points at them. To change a photo
+# you replace it in the Drive source folder and re-publish the host — this skill
+# is never edited. URL scheme: <base_url>/<system-slug>/<tier-lowercase>.jpg
+# Configured in config/image_host.json ("base_url"); env DONE_PROPOSAL_IMAGE_BASE_URL
+# overrides it; empty/unset falls back to the bundled base64 images below.
+IMAGE_HOST_CONFIG_PATH = os.path.join(SKILL_DIR, 'config', 'image_host.json')
+
+_image_base_url_cache = None  # None = not yet resolved; '' = explicitly none
+
+def _image_base_url():
+    global _image_base_url_cache
+    if _image_base_url_cache is not None:
+        return _image_base_url_cache
+    base = os.environ.get('DONE_PROPOSAL_IMAGE_BASE_URL')
+    if base is None and os.path.exists(IMAGE_HOST_CONFIG_PATH):
+        try:
+            with open(IMAGE_HOST_CONFIG_PATH, 'r', encoding='utf-8') as f:
+                base = (json.load(f) or {}).get('base_url')
+        except (json.JSONDecodeError, OSError):
+            base = None
+    _image_base_url_cache = (base or '').rstrip('/')
+    return _image_base_url_cache
+
+
+def image_src(system_slug, tier_name):
+    """Return the value for an option <img src>. Hot-links the live host when a
+    base_url is configured (the default); otherwise falls back to a baked-in
+    base64 data URI from the external Drive folder or bundled assets."""
+    base = _image_base_url()
+    if base:
+        return f"{base}/{system_slug}/{tier_name.lower()}.jpg"
+    return best_image(system_slug, tier_name)
+
+# system_slug -> (Category folder name, System folder name) as they exist
+# inside an EXTERNAL images root. These must match the shared Drive folder's
+# names exactly. Not used for the bundled source, which is flat per system.
+SYSTEM_FOLDER_MAP = {
+    'cctv':               ('Security',           'CCTV'),
+    'access-control':     ('Security',           'Access Control'),
+    'network':            ('IT',                 'Network & Wi-Fi'),
+    'audio':              ('Audio Visual',       'Audio'),
+    'home-theatre':       ('Audio Visual',       'Home Theatre'),
+    'lighting':           ('System Integration', 'Lighting Control'),
+    'system-integration': ('System Integration', 'System Integration'),
+}
+
+VALID_IMAGE_EXTS = {'webp', 'png', 'jpg', 'jpeg'}
+IGNORE_FILENAMES = {'.ds_store', 'thumbs.db', 'desktop.ini'}
+
+
+class ImageSlotError(RuntimeError):
+    """Raised when a Category/System/Tier image slot can't be resolved unambiguously.
+    This is intentionally fatal — guessing which image is meant is exactly the bug
+    this replaced, so any ambiguity or missing file stops generation with a clear,
+    actionable message instead of silently picking something.
     """
-    folder = os.path.join(IMAGES_DIR, system_slug)
-    tier_lower = tier_name.lower()
-    valid_exts = {'webp', 'png', 'jpg', 'jpeg'}
-    candidates = []
-    if os.path.exists(folder):
-        for fname in os.listdir(folder):
-            if '.' not in fname:
-                continue
-            stem, ext = fname.rsplit('.', 1)
-            if ext.lower() not in valid_exts:
-                continue
-            # Match exact tier name OR tier name as a prefix (e.g. entry_clean, entry_trim)
-            if stem.lower() == tier_lower or stem.lower().startswith(tier_lower + '_'):
-                fpath = os.path.join(folder, fname)
-                candidates.append((os.path.getmtime(fpath), fpath))
-    if candidates:
-        candidates.sort(reverse=True)  # newest first
-        return img_b64(candidates[0][1])
-    return None
+    pass
+
+
+_images_source_cache = None  # (root_path, mode) where mode is 'external' or 'bundled'
+
+def _resolve_images_source():
+    """Lazily decide whether to read from Darren's live external folder or the
+    bundled assets — not at import time, so any ImageSlotError raised here is
+    caught by the try/except around main() instead of crashing on import.
+    """
+    global _images_source_cache
+    if _images_source_cache is not None:
+        return _images_source_cache
+
+    env_override = os.environ.get('DONE_PROPOSAL_IMAGES_ROOT')
+    if env_override:
+        if not os.path.isdir(env_override):
+            raise ImageSlotError(
+                f"DONE_PROPOSAL_IMAGES_ROOT is set but not reachable:\n  {env_override}\n"
+                "Fix the path, or unset the variable to use the bundled images instead."
+            )
+        _images_source_cache = (env_override, 'external')
+        return _images_source_cache
+
+    if os.path.exists(IMAGE_SOURCE_CONFIG_PATH):
+        try:
+            with open(IMAGE_SOURCE_CONFIG_PATH, 'r', encoding='utf-8') as f:
+                cfg = json.load(f)
+            configured_root = cfg.get('images_root')
+        except (json.JSONDecodeError, OSError):
+            configured_root = None
+        if configured_root and os.path.isdir(configured_root):
+            _images_source_cache = (configured_root, 'external')
+            return _images_source_cache
+
+    # No env override, and no reachable configured folder on this machine —
+    # this is the expected path for anyone who isn't Darren.
+    _images_source_cache = (BUNDLED_IMAGES_DIR, 'bundled')
+    return _images_source_cache
+
+
+def _valid_image_files(folder):
+    return sorted(
+        fname for fname in os.listdir(folder)
+        if not fname.startswith('.')
+        and fname.lower() not in IGNORE_FILENAMES
+        and '.' in fname
+        and fname.rsplit('.', 1)[-1].lower() in VALID_IMAGE_EXTS
+    )
+
+
+def best_image(system_slug, tier_name):
+    """Resolve the image for a system+tier — see the IMAGE SOURCE comment above
+    for the bundled-vs-external resolution order.
+
+    Whichever source is used, exactly one image file must be found for the
+    slot. Raises ImageSlotError on anything else (missing folder, empty slot,
+    or more than one candidate) rather than guessing.
+    """
+    images_root, mode = _resolve_images_source()
+
+    if mode == 'external':
+        cat_label, sys_label = SYSTEM_FOLDER_MAP[system_slug]
+        folder = os.path.join(images_root, cat_label, sys_label, tier_name)
+        slot_desc = f"{system_slug} / {tier_name} (external source)"
+        fix_hint = (
+            "Expected structure: <Category>/<System>/<Tier>/<one image file>. "
+            "Create this folder and add one image, or fix the ambiguity below."
+        )
+    else:
+        folder = os.path.join(images_root, system_slug)
+        slot_desc = f"{system_slug} / {tier_name} (bundled source)"
+        fix_hint = (
+            "Expected exactly one file named like "
+            f"'{tier_name.lower()}.<ext>' in this folder. Run "
+            "scripts/sync_images_from_drive.py to re-bake images from the Drive folder, "
+            "or fix this folder directly."
+        )
+
+    if not os.path.isdir(folder):
+        raise ImageSlotError(f"No folder found for {slot_desc}:\n  {folder}\n{fix_hint}")
+
+    if mode == 'bundled':
+        tier_lower = tier_name.lower()
+        candidates = [
+            f for f in _valid_image_files(folder)
+            if f.rsplit('.', 1)[0].lower() == tier_lower
+        ]
+    else:
+        candidates = _valid_image_files(folder)
+
+    if len(candidates) == 0:
+        raise ImageSlotError(f"No image found for {slot_desc} in:\n  {folder}\n{fix_hint}")
+    if len(candidates) > 1:
+        raise ImageSlotError(
+            f"Ambiguous image slot for {slot_desc} — found {len(candidates)} files in:\n"
+            f"  {folder}\n  -> {', '.join(candidates)}\n{fix_hint}"
+        )
+
+    return img_b64(os.path.join(folder, candidates[0]))
 
 CONTENT = {
     'cctv': {
@@ -168,63 +333,6 @@ CONTENT = {
     },
 }
 
-def render_conduit_schedule(conduit_data):
-    """Render conduit JSON data as a styled HTML table section."""
-    project = conduit_data.get('project_name', 'Conduit Schedule')
-    sections_html = ''
-    for section in conduit_data.get('sections', []):
-        level = section.get('level', '')
-        areas_html = ''
-        for area in section.get('areas', []):
-            area_name = area.get('name', '')
-            rows_html = ''
-            for i, item in enumerate(area.get('items', [])):
-                bg = '#f4f6f9' if i % 2 == 0 else '#ffffff'
-                rows_html += f"""
-              <tr style="background:{bg};">
-                <td style="padding:8px 12px;font-size:12px;color:#1a1a2e;">{item.get('point','')}</td>
-                <td style="padding:8px 12px;font-size:12px;color:#1a1a2e;text-align:center;">{item.get('conduit','')}</td>
-                <td style="padding:8px 12px;font-size:12px;color:#1a1a2e;">{item.get('destination','')}</td>
-                <td style="padding:8px 12px;font-size:12px;color:#1a1a2e;">{item.get('cable','')}</td>
-                <td style="padding:8px 12px;font-size:12px;color:#1a1a2e;text-align:center;">{item.get('backbox','')}</td>
-                <td style="padding:8px 12px;font-size:12px;color:#1a1a2e;text-align:center;">{item.get('power','')}</td>
-              </tr>"""
-            areas_html += f"""
-            <tr>
-              <td colspan="6" style="padding:10px 12px;background:#2a5fa8;color:#fff;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">{area_name}</td>
-            </tr>
-            {rows_html}"""
-        sections_html += f"""
-          <tr>
-            <td colspan="6" style="padding:12px 16px;background:#1379C9;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">{level}</td>
-          </tr>
-          {areas_html}"""
-    return f"""
-  <div style="background:#fff;padding:48px 0 64px;">
-    <div style="max-width:1320px;margin:0 auto;padding:0 60px;">
-      <div style="background:#0a1628;color:#fff;padding:20px 28px;margin-bottom:0;">
-        <span style="font-family:sans-serif;font-size:14px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;">Conduit Schedule — For Electrician</span>
-        <span style="font-family:sans-serif;font-size:12px;opacity:0.6;margin-left:20px;">{project}</span>
-      </div>
-      <table style="width:100%;border-collapse:collapse;font-family:sans-serif;">
-        <thead>
-          <tr style="background:#0a1628;">
-            <th style="padding:10px 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:left;">Point</th>
-            <th style="padding:10px 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:center;">Conduit</th>
-            <th style="padding:10px 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:left;">Destination</th>
-            <th style="padding:10px 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:left;">Cable</th>
-            <th style="padding:10px 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:center;">Backbox</th>
-            <th style="padding:10px 12px;color:#fff;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:center;">Power</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sections_html}
-        </tbody>
-      </table>
-    </div>
-  </div>"""
-
-
 def make_zone_panel(system_slug, zones, per_unit_price, prompt, tiers_that_show):
     """
     Build the HTML for a zone/reader selector panel.
@@ -263,6 +371,66 @@ def make_zone_panel(system_slug, zones, per_unit_price, prompt, tiers_that_show)
         </div>'''
 
 
+def make_option_panel(system_slug, controls, prompt, tiers_that_show):
+    """
+    Build the HTML for a client-selectable OPTION panel (dropdowns + checkboxes)
+    that adds/subtracts from optionAdditions[system] live, mirroring the zone panel.
+
+    controls:        list of dicts, each either:
+        {'type': 'dropdown', 'label': str, 'unit': price, 'max': int, 'default': int}
+        {'type': 'checkbox', 'label': str, 'unit': price, 'checked': bool}
+    tiers_that_show: list of tier names that trigger this panel to show, e.g. ['Premium']
+    """
+    rows = ''
+    for c in controls:
+        unit = int(round(c.get('unit') or 0))
+        price_fmt = f"R {unit:,.0f}"
+        if c.get('type') == 'dropdown':
+            maxn    = int(c.get('max', 10))
+            default = int(c.get('default', 0))
+            opts = ''.join(
+                f'<option value="{i}"{" selected" if i == default else ""}>{i}</option>'
+                for i in range(0, maxn + 1)
+            )
+            rows += f'''
+              <label class="option-item">
+                <span class="option-name">{c['label']}</span>
+                <span class="option-controls">
+                  <select class="opt-select" data-system="{system_slug}" data-unit="{unit}"
+                          data-default="{default}" onchange="onOptionChange('{system_slug}')">
+                    {opts}
+                  </select>
+                  <span class="option-price">{price_fmt} each</span>
+                </span>
+              </label>'''
+        else:  # checkbox
+            checked = ' checked' if c.get('checked') else ''
+            rows += f'''
+              <label class="option-item option-item-cb">
+                <input type="checkbox" class="opt-cb" data-system="{system_slug}"
+                       data-unit="{unit}"{checked} onchange="onOptionChange('{system_slug}')">
+                <span class="option-name">{c['label']}</span>
+                <span class="option-price">+ {price_fmt}</span>
+              </label>'''
+    return f'''
+        <div class="zone-panel option-panel" id="option-panel-{system_slug}"
+             data-show-tiers="{json.dumps(tiers_that_show).replace('"', '&quot;')}"
+             style="display:none;">
+          <div class="zone-panel-header">
+            <span class="zone-prompt">{prompt}</span>
+            <span class="zone-subtext">Adjust to fine-tune your estimate</span>
+          </div>
+          <div class="option-grid">
+            {rows}
+          </div>
+          <div class="zone-summary">
+            <span class="zone-summary-label">Options total</span>
+            <span class="zone-summary-items"></span>
+            <span class="zone-summary-add" id="option-add-{system_slug}"></span>
+          </div>
+        </div>'''
+
+
 def format_budget(val):
     if val is None or val == 'TBD':
         return 'TBD'
@@ -271,48 +439,24 @@ def format_budget(val):
     return str(val)
 
 def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image_b64=None, plan_images_b64=None,
-                  audio_zones=None, zone_prices=None, conduit_html=None):
+                  audio_zones=None, zone_prices=None, options=None):
     """
     budgets:          dict like {'cctv': {'Entry': 45000, 'Mid': 85000, 'Premium': 150000}, ...}
     cover_image_b64:  base64 data URI for the project cover render (optional)
     plan_images_b64:  list of base64 data URIs for marked-up floor plans (optional)
     audio_zones:      list of (zone_id, zone_label) tuples for audio room checkboxes (default: DEFAULT_AUDIO_ZONES)
     zone_prices:      dict with per-unit prices e.g. {'audio': 8000, 'access-control': 25000}
+    options:          flat dict of per-unit OPTION prices (net ex-VAT), e.g. from
+                      proposal_budgets.json's "options" block:
+                      cctv_enhancer_each, network_5g_backup, audio_outdoor_zone,
+                      si_hvac_integration, si_door_integration, si_lighting_integration.
     """
     if audio_zones is None:
         audio_zones = DEFAULT_AUDIO_ZONES
     if zone_prices is None:
         zone_prices = DEFAULT_ZONE_PRICES.copy()
-
-    # Resolve audio zone price — support both a flat int (backwards-compatible)
-    # and a per-tier dict {"Entry": N, "Mid": N, "Premium": N} from wequote-budget.
-    _audio_price_raw = zone_prices.get('audio', DEFAULT_ZONE_PRICES['audio'])
-    if isinstance(_audio_price_raw, dict):
-        _audio_price_initial = _audio_price_raw.get('Entry', DEFAULT_ZONE_PRICES['audio'])
-        _audio_zone_prices_for_js = {k: int(v) for k, v in _audio_price_raw.items()}
-        audio_zone_js_extra = (
-            '\n    const AUDIO_ZONE_PRICES = ' + json.dumps(_audio_zone_prices_for_js) + ';'
-            '\n    function updateAudioZonePrices(tier) {'
-            "\n      const price = AUDIO_ZONE_PRICES[tier] || AUDIO_ZONE_PRICES['Entry'];"
-            "\n      document.querySelectorAll('#zone-panel-audio .zone-cb').forEach(cb => { cb.dataset.price = price; });"
-            "\n      document.querySelectorAll('#zone-panel-audio .zone-price').forEach(el => {"
-            "\n        el.textContent = '+ R ' + price.toLocaleString('en-US');"
-            '\n      });'
-            "\n      const subtext = document.querySelector('#zone-panel-audio .zone-subtext');"
-            "\n      if (subtext) subtext.textContent = 'Each adds R ' + price.toLocaleString('en-US') + ' to your estimate';"
-            '\n    }'
-        )
-        audio_zone_update_call = (
-            "\n          if (system === 'audio' && typeof updateAudioZonePrices === 'function')"
-            " { updateAudioZonePrices(tier); }"
-        )
-    else:
-        _audio_price_initial = (
-            int(_audio_price_raw) if isinstance(_audio_price_raw, (int, float))
-            else DEFAULT_ZONE_PRICES['audio']
-        )
-        audio_zone_js_extra = ''
-        audio_zone_update_call = ''
+    if options is None:
+        options = {}
 
     # Build per-system JS data
     system_data = {}
@@ -342,12 +486,19 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
 
     # ── FLOOR PLANS SECTION ──
     if plan_images_b64 and len(plan_images_b64) > 0:
-        # Stack vertically — one per row, full width
+        n = len(plan_images_b64)
+        # Adaptive column count: 1→1col, 2→2col, 3→3col, 4+→2col wrapping
+        if n == 1:
+            cols = '1fr'
+        elif n == 3:
+            cols = '1fr 1fr 1fr'
+        else:
+            cols = '1fr 1fr'
         plans_grid_items = ''.join(
             f'<div class="plan-item"><img src="{p}" class="plan-img" alt="Floor plan {i+1}"></div>'
             for i, p in enumerate(plan_images_b64)
         )
-        plans_grid = f'<div class="plans-grid" style="grid-template-columns:1fr">{plans_grid_items}</div>'
+        plans_grid = f'<div class="plans-grid" style="grid-template-columns:{cols}">{plans_grid_items}</div>'
     else:
         plans_grid = '''<div class="plans-grid plans-placeholder-grid">
           <div class="plan-placeholder">
@@ -364,9 +515,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           </div>
         </div>'''
 
-    design_banner = '''<div style="background:#0a1628;color:#fff;text-align:center;padding:32px 24px;font-size:1.4rem;letter-spacing:0.04em;font-style:italic;">&ldquo;Security, Wi-Fi and AV that disappears into the architecture.&rdquo;</div>'''
     plans_section = f'''
-      {design_banner}
       <section class="plans-section">
         <div class="cat-inner">
           <div class="eyebrow">Project Plans</div>
@@ -384,7 +533,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
             sys_label = next(l for s, l in SYSTEMS if s == sys_slug)
             tiers_html = []
             for tier in TIERS:
-                img_data = best_image(sys_slug, tier)
+                img_data = image_src(sys_slug, tier)
                 contain_class = ' opt-img-contain' if (
                     sys_slug == 'lighting' or
                     (sys_slug == 'access-control' and tier in ('Entry', 'Mid'))
@@ -413,23 +562,91 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
               </div>
             </div>''')
 
-            # Zone / reader panel for audio and access-control
+            # ── Zone panel (indoor audio rooms only). Access-control's facial-recognition
+            #    zone panel has been REPLACED by the access-control option dropdowns below. ──
             zone_panel_html = ''
             if sys_slug == 'audio':
                 zone_panel_html = make_zone_panel(
                     system_slug='audio',
                     zones=audio_zones,
-                    per_unit_price=_audio_price_initial,
+                    per_unit_price=zone_prices.get('audio', 8000),
                     prompt='Which rooms would you like audio in?',
                     tiers_that_show=['Entry', 'Mid', 'Premium'],
                 )
+
+            # ── Client-selectable OPTION panels (dropdowns + checkboxes) ──
+            option_panel_html = ''
+            if sys_slug == 'cctv':
+                option_panel_html = make_option_panel(
+                    system_slug='cctv',
+                    controls=[
+                        {'type': 'dropdown',
+                         'label': 'Camera enhancers (auto spotlight + radar + live speaker)',
+                         'unit': options.get('cctv_enhancer_each', 0),
+                         'max': 20, 'default': 0},
+                    ],
+                    prompt='Add active-deterrent camera enhancers',
+                    tiers_that_show=['Premium'],
+                )
+            elif sys_slug == 'network':
+                option_panel_html = make_option_panel(
+                    system_slug='network',
+                    controls=[
+                        {'type': 'checkbox',
+                         'label': '5G failover backup (keeps the home online if the main line drops)',
+                         'unit': options.get('network_5g_backup', 0),
+                         'checked': True},
+                    ],
+                    prompt='Connectivity resilience',
+                    tiers_that_show=['Entry', 'Mid', 'Premium'],
+                )
+            elif sys_slug == 'audio':
+                outdoor_unit = options.get('audio_outdoor_zone', 0)
+                option_panel_html = make_option_panel(
+                    system_slug='audio',
+                    controls=[
+                        {'type': 'checkbox', 'label': 'Garden',            'unit': outdoor_unit},
+                        {'type': 'checkbox', 'label': 'Patio / Braai area', 'unit': outdoor_unit},
+                        {'type': 'checkbox', 'label': 'Pool area',          'unit': outdoor_unit},
+                    ],
+                    prompt='Outdoor audio areas',
+                    tiers_that_show=['Entry', 'Mid', 'Premium'],
+                )
             elif sys_slug == 'access-control':
-                zone_panel_html = make_zone_panel(
+                # Per-door option prices: prefer dedicated option keys if present,
+                # else fall back to the access-control zone price, else 0 (still renders).
+                ac_intercom = options.get('access_intercom_each') or zone_prices.get('access-control', 0) or 0
+                ac_reader   = options.get('access_reader_each')   or zone_prices.get('access-control', 0) or 0
+                option_panel_html = make_option_panel(
                     system_slug='access-control',
-                    zones=ACCESS_CONTROL_READERS,
-                    per_unit_price=zone_prices.get('access-control', 25000),
-                    prompt='Which entry points need facial recognition readers?',
-                    tiers_that_show=['Mid', 'Premium'],
+                    controls=[
+                        {'type': 'dropdown', 'label': 'Doors with a video intercom',
+                         'unit': ac_intercom, 'max': 8, 'default': 0},
+                        {'type': 'dropdown', 'label': 'Doors with a tag/keypad reader',
+                         'unit': ac_reader, 'max': 8, 'default': 0},
+                    ],
+                    prompt='Access points',
+                    tiers_that_show=['Entry', 'Mid', 'Premium'],
+                )
+            elif sys_slug == 'system-integration':
+                option_panel_html = make_option_panel(
+                    system_slug='system-integration',
+                    controls=[
+                        {'type': 'checkbox', 'label': 'HVAC Integration',
+                         'unit': options.get('si_hvac_integration', 0)},
+                        {'type': 'checkbox', 'label': 'Door Integration',
+                         'unit': options.get('si_door_integration', 0)},
+                        {'type': 'checkbox', 'label': 'Lighting Integration',
+                         'unit': options.get('si_lighting_integration', 0)},
+                        # TODO: touch-panel and SmartControl per-unit prices are not yet in the
+                        #       options JSON — defaulting to 0 so the controls still render.
+                        {'type': 'dropdown', 'label': 'Number of touch panels',
+                         'unit': options.get('si_touch_panel_each', 0), 'max': 10, 'default': 0},
+                        {'type': 'dropdown', 'label': 'Number of SmartControl processors',
+                         'unit': options.get('si_smartcontrol_each', 0), 'max': 10, 'default': 0},
+                    ],
+                    prompt='System integration options',
+                    tiers_that_show=['Entry', 'Mid', 'Premium'],
                 )
 
             systems_html.append(f'''
@@ -442,6 +659,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
             {"".join(tiers_html)}
           </div>
           {zone_panel_html}
+          {option_panel_html}
         </div>''')
 
         category_sections.append(f'''
@@ -495,8 +713,6 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           <p class="summary-disclaimer">Estimates are indicative. Final pricing subject to detailed design and scope.</p>
         </div>
       </section>'''
-
-    conduit_section_html = conduit_html if conduit_html else ''
 
     nav_logo = f'<img src="{logo_b64}" class="nav-logo" alt="D-One">' if logo_b64 else '<span style="color:var(--gold);font-family:var(--f-serif);font-size:18px;">D-One</span>'
     cover_logo = f'<img src="{logo_b64}" class="cover-logo" alt="D-One">' if logo_b64 else ''
@@ -563,7 +779,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       background: rgba(184,148,74,0.04);
     }}
     .cover-img {{
-      width: 100%; height: auto; object-fit: contain; display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block;
     }}
     .cover-img-placeholder {{
       width: 100%; height: 100%;
@@ -972,6 +1188,60 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       color: var(--gold-lt); white-space: nowrap;
     }}
 
+    /* ── OPTION PANELS (dropdowns + checkboxes) ── */
+    .option-grid {{
+      display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;
+    }}
+    .option-item {{
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 16px;
+      background: rgba(184,148,74,0.03);
+      border: 1px solid rgba(184,148,74,0.1);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }}
+    .option-item:hover {{
+      border-color: rgba(184,148,74,0.3);
+      background: rgba(184,148,74,0.08);
+    }}
+    .option-item:has(.opt-cb:checked) {{
+      border-color: var(--gold);
+      background: rgba(184,148,74,0.12);
+    }}
+    .option-name {{
+      font-family: var(--f-sans); font-size: 13px; font-weight: 300;
+      color: var(--white); line-height: 1.3; flex: 1;
+    }}
+    .option-controls {{
+      display: flex; align-items: center; gap: 12px;
+    }}
+    .option-price {{
+      font-family: var(--f-sans); font-size: 11px; font-weight: 300;
+      color: rgba(184,148,74,0.55); letter-spacing: 0.04em; white-space: nowrap;
+    }}
+    .opt-select {{
+      font-family: var(--f-sans); font-size: 13px; color: var(--white);
+      background: var(--dark); border: 1px solid rgba(184,148,74,0.35);
+      border-radius: 3px; padding: 6px 10px; cursor: pointer; min-width: 64px;
+    }}
+    .opt-select:focus {{ outline: none; border-color: var(--gold); }}
+    .option-item-cb .opt-cb {{
+      appearance: none; -webkit-appearance: none;
+      width: 16px; height: 16px;
+      border: 1.5px solid rgba(184,148,74,0.35);
+      border-radius: 3px; background: transparent; cursor: pointer;
+      position: relative; flex-shrink: 0;
+      transition: background 0.15s, border-color 0.15s;
+    }}
+    .option-item-cb .opt-cb:checked {{
+      background: var(--gold); border-color: var(--gold);
+    }}
+    .option-item-cb .opt-cb:checked::after {{
+      content: '✓'; font-size: 10px; color: #17140F; font-weight: 700;
+      position: absolute; top: -1px; left: 2px;
+    }}
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {{
       .opt-grid {{ grid-template-columns: 1fr 1fr 1fr 0.35fr; }}
@@ -1072,18 +1342,17 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
     {footer_logo}
   </footer>
 
-  {conduit_section_html}
-
   <script>
     const SYSTEM_BUDGETS = {system_js};
     const CAT_SYSTEMS    = {cat_js};
     const CAT_NAMES      = {json.dumps({cat_id: cat_name for cat_id, cat_name, _ in CATEGORIES})};
-{audio_zone_js_extra}
 
     // Track tier selections per system: system -> {{ tier, budget }}
     const selections = {{}};
     // Track zone/reader additions per system: system -> total added cost
     const zoneAdditions = {{}};
+    // Track option-control additions per system (dropdowns + checkboxes): system -> total added cost
+    const optionAdditions = {{}};
 
     function selectOption(el) {{
       const system = el.dataset.system;
@@ -1096,6 +1365,27 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
 
       // Store tier selection
       selections[system] = {{ tier, budget }};
+
+      // Handle option panel visibility (dropdowns + checkboxes).
+      // Done BEFORE the zone panel block because that block can return early,
+      // and some systems (audio) have BOTH a zone panel and an option panel.
+      const optPanel = document.getElementById(`option-panel-${{system}}`);
+      if (optPanel) {{
+        const optShowTiers = JSON.parse(optPanel.dataset.showTiers || '[]');
+        if (tier === 'none' || !optShowTiers.includes(tier)) {{
+          // Hide panel, reset controls to their defaults, and clear option costs
+          optPanel.style.display = 'none';
+          optPanel.querySelectorAll('.opt-select').forEach(s => {{ s.value = s.dataset.default || '0'; }});
+          optPanel.querySelectorAll('.opt-cb').forEach(cb => {{ cb.checked = cb.defaultChecked; }});
+          optionAdditions[system] = 0;
+          const optAddEl = document.getElementById(`option-add-${{system}}`);
+          if (optAddEl) optAddEl.textContent = '';
+        }} else {{
+          // Show panel and recompute from current control states (incl. default-on checkboxes)
+          optPanel.style.display = 'block';
+          onOptionChange(system);
+        }}
+      }}
 
       // Handle zone panel visibility
       const panel = document.getElementById(`zone-panel-${{system}}`);
@@ -1111,7 +1401,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           if (itemsEl) itemsEl.textContent = '—';
           if (addEl)   addEl.textContent = '';
         }} else {{
-          panel.style.display = 'block';{audio_zone_update_call}
+          panel.style.display = 'block';
           // Recalculate in case it was previously populated
           onZoneChange(system);
           return; // onZoneChange will call updateCategoryBudget
@@ -1158,6 +1448,42 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       refreshCategoryForSystem(system);
     }}
 
+    function onOptionChange(system) {{
+      const panel = document.getElementById(`option-panel-${{system}}`);
+      if (!panel || panel.style.display === 'none') {{
+        optionAdditions[system] = 0;
+        refreshCategoryForSystem(system);
+        return;
+      }}
+
+      let total = 0;
+      // Dropdown (quantity) controls: qty * unit
+      panel.querySelectorAll('.opt-select').forEach(sel => {{
+        const qty  = parseInt(sel.value) || 0;
+        const unit = parseInt(sel.dataset.unit) || 0;
+        total += qty * unit;
+      }});
+      // Checkbox controls: fixed unit when checked
+      panel.querySelectorAll('.opt-cb').forEach(cb => {{
+        if (cb.checked) total += parseInt(cb.dataset.unit) || 0;
+      }});
+
+      optionAdditions[system] = total;
+
+      // Update option summary line
+      const addEl = document.getElementById(`option-add-${{system}}`);
+      if (addEl) {{
+        if (total > 0) {{
+          const fmt = new Intl.NumberFormat('en-ZA', {{style:'currency',currency:'ZAR',maximumFractionDigits:0}}).format(total);
+          addEl.textContent = `+ ${{fmt}}`;
+        }} else {{
+          addEl.textContent = '';
+        }}
+      }}
+
+      refreshCategoryForSystem(system);
+    }}
+
     function refreshCategoryForSystem(system) {{
       for (const [catId, systems] of Object.entries(CAT_SYSTEMS)) {{
         if (systems.includes(system)) {{
@@ -1182,6 +1508,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           }}
           total += sel.budget;
           total += zoneAdditions[sys] || 0;
+          total += optionAdditions[sys] || 0;
           if (sel.budget === 0) hasTbd = true;
           tierNames.push(sel.tier);
         }}
@@ -1265,7 +1592,6 @@ def main():
     parser.add_argument('--plans', default=None,
                         help='Comma-separated list of floor plan image paths to embed as project plans')
     parser.add_argument('--cover', default=None, help='Path to cover image')
-    parser.add_argument('--conduit', default=None, help='Path to conduit JSON file')
     args = parser.parse_args()
 
     # ── Load from proposal_budgets.json if provided (output of budget-analyzer) ──
@@ -1310,6 +1636,11 @@ def main():
     else:
         zone_prices = json.loads(args.zone_prices) if args.zone_prices else None
 
+    # Options — per-unit OPTION prices from proposal_budgets.json's "options" block
+    options = {}
+    if budgets_file_data and budgets_file_data.get('options'):
+        options = budgets_file_data['options']
+
     # Floor plans — load each image from the comma-separated paths
     plan_images_b64 = None
     if args.plans:
@@ -1322,40 +1653,16 @@ def main():
         if missing:
             print(f"Warning: plan files not found: {missing}")
 
-    # Cover image — explicit path, or auto-detect from output folder
-    cover_path = None
-    if args.cover:
-        cover_path = args.cover
-    else:
-        output_dir = os.path.abspath(args.output)
-        cover_exts = {'png', 'jpg', 'jpeg', 'webp'}
-        if os.path.isdir(output_dir):
-            for fname in sorted(os.listdir(output_dir)):
-                stem, _, ext = fname.rpartition('.')
-                if ext.lower() not in cover_exts:
-                    continue
-                if stem.lower() == 'cover' or 'cover' in fname.lower():
-                    cover_path = os.path.join(output_dir, fname)
-                    break
-    cover_image_b64 = img_b64(cover_path) if cover_path and os.path.exists(cover_path) else None
+    # Cover image
+    cover_image_b64 = img_b64(args.cover) if args.cover and os.path.exists(args.cover) else None
     if cover_image_b64:
-        print(f"Loaded cover image: {cover_path}")
+        print(f"Loaded cover image: {args.cover}")
 
     logo_b64 = img_b64(LOGO_PATH)
 
-    # Load conduit schedule if provided
-    conduit_html = None
-    if args.conduit and os.path.exists(args.conduit):
-        with open(args.conduit, 'r', encoding='utf-8') as f:
-            conduit_data = json.load(f)
-        conduit_html = render_conduit_schedule(conduit_data)
-        print(f"Loaded conduit schedule: {args.conduit}")
-    elif args.conduit:
-        print(f"Warning: conduit file not found: {args.conduit}")
-
     html = generate_html(args.client, args.project, budgets, logo_b64=logo_b64, cover_image_b64=cover_image_b64,
                          plan_images_b64=plan_images_b64,
-                         audio_zones=audio_zones, zone_prices=zone_prices, conduit_html=conduit_html)
+                         audio_zones=audio_zones, zone_prices=zone_prices, options=options)
 
     os.makedirs(args.output, exist_ok=True)
     out_path = os.path.join(args.output, 'index.html')
@@ -1367,4 +1674,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except ImageSlotError as e:
+        print(f"\nImage lookup failed — generation stopped:\n\n{e}\n", file=sys.stderr)
+        sys.exit(1)

@@ -1,0 +1,14 @@
+{
+  "_comment": "Live image host for proposal option photos. When 'base_url' is set, generate.py HOT-LINKS each option image as <base_url>/<system-slug>/<tier>.jpg instead of baking a bundled copy in. To CHANGE a photo you do NOT touch this skill: replace the image in the Google Drive source folder and re-publish the host (see SKILL.md > 'Where proposal images come from'). Set base_url to an empty string to fall back to the bundled/base64 images.",
+  "base_url": "https://d-one-proposal-images.netlify.app",
+  "source_folder": "/Users/darrenswanepoel/Library/CloudStorage/GoogleDrive-darren@d-one.co.za/My Drive/Claude Cowork/Images/Proposal skill images",
+  "slug_map": {
+    "cctv": "Security/CCTV",
+    "access-control": "Security/Access Control",
+    "network": "IT/Network & Wi-Fi",
+    "audio": "Audio Visual/Audio",
+    "home-theatre": "Audio Visual/Home Theatre",
+    "lighting": "System Integration/Lighting Control",
+    "system-integration": "System Integration/System Integration"
+  }
+}

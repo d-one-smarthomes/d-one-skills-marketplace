@@ -1,254 +1,102 @@
 ---
 name: wequote-budget
 description: >
-  Build accurate Entry/Mid/Premium budgets for D-One proposals — from floorplan icon counts,
-  a WeQuote URL, or manual project quantities. Use whenever the user says "price out this project",
+  Build accurate Entry/Mid/Premium budgets for D-One proposals — from floorplan quantities,
+  a WeQuote URL, or manual project counts. Use whenever the user says "price out this project",
   "build budgets from the floorplan", "generate budgets for the proposal", "what would this cost",
   "analyze the WeQuote", or shares a WeQuote link. Also trigger immediately after a floorplan-icons
   or floorplan-takeoff run when the user asks about cost, budget, or pricing. Outputs
-  proposal_budgets.json ready to pass directly into the d-one-proposal skill. The calculator
-  accounts for module-based hardware (Lutron 4-channel dimmer modules, NVR camera limits, switch
-  port capacity) so circuit counts are always rounded to whole modules — this is what makes
-  estimates accurate rather than just multiplying per-unit rates.
+  proposal_budgets.json ready to pass directly into the d-one-proposal skill. Prices resolve LIVE
+  from the estimator inventory (D-One's maintained pricelists), and hardware is module-aware
+  (Lutron 4-ch modules, NVR camera limits, switch port capacity, keypad controllers) so quantities
+  round to whole modules — accurate, not just per-unit multiplication.
 ---
 
-# D-One Budget Builder
+# D-One Budget Builder (v2 — live-priced, data-driven)
 
-Generates Entry/Mid/Premium budgets for all D-One systems, calibrated against
-WeQuote REF:0011 (House De Klerk, Hermanus — 2026). Understands module-based hardware
-so estimates are accurate, not just linear extrapolations.
+Generates Entry/Mid/Premium budgets for all seven D-One systems. Every component price is
+resolved **live** from the estimator skill's inventory (which D-One keeps current from the
+supplier pricelists), so budgets track real pricing automatically. Tier make-up and client
+options live in data; the calculator applies module rules, labour, design and PM.
 
-**Read first:** `references/unit_prices.md` — every component price and labour rate.
-**Read for module rules:** `references/module_rules.md` — how quantities drive module counts.
-**Reference data:** `data/deklerk_reference.json` — the full De Klerk baseline.
-
----
-
-## Three input modes
-
-| Mode | When | Command |
-|------|------|---------|
-| **Icon counts** | After floorplan-icons / floorplan-takeoff | `--icons icon_counts.json` |
-| **Manual spec** | User provides quantities | `--spec project_spec.json` |
-| **WeQuote URL** | Live quote exists in WeQuote | Extract via Claude in Chrome (see below) |
+**Key files:**
+- `data/tier_definitions.json` — every module → tier → components (by SKU), driver quantities, client options, and labour rules. This is the single source of truth for what's in each tier.
+- `data/price_overrides.json` — manual price pins for SKUs not yet in the estimator inventory (e.g. Planet World / Homemation items, the R1,650 network point, the R3,000 network cab-con, the R200 patch lead, the R1,200 speaker point). Prefer adding real SKUs to the estimator inventory over pinning here.
+- `scripts/price_resolver.py` — locates the estimator `inventory.csv` at runtime and resolves ex-VAT price by SKU (overrides first, then inventory). Also exposes the rate card and per-category labour hours.
+- `scripts/calculate_budget.py` — the engine. Reads the two data files, computes every module/tier, writes `proposal_budgets.json`.
 
 ---
 
-## Mode 1 — From Floorplan Icon Counts ✓ recommended
+## Run it
 
-After annotating a floorplan with icons, count every icon type and pass the counts directly
-to the calculator. The script maps icons to hardware components and applies all module rules.
-
-### Get the counts
-
-If you have a floorplan PDF with icons already placed, run floorplan-takeoff:
-> "Count the components on this floorplan and give me a JSON of icon counts"
-
-Or read the counts directly from the floorplan-takeoff output Excel.
-
-Build a JSON dict:
-```json
-{
-  "cctv_dome": 4,
-  "cctv_bullet": 6,
-  "wireless_access_point": 12,
-  "ceiling_speaker": 14,
-  "wall_speaker": 4,
-  "light_switch_keypad": 28,
-  "touch_panel": 3,
-  "facial_recognition_reader": 2,
-  "intercom_door_station": 2,
-  "intercom_receiver_panel": 4,
-  "motion_sensor": 5,
-  "tv": 4,
-  "network_point": 8
-}
-```
-
-Save to `/tmp/[project]_icons.json` and run:
+Reference (calibration) quantities:
 ```bash
-python3 <SKILL_DIR>/scripts/calculate_budget.py \
-  --icons /tmp/[project]_icons.json \
-  --output /Users/darrenswanepoel/Downloads/budget-[project]/
+python3 <SKILL_DIR>/scripts/calculate_budget.py --output /Users/darrenswanepoel/Downloads/budget-[project]/ --verbose
 ```
 
-The script prints derived quantities (how many dimming circuits it estimated, AP split, etc.)
-and all tier totals. Review the estimation notes — if dimming circuit count seems off,
-switch to Mode 2 with a manual spec to override it.
-
-### Icon → spec mapping (what the script does automatically)
-
-| Icon | Maps to |
-|------|---------|
-| `cctv_dome` + `cctv_bullet` | `cctv_cameras` total |
-| `cctv_bullet` × 0.5 | `cctv_poles` estimate |
-| `wireless_access_point` × 0.85 | `aps_indoor` |
-| `wireless_access_point` × 0.15 | `aps_outdoor` |
-| `ceiling_speaker` ÷ 2 | `audio_zones` (stereo pairs always) |
-| `wall_speaker` ÷ 2 | added to `audio_zones` |
-| `light_switch_keypad` | `keypads` + drives circuit estimates |
-| `touch_panel` | `touch_panels` |
-| `facial_recognition_reader` or `intercom_door_station` (max) | `door_stations` |
-| `motion_sensor` | `motion_sensors` |
-
-### Lighting circuits from keypads
-
-Dimming circuits aren't shown as icons — they come from the electrical drawing.
-The script estimates from keypad count (De Klerk ratio: 30 keypads → 79 dim + 22 sw):
-
-- `dimming_circuits` = keypads × 2.5 → rounded UP to next multiple of 4
-- `switched_circuits` = keypads × 0.7 → rounded UP to next multiple of 4
-- `dali_circuits` = keypads ÷ 10
-
-When electrical drawings are available, use Mode 2 with exact circuit counts instead.
-
----
-
-## Mode 2 — Manual Project Spec
-
-Build a spec JSON with exact quantities. Use this when you have electrical drawings,
-a project brief with circuit counts, or want to override the icon-based estimates.
-
-```json
-{
-  "_source": "Project Name — client brief",
-  "cctv_cameras": 8,
-  "cctv_poles": 4,
-  "aps_indoor": 10,
-  "aps_outdoor": 2,
-  "dimming_circuits": 79,
-  "switched_circuits": 22,
-  "dali_circuits": 2,
-  "keypads": 30,
-  "motion_sensors": 5,
-  "audio_zones": 1,
-  "door_stations": 1,
-  "touch_panels": 3
-}
-```
-
+Real project — pass counts read off the plan (per module), overriding tier defaults:
 ```bash
-python3 <SKILL_DIR>/scripts/calculate_budget.py \
-  --spec /tmp/[project]_spec.json \
-  --output /Users/darrenswanepoel/Downloads/budget-[project]/ \
-  --verbose
+python3 <SKILL_DIR>/scripts/calculate_budget.py --spec /tmp/[project]_spec.json --output /Users/darrenswanepoel/Downloads/budget-[project]/
 ```
 
-`--verbose` prints the per-system module breakdown (dimming modules, switch count, etc.)
-so you can sanity-check the hardware assumptions.
-
----
-
-## Mode 3 — From WeQuote URL
-
-WeQuote is client-rendered (Vue/React) — cannot be read with web_fetch. Requires
-**Claude in Chrome** to be connected.
-
-If not connected: ask the user to install the Claude in Chrome extension and sign in.
-
-### Extraction steps
-
-1. Navigate to the WeQuote URL via `mcp__Claude_in_Chrome__navigate`
-2. Wait for page title = "WeQuote - Proposal"
-3. Extract the Project Summary (net totals per system) and Options blocks (tier deltas)
-
-```javascript
-// Get project summary
-const allText = document.body.innerText;
-const summaryIdx = allText.indexOf('Project Summary');
-allText.substring(summaryIdx, summaryIdx + 3000)
-```
-
-```javascript
-// Get CCTV options
-const cctvIdx = allText.indexOf('Options\nCCTV\nEntry');
-allText.substring(cctvIdx, cctvIdx + 500)
-```
-
-Work section by section. For each system collect:
-- `base_total_incvat`: the "Total Cost" line (inc VAT)
-- `base_tier`: which tier is "Included"
-- `option_deltas`: {tier: delta_incvat} — negative = cheaper than Included tier
-
-```python
-# Calculate tier totals (inc VAT)
-premium_incvat = base_total_incvat                    # if Premium is Included
-mid_incvat     = premium_incvat + mid_delta           # delta is negative
-entry_incvat   = premium_incvat + entry_delta         # delta is negative
-
-# Convert to net ex-VAT for proposal_budgets.json
-net = round(incvat / 1.15)
-```
-
-Build `proposal_budgets.json` manually from the extracted totals (see format below)
-and save to `/Users/darrenswanepoel/Downloads/budget-[project]/`.
-
----
-
-## Output format — proposal_budgets.json
-
-This is what the d-one-proposal skill reads:
-
+`--spec` is `{ "<module>": { "<driver>": <count>, ... }, ... }`. Only the drivers you pass are
+overridden; the rest fall back to the tier defaults. Example:
 ```json
 {
-  "tier_budgets": {
-    "cctv":               {"Entry": 143770, "Mid": 285777, "Premium": 337491},
-    "access-control":     {"Entry": 41857,  "Mid": 46704,  "Premium": 228799},
-    "network":            {"Entry": 127330, "Mid": 153009, "Premium": 259331},
-    "audio":              {"Entry": 34822,  "Mid": 46244,  "Premium": 65614},
-    "home-theatre":       {"Entry": 389217, "Mid": 572524, "Premium": 822609},
-    "lighting":           {"Entry": 823645, "Mid": 1001828,"Premium": 1335523},
-    "system-integration": {"Entry": 80970,  "Mid": 172970, "Premium": 261274}
-  },
-  "zone_prices": {
-    "cctv": 37273,
-    "access-control": 57675,
-    "network": 14224,
-    "audio": 65614,
-    "lighting": 13248,
-    "system-integration": 80970
-  }
+  "cctv": { "cctv_building_cameras": 12, "cctv_perimeter_cameras": 10, "cctv_poles": 6 },
+  "lighting": { "dimming_circuits": 100, "switched_circuits": 30, "dali_circuits": 4, "keypads": 34, "motion_sensors": 18 },
+  "network": { "aps_indoor": 16, "aps_outdoor": 4, "poe_devices_other": 24, "non_poe_devices": 10 },
+  "audio": { "audio_zones": 6, "outdoor_audio_zones": 2 }
 }
 ```
 
-All values are **net ex-VAT** in ZAR. The proposal skill displays them as "From R X".
+Output `proposal_budgets.json` → `{ tier_budgets: {module: {Entry,Mid,Premium}}, options: {...} }`,
+all net ex-VAT. Pass it straight to the d-one-proposal skill.
 
 ---
 
-## Pass budgets to the proposal skill
+## The seven modules
 
-Once `proposal_budgets.json` is saved:
-
-> "Make a proposal for [Client], use the budget file at /Users/darrenswanepoel/Downloads/budget-[project]/proposal_budgets.json"
-
----
-
-## Reference data (De Klerk baseline)
-
-All unit prices and module rules are in:
-- `references/unit_prices.md` — every component price and labour rate used in the calculator
-- `references/module_rules.md` — how quantities drive module counts (the key accuracy rules)
-- `data/deklerk_reference.json` — full tier totals and option deltas from WeQuote REF:0011
-
-The De Klerk project (Hermanus, 2026) is the calibration source for all pricing. When
-adding new quotes, update these files so the skill improves over time.
+| Module | Driver quantities (from plan) | Notes |
+|--------|------------------------------|-------|
+| **cctv** | building cameras, perimeter cameras, poles | NVR count = ceil(total cameras / 4K limit: UVC-NVR 18, UNVR-G2 30). Enhancer is a client dropdown (per perimeter camera). |
+| **access-control** | door intercoms, tag readers, viewers | Per-device labour (1h fix1 + 2h fix2 + 1h prog). Premium = Verso + 2N tag readers, client-selectable doors. |
+| **network** | APs indoor/outdoor, other PoE devices, non-PoE devices | PoE switches ceil(PoE×1.5/48); core ceil(remaining×1.5/24); DAC per switch; 5G modem is a client tick-box. |
+| **audio** | audio_zones, outdoor_audio_zones | Priced per zone (room selector). Outdoor = Sonance Patio 4.1 checkbox, tier-independent. |
+| **home-theatre** | ht_rooms (fixed build per tier) | Entry 5.1 TV room, Mid 5.1.2 Atmos, Premium full 7.2.4 Trinnov cinema (Barco Heimdall+, Stewart screen, room treatment). Carries a joinery/integration design allowance. |
+| **lighting** | dimming/switched/DALI circuits, keypads, sensors | Modules round up (dim/sw ceil/4, DALI ceil/2); PS ceil(modules/21); wire ceil(circuits×10/304). Entry = switch interfaces, Mid = Savant Ascend keypads, Premium = Lutron Alisse. |
+| **system-integration** | system, touch_panels, smart_controls | Entry S12 host (no touch panels), Mid Pro Host + touch panels, Premium + SmartControl 14. HVAC/Door/Lighting integration are client checkboxes. Touch-panel & SmartControl quantities are dropdowns. |
 
 ---
 
-## Changelog
+## Global rules (apply to every module)
 
-**2026-07-14 — two calculator bugs fixed (found on the Monterey project):**
+- **Network points:** every field device (camera, reader, viewer, AP, sensor, touch panel) gets one network point at **R1,650** all-in (cable + materials + labour). Rack-mounted gear (NVR, hub, switches, hosts) is EXCLUDED — patched inside the rack.
+- **Design:** 1 hour per HARDWARE unit at **R1,250/hr** (home-theatre adds a fixed joinery/integration design allowance on top).
+- **Project management:** 1 hour per HARDWARE unit at **R1,250/hr**.
+- **Design/PM exclusions:** cabling accessories don't attract design/PM — see `_design_pm_accessory_exclusions` (network/speaker points, patch leads, DAC leads, cab-con, engraving, keypad base units, speaker cable).
+- **Labour rates** come from the estimator rate card (`fix1`/`fix2` R950/hr, `programming` R1,250/hr) so they update centrally.
 
-1. **Access Control wasn't tiering.** `calc_access_control()` accepted a `tier` argument
-   but never used it — every tier priced off the same flat 2N IP One rate, so Entry/Mid/
-   Premium always came out identical. Now each tier uses a distinct door station model
-   (2N IP Base / IP One / IP Verso + touch reader). See `references/unit_prices.md`.
-2. **Audio card showed the whole property's total before any room was selected.** The
-   option card was priced from `calc_audio(audio_zones, tier)` using the *full* zone
-   count from the takeoff, so merely picking a tier — before ticking anything in the
-   "which rooms would you like audio in?" panel — added the entire multi-zone total to
-   the budget. The card now prices a single reference zone (`calc_audio(1, tier)`); the
-   room-selection panel is what grows the real total as rooms are picked. The full
-   all-zones total is still available in `--verbose` detail output for internal use.
+---
 
-Both fixes are marked `BUGFIX` inline in `scripts/calculate_budget.py`.
+## Client options (rendered by the d-one-proposal skill)
+
+Carried in `tier_definitions.json` as `client_option` blocks / module `client_options`, and summarised in `proposal_budgets.json → options`:
+- CCTV perimeter enhancers — dropdown (0 → perimeter cameras)
+- Network 5G failover — tick-box
+- Audio rooms — room selector; outdoor audio areas — checkboxes
+- Access Control intercom doors / tag-reader doors — dropdowns
+- System Integration HVAC / Door / Lighting — checkboxes; touch-panel & SmartControl quantities — dropdowns
+
+---
+
+## Maintaining prices
+
+Prices live in the **estimator** skill's `inventory.csv` (kept current from the supplier
+pricelists in the repo). When a supplier price changes, update it there and every budget
+follows automatically. Only pin in `price_overrides.json` when a SKU isn't in the estimator
+inventory yet; when it's added upstream, remove the pin so it goes fully live.
+
+Planet World (Integra + M&K) and Homemation (Barco) items were added via
+`planet_world_inventory_additions.csv` — append those rows to the estimator inventory to make
+them fully live and drop the corresponding overrides.

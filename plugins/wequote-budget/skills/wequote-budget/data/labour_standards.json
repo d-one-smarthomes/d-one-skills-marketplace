@@ -1,0 +1,337 @@
+{
+  "_purpose": "D-One labour standards for the wequote skill. Installation + programming are per-component hours (by labour category); design and project management are percentages. Replaces all previously hardcoded (De Klerk) labour.",
+  "_confirmed_with_darren": "2026-08-10 \u2014 per-component hours from public benchmarks + D-One history; design 10%; PM 12.5%; SI host programming fixed per tier; home cinema on the flat 10% design (no extra joinery allowance).",
+  "_sources": {
+    "authoritative": "NSCA Labor Installation Standard 2022 (nsca.org) \u2014 trade standard for hours per device. Paid; recommended upgrade for exact figures.",
+    "camera_cabling": "IPVM 'Estimating IP Camera Cabling Costs' \u2014 0.008 h/ft cable pull; ~2 h/camera all-in.",
+    "phase_percentages": "Zigaflow \u2014 programming 15-25% of install labour; PM 10-15% of total labour; rack 4-8 h/12U.",
+    "d_one_history": "estimator labour_hours_by_category.json \u2014 D-One's own historical hours (primary source, corroborated against the benchmarks)."
+  },
+  "_reconciliation_note": "Structured cable drops are priced separately as NETWORK_POINT (R1,650 all-in incl. cabling labour). Per-device install hours below are mount + terminate only; device install + network point together ~ the 2 h/camera public benchmark.",
+  "design_pct_of_equipment_plus_install": 0.1,
+  "project_management_pct_of_total_labour": 0.125,
+  "_pct_basis": "Design = 10% of (non-accessory equipment + installation labour). PM = 12.5% of (installation + programming + design). Accessories excluded (labour already in their price).",
+  "si_host_programming_fixed_zar": {
+    "_note": "System-integration host programming is fixed project-level engineering (confirmed with Darren 2026-08-10). Overrides per-component programming for the system-integration module.",
+    "Entry": 37500,
+    "Mid": 90000,
+    "Premium": 112500
+  },
+  "lighting_labour": {
+    "_note": "Lighting per circuit (1 circuit = 1 DALI driver / dimmable / switched load). Keypads and switch interfaces costed per unit.",
+    "install_hours_per_circuit": 1,
+    "programming_hours_per_circuit": 1,
+    "keypad_install_hours": 1,
+    "keypad_programming_hours": 4,
+    "switch_interface_install_hours": 1
+  },
+  "dali_rule": {
+    "drivers_per_module": 128,
+    "_note": "Lutron LQSE-2DALUNV-D = 2 DALI loops x 64 drivers = 128 drivers/module (per datasheet). A circuit = one DALI driver. dali_modules = ceil(dali_circuits / 128)."
+  },
+  "role_to_category_rules": [
+    [
+      "equipment cabinet",
+      "Racks"
+    ],
+    [
+      "cabinet",
+      "Racks"
+    ],
+    [
+      "perimeter camera",
+      "Perimeter CCTV"
+    ],
+    [
+      "building camera",
+      "CCTV Cameras"
+    ],
+    [
+      "camera pole",
+      "Camera Pole"
+    ],
+    [
+      "camera",
+      "CCTV Cameras"
+    ],
+    [
+      "recorder",
+      "NVR & HE Equipment"
+    ],
+    [
+      "internal monitor",
+      "Indoor Video Station"
+    ],
+    [
+      "monitor",
+      "Display/Monitor"
+    ],
+    [
+      "video door station",
+      "IP Video Door Stations"
+    ],
+    [
+      "door intercom",
+      "IP Video Door Stations"
+    ],
+    [
+      "door station",
+      "IP Video Door Stations"
+    ],
+    [
+      "intercom",
+      "IP Video Door Stations"
+    ],
+    [
+      "tag reader",
+      "External Access Control Panels"
+    ],
+    [
+      "access reader",
+      "External Access Control Panels"
+    ],
+    [
+      "access door hub",
+      "Access Control Panels"
+    ],
+    [
+      "5g",
+      "Network & WiFi System"
+    ],
+    [
+      "core switch",
+      "Network Switching"
+    ],
+    [
+      "poe switch",
+      "Network Switching"
+    ],
+    [
+      "router",
+      "Network Router"
+    ],
+    [
+      "outdoor ap",
+      "Access Points"
+    ],
+    [
+      "indoor ap",
+      "Access Points"
+    ],
+    [
+      "access point",
+      "Access Points"
+    ],
+    [
+      "power amplifier",
+      "Power Amplifier"
+    ],
+    [
+      "subwoofer amplifier",
+      "Power Amplifier"
+    ],
+    [
+      "outdoor amplifier",
+      "Amplifiers & Audio Matrix"
+    ],
+    [
+      "amplifier",
+      "Amplifiers & Audio Matrix"
+    ],
+    [
+      "front lcr",
+      "HT Speakers"
+    ],
+    [
+      "surround",
+      "HT Speakers"
+    ],
+    [
+      "atmos",
+      "HT Speakers"
+    ],
+    [
+      "rear",
+      "HT Speakers"
+    ],
+    [
+      "outdoor speakers",
+      "Audio Speakers"
+    ],
+    [
+      "reference subwoofer",
+      "Subwoofer"
+    ],
+    [
+      "subwoofer",
+      "Subwoofer"
+    ],
+    [
+      "speakers",
+      "Audio Speakers"
+    ],
+    [
+      "av receiver",
+      "AVR"
+    ],
+    [
+      "processor",
+      "Processor"
+    ],
+    [
+      "projector",
+      "Projector"
+    ],
+    [
+      "screen",
+      "Screen"
+    ],
+    [
+      "motion sensor",
+      "Motion Sensors"
+    ],
+    [
+      "touch panel",
+      "In-Wall Touch Panels"
+    ],
+    [
+      "keypad controller",
+      "Controllers"
+    ],
+    [
+      "keypad",
+      "Keypads"
+    ],
+    [
+      "switch interface",
+      "Keypads"
+    ],
+    [
+      "host",
+      "Control Host"
+    ],
+    [
+      "smartcontrol",
+      "Controllers"
+    ],
+    [
+      "smart control",
+      "Controllers"
+    ]
+  ],
+  "category_hours": {
+    "_note": "Whole-hour install + programming per device (Darren 2026-08-10). Lighting handled per-circuit; SI programming is the fixed per-tier figure.",
+    "CCTV Cameras": {
+      "install": 1,
+      "programming": 1
+    },
+    "Perimeter CCTV": {
+      "install": 2,
+      "programming": 2
+    },
+    "NVR & HE Equipment": {
+      "install": 2,
+      "programming": 4
+    },
+    "Display/Monitor": {
+      "install": 1,
+      "programming": 0
+    },
+    "Camera Pole": {
+      "install": 2,
+      "programming": 0
+    },
+    "IP Video Door Stations": {
+      "install": 2,
+      "programming": 2
+    },
+    "Indoor Video Station": {
+      "install": 1,
+      "programming": 1
+    },
+    "External Access Control Panels": {
+      "install": 1,
+      "programming": 1
+    },
+    "Access Control Panels": {
+      "install": 2,
+      "programming": 2
+    },
+    "Network Router": {
+      "install": 1,
+      "programming": 4
+    },
+    "Network Switching": {
+      "install": 1,
+      "programming": 1
+    },
+    "Network & WiFi System": {
+      "install": 1,
+      "programming": 2
+    },
+    "Access Points": {
+      "install": 1,
+      "programming": 1
+    },
+    "Audio Speakers": {
+      "install": 4,
+      "programming": 0
+    },
+    "Amplifiers & Audio Matrix": {
+      "install": 1,
+      "programming": 2
+    },
+    "HT Speakers": {
+      "install": 2,
+      "programming": 0
+    },
+    "Subwoofer": {
+      "install": 1,
+      "programming": 0
+    },
+    "AVR": {
+      "install": 4,
+      "programming": 4
+    },
+    "Processor": {
+      "install": 4,
+      "programming": 8
+    },
+    "Power Amplifier": {
+      "install": 2,
+      "programming": 1
+    },
+    "Projector": {
+      "install": 4,
+      "programming": 4
+    },
+    "Screen": {
+      "install": 3,
+      "programming": 0
+    },
+    "In-Wall Touch Panels": {
+      "install": 1,
+      "programming": 1
+    },
+    "Controllers": {
+      "install": 1,
+      "programming": 2
+    },
+    "Control Host": {
+      "install": 2,
+      "programming": 0
+    },
+    "Keypads": {
+      "install": 1,
+      "programming": 4
+    },
+    "Motion Sensors": {
+      "install": 1,
+      "programming": 1
+    },
+    "Racks": {
+      "install": 6,
+      "programming": 0
+    }
+  }
+}

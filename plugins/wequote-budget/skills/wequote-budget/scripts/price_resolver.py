@@ -38,6 +38,7 @@ _SEARCH_ROOTS = [
 _INVENTORY_NAME = "inventory.csv"
 _RATE_CARD_NAME = "rate_card.json"
 _LABOUR_CAT_NAME = "labour_hours_by_category.json"
+_EQUIP_COST_NAME = "equip_cost_by_sku.json"
 
 
 def _find_file(filename, must_contain="estimator"):
@@ -73,6 +74,8 @@ class PriceResolver:
         self.skill_dir = Path(skill_dir) if skill_dir else Path(__file__).resolve().parent.parent
         self._inventory = {}          # SKU(upper) -> {price, name, category, updated}
         self._overrides = {}          # SKU(upper) -> price
+        self._pricelist = {}          # SKU(upper) -> {sales, cost, desc}  (PRIMARY source)
+        self._equip_cost = {}         # SKU(upper) -> {unit_cost}
         self._rate_card = {}
         self._labour_cat = {}
         self._missing = set()
@@ -88,6 +91,30 @@ class PriceResolver:
                 raw = json.load(f)
             self._overrides = {k.strip().upper(): float(v)
                                for k, v in raw.items() if not k.startswith("_")}
+
+        # Primary local pricelist (Darren's uploaded default pricelist), if present.
+        # Carries matched Sales Price (retail) + Cost per SKU, so markups are consistent.
+        pl = self.skill_dir / "data" / "pricelist.csv"
+        if pl.exists():
+            with open(pl, newline="") as f:
+                for row in csv.DictReader(f):
+                    sku = (row.get("sku") or "").strip()
+                    if not sku:
+                        continue
+                    def _f(x):
+                        try:
+                            return float(x)
+                        except (TypeError, ValueError):
+                            return None
+                    self._pricelist[sku.upper()] = {"sales": _f(row.get("sales_price")),
+                                                    "cost": _f(row.get("cost")),
+                                                    "desc": row.get("description", "")}
+
+        ec = _find_file(_EQUIP_COST_NAME)
+        if ec:
+            with open(ec) as f:
+                raw = json.load(f)
+            self._equip_cost = {k.upper(): v for k, v in raw.items()}
 
         inv_path = _find_file(_INVENTORY_NAME)
         self._inventory_path = inv_path
@@ -126,9 +153,12 @@ class PriceResolver:
     def price(self, sku, required=True):
         """Return ex-VAT ZAR price for a SKU. None (or raise) if unknown."""
         key = sku.strip().upper()
-        # Estimator inventory (the current pricelist) ALWAYS wins. Overrides are
-        # a fallback only for SKUs not yet in the estimator inventory, so a stored
-        # pin can never shadow the live pricelist.
+        # Priority: (1) Darren's default pricelist (Sales Price), (2) estimator
+        # inventory, (3) local override. Pricelist wins so the uploaded default
+        # pricing is authoritative until live links replace it.
+        pl = self._pricelist.get(key)
+        if pl and pl.get("sales") is not None:
+            return pl["sales"]
         rec = self._inventory.get(key)
         if rec:
             return rec["price"]
@@ -141,6 +171,37 @@ class PriceResolver:
                 f"Add it to the estimator inventory.csv or to data/price_overrides.json."
             )
         return None
+
+    def cost(self, sku):
+        """Ex-VAT cost for a SKU: pricelist Cost first, then equip_cost history."""
+        key = sku.strip().upper()
+        pl = self._pricelist.get(key)
+        if pl and pl.get("cost") is not None:
+            return pl["cost"]
+        ec = self._equip_cost.get(key)
+        if ec and ec.get("unit_cost"):
+            return ec["unit_cost"]
+        return None
+
+    def matched_cost(self, sku):
+        """Cost ONLY when the SKU has BOTH a Sales price and a Cost in the uploaded
+        pricelist — i.e. a genuine matched pair. Returns None otherwise, so a margin
+        is never shown from mismatched sources."""
+        pl = self._pricelist.get(sku.strip().upper())
+        if pl and pl.get("sales") is not None and pl.get("cost") is not None:
+            return pl["cost"]
+        return None
+
+    def price_source(self, sku):
+        key = sku.strip().upper()
+        pl = self._pricelist.get(key)
+        if pl and pl.get("sales") is not None:
+            return "pricelist"
+        if key in self._inventory:
+            return "inventory"
+        if key in self._overrides:
+            return "override"
+        return "missing"
 
     def info(self, sku):
         return self._inventory.get(sku.strip().upper())

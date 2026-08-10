@@ -1,7 +1,6 @@
 {
   "_note": "D-One wequote-budget tier definitions. Prices resolve live from the estimator inventory by SKU (see scripts/price_resolver.py). Built module by module, tier by tier, with Darren.",
-  "_reference_quote": "House De Klerk / raw quote lines supplied 2026-08",
-  "_network_point_rule": "Every field device (camera, reader/intercom, viewer, etc.) gets one network point at R1,650 all-in (cable + materials + labour, see price_overrides.json). Rack-mounted gear (NVR, access hub, switches) is EXCLUDED — it patches directly inside the rack, so no structured drop.",
+  "_network_point_rule": "Every field device (camera, reader/intercom, viewer, etc.) gets one network point at R1,650 all-in (cable + materials + labour, see price_overrides.json). Rack-mounted gear (NVR, access hub, switches) is EXCLUDED \u2014 it patches directly inside the rack, so no structured drop.",
   "_design_labour_rule": "Every module carries a design labour line = 1 hour per HARDWARE unit at R1,250/hr. Hardware = equipment/devices only; EXCLUDES cabling accessories (NETWORK_POINT, SPEAKER_POINT, CAT6-PATCH-0.5M-HQ, UACC-DAC-0.5M, NET-CABCON-ALLOWANCE, CABCON). Applied on top of each tier's install/programming labour.",
   "_project_management_rule": "Every module also carries a project-management labour line = 1 hour per HARDWARE unit at R1,250/hr (same basis and exclusions as design). Applied on top of install/programming/design labour.",
   "_design_pm_accessory_exclusions": [
@@ -17,15 +16,16 @@
     "PDT-ED-1",
     "PDW-ED-1",
     "WFB-BRENGV-00",
-    "HW-QS-B-S1"
+    "HW-QS-B-S1",
+    "RACK-CABCON"
   ],
   "cctv": {
     "label": "CCTV",
     "category_group": "Security",
     "pricing": "live",
     "drivers": {
-      "cctv_building_cameras": "Cameras on / aimed at the building (standard G6 Bullet). From floorplan.",
-      "cctv_perimeter_cameras": "Higher-quality Pro AI varifocal cameras watching the property boundary. From floorplan.",
+      "cctv_building_cameras": "Cameras on/against the building (standard G6). From the plan.",
+      "cctv_perimeter_cameras": "Cameras on the boundary / away from the building (Pro). DEFAULT from plan position \u2014 see camera_classification_rule.",
       "cctv_poles": "Buried camera poles for perimeter mounting. Actual count from plan.",
       "nvr_count": "Recorders. Confirmed per project (reference used 1). Sizing rule TBD.",
       "hdd_count": "Surveillance drives. Confirmed per project (reference used 1). Retention/sizing rule TBD."
@@ -96,7 +96,7 @@
         }
       },
       "Mid": {
-        "blurb": "Everything in the building-camera layer, extended to the property boundary. Mid adds Pro AI varifocal cameras around the perimeter, so you're not just watching the building — you're monitoring the boundary line and getting early warning before anyone reaches the house. The perimeter cameras bring sharper, adjustable-zoom optics and smarter on-camera AI detection, day or night, while the building cameras keep eyes on the structure and entrances. Every camera, building and perimeter, can be viewed securely from anywhere in the world.",
+        "blurb": "Everything in the building-camera layer, extended to the property boundary. Mid adds Pro AI varifocal cameras around the perimeter, so you're not just watching the building \u2014 you're monitoring the boundary line and getting early warning before anyone reaches the house. The perimeter cameras bring sharper, adjustable-zoom optics and smarter on-camera AI detection, day or night, while the building cameras keep eyes on the structure and entrances. Every camera, building and perimeter, can be viewed securely from anywhere in the world.",
         "quantities": {
           "cctv_building_cameras": 8,
           "cctv_perimeter_cameras": 8,
@@ -169,7 +169,7 @@
         }
       },
       "Premium": {
-        "blurb": "Everything in the Mid layer, with the perimeter turned into an active, real-time deterrent. Each perimeter camera gains a long-range enhancer combining extended infrared, an automatic spotlight, radar detection, and a built-in speaker. When someone crosses the boundary the system responds in the moment rather than simply recording it: the spotlight triggers automatically to light up the trespasser, radar detects movement far more accurately and at greater range with fewer false alarms, and off-site monitoring can speak to the site live through the camera — issuing a warning and actively deterring a would-be intruder there and then, instead of waiting for armed response to arrive. Every camera, building and perimeter, stays viewable securely from anywhere in the world.",
+        "blurb": "Everything in the Mid layer, with the perimeter turned into an active, real-time deterrent. Each perimeter camera gains a long-range enhancer combining extended infrared, an automatic spotlight, radar detection, and a built-in speaker. When someone crosses the boundary the system responds in the moment rather than simply recording it: the spotlight triggers automatically to light up the trespasser, radar detects movement far more accurately and at greater range with fewer false alarms, and off-site monitoring can speak to the site live through the camera \u2014 issuing a warning and actively deterring a would-be intruder there and then, instead of waiting for armed response to arrive. Every camera, building and perimeter, stays viewable securely from anywhere in the world.",
         "quantities": {
           "cctv_building_cameras": 8,
           "cctv_perimeter_cameras": 8,
@@ -258,7 +258,8 @@
           "programming_total": 45000
         }
       }
-    }
+    },
+    "camera_classification_rule": "DEFAULT: cameras indicated on the property boundary / away from the building are PERIMETER cameras (Pro, UVC-G6BPRO-W; Premium adds enhancers). Cameras on or against the building are BUILDING cameras (standard). Classify from the plan by position: a camera whose position falls outside the building footprint (the extent of the indoor devices) is perimeter; on/inside is building."
   },
   "access-control": {
     "label": "Access Control",
@@ -267,12 +268,12 @@
     "drivers": {
       "door_intercoms": "G6 Entry video intercoms. Reference 1 at the gate. Client can add one at each main access door identified on the plan (client option). Each added door = intercom + network point + per-component labour; the hub and viewers stay as is.",
       "door_hubs": "UniFi Access door hubs. Stays at 1 regardless of added intercoms/viewers.",
-      "intercom_viewers": "Internal answering monitors. Count from the floorplan markup — each viewer adds a monitor + network point + per-component labour."
+      "intercom_viewers": "Internal answering monitors. Count from the floorplan markup \u2014 each viewer adds a monitor + network point + per-component labour."
     },
     "labour_note": "Labour is hours-based off the estimator rate card: 1h first fix + 2h second fix + 1h programming per reader (door intercom) and per viewer. Rates: fix1 R950/hr, fix2 R950/hr, programming R1,250/hr => R4,100 per device.",
     "tiers": {
       "Entry": {
-        "blurb": "A standalone video intercom at a single entry point — typically the gate — with internal monitors placed around the home to see and speak with whoever is at the entrance. Calls can also be answered remotely from your phone through the app, so you can check and grant access whether you are home or away.",
+        "blurb": "A standalone video intercom at a single entry point \u2014 typically the gate \u2014 with internal monitors placed around the home to see and speak with whoever is at the entrance. Calls can also be answered remotely from your phone through the app, so you can check and grant access whether you are home or away.",
         "quantities": {
           "door_intercoms": 1,
           "door_hubs": 1,
@@ -337,7 +338,7 @@
         }
       },
       "Mid": {
-        "blurb": "Mid upgrades the entry point to the G6 Pro doorbell — a 12MP camera with a 3-inch touchscreen, two-way audio, and enhanced AI detection, plus a dedicated secondary camera that watches for parcels at the door and a built-in access reader for keyless entry. Internal monitors around the home let you see and speak with whoever is at the entrance, and every call can also be answered remotely from your phone — so you can greet visitors, receive deliveries, and grant access whether you are home or away.",
+        "blurb": "Mid upgrades the entry point to the G6 Pro doorbell \u2014 a 12MP camera with a 3-inch touchscreen, two-way audio, and enhanced AI detection, plus a dedicated secondary camera that watches for parcels at the door and a built-in access reader for keyless entry. Internal monitors around the home let you see and speak with whoever is at the entrance, and every call can also be answered remotely from your phone \u2014 so you can greet visitors, receive deliveries, and grant access whether you are home or away.",
         "quantities": {
           "door_intercoms": 1,
           "door_hubs": 1,
@@ -402,7 +403,7 @@
         }
       },
       "Premium": {
-        "blurb": "Unlike the standalone intercom tiers, Premium access control is fully integrated into the home control system — it is not a separate system. The Savant 2N IP Verso video door stations and 2N tag/keypad readers form part of the consolidated control platform, appearing on the in-home touch panels and the app alongside everything else. You answer the door, see who is there, grant access, and manage entry permissions from the same screens that run the rest of the home, whether you are inside or away. The tag readers make entry effortless and keyless — simply present an Apple Watch or iPhone as your tag, or tap in a code on the built-in numerical keypad, with a fingerprint reader available too if you prefer biometric entry. Choose exactly which doors get a video intercom and which get a tag/keypad reader to match how the property is used.",
+        "blurb": "Unlike the standalone intercom tiers, Premium access control is fully integrated into the home control system \u2014 it is not a separate system. The Savant 2N IP Verso video door stations and 2N tag/keypad readers form part of the consolidated control platform, appearing on the in-home touch panels and the app alongside everything else. You answer the door, see who is there, grant access, and manage entry permissions from the same screens that run the rest of the home, whether you are inside or away. The tag readers make entry effortless and keyless \u2014 simply present an Apple Watch or iPhone as your tag, or tap in a code on the built-in numerical keypad, with a fingerprint reader available too if you prefer biometric entry. Choose exactly which doors get a video intercom and which get a tag/keypad reader to match how the property is used.",
         "quantities": {
           "door_intercoms": 1,
           "tag_readers": 1
@@ -485,15 +486,15 @@
     },
     "switch_sizing": {
       "poe_devices_total": "aps_indoor + aps_outdoor + poe_devices_other",
-      "poe_switches": "ceil(poe_devices_total * 1.5 / 48)  — 48-port USW-PRO48P, +50% headroom for growth",
+      "poe_switches": "ceil(poe_devices_total * 1.5 / 48)  \u2014 48-port USW-PRO48P, +50% headroom for growth",
       "total_devices": "poe_devices_total + non_poe_devices",
-      "core_switches": "max(1, ceil((total_devices * 1.5 - poe_switches*48) / 24))  — 24-port USW-PRO24 aggregation, always at least 1",
+      "core_switches": "max(1, ceil((total_devices * 1.5 - poe_switches*48) / 24))  \u2014 24-port USW-PRO24 aggregation, always at least 1",
       "dac_cables": "core_switches + poe_switches  (one 10G uplink per switch)"
     },
     "labour_note": "1st/2nd fix scale per AP off the plan (reference 950/2850 over 12 APs). Programming is the whole-network configuration, fixed at 17,500. FLAG: confirm whether programming should stay fixed or also scale with device count.",
     "tiers": {
       "Entry": {
-        "blurb": "This is the backbone that everything in the home runs on. In everyday terms it is what lets the family stream movies in 4K, play music in every room, work from home on smooth video calls, and keep every phone, tablet, laptop and smart device connected reliably — indoors and outside in the garden — with strong, seamless Wi-Fi that reaches every corner and no dead spots or buffering. Just as importantly, it is the foundation the rest of the home relies on: the cameras, the access control and intercoms, the music, the lighting and the control system all talk to each other over this network. Get the network right and everything else simply works. An optional 5G backup can keep the home online if the main internet line ever drops.",
+        "blurb": "This is the backbone that everything in the home runs on. In everyday terms it is what lets the family stream movies in 4K, play music in every room, work from home on smooth video calls, and keep every phone, tablet, laptop and smart device connected reliably \u2014 indoors and outside in the garden \u2014 with strong, seamless Wi-Fi that reaches every corner and no dead spots or buffering. Just as importantly, it is the foundation the rest of the home relies on: the cameras, the access control and intercoms, the music, the lighting and the control system all talk to each other over this network. Get the network right and everything else simply works. An optional 5G backup can keep the home online if the main internet line ever drops.",
         "quantities": {
           "aps_indoor": 10,
           "aps_outdoor": 2,
@@ -595,7 +596,7 @@
         }
       },
       "Mid": {
-        "blurb": "Mid steps the whole network up to Ubiquiti's Pro Max range for noticeably stronger signal and faster speeds throughout the home. The Wi-Fi 7 Pro XG access points deliver higher throughput and wider coverage, so more devices stream, game and video-call at the same time without slowing down, with a stronger signal reaching further into the garden and across double-storey homes. Underneath, 2.5-gigabit multi-gig switching and a higher-capacity router move data far faster between devices, the internet and storage — unlocking smooth 4K and 8K streaming to multiple rooms at once, rapid file transfers, lag-free gaming, and plenty of headroom for the smart home to grow. As with every tier the network is the backbone the cameras, access control, music, lighting and control system all run on — here simply faster and with more capacity. An optional 5G backup keeps the home online if the main line ever drops.",
+        "blurb": "Mid steps the whole network up to Ubiquiti's Pro Max range for noticeably stronger signal and faster speeds throughout the home. The Wi-Fi 7 Pro XG access points deliver higher throughput and wider coverage, so more devices stream, game and video-call at the same time without slowing down, with a stronger signal reaching further into the garden and across double-storey homes. Underneath, 2.5-gigabit multi-gig switching and a higher-capacity router move data far faster between devices, the internet and storage \u2014 unlocking smooth 4K and 8K streaming to multiple rooms at once, rapid file transfers, lag-free gaming, and plenty of headroom for the smart home to grow. As with every tier the network is the backbone the cameras, access control, music, lighting and control system all run on \u2014 here simply faster and with more capacity. An optional 5G backup keeps the home online if the main line ever drops.",
         "quantities": {
           "aps_indoor": 10,
           "aps_outdoor": 2,
@@ -697,7 +698,7 @@
         }
       },
       "Premium": {
-        "blurb": "Premium is the fastest, most future-proof network D-One builds — a full 10-gigabit backbone from end to end. The UniFi Dream Machine Beast router and Pro XG 10G switching move data at up to ten times the speed of a standard gigabit network, while the Wi-Fi 7 Pro XGS access points deliver the strongest signal and highest wireless speeds available, blanketing even large, multi-storey homes and outdoor areas with fast, reliable coverage. In practice the whole household can stream several 8K movies, game, video-call, back up and move large media files all at once with zero slowdown, and the wired points run at 10-gigabit for studios, home offices, media rooms and servers that need serious throughput. It is built with years of headroom so the network never becomes the bottleneck as the smart home grows. As always it is the backbone the cameras, access control, music, lighting and control system all depend on — here at the highest performance available. An optional 5G backup keeps the home online if the main line ever drops.",
+        "blurb": "Premium is the fastest, most future-proof network D-One builds \u2014 a full 10-gigabit backbone from end to end. The UniFi Dream Machine Beast router and Pro XG 10G switching move data at up to ten times the speed of a standard gigabit network, while the Wi-Fi 7 Pro XGS access points deliver the strongest signal and highest wireless speeds available, blanketing even large, multi-storey homes and outdoor areas with fast, reliable coverage. In practice the whole household can stream several 8K movies, game, video-call, back up and move large media files all at once with zero slowdown, and the wired points run at 10-gigabit for studios, home offices, media rooms and servers that need serious throughput. It is built with years of headroom so the network never becomes the bottleneck as the smart home grows. As always it is the backbone the cameras, access control, music, lighting and control system all depend on \u2014 here at the highest performance available. An optional 5G backup keeps the home online if the main line ever drops.",
         "quantities": {
           "aps_indoor": 10,
           "aps_outdoor": 2,
@@ -807,13 +808,13 @@
     "priced_per": "zone",
     "drivers": {
       "audio_zones": "Indoor audio zones/rooms. Client selects which rooms get audio (room selector). Card shows a per-zone 'from' price; total grows as rooms are ticked.",
-      "outdoor_audio_zones": "Outdoor audio zones — gardens / outdoor entertainment areas pulled from the plan, offered as checkboxes. Uses the Sonance Patio 4.1 system (same values regardless of indoor tier)."
+      "outdoor_audio_zones": "Outdoor audio zones \u2014 gardens / outdoor entertainment areas pulled from the plan, offered as checkboxes. Uses the Sonance Patio 4.1 system (same values regardless of indoor tier)."
     },
     "outdoor_audio_note": "Outdoor audio is tier-independent: each selected outdoor area = Sonance Patio 4.1 + Sonos Amp + speaker point + per-zone labour, at the same values on every tier. Auto-populated as checkboxes from gardens/outdoor entertainment areas on the plan.",
     "labour_note": "Per-zone labour 1900 / 4900 / 1250 = 8,050, applied to every zone selected (indoor + outdoor).",
     "tiers": {
       "Entry": {
-        "blurb": "Background music made simple — a pair of in-ceiling speakers serves each area for clean, even sound throughout the room. Stream your favourite music to whichever zone you choose, and group rooms to play the same thing everywhere or run them separately, each with its own music.",
+        "blurb": "Background music made simple \u2014 a pair of in-ceiling speakers serves each area for clean, even sound throughout the room. Stream your favourite music to whichever zone you choose, and group rooms to play the same thing everywhere or run them separately, each with its own music.",
         "quantities": {
           "audio_zones": 1,
           "outdoor_audio_zones": 0
@@ -884,7 +885,7 @@
         }
       },
       "Mid": {
-        "blurb": "A clear step up in sound quality — larger, higher-performance in-ceiling speakers deliver richer, fuller audio with more detail and deeper bass, filling bigger living spaces with ease. Stream to any zone, group rooms together or play them separately, all from your phone or the wall.",
+        "blurb": "A clear step up in sound quality \u2014 larger, higher-performance in-ceiling speakers deliver richer, fuller audio with more detail and deeper bass, filling bigger living spaces with ease. Stream to any zone, group rooms together or play them separately, all from your phone or the wall.",
         "quantities": {
           "audio_zones": 1,
           "outdoor_audio_zones": 0
@@ -956,7 +957,7 @@
         }
       },
       "Premium": {
-        "blurb": "Premium is where audio meets interior design. The speakers are either completely invisible — plastered directly into the ceiling or wall so there is nothing to see at all, just sound emerging from the room itself — or architectural showpiece speakers chosen as beautiful design objects in their own right. Either way the sound is exceptional and the finish is seamless. The figure shown is based on the invisible in-ceiling/in-wall speakers; the final price is very much determined by the speaker choice, finishes and room-by-room design. Stream to any zone, group rooms together or play them independently, all from your phone or the wall.",
+        "blurb": "Premium is where audio meets interior design. The speakers are either completely invisible \u2014 plastered directly into the ceiling or wall so there is nothing to see at all, just sound emerging from the room itself \u2014 or architectural showpiece speakers chosen as beautiful design objects in their own right. Either way the sound is exceptional and the finish is seamless. The figure shown is based on the invisible in-ceiling/in-wall speakers; the final price is very much determined by the speaker choice, finishes and room-by-room design. Stream to any zone, group rooms together or play them independently, all from your phone or the wall.",
         "quantities": {
           "audio_zones": 1,
           "outdoor_audio_zones": 0
@@ -1026,7 +1027,7 @@
           "programming_per_zone": 1250,
           "_note": "Per-zone labour 1900/4900/1250 = 8,050 per zone (indoor + outdoor)."
         },
-        "aesthetic_note": "Price based on invisible (plaster-in) speakers. Architectural/showpiece speaker options and finishes adjust the final price — determined by design."
+        "aesthetic_note": "Price based on invisible (plaster-in) speakers. Architectural/showpiece speaker options and finishes adjust the final price \u2014 determined by design."
       }
     }
   },
@@ -1038,7 +1039,7 @@
     "labour_note": "PROPOSED home-theatre labour: per hardware component 2h first fix + 3h second fix (R950/hr), plus fixed 12h programming/Atmos calibration (R1,250/hr). Design + PM per global rule (1h/hardware unit each). Components = hardware units excl. speaker cable.",
     "tiers": {
       "Entry": {
-        "blurb": "Surround sound for your main TV room — the starting point for a livelier, more immersive way to watch. A three-speaker front stage, two rear surround speakers and a subwoofer wrap you in the action, bringing films, sport and series to life with real clarity and deep, room-filling bass. It turns everyday viewing into something you feel, not just watch — and it is the foundation we build on, adding overhead Dolby Atmos in the home-theatre tier and, ultimately, a dedicated home cinema.",
+        "blurb": "Surround sound for your main TV room \u2014 the starting point for a livelier, more immersive way to watch. A three-speaker front stage, two rear surround speakers and a subwoofer wrap you in the action, bringing films, sport and series to life with real clarity and deep, room-filling bass. It turns everyday viewing into something you feel, not just watch \u2014 and it is the foundation we build on, adding overhead Dolby Atmos in the home-theatre tier and, ultimately, a dedicated home cinema.",
         "quantities": {
           "ht_rooms": 1
         },
@@ -1090,7 +1091,7 @@
         }
       },
       "Mid": {
-        "blurb": "The full home-theatre step up — everything in the TV room, now with overhead Dolby Atmos height speakers and dual 15-inch subwoofers for genuine cinema impact. The Atmos ceiling speakers add a layer of sound above you, so effects, weather and aircraft move overhead and place you inside the scene, while two powerful 15-inch subs deliver deep, physical bass you feel in your chest — evenly across every seat. Professionally calibrated to the room, it turns the space into a true home theatre for films, sport and gaming.",
+        "blurb": "The full home-theatre step up \u2014 everything in the TV room, now with overhead Dolby Atmos height speakers and dual 15-inch subwoofers for genuine cinema impact. The Atmos ceiling speakers add a layer of sound above you, so effects, weather and aircraft move overhead and place you inside the scene, while two powerful 15-inch subs deliver deep, physical bass you feel in your chest \u2014 evenly across every seat. Professionally calibrated to the room, it turns the space into a true home theatre for films, sport and gaming.",
         "quantities": {
           "ht_rooms": 1
         },
@@ -1142,7 +1143,7 @@
         }
       },
       "Premium": {
-        "blurb": "A true dedicated cinema — a purpose-built room engineered so the equipment disappears and the film takes over. A Barco Heimdall+ native-4K RGB laser projector throws a razor-sharp, impossibly rich image onto a 110-inch acoustically transparent Stewart screen, with the front speakers hidden directly behind it so voices come from the actors on screen, not from boxes on the wall. Driving it all, a Trinnov Altitude processor and Amplitude amplifier power a full Dolby Atmos layout of Miller & Kreisel reference speakers — front, surround, rear and overhead — anchored by two M&K X15+ subwoofers that deliver bass you feel in your chest without ever muddying dialogue. The whole room is acoustically treated and individually calibrated, so every seat is the best seat in the house. Quite simply, a commercial-grade cinema at home: reference picture, reference sound, and the kind of immersion that makes the outside world disappear.",
+        "blurb": "A true dedicated cinema \u2014 a purpose-built room engineered so the equipment disappears and the film takes over. A Barco Heimdall+ native-4K RGB laser projector throws a razor-sharp, impossibly rich image onto a 110-inch acoustically transparent Stewart screen, with the front speakers hidden directly behind it so voices come from the actors on screen, not from boxes on the wall. Driving it all, a Trinnov Altitude processor and Amplitude amplifier power a full Dolby Atmos layout of Miller & Kreisel reference speakers \u2014 front, surround, rear and overhead \u2014 anchored by two M&K X15+ subwoofers that deliver bass you feel in your chest without ever muddying dialogue. The whole room is acoustically treated and individually calibrated, so every seat is the best seat in the house. Quite simply, a commercial-grade cinema at home: reference picture, reference sound, and the kind of immersion that makes the outside world disappear.",
         "quantities": {
           "ht_rooms": 1
         },
@@ -1190,6 +1191,12 @@
             "qty_each": 1
           },
           {
+            "sku": "NETWORK_POINT",
+            "role": "network point (projector)",
+            "scale": "ht_rooms",
+            "qty_each": 1
+          },
+          {
             "sku": "CIF110HNEVEWPX",
             "role": "110in acoustic perforated screen (Stewart CIMA Neve Perforado)",
             "scale": "ht_rooms",
@@ -1214,7 +1221,7 @@
           "fix2_hours_per_component": 3,
           "programming_fixed_hours": 12,
           "design_joinery_fixed_hours": 20,
-          "_note": "Per hardware component 2h fix1 + 3h fix2; fixed 12h prog/calibration; design = per-unit + 20h joinery; PM per-unit. FLAG: a Trinnov flagship cinema likely warrants more calibration + joinery-design hours — easy to bump."
+          "_note": "Per hardware component 2h fix1 + 3h fix2; fixed 12h prog/calibration; design = per-unit + 20h joinery; PM per-unit. FLAG: a Trinnov flagship cinema likely warrants more calibration + joinery-design hours \u2014 easy to bump."
         }
       }
     },
@@ -1237,7 +1244,7 @@
     "sizing_to_confirm": "Link PS count (quote used 1 for 21 modules; old rule was 1 per ~12) and wire reel count (quote 3) need a confirmed rule. Also confirm which devices get network points (quote: motion sensors only).",
     "tiers": {
       "Entry": {
-        "blurb": "Lighting that just works the way you want it. Dim any room to the perfect level with an easy, intuitive touch — no thinking required — and control everything from your phone, from setting the mood to switching the whole house off from bed. Familiar, programmable switches anyone can use, with proper dimming and app convenience built in.",
+        "blurb": "Lighting that just works the way you want it. Dim any room to the perfect level with an easy, intuitive touch \u2014 no thinking required \u2014 and control everything from your phone, from setting the mood to switching the whole house off from bed. Familiar, programmable switches anyone can use, with proper dimming and app convenience built in.",
         "quantities": {
           "dimming_circuits": 60,
           "switched_circuits": 20,
@@ -1337,13 +1344,13 @@
         "derived_rules": {
           "dim_modules": "ceil(dimming_circuits/4)",
           "sw_modules": "ceil(switched_circuits/4)",
-          "dali_modules": "ceil(dali_circuits/2)",
+          "dali_modules": "ceil(dali_circuits/128)  [Lutron LQSE-2DALUNV-D = 128 DALI drivers per module; 1 circuit = 1 driver]",
           "wire_reels": "ceil(total_circuits*10/304)",
           "link_ps": "ceil(total_modules/21)  [reference: 21 modules -> 1 PS; confirm real Lutron QS power rule]"
         }
       },
       "Mid": {
-        "blurb": "One touch and the room settles to the perfect light level every time, bringing the right elements into focus — the art, the table, the view. Custom-engraved keypads make it effortless: press Relax or Entertain and everything dims into place, no thinking required. Easy to control from the wall or your phone, with a choice of finishes to suit each room.",
+        "blurb": "One touch and the room settles to the perfect light level every time, bringing the right elements into focus \u2014 the art, the table, the view. Custom-engraved keypads make it effortless: press Relax or Entertain and everything dims into place, no thinking required. Easy to control from the wall or your phone, with a choice of finishes to suit each room.",
         "quantities": {
           "dimming_circuits": 60,
           "switched_circuits": 20,
@@ -1356,7 +1363,7 @@
         "derived_rules": {
           "dim_modules": "ceil(dimming_circuits/4)",
           "sw_modules": "ceil(switched_circuits/4)",
-          "dali_modules": "ceil(dali_circuits/2)",
+          "dali_modules": "ceil(dali_circuits/128)  [Lutron LQSE-2DALUNV-D = 128 DALI drivers per module; 1 circuit = 1 driver]",
           "wire_reels": "ceil(total_circuits*10/304)",
           "link_ps": "ceil(total_modules/21)",
           "keypad_controllers": "ceil(keypads/10)"
@@ -1468,7 +1475,7 @@
         }
       },
       "Premium": {
-        "blurb": "The same effortless, one-touch convenience — every room set to the perfect light level every time, bringing the right elements into focus — wrapped in luxury architectural keypads machined from solid metal and finished to match your interior. Beautifully simple to use and beautiful to look at: intuitive dimming with nothing to think about, and controls that belong to the architecture as much as to the lighting.",
+        "blurb": "The same effortless, one-touch convenience \u2014 every room set to the perfect light level every time, bringing the right elements into focus \u2014 wrapped in luxury architectural keypads machined from solid metal and finished to match your interior. Beautifully simple to use and beautiful to look at: intuitive dimming with nothing to think about, and controls that belong to the architecture as much as to the lighting.",
         "quantities": {
           "dimming_circuits": 60,
           "switched_circuits": 20,
@@ -1481,7 +1488,7 @@
         "derived_rules": {
           "dim_modules": "ceil(dimming_circuits/4)",
           "sw_modules": "ceil(switched_circuits/4)",
-          "dali_modules": "ceil(dali_circuits/2)",
+          "dali_modules": "ceil(dali_circuits/128)  [Lutron LQSE-2DALUNV-D = 128 DALI drivers per module; 1 circuit = 1 driver]",
           "wire_reels": "ceil(total_circuits*10/304)",
           "link_ps": "ceil(total_modules/21)"
         },
@@ -1613,12 +1620,24 @@
     ],
     "tiers": {
       "Entry": {
-        "blurb": "The most cost-effective way to bring the whole home under one roof. The Savant S12 host consolidates lighting, audio, climate and more into a single app, so everything is controlled from your phone or tablet — no wall touch panels at this level, just simple, unified control in your pocket. Add HVAC, door or lighting integration whenever you need it.",
+        "blurb": "The most cost-effective way to bring the whole home under one roof. The Savant S12 host consolidates lighting, audio, climate and more into a single app, so everything is controlled from your phone or tablet \u2014 no wall touch panels at this level, just simple, unified control in your pocket. Add HVAC, door or lighting integration whenever you need it.",
         "quantities": {
           "system": 1
         },
         "excludes": "No touch panels at Entry (app control only).",
         "components": [
+          {
+            "sku": "CAB-42U",
+            "role": "equipment cabinet (Linkbasic 42U 800 deep, 4 fans, 3 shelves)",
+            "scale": "system",
+            "qty_each": 1
+          },
+          {
+            "sku": "RACK-CABCON",
+            "role": "rack cabling / connectors allowance",
+            "scale": "system",
+            "qty_each": 1
+          },
           {
             "sku": "SAV-S12",
             "role": "Savant host (S12 + runtime)",
@@ -1633,12 +1652,24 @@
         }
       },
       "Mid": {
-        "blurb": "Mid steps up to the Savant Pro Host and adds three 8-inch in-wall touch screens, so the home is controlled from beautiful wall panels as well as the app. Walk up to any panel to set a scene, adjust lighting, audio and climate, check the cameras or arm the alarm — all from one elegant interface. The more powerful Pro Host comfortably handles larger homes and richer automation, with every system consolidated into a single, seamless experience.",
+        "blurb": "Mid steps up to the Savant Pro Host and adds three 8-inch in-wall touch screens, so the home is controlled from beautiful wall panels as well as the app. Walk up to any panel to set a scene, adjust lighting, audio and climate, check the cameras or arm the alarm \u2014 all from one elegant interface. The more powerful Pro Host comfortably handles larger homes and richer automation, with every system consolidated into a single, seamless experience.",
         "quantities": {
           "system": 1,
           "touch_panels": 3
         },
         "components": [
+          {
+            "sku": "CAB-42U",
+            "role": "equipment cabinet (Linkbasic 42U 800 deep, 4 fans, 3 shelves)",
+            "scale": "system",
+            "qty_each": 1
+          },
+          {
+            "sku": "RACK-CABCON",
+            "role": "rack cabling / connectors allowance",
+            "scale": "system",
+            "qty_each": 1
+          },
           {
             "sku": "SAV-PROHOST",
             "role": "Savant Pro Host (+ runtime)",
@@ -1651,12 +1682,12 @@
             "scale": "touch_panels",
             "qty_each": 1,
             "client_option": {
-              "id": "touch_panel_qty",
-              "ui": "dropdown",
-              "label": "Number of touch panels",
+              "id": "touch_panel_floors",
+              "ui": "per_floor_checkbox",
+              "label": "Touch panel per floor \u2014 tick the floors to include (floors read from the drawings)",
               "min": 0,
-              "default": 3,
-              "note": "Client selects how many 8-inch touch panels; each adds panel + data point + install labour."
+              "default": "all_floors",
+              "note": "One 8-inch touch panel per ticked floor. Floors are pulled from the project drawings; default = one per floor. Each ticked floor adds panel + data point + install labour."
             }
           },
           {
@@ -1675,13 +1706,25 @@
         }
       },
       "Premium": {
-        "blurb": "Premium extends control to its fullest. The Savant Pro Host drives in-wall touch screens throughout the home, backed by dedicated SmartControl processors that bring even the trickiest third-party equipment — relays, GPIO and serial devices — under one roof. Lighting, climate, AV, security and shades all respond as a single system, from the wall, the app or a remote. The most complete, seamless whole-home control we build.",
+        "blurb": "Premium extends control to its fullest. The Savant Pro Host drives in-wall touch screens throughout the home, backed by dedicated SmartControl processors that bring even the trickiest third-party equipment \u2014 relays, GPIO and serial devices \u2014 under one roof. Lighting, climate, AV, security and shades all respond as a single system, from the wall, the app or a remote. The most complete, seamless whole-home control we build.",
         "quantities": {
           "system": 1,
           "touch_panels": 3,
           "smart_controls": 3
         },
         "components": [
+          {
+            "sku": "CAB-42U",
+            "role": "equipment cabinet (Linkbasic 42U 800 deep, 4 fans, 3 shelves)",
+            "scale": "system",
+            "qty_each": 1
+          },
+          {
+            "sku": "RACK-CABCON",
+            "role": "rack cabling / connectors allowance",
+            "scale": "system",
+            "qty_each": 1
+          },
           {
             "sku": "SAV-PROHOST",
             "role": "Savant Pro Host (+ runtime)",
@@ -1694,12 +1737,12 @@
             "scale": "touch_panels",
             "qty_each": 1,
             "client_option": {
-              "id": "touch_panel_qty",
-              "ui": "dropdown",
-              "label": "Number of touch panels",
+              "id": "touch_panel_floors",
+              "ui": "per_floor_checkbox",
+              "label": "Touch panel per floor \u2014 tick the floors to include (floors read from the drawings)",
               "min": 0,
-              "default": 3,
-              "note": "Client selects how many touch panels; each adds panel + data point + install labour."
+              "default": "all_floors",
+              "note": "One 8-inch touch panel per ticked floor. Floors are pulled from the project drawings; default = one per floor. Each ticked floor adds panel + data point + install labour."
             }
           },
           {

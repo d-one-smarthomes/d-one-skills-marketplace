@@ -334,13 +334,15 @@ CONTENT = {
     },
 }
 
-def make_zone_panel(system_slug, zones, per_unit_price, prompt, tiers_that_show):
+def make_zone_panel(system_slug, zones, unit_by_tier, prompt, tiers_that_show):
     """
-    Build the HTML for a zone/reader selector panel.
+    Build the HTML for a zone selector panel.
     zones:           list of (zone_id, zone_label)
-    tiers_that_show: list of tier names that trigger this panel to show, e.g. ['Mid','Premium']
+    unit_by_tier:    dict {tier: price} — the per-zone price is TIER-SPECIFIC and is
+                     NOT shown to the client. Only the category subtotal moves.
+    tiers_that_show: list of tier names that trigger this panel to show.
     """
-    price_fmt = f"R {per_unit_price:,.0f}"
+    units_json = json.dumps({t: int(round(p or 0)) for t, p in (unit_by_tier or {}).items()}).replace('"', '&quot;')
     zone_items = ''
     for zone_id, zone_label in zones:
         zone_items += f'''
@@ -348,10 +350,9 @@ def make_zone_panel(system_slug, zones, per_unit_price, prompt, tiers_that_show)
                 <input type="checkbox" class="zone-cb"
                        data-system="{system_slug}"
                        data-zone="{zone_id}"
-                       data-price="{per_unit_price}"
+                       data-units="{units_json}"
                        onchange="onZoneChange('{system_slug}')">
                 <span class="zone-name">{zone_label}</span>
-                <span class="zone-price">+ {price_fmt}</span>
               </label>'''
     return f'''
         <div class="zone-panel" id="zone-panel-{system_slug}"
@@ -359,7 +360,6 @@ def make_zone_panel(system_slug, zones, per_unit_price, prompt, tiers_that_show)
              style="display:none;">
           <div class="zone-panel-header">
             <span class="zone-prompt">{prompt}</span>
-            <span class="zone-subtext">Each adds {price_fmt} to your estimate</span>
           </div>
           <div class="zone-grid">
             {zone_items}
@@ -367,25 +367,36 @@ def make_zone_panel(system_slug, zones, per_unit_price, prompt, tiers_that_show)
           <div class="zone-summary">
             <span class="zone-summary-label">Selected</span>
             <span class="zone-summary-items" id="zone-items-{system_slug}">—</span>
-            <span class="zone-summary-add" id="zone-add-{system_slug}"></span>
           </div>
         </div>'''
 
 
-def make_option_panel(system_slug, controls, prompt, tiers_that_show):
+def make_option_panel(system_slug, controls, prompt, tiers_that_show, panel_suffix=''):
     """
-    Build the HTML for a client-selectable OPTION panel (dropdowns + checkboxes)
-    that adds/subtracts from optionAdditions[system] live, mirroring the zone panel.
+    Build the HTML for a client-selectable OPTION panel (dropdowns + checkboxes).
+    Per-unit prices are TIER-SPECIFIC and are NOT shown to the client — selecting
+    quantities only moves the category subtotal.
 
     controls:        list of dicts, each either:
-        {'type': 'dropdown', 'label': str, 'unit': price, 'max': int, 'default': int}
-        {'type': 'checkbox', 'label': str, 'unit': price, 'checked': bool}
-    tiers_that_show: list of tier names that trigger this panel to show, e.g. ['Premium']
+        {'type': 'dropdown', 'label': str, 'units': {tier: price}, 'max': int, 'default': int}
+        {'type': 'checkbox', 'label': str, 'units': {tier: price}, 'checked': bool}
+      ('unit' is still accepted as a flat fallback and expanded to all tiers.)
+    tiers_that_show: list of tier names that trigger this panel to show.
+    panel_suffix:    optional suffix so a system can have more than one option panel
+                     (e.g. access-control's Entry/Mid panel vs its Premium panel).
     """
+    pid = f"{system_slug}{panel_suffix}"
+
+    def units_of(c):
+        u = c.get('units')
+        if u is None:
+            flat = int(round(c.get('unit') or 0))
+            u = {t: flat for t in TIERS}
+        return json.dumps({t: int(round(p or 0)) for t, p in u.items()}).replace('"', '&quot;')
+
     rows = ''
     for c in controls:
-        unit = int(round(c.get('unit') or 0))
-        price_fmt = f"R {unit:,.0f}"
+        units_json = units_of(c)
         if c.get('type') == 'dropdown':
             maxn    = int(c.get('max', 10))
             default = int(c.get('default', 0))
@@ -397,11 +408,10 @@ def make_option_panel(system_slug, controls, prompt, tiers_that_show):
               <label class="option-item">
                 <span class="option-name">{c['label']}</span>
                 <span class="option-controls">
-                  <select class="opt-select" data-system="{system_slug}" data-unit="{unit}"
+                  <select class="opt-select" data-system="{system_slug}" data-units="{units_json}"
                           data-default="{default}" onchange="onOptionChange('{system_slug}')">
                     {opts}
                   </select>
-                  <span class="option-price">{price_fmt} each</span>
                 </span>
               </label>'''
         else:  # checkbox
@@ -409,25 +419,19 @@ def make_option_panel(system_slug, controls, prompt, tiers_that_show):
             rows += f'''
               <label class="option-item option-item-cb">
                 <input type="checkbox" class="opt-cb" data-system="{system_slug}"
-                       data-unit="{unit}"{checked} onchange="onOptionChange('{system_slug}')">
+                       data-units="{units_json}"{checked} onchange="onOptionChange('{system_slug}')">
                 <span class="option-name">{c['label']}</span>
-                <span class="option-price">+ {price_fmt}</span>
               </label>'''
     return f'''
-        <div class="zone-panel option-panel" id="option-panel-{system_slug}"
+        <div class="zone-panel option-panel" id="option-panel-{pid}"
+             data-system="{system_slug}"
              data-show-tiers="{json.dumps(tiers_that_show).replace('"', '&quot;')}"
              style="display:none;">
           <div class="zone-panel-header">
             <span class="zone-prompt">{prompt}</span>
-            <span class="zone-subtext">Adjust to fine-tune your estimate</span>
           </div>
           <div class="option-grid">
             {rows}
-          </div>
-          <div class="zone-summary">
-            <span class="zone-summary-label">Options total</span>
-            <span class="zone-summary-items"></span>
-            <span class="zone-summary-add" id="option-add-{system_slug}"></span>
           </div>
         </div>'''
 
@@ -440,7 +444,7 @@ def format_budget(val):
     return str(val)
 
 def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image_b64=None, plan_images_b64=None,
-                  audio_zones=None, zone_prices=None, options=None):
+                  audio_zones=None, zone_prices=None, options=None, per_unit=None, takeoff=None):
     """
     budgets:          dict like {'cctv': {'Entry': 45000, 'Mid': 85000, 'Premium': 150000}, ...}
     cover_image_b64:  base64 data URI for the project cover render (optional)
@@ -458,6 +462,16 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
         zone_prices = DEFAULT_ZONE_PRICES.copy()
     if options is None:
         options = {}
+    # per_unit: tier-specific per-add-on prices, e.g.
+    #   {'audio_zone': {'Entry':x,'Mid':y,'Premium':z},
+    #    'access_viewer': {'Entry':..,'Mid':..}, 'access_reader': {...}, 'access_intercom': {'Premium':..}}
+    if per_unit is None:
+        per_unit = {}
+    # takeoff: drawing-derived add-on locations/limits, e.g.
+    #   {'access_viewer_locations': [[id,label],...], 'access_intercom_locations': [[id,label],...],
+    #    'access_reader_max': 8}
+    if takeoff is None:
+        takeoff = {}
 
     # Build per-system JS data
     system_data = {}
@@ -541,8 +555,15 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
                 ) else ''
                 img_html = f'<img src="{img_data}" class="opt-img{contain_class}" alt="{tier}">' if img_data else '<div class="opt-img-placeholder"></div>'
                 budget_val = budgets.get(sys_slug, {}).get(tier)
-                budget_str = format_budget(budget_val)
-                budget_class = 'budget-tbd' if (budget_val is None or budget_val == 'TBD') else 'budget-val'
+                # Audio has no baseline — it is priced entirely per selected zone,
+                # so the card shows "Priced per zone" instead of a rand figure (B8).
+                if sys_slug == 'audio':
+                    budget_str = 'Priced per zone'
+                    budget_class = 'budget-perzone'
+                    budget_val = 0
+                else:
+                    budget_str = format_budget(budget_val)
+                    budget_class = 'budget-tbd' if (budget_val is None or budget_val == 'TBD') else 'budget-val'
                 content_text = CONTENT.get(sys_slug, {}).get(tier, '')
                 tiers_html.append(f'''
             <div class="opt-card" data-system="{sys_slug}" data-tier="{tier}" data-budget="{0 if (budget_val is None or budget_val == 'TBD') else int(budget_val)}" onclick="selectOption(this)">
@@ -563,15 +584,17 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
               </div>
             </div>''')
 
-            # ── Zone panel (indoor audio rooms only). Access-control's facial-recognition
-            #    zone panel has been REPLACED by the access-control option dropdowns below. ──
+            # ── Audio zone panel. Audio has NO baseline — every zone (indoor AND
+            #    outdoor) the client picks adds a TIER-SPECIFIC per-zone price to the
+            #    subtotal; the unit price is never shown (C3/B8). ──
             zone_panel_html = ''
             if sys_slug == 'audio':
+                au_zone_units = per_unit.get('audio_zone') or {t: zone_prices.get('audio', 8000) for t in TIERS}
                 zone_panel_html = make_zone_panel(
                     system_slug='audio',
                     zones=audio_zones,
-                    per_unit_price=zone_prices.get('audio', 8000),
-                    prompt='Which rooms would you like audio in?',
+                    unit_by_tier=au_zone_units,
+                    prompt='Which areas would you like audio in? Each area you select is added to your Audio estimate.',
                     tiers_that_show=['Entry', 'Mid', 'Premium'],
                 )
 
@@ -601,34 +624,56 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
                     prompt='Connectivity resilience',
                     tiers_that_show=['Entry', 'Mid', 'Premium'],
                 )
-            elif sys_slug == 'audio':
-                outdoor_unit = options.get('audio_outdoor_zone', 0)
-                option_panel_html = make_option_panel(
-                    system_slug='audio',
-                    controls=[
-                        {'type': 'checkbox', 'label': 'Garden',            'unit': outdoor_unit},
-                        {'type': 'checkbox', 'label': 'Patio / Braai area', 'unit': outdoor_unit},
-                        {'type': 'checkbox', 'label': 'Pool area',          'unit': outdoor_unit},
-                    ],
-                    prompt='Outdoor audio areas',
-                    tiers_that_show=['Entry', 'Mid', 'Premium'],
-                )
             elif sys_slug == 'access-control':
-                # Per-door option prices: prefer dedicated option keys if present,
-                # else fall back to the access-control zone price, else 0 (still renders).
-                ac_intercom = options.get('access_intercom_each') or zone_prices.get('access-control', 0) or 0
-                ac_reader   = options.get('access_reader_each')   or zone_prices.get('access-control', 0) or 0
-                option_panel_html = make_option_panel(
-                    system_slug='access-control',
-                    controls=[
-                        {'type': 'dropdown', 'label': 'Doors with a video intercom',
-                         'unit': ac_intercom, 'max': 8, 'default': 0},
-                        {'type': 'dropdown', 'label': 'Doors with a tag/keypad reader',
-                         'unit': ac_reader, 'max': 8, 'default': 0},
-                    ],
-                    prompt='Access points',
-                    tiers_that_show=['Entry', 'Mid', 'Premium'],
-                )
+                # Access Control is a baseline + per-additional-unit model, and the
+                # add-on options differ by tier (C2):
+                #   Entry / Mid : baseline = 1 reader + 1 viewer at the gate.
+                #                 Add more VIEWERS at the marked-up locations, and
+                #                 more READERS via a dropdown.
+                #   Premium     : baseline = 1 Savant gate intercom.
+                #                 Add more Savant INTERCOMS, plus optional TAG READERS
+                #                 at the marked-up locations. No interior viewers —
+                #                 those are Savant touch panels under System Integration.
+                # Per-unit prices are tier-specific and hidden — only the subtotal moves.
+                ac_viewer   = per_unit.get('access_viewer',   {})
+                ac_reader    = per_unit.get('access_reader',   {})
+                ac_intercom = per_unit.get('access_intercom', {})
+                viewer_locs   = takeoff.get('access_viewer_locations', [])   # [[id,label],...]
+                intercom_locs = takeoff.get('access_intercom_locations', []) # [[id,label],...]
+                reader_max    = int(takeoff.get('access_reader_max', 8) or 8)
+
+                # Entry/Mid panel: additional viewers (at marked-up spots) + readers dropdown
+                em_controls = []
+                for loc_id, loc_label in viewer_locs:
+                    em_controls.append({'type': 'checkbox',
+                                        'label': f'Add a viewer — {loc_label}',
+                                        'units': {t: ac_viewer.get(t, 0) for t in ('Entry', 'Mid')}})
+                em_controls.append({'type': 'dropdown', 'label': 'Additional tag readers',
+                                    'units': {t: ac_reader.get(t, 0) for t in ('Entry', 'Mid')},
+                                    'max': reader_max, 'default': 0})
+                em_panel = make_option_panel(
+                    system_slug='access-control', controls=em_controls,
+                    prompt='Additional doors — extra viewers and tag readers',
+                    tiers_that_show=['Entry', 'Mid'], panel_suffix='-em')
+
+                # Premium panel: additional Savant intercoms + optional tag readers
+                prem_controls = [{'type': 'dropdown', 'label': 'Additional Savant intercom stations',
+                                  'units': {'Premium': ac_intercom.get('Premium', 0)},
+                                  'max': max(1, len(intercom_locs) or 8), 'default': 0}]
+                for loc_id, loc_label in intercom_locs:
+                    prem_controls.append({'type': 'checkbox',
+                                          'label': f'Tag reader — {loc_label}',
+                                          'units': {'Premium': ac_reader.get('Premium', 0)}})
+                if not intercom_locs:
+                    prem_controls.append({'type': 'dropdown', 'label': 'Optional tag readers',
+                                          'units': {'Premium': ac_reader.get('Premium', 0)},
+                                          'max': reader_max, 'default': 0})
+                prem_panel = make_option_panel(
+                    system_slug='access-control', controls=prem_controls,
+                    prompt='Additional doors — extra Savant intercoms and tag readers',
+                    tiers_that_show=['Premium'], panel_suffix='-prem')
+
+                option_panel_html = em_panel + prem_panel
             elif sys_slug == 'system-integration':
                 option_panel_html = make_option_panel(
                     system_slug='system-integration',
@@ -639,8 +684,6 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
                          'unit': options.get('si_door_integration', 0)},
                         {'type': 'checkbox', 'label': 'Lighting Integration',
                          'unit': options.get('si_lighting_integration', 0)},
-                        # TODO: touch-panel and SmartControl per-unit prices are not yet in the
-                        #       options JSON — defaulting to 0 so the controls still render.
                         {'type': 'dropdown', 'label': 'Number of touch panels',
                          'unit': options.get('si_touch_panel_each', 0), 'max': 10, 'default': 0},
                         {'type': 'dropdown', 'label': 'Number of SmartControl processors',
@@ -1018,6 +1061,10 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       font-family: var(--f-sans); font-size: 11px; letter-spacing: 0.15em;
       text-transform: uppercase; color: rgba(184,148,74,0.4); margin-top: 8px;
     }}
+    .budget-perzone {{
+      font-family: var(--f-sans); font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold-lt); margin-top: 8px;
+    }}
 
     /* ── CATEGORY BUDGET TOTAL ── */
     .cat-budget {{
@@ -1364,6 +1411,16 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
     // Track option-control additions per system (dropdowns + checkboxes): system -> total added cost
     const optionAdditions = {{}};
 
+    // Per-tier unit price for an element carrying a data-units JSON map,
+    // resolved against the tier currently selected for `system`. Missing -> 0.
+    function unitFor(el, system) {{
+      const sel = selections[system];
+      if (!sel || sel.tier === 'none') return 0;
+      let map = {{}};
+      try {{ map = JSON.parse(el.dataset.units || '{{}}'); }} catch (e) {{ map = {{}}; }}
+      return parseInt(map[sel.tier]) || 0;
+    }}
+
     function selectOption(el) {{
       const system = el.dataset.system;
       const tier   = el.dataset.tier;
@@ -1376,49 +1433,38 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       // Store tier selection
       selections[system] = {{ tier, budget }};
 
-      // Handle option panel visibility (dropdowns + checkboxes).
-      // Done BEFORE the zone panel block because that block can return early,
-      // and some systems (audio) have BOTH a zone panel and an option panel.
-      const optPanel = document.getElementById(`option-panel-${{system}}`);
-      if (optPanel) {{
-        const optShowTiers = JSON.parse(optPanel.dataset.showTiers || '[]');
-        if (tier === 'none' || !optShowTiers.includes(tier)) {{
-          // Hide panel, reset controls to their defaults, and clear option costs
-          optPanel.style.display = 'none';
-          optPanel.querySelectorAll('.opt-select').forEach(s => {{ s.value = s.dataset.default || '0'; }});
-          optPanel.querySelectorAll('.opt-cb').forEach(cb => {{ cb.checked = cb.defaultChecked; }});
-          optionAdditions[system] = 0;
-          const optAddEl = document.getElementById(`option-add-${{system}}`);
-          if (optAddEl) optAddEl.textContent = '';
+      // A system can have MORE THAN ONE option panel (e.g. access-control's
+      // Entry/Mid panel vs its Premium panel). Show those whose show-tiers include
+      // the selected tier; hide + reset the others.
+      document.querySelectorAll(`.option-panel[data-system="${{system}}"]`).forEach(op => {{
+        const showTiers = JSON.parse(op.dataset.showTiers || '[]');
+        if (tier === 'none' || !showTiers.includes(tier)) {{
+          op.style.display = 'none';
+          op.querySelectorAll('.opt-select').forEach(s => {{ s.value = s.dataset.default || '0'; }});
+          op.querySelectorAll('.opt-cb').forEach(cb => {{ cb.checked = cb.defaultChecked; }});
         }} else {{
-          // Show panel and recompute from current control states (incl. default-on checkboxes)
-          optPanel.style.display = 'block';
-          onOptionChange(system);
+          op.style.display = 'block';
         }}
-      }}
+      }});
+      onOptionChange(system);
 
-      // Handle zone panel visibility
+      // Handle zone panel visibility (audio)
       const panel = document.getElementById(`zone-panel-${{system}}`);
       if (panel) {{
         const showTiers = JSON.parse(panel.dataset.showTiers || '[]');
         if (tier === 'none' || !showTiers.includes(tier)) {{
-          // Hide panel and clear all checkboxes + zone costs
           panel.style.display = 'none';
           panel.querySelectorAll('.zone-cb').forEach(cb => cb.checked = false);
           zoneAdditions[system] = 0;
           const itemsEl = document.getElementById(`zone-items-${{system}}`);
-          const addEl   = document.getElementById(`zone-add-${{system}}`);
           if (itemsEl) itemsEl.textContent = '—';
-          if (addEl)   addEl.textContent = '';
         }} else {{
           panel.style.display = 'block';
-          // Recalculate in case it was previously populated
-          onZoneChange(system);
-          return; // onZoneChange will call updateCategoryBudget
+          onZoneChange(system);   // recompute at the newly-selected tier's per-zone price
+          return; // onZoneChange calls refreshCategoryForSystem
         }}
       }}
 
-      // Update budgets for the category this system belongs to
       refreshCategoryForSystem(system);
     }}
 
@@ -1429,68 +1475,33 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
         refreshCategoryForSystem(system);
         return;
       }}
-
-      const checkedBoxes = panel.querySelectorAll('.zone-cb:checked');
       let total = 0;
       const labels = [];
-      checkedBoxes.forEach(cb => {{
-        total += parseInt(cb.dataset.price) || 0;
+      panel.querySelectorAll('.zone-cb:checked').forEach(cb => {{
+        total += unitFor(cb, system);   // TIER-SPECIFIC per-zone price
         labels.push(cb.closest('.zone-item').querySelector('.zone-name').textContent);
       }});
-
       zoneAdditions[system] = total;
-
-      // Update zone summary line
       const itemsEl = document.getElementById(`zone-items-${{system}}`);
-      const addEl   = document.getElementById(`zone-add-${{system}}`);
-      if (itemsEl) {{
-        itemsEl.textContent = labels.length > 0 ? labels.join(', ') : '—';
-      }}
-      if (addEl) {{
-        if (total > 0) {{
-          const fmt = new Intl.NumberFormat('en-ZA', {{style:'currency',currency:'ZAR',maximumFractionDigits:0}}).format(total);
-          addEl.textContent = `+ ${{fmt}}`;
-        }} else {{
-          addEl.textContent = '';
-        }}
-      }}
-
+      if (itemsEl) itemsEl.textContent = labels.length > 0 ? labels.join(', ') : '—';
       refreshCategoryForSystem(system);
     }}
 
     function onOptionChange(system) {{
-      const panel = document.getElementById(`option-panel-${{system}}`);
-      if (!panel || panel.style.display === 'none') {{
-        optionAdditions[system] = 0;
-        refreshCategoryForSystem(system);
-        return;
-      }}
-
+      // Sum across ALL visible option panels for this system, priced at the
+      // selected tier. Per-unit prices are never displayed — only the subtotal moves.
       let total = 0;
-      // Dropdown (quantity) controls: qty * unit
-      panel.querySelectorAll('.opt-select').forEach(sel => {{
-        const qty  = parseInt(sel.value) || 0;
-        const unit = parseInt(sel.dataset.unit) || 0;
-        total += qty * unit;
+      document.querySelectorAll(`.option-panel[data-system="${{system}}"]`).forEach(panel => {{
+        if (panel.style.display === 'none') return;
+        panel.querySelectorAll('.opt-select').forEach(sel => {{
+          const qty = parseInt(sel.value) || 0;
+          total += qty * unitFor(sel, system);
+        }});
+        panel.querySelectorAll('.opt-cb').forEach(cb => {{
+          if (cb.checked) total += unitFor(cb, system);
+        }});
       }});
-      // Checkbox controls: fixed unit when checked
-      panel.querySelectorAll('.opt-cb').forEach(cb => {{
-        if (cb.checked) total += parseInt(cb.dataset.unit) || 0;
-      }});
-
       optionAdditions[system] = total;
-
-      // Update option summary line
-      const addEl = document.getElementById(`option-add-${{system}}`);
-      if (addEl) {{
-        if (total > 0) {{
-          const fmt = new Intl.NumberFormat('en-ZA', {{style:'currency',currency:'ZAR',maximumFractionDigits:0}}).format(total);
-          addEl.textContent = `+ ${{fmt}}`;
-        }} else {{
-          addEl.textContent = '';
-        }}
-      }}
-
       refreshCategoryForSystem(system);
     }}
 
@@ -1516,10 +1527,11 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
             tierNames.push('Not Required');
             continue;
           }}
-          total += sel.budget;
-          total += zoneAdditions[sys] || 0;
-          total += optionAdditions[sys] || 0;
-          if (sel.budget === 0) hasTbd = true;
+          const adds = (zoneAdditions[sys] || 0) + (optionAdditions[sys] || 0);
+          total += sel.budget + adds;
+          // A zero baseline is only "TBD" when nothing has been added yet. Audio is
+          // priced entirely per zone, so once zones are picked it is NOT unknown.
+          if (sel.budget === 0 && adds === 0) hasTbd = true;
           tierNames.push(sel.tier);
         }}
       }}
@@ -1651,6 +1663,22 @@ def main():
     if budgets_file_data and budgets_file_data.get('options'):
         options = budgets_file_data['options']
 
+    # per_unit — TIER-SPECIFIC per-add-on prices (audio_zone, access_viewer/reader/intercom)
+    per_unit = {}
+    if budgets_file_data and budgets_file_data.get('per_unit'):
+        per_unit = budgets_file_data['per_unit']
+
+    # takeoff — drawing-derived add-on locations/limits for the option selectors.
+    # Zone/location lists arrive as [[id,label], ...]; normalise inner lists to tuples.
+    takeoff = {}
+    if budgets_file_data and budgets_file_data.get('takeoff'):
+        raw_takeoff = budgets_file_data['takeoff']
+        for k, v in raw_takeoff.items():
+            if isinstance(v, list) and v and isinstance(v[0], (list, tuple)):
+                takeoff[k] = [tuple(pair) for pair in v]
+            else:
+                takeoff[k] = v
+
     # Floor plans — load each image from the comma-separated paths
     plan_images_b64 = None
     if args.plans:
@@ -1672,7 +1700,8 @@ def main():
 
     html = generate_html(args.client, args.project, budgets, logo_b64=logo_b64, cover_image_b64=cover_image_b64,
                          plan_images_b64=plan_images_b64,
-                         audio_zones=audio_zones, zone_prices=zone_prices, options=options)
+                         audio_zones=audio_zones, zone_prices=zone_prices, options=options,
+                         per_unit=per_unit, takeoff=takeoff)
 
     os.makedirs(args.output, exist_ok=True)
     out_path = os.path.join(args.output, 'index.html')

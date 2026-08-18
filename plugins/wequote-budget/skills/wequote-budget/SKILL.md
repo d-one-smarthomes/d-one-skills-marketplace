@@ -93,6 +93,39 @@ Linkbasic 42U 800-deep cabinet (CAB-42U) + R3,000 cabcon + installation, in Entr
 - `budget_detail.json` (with `--detail`) — every line + labour, consumed by the spreadsheet builder.
 - `[Client] — Detailed Quote.xlsx` — Summary tab (tier totals + whole-project hardware margin, margin %, labour hours and rands) and a tab per system with the full build-up: component, SKU, qty, retail price, markup, equipment, installation, programming, design, PM, and tier total.
 
+## Split proposal contract (for the interactive proposal)
+
+The interactive proposal treats **Audio** and **Access Control** as baseline + per-unit, so it
+needs more than the flat tier totals. `scripts/build_proposal_contract.py` turns
+`budget_detail.json` into the v2 `proposal_budgets.json` the generator consumes:
+
+```bash
+python3 scripts/build_proposal_contract.py \
+    --detail /tmp/[project]/budget_detail.json \
+    --spec   /tmp/[project]_spec.json \
+    --takeoff /tmp/[project]_takeoff.json \
+    --output /tmp/[project]/proposal_budgets.json
+```
+
+It emits:
+- `tier_budgets` — **audio baseline = 0** (priced per zone); **access baseline** = the minimum
+  config (Entry/Mid: 1 reader + 1 viewer; Premium: 1 Savant gate intercom); all other systems =
+  their tier total.
+- `per_unit` — **tier-specific** add-on prices, all-inclusive (equipment + labour + pro-rata
+  design/PM + network point), never shown to the client: `audio_zone`, `access_viewer`
+  (Entry/Mid), `access_reader`, `access_intercom` (Premium). Audio per-zone × zone count
+  reconstructs the tier's audio total.
+- `takeoff` — passed through from `--takeoff`: `audio_zones`, `access_viewer_locations`,
+  `access_intercom_locations`, `access_reader_max` (drive the selectors and their max counts).
+- `network_sizing` — the design-methodology switch recommendation: total PoE devices → PoE
+  ports, non-PoE (TVs) → LAN ports, **+25% spare** rounded to the next 24/48-port switch, **+1
+  LAN drop per TV**. Surface this at the counts checkpoint.
+
+**Product-model note (Access Control):** the per-unit numbers are computed from whatever device
+lines the detail contains (currently UniFi). The client-facing model describes a **Savant** gate
+intercom for the Premium baseline and an explicit reader/viewer split for Entry/Mid — confirm the
+SKUs and update `tier_definitions.json` so the priced hardware matches the language.
+
 ## Maintaining it
 
 Edit the tier build-ups in `tier_definitions.json`, prices in `pricelist.csv`, and labour in

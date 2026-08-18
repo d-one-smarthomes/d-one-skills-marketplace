@@ -20,36 +20,68 @@ a live budget per category. The result gives D-One a clear brief to work from.
 
 ---
 
+## How this runs (default flow)
+
+**When floor plans are shared, do the budget first.** Don't ask the client to type budget
+numbers — derive them from the drawings:
+
+1. **Take-off (markups + design methodology).** Count the components off the plans, then apply
+   D-One's design rules to get the *buildable* quantities — not just a symbol tally. In
+   particular, size the **network** from the full device schedule: total PoE devices → PoE
+   ports, non-PoE devices (TVs etc.) → LAN ports, **+ ~25% spare** (round up to the next
+   24/48-port switch), **+ one spare LAN drop per TV**. Same idea elsewhere: amp channels ≥
+   audio zones, DALI modules per lighting circuit, etc.
+2. **Counts checkpoint.** Surface the raw counts *and* the engineered quantities (ports,
+   switches, amp channels, spares) for a quick confirm/tweak **before** pricing — the take-off
+   drives the money, so catch errors at the cheap stage. When running unattended, proceed on
+   the counts and state the assumption at the top.
+3. **Budgets + spreadsheet.** Run the **wequote-budget** skill on the confirmed spec. It writes
+   `budget_detail.json` and (via `build_proposal_contract.py`) the split
+   `proposal_budgets.json`, **and** the detailed quote spreadsheet — both are standard outputs,
+   saved to the project's Claude Cowork folder.
+4. **Proposal.** Generate the interactive page from that contract (Steps 2–8 below).
+
+If there are no drawings, run the same chain from manual counts or a WeQuote URL. Typed budgets
+are the exception, not the default.
+
 ## Step 1 — Gather the brief
 
-Ask the user for the following. If they've already provided any of these in their message,
-don't ask again:
+Read what you can from the inputs before asking anything. Only ask when something is genuinely
+missing or ambiguous:
 
-- **Client name** (used in the heading and Netlify URL slug)
-- **Project name or address** (e.g. "Constantia residence", "De Klerk house")
-- **Project drawings** — uploaded images or PDFs; these go on the cover page
-- **Budget numbers** — for each system and tier below (can come from the component counting
-  skill, from a quote, or be left as TBD)
-- **Any systems to exclude** — if the client has no interest in a particular category, it
-  can be hidden entirely
-- **Any special notes** to include (e.g. phase 1 only, specific rooms, client preferences)
+- **Client name** — used in the heading and Netlify slug.
+- **Project name / address** — **read it from the drawing title block** (e.g. "ERF 1593, La
+  Fontaine Close, River Club, Val de Vie") rather than asking. Pass it via `--project`; it
+  renders on the cover under the client name.
+- **Project drawings** — the marked-up plans; they become the cover/plans section *and* the
+  source of room names (audio zones) and add-on locations.
+- **Systems to include** — default to every system that appears on the plan. Drive exclusions
+  from the take-off (a system with zero devices is hidden / defaults to Not Required), not a
+  question. Easy to override.
+- **Budgets** — from the drawings via the chain above; only ask for typed numbers if there are
+  no drawings and no counts.
+- **Special notes** — one optional, skippable prompt.
 
-### Budget input format
+### The split budget contract (what `proposal_budgets.json` carries)
 
-For each system, you need up to three numbers (Entry / Mid / Premium). These are shown as
-"From R X" or a range "R X – R Y". If a budget is not yet known, use "TBD" and style it
-accordingly in the HTML.
+`generate.py --budgets-file` consumes a v2 contract with four parts:
 
-Example input format the user might provide:
-```
-CCTV: Entry R45k, Mid R85k, Premium R150k
-Access Control: Entry R30k, Mid R65k, Premium TBD
-Network: Entry R55k, Mid R90k, Premium R160k
-Audio: Entry R40k, Mid R75k, Premium TBD
-Home Theatre: Entry R80k, Mid R180k, Premium TBD
-Lighting: Entry R60k, Mid R110k, Premium R220k
-System Integration: Entry R35k, Mid R70k, Premium R140k
-```
+- `tier_budgets` — the baseline per system per tier. **Audio baseline = 0** (priced entirely
+  per zone). **Access Control baseline** = the minimum config (Entry/Mid: 1 reader + 1 viewer
+  at the gate; Premium: 1 Savant gate intercom).
+- `per_unit` — **tier-specific** add-on prices, never shown to the client, only moved into the
+  subtotal: `audio_zone`, `access_viewer` (Entry/Mid), `access_reader`, `access_intercom`
+  (Premium).
+- `takeoff` — drawing-derived lists that populate the selectors: `audio_zones`,
+  `access_viewer_locations`, `access_intercom_locations`, `access_reader_max`.
+- `network_sizing` / `options` — the switch/port recommendation and the existing extras
+  (CCTV enhancers, 5G backup, SI integrations).
+
+**Audio** shows "Priced per zone" on the cards (baseline 0); each area the client ticks adds
+its tier price to the Audio subtotal. **Access Control** shows the baseline on the cards; the
+Entry/Mid panel adds viewers (at marked-up spots) + readers (dropdown), the Premium panel adds
+Savant intercoms + optional tag readers. In both cases per-unit prices are hidden — only the
+category subtotal changes.
 
 ---
 
@@ -218,46 +250,39 @@ before passing to generate.py, since `--plans` expects image files (PNG/JPG/WEBP
 
 ---
 
-## Step 6 — Generate and Preview (Local Review First)
+## Step 6 — Generate and Review (review before publish)
 
-**Run on the user's Mac** (not the sandbox — the sandbox cannot reach external APIs).
-Use `mcp__Control_your_Mac__osascript` with `do shell script`:
+**In Cowork (default):** generate in the session, then deliver the `index.html` with
+`SendUserFile` so it renders inline for review, and save a copy to the project's Claude Cowork
+folder (`Claude Cowork/Sales/[project]/Proposal/`). No dependency on the Mac's Chrome. The
+detailed quote spreadsheet is saved alongside it.
 
 ```bash
-cd '/Users/darrenswanepoel/Library/Application Support/Claude/local-agent-mode-sessions/.../outputs/d-one-proposal'
-
-# Generate with real budgets from the budget-analyzer skill
 python3 scripts/generate.py \
   --client "[Client Name]" \
-  --project "[Project Name]" \
-  --output /Users/darrenswanepoel/Downloads/proposal-[client-slug]/ \
-  --budgets-file '/Users/darrenswanepoel/Downloads/budget-analysis/proposal_budgets.json' \
-  --plans "/path/to/ground_floor.png,/path/to/first_floor.png" \
-  --audio-zones '["Living Room", "Kitchen", "Master Bedroom", "Covered Patio", "Pool Deck"]'
+  --project "[read from the drawing title block]" \
+  --output /tmp/[project]/proposal/ \
+  --budgets-file /tmp/[project]/proposal_budgets.json \
+  --plans "/path/ground_floor.png,/path/first_floor.png" \
+  --audio-zones '["Living Room","Kitchen","Main Suite","Terrace 1","Pool Deck"]'
 ```
 
-**`--budgets-file`** is the output of the budget-analyzer skill (`proposal_budgets.json`). It
-contains both the tier card prices (Entry/Mid/Premium for each system) and the per-unit zone
-prices (per audio zone, per access control reader). When provided, it fully replaces the demo
-numbers — no manual price entry needed.
+**`--budgets-file`** is the split v2 contract from **wequote-budget** (`proposal_budgets.json`,
+via `build_proposal_contract.py`) — see "The split budget contract" above. It carries the tier
+baselines (audio 0, access minimum), the tier-specific `per_unit` add-on prices, and the
+`takeoff` lists that populate the audio-zone and access-control selectors. When provided it
+fully replaces the demo numbers. If omitted, the proposal falls back to demo prices.
 
-If no `--budgets-file` is provided, the proposal falls back to demo prices (TBD on some systems).
+Any number of plans can be passed — the grid adapts (1 = full width, 2 = side by side,
+3 = three columns, 4+ = two columns wrapping).
 
-Any number of plans can be passed — they are all embedded and displayed in the Project Plans
-section. The grid adapts: 1 plan = full width, 2 = side by side, 3 = three columns, 4+ = two
-columns wrapping.
+**Fallback (running directly on the Mac):** use `mcp__Control_your_Mac__osascript` to run the
+same command and `open -a 'Google Chrome' …/index.html`. Only needed when not delivering
+through Cowork.
 
-Then open the file locally for review:
-
-```bash
-open -a 'Google Chrome' /Users/darrenswanepoel/Downloads/proposal-[client-slug]/index.html
-```
-
-Tell the user the proposal is ready to review locally and ask if they'd like any changes before
-publishing. **Do NOT deploy to Netlify at this stage.**
-
-After any revisions, regenerate and reopen. Repeat until the user explicitly says something like
-"publish", "deploy", "send to client", or "make it live".
+Tell the user the proposal is ready to review and ask for changes. **Do NOT deploy to Netlify
+at this stage.** After revisions, regenerate and re-deliver. Repeat until the user explicitly
+says "publish", "deploy", "send to client", or "make it live".
 
 ---
 
@@ -288,6 +313,10 @@ do shell script "cat /Users/darrenswanepoel/Downloads/deploy_log.txt"
 `Content-Type: text/html; charset=utf-8` to ensure the page renders correctly.
 
 The site name `d1-[client-slug]` must be unique — if taken, it auto-appends a timestamp.
+
+**Preferred:** pass `FOLDER` and `SITE_NAME` as **arguments** to the deploy script rather than
+hand-editing two lines each time, and point `FOLDER` at the proposal in the Claude Cowork
+project folder (not Downloads). Keep the token in `config/netlify.json`.
 
 Share the live URL with the user once confirmed ready.
 

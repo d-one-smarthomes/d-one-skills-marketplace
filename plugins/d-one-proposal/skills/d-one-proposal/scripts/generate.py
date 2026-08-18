@@ -12,6 +12,7 @@ import sys
 import base64
 import argparse
 import json
+from html import escape
 
 SKILL_DIR  = os.path.join(os.path.dirname(__file__), '..')
 LOGO_PATH  = os.path.join(SKILL_DIR, 'assets', 'logo.png')
@@ -718,6 +719,9 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
     cover_logo = f'<img src="{logo_b64}" class="cover-logo" alt="D-One">' if logo_b64 else ''
     footer_logo = f'<img src="{logo_b64}" class="footer-logo" alt="D-One">' if logo_b64 else ''
 
+    # Project name / address subtitle on the cover (rendered only when supplied)
+    project_line = f'<div class="cover-project">{escape(project_name)}</div>' if project_name else ''
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -809,6 +813,11 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       font-size: clamp(40px, 4.5vw, 72px);
       font-weight: 300; line-height: 1.05;
       letter-spacing: -0.01em; color: var(--white);
+    }}
+    .cover-project {{
+      font-family: var(--f-sans); font-size: 15px; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold-lt); margin-top: 12px;
     }}
     .rule {{
       width: 48px; height: 1px; background: var(--gold); margin: 36px 0;
@@ -1288,6 +1297,7 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       {cover_logo}
       <div class="eyebrow">Security, Wi-Fi &amp; AV</div>
       <div class="cover-title">{client_name}</div>
+      {project_line}
       <div class="rule"></div>
       <p class="cover-body">This document outlines the security, Wi-Fi and AV options for your home. For each system, choose the level that suits you — your selections give us what we need to prepare a detailed proposal.</p>
       <p class="cover-philosophy">Every option has been chosen for simplicity above all else — the fewest components, zero learning curve, and the most intuitive experience possible.</p>

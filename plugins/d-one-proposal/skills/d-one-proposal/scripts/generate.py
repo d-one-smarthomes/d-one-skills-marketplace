@@ -791,15 +791,20 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           </div>
         </div>
       </section>''' + pull_quote(QUOTES[5]) + f'''
-      <!-- Netlify Forms: static form so Netlify detects it at deploy; JS submits it via fetch. -->
-      <form name="proposal-selections" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <!-- Selections are posted cross-site to the permanent D-One inbox on Netlify
+           (d1-proposal-inbox), whose form notifications email systems@ and operations@.
+           Posting into a hidden iframe avoids CORS and works from any hosted proposal. -->
+      <iframe name="d1-inbox-frame" style="display:none" title="submit"></iframe>
+      <form id="d1-selections-form" name="proposal-selections"
+            action="https://d1-proposal-inbox.netlify.app/" method="POST"
+            target="d1-inbox-frame" style="display:none">
         <input type="hidden" name="form-name" value="proposal-selections">
-        <input type="text" name="bot-field">
-        <input type="text" name="client">
-        <input type="text" name="project">
-        <input type="text" name="name">
-        <input type="email" name="email">
-        <textarea name="summary"></textarea>
+        <input type="hidden" name="bot-field">
+        <input type="hidden" name="client">
+        <input type="hidden" name="project">
+        <input type="hidden" name="name">
+        <input type="hidden" name="email">
+        <textarea name="summary" hidden></textarea>
       </form>'''
 
     nav_logo = f'<img src="{logo_b64}" class="nav-logo" alt="D-One">' if logo_b64 else '<span style="color:var(--gold);font-family:var(--f-serif);font-size:18px;">D-One</span>'
@@ -1756,25 +1761,22 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       const text = summaryText(name, email);
       // 1) Always give the client a downloaded copy.
       downloadSummary(text);
-      // 2) Notify D-One via Netlify Forms (no server needed).
+      // 2) Notify D-One: post to the permanent inbox form (emails systems@ & operations@).
       btn.disabled = true;
       statusEl.textContent = 'Saving…';
-      fetch('/', {{
-        method: 'POST',
-        headers: {{ 'Content-Type': 'application/x-www-form-urlencoded' }},
-        body: encodeForm({{
-          'form-name': 'proposal-selections',
-          client: CLIENT_NAME, project: PROJECT_NAME,
-          name: name, email: email, summary: text
-        }})
-      }}).then(() => {{
+      try {{
+        const form = document.getElementById('d1-selections-form');
+        form.client.value  = CLIENT_NAME;
+        form.project.value = PROJECT_NAME;
+        form.name.value    = name;
+        form.email.value   = email;
+        form.summary.value = text;
+        form.submit();  // posts cross-site into the hidden iframe (no CORS)
         statusEl.textContent = 'Saved — a copy downloaded to your device and sent to D-One. We\\'ll be in touch.';
-        btn.disabled = false;
-      }}).catch(() => {{
-        // Even if the network post fails (e.g. previewed locally), the download succeeded.
-        statusEl.textContent = 'Downloaded a copy to your device. If you were reviewing offline, please email it to darren@d-one.co.za.';
-        btn.disabled = false;
-      }});
+      }} catch (e) {{
+        statusEl.textContent = 'Downloaded a copy to your device. If you were reviewing offline, please email it to systems@d-one.co.za.';
+      }}
+      btn.disabled = false;
     }}
 
     // Highlight active nav link on scroll

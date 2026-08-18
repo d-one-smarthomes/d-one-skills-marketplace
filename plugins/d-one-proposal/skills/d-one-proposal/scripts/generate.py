@@ -36,6 +36,27 @@ CATEGORIES = [
 
 TIERS = ['Entry', 'Mid', 'Premium']
 
+# Client testimonials — one pull-quote is placed after each major section.
+QUOTES = [
+    "The best contractor on our whole project.",
+    "I'm not technical — it must just work.",
+    "Nice to deal with guys that just get it.",
+    "D-One gets it done.",
+    "Nice that it's so obvious, so I don't have to remember anything.",
+    "We don't need to be shown how it works — it's obvious, anyone can use it.",
+]
+
+
+def pull_quote(text):
+    """A centred gold pull-quote block, used between sections."""
+    return f'''
+      <section class="quote-section">
+        <div class="quote-inner">
+          <div class="quote-mark">&ldquo;</div>
+          <p class="quote-text">{escape(text)}</p>
+        </div>
+      </section>'''
+
 NOT_REQUIRED_LABELS = {
     'cctv':               "We don't need CCTV",
     'access-control':     "We don't need Access Control",
@@ -538,11 +559,11 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           <p class="plans-note">Equipment layouts prepared for this project. Each system is marked on the drawings below.</p>
           {plans_grid}
         </div>
-      </section>'''
+      </section>''' + pull_quote(QUOTES[0])
 
     # ── CATEGORY SECTIONS ──
     category_sections = []
-    for cat_id, cat_name, cat_systems in CATEGORIES:
+    for cat_idx, (cat_id, cat_name, cat_systems) in enumerate(CATEGORIES):
         systems_html = []
         for sys_slug in cat_systems:
             sys_label = next(l for s, l in SYSTEMS if s == sys_slug)
@@ -721,6 +742,8 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           </div>
         </div>
       </section>''')
+        # A client pull-quote after each category section (quotes[1..4]).
+        category_sections.append(pull_quote(QUOTES[(cat_idx + 1) % len(QUOTES)]))
 
     # ── BUDGET SUMMARY TABLE ──
     summary_rows = ''
@@ -755,8 +778,29 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
             </tbody>
           </table>
           <p class="summary-disclaimer">Estimates are indicative. Final pricing subject to detailed design and scope.</p>
+
+          <div class="save-block">
+            <div class="save-eyebrow">Next step</div>
+            <p class="save-note">Happy with your selections? Save them and we'll get a copy so we can prepare your detailed proposal. You'll also download a copy for your records.</p>
+            <div class="save-fields">
+              <input type="text"  id="client-name"  class="save-input" placeholder="Your name" autocomplete="name">
+              <input type="email" id="client-email" class="save-input" placeholder="Your email" autocomplete="email">
+            </div>
+            <button type="button" class="save-btn" id="save-btn" onclick="saveSelections()">Save my selections</button>
+            <p class="save-status" id="save-status"></p>
+          </div>
         </div>
-      </section>'''
+      </section>''' + pull_quote(QUOTES[5]) + f'''
+      <!-- Netlify Forms: static form so Netlify detects it at deploy; JS submits it via fetch. -->
+      <form name="proposal-selections" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="proposal-selections">
+        <input type="text" name="bot-field">
+        <input type="text" name="client">
+        <input type="text" name="project">
+        <input type="text" name="name">
+        <input type="email" name="email">
+        <textarea name="summary"></textarea>
+      </form>'''
 
     nav_logo = f'<img src="{logo_b64}" class="nav-logo" alt="D-One">' if logo_b64 else '<span style="color:var(--gold);font-family:var(--f-serif);font-size:18px;">D-One</span>'
     cover_logo = f'<img src="{logo_b64}" class="cover-logo" alt="D-One">' if logo_b64 else ''
@@ -1138,6 +1182,56 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
       font-style: italic;
     }}
 
+    /* ── PULL QUOTES ── */
+    .quote-section {{
+      background: var(--dark); padding: 64px 80px; text-align: center;
+      border-top: 1px solid rgba(184,148,74,0.12);
+      border-bottom: 1px solid rgba(184,148,74,0.12);
+    }}
+    .quote-inner {{ max-width: 760px; margin: 0 auto; }}
+    .quote-mark {{
+      font-family: var(--f-serif); font-size: 64px; line-height: 0.5;
+      color: var(--gold); opacity: 0.6; margin-bottom: 18px;
+    }}
+    .quote-text {{
+      font-family: var(--f-serif); font-weight: 300; font-style: italic;
+      font-size: clamp(22px, 2.6vw, 32px); line-height: 1.35; color: var(--white);
+    }}
+
+    /* ── SAVE / NEXT STEP ── */
+    .save-block {{
+      margin-top: 48px; padding-top: 36px;
+      border-top: 1px solid rgba(184,148,74,0.25); text-align: center;
+    }}
+    .save-eyebrow {{
+      font-family: var(--f-sans); font-size: 12px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }}
+    .save-note {{
+      font-size: 14px; font-weight: 300; line-height: 1.7; color: #4A4437;
+      max-width: 560px; margin: 0 auto 24px;
+    }}
+    .save-fields {{ display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }}
+    .save-input {{
+      font-family: var(--f-sans); font-size: 14px; padding: 12px 16px;
+      border: 1px solid rgba(23,20,15,0.25); background: #fff; color: #17140F;
+      border-radius: 2px; min-width: 220px;
+    }}
+    .save-input:focus {{ outline: none; border-color: var(--gold); }}
+    .save-btn {{
+      font-family: var(--f-sans); font-size: 13px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--white); background: var(--gold);
+      border: none; padding: 16px 44px; border-radius: 2px; cursor: pointer;
+      transition: background 0.2s ease;
+    }}
+    .save-btn:hover {{ background: var(--gold-lt); }}
+    .save-btn:disabled {{ opacity: 0.6; cursor: default; }}
+    .save-status {{
+      margin-top: 16px; font-size: 13px; font-weight: 300; min-height: 18px;
+      color: #2E7D32;
+    }}
+    .save-status.error {{ color: #B00020; }}
+
     /* ── FOOTER ── */
     footer {{
       background: #0F0C08; border-top: 1px solid rgba(184,148,74,0.15);
@@ -1403,6 +1497,8 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
     const SYSTEM_BUDGETS = {system_js};
     const CAT_SYSTEMS    = {cat_js};
     const CAT_NAMES      = {json.dumps({cat_id: cat_name for cat_id, cat_name, _ in CATEGORIES})};
+    const CLIENT_NAME    = {json.dumps(client_name)};
+    const PROJECT_NAME   = {json.dumps(project_name or '')};
 
     // Track tier selections per system: system -> {{ tier, budget }}
     const selections = {{}};
@@ -1575,6 +1671,110 @@ def generate_html(client_name, project_name, budgets, logo_b64=None, cover_image
           amtEl.className = 'sum-amt';
         }}
       }}
+    }}
+
+    // ── Save my selections: build a summary, download a copy, notify D-One ──
+    const ZAR = new Intl.NumberFormat('en-ZA', {{style:'currency',currency:'ZAR',maximumFractionDigits:0}});
+
+    function collectSummary() {{
+      const cats = [];
+      for (const [catId, systems] of Object.entries(CAT_SYSTEMS)) {{
+        const {{ total, hasTbd, anySelected }} = getCategoryTotals(catId);
+        const lines = [];
+        for (const sys of systems) {{
+          const sel = selections[sys];
+          if (!sel) continue;
+          let line = `${{sys}}: ${{sel.tier === 'none' ? 'Not Required' : sel.tier}}`;
+          // audio zones chosen
+          const zpanel = document.getElementById(`zone-panel-${{sys}}`);
+          if (zpanel && zpanel.style.display !== 'none') {{
+            const zones = [...zpanel.querySelectorAll('.zone-cb:checked')].map(cb => cb.closest('.zone-item').querySelector('.zone-name').textContent);
+            if (zones.length) line += ` — zones: ${{zones.join(', ')}}`;
+          }}
+          // access-control / other add-ons chosen
+          const adds = [];
+          document.querySelectorAll(`.option-panel[data-system="${{sys}}"]`).forEach(op => {{
+            if (op.style.display === 'none') return;
+            op.querySelectorAll('.opt-select').forEach(s => {{ if ((parseInt(s.value)||0) > 0) adds.push(`${{s.value}}× ${{s.closest('.option-item').querySelector('.option-name').textContent}}`); }});
+            op.querySelectorAll('.opt-cb:checked').forEach(cb => adds.push(cb.closest('.option-item').querySelector('.option-name').textContent));
+          }});
+          if (adds.length) line += ` — add-ons: ${{adds.join(', ')}}`;
+          lines.push(line);
+        }}
+        if (anySelected) {{
+          const amt = (total === 0 && hasTbd) ? 'TBD' : (ZAR.format(total) + (hasTbd ? ' + TBD' : ''));
+          cats.push({{ category: CAT_NAMES[catId], estimate: amt, lines }});
+        }}
+      }}
+      return cats;
+    }}
+
+    function summaryText(name, email) {{
+      const cats = collectSummary();
+      let out = `D-One — Proposal selections\n`;
+      out += `Client: ${{CLIENT_NAME}}\n`;
+      if (PROJECT_NAME) out += `Project: ${{PROJECT_NAME}}\n`;
+      if (name)  out += `Submitted by: ${{name}}\n`;
+      if (email) out += `Email: ${{email}}\n`;
+      out += `\n`;
+      if (!cats.length) {{ out += `(No selections made yet.)\n`; return out; }}
+      cats.forEach(c => {{
+        out += `${{c.category}} — ${{c.estimate}}\n`;
+        c.lines.forEach(l => out += `   • ${{l}}\n`);
+        out += `\n`;
+      }});
+      out += `Note: estimates are indicative, subject to detailed design and scope.\n`;
+      return out;
+    }}
+
+    function downloadSummary(text) {{
+      const blob = new Blob([text], {{ type: 'text/plain;charset=utf-8' }});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const slug = (CLIENT_NAME || 'proposal').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      a.href = url; a.download = `d-one-selections-${{slug}}.txt`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }}
+
+    function encodeForm(data) {{
+      return Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+    }}
+
+    function saveSelections() {{
+      const btn = document.getElementById('save-btn');
+      const statusEl = document.getElementById('save-status');
+      const name  = (document.getElementById('client-name')  || {{}}).value || '';
+      const email = (document.getElementById('client-email') || {{}}).value || '';
+      const cats = collectSummary();
+      statusEl.className = 'save-status';
+      if (!cats.length) {{
+        statusEl.className = 'save-status error';
+        statusEl.textContent = 'Please make at least one selection above first.';
+        return;
+      }}
+      const text = summaryText(name, email);
+      // 1) Always give the client a downloaded copy.
+      downloadSummary(text);
+      // 2) Notify D-One via Netlify Forms (no server needed).
+      btn.disabled = true;
+      statusEl.textContent = 'Saving…';
+      fetch('/', {{
+        method: 'POST',
+        headers: {{ 'Content-Type': 'application/x-www-form-urlencoded' }},
+        body: encodeForm({{
+          'form-name': 'proposal-selections',
+          client: CLIENT_NAME, project: PROJECT_NAME,
+          name: name, email: email, summary: text
+        }})
+      }}).then(() => {{
+        statusEl.textContent = 'Saved — a copy downloaded to your device and sent to D-One. We\\'ll be in touch.';
+        btn.disabled = false;
+      }}).catch(() => {{
+        // Even if the network post fails (e.g. previewed locally), the download succeeded.
+        statusEl.textContent = 'Downloaded a copy to your device. If you were reviewing offline, please email it to darren@d-one.co.za.';
+        btn.disabled = false;
+      }});
     }}
 
     // Highlight active nav link on scroll

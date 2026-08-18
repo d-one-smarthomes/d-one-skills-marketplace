@@ -83,6 +83,22 @@ Entry/Mid panel adds viewers (at marked-up spots) + readers (dropdown), the Prem
 Savant intercoms + optional tag readers. In both cases per-unit prices are hidden — only the
 category subtotal changes.
 
+Access Control hardware is confirmed: Entry/Mid on **UniFi** (door intercom + viewer),
+Premium on **Savant/2N** — gate intercom `DOR-VERSO2SMN-00`, tag reader `9160347`.
+
+### Testimonials and the "Save my selections" step
+
+- A client **pull-quote** is placed after each major section (project plans, each of the four
+  categories, and the budget summary). Edit the `QUOTES` list in `generate.py` to change them.
+- The budget summary ends with a **"Save my selections"** block (optional name + email). On
+  click it (1) **downloads** a plain-text summary of the client's selections + per-category
+  budget to their device, and (2) posts the same summary to **Netlify Forms**
+  (`name="proposal-selections"`), which emails D-One so we can see what they chose. Locally /
+  offline the post is skipped and only the download happens.
+- **One-time Netlify setup:** on the site, Site settings → Forms → add a form notification email
+  to `darren@d-one.co.za`. Form detection needs the form present at deploy (it is) — the
+  Files-API deploy keeps it.
+
 ---
 
 ## Step 2 — Read the content reference

@@ -121,10 +121,10 @@ It emits:
   ports, non-PoE (TVs) → LAN ports, **+25% spare** rounded to the next 24/48-port switch, **+1
   LAN drop per TV**. Surface this at the counts checkpoint.
 
-**Product-model note (Access Control):** the per-unit numbers are computed from whatever device
-lines the detail contains (currently UniFi). The client-facing model describes a **Savant** gate
-intercom for the Premium baseline and an explicit reader/viewer split for Entry/Mid — confirm the
-SKUs and update `tier_definitions.json` so the priced hardware matches the language.
+**Access Control hardware (confirmed):** Entry/Mid are priced on **UniFi** (door intercom +
+viewer); Premium on **Savant/2N** — gate intercom `DOR-VERSO2SMN-00`, tag reader `9160347`. The
+per-unit numbers are computed all-inclusive from those detail lines; keep the SKUs in
+`tier_definitions.json` in step with the pricelist.
 
 ## Maintaining it
 

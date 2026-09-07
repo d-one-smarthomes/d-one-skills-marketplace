@@ -59,6 +59,11 @@
       "name": "wequote-budget",
       "source": "./plugins/wequote-budget",
       "description": "Build accurate Entry/Mid/Premium budgets for D-One proposals from floorplan icon counts, a WeQuote URL, or manual quantities."
+    },
+    {
+      "name": "linking-a-po",
+      "source": "./plugins/linking-a-po",
+      "description": "Link a manually-created Purchase Order in Odoo to its originating Sales Order/quote, so it shows up alongside the other POs generated from that quote."
     }
   ]
 }

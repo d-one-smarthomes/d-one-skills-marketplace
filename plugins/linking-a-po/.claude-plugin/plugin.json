@@ -1,0 +1,8 @@
+{
+    "name": "linking-a-po",
+    "version": "0.1.0",
+    "description": "Link a manually-created Purchase Order in Odoo to its originating Sales Order/quote, so it shows up alongside the other POs generated from that quote.",
+    "author": {
+          "name": "D-One"
+    }
+}

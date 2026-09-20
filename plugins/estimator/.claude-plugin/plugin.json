@@ -1,6 +1,6 @@
 {
     "name": "estimator",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "description": "Build a detailed, itemised D-One quote (equipment + labour) as an editable Excel spreadsheet, priced live from Odoo, organised by Room/Area. Regenerates an Odoo Sales Order import from the edited Excel (into the native Room field), can add new items to the Odoo pricelist, and can import the confirmed quote into Odoo as a draft.",
     "author": {
         "name": "D-One"

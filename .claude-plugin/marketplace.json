@@ -38,7 +38,7 @@
     {
       "name": "estimator",
       "source": "./plugins/estimator",
-      "description": "Build a detailed, itemised D-One quote (equipment + labour) as an Excel spreadsheet, using D-One's real inventory pricing and historical install-hour/cost data."
+      "description": "Build a detailed, itemised D-One quote (equipment + labour) as an editable Excel spreadsheet, priced live from Odoo, organised by Room/Area. Regenerates an Odoo Sales Order import from the edited Excel (into the native Room field), can add new items to the Odoo pricelist, and can import the confirmed quote into Odoo as a draft.."
     },
     {
       "name": "floorplan-icons",

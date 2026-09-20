@@ -9,5 +9,11 @@
   "equipment_fallback_markup": 1.45,
   "equipment_fallback_markup_note": "Median price/cost markup across 1,907 historical equipment lines, used ONLY when a SKU has no cost history in equip_cost_by_sku.json. Real historical cost is always preferred over this estimate.",
   "rate_card_last_updated": "2026-07-31",
-  "rate_card_provenance": "Derived from the most recent (July 2026) WeQuote export lines at the time Estimator was built. Earlier quotes in the training set showed rates as low as 700/hr (fix1/fix2) and 900/hr (programming), confirming this rate card is periodically revised upward. Whoever maintains this skill should refresh these numbers when D-One's official rate card changes, and should update this file (not just verbally tell Claude) so the change persists."
+  "rate_card_provenance": "Derived from the most recent (July 2026) WeQuote export lines at the time Estimator was built. Earlier quotes in the training set showed rates as low as 700/hr (fix1/fix2) and 900/hr (programming), confirming this rate card is periodically revised upward. Whoever maintains this skill should refresh these numbers when D-One's official rate card changes, and should update this file (not just verbally tell Claude) so the change persists.",
+  "odoo_labour_products": {
+    "_note": "Maps each labour phase to its Odoo service product so labour lines can be written into the Odoo import file. Each value is the product's Internal Reference (default_code) as it appears in Odoo, or its exact product name. At quote time these are resolved LIVE to the product's database id. If a value is blank or can't be resolved, that phase is LEFT OUT of the import file and flagged. Verified live 2026-09-20: CLH='Cabling Labour' (R950), INSTL='Installation Labour' (R950), PROGL='Programming Labour' (R1250) — these match the rate card exactly. Alternative structured products exist in Odoo ([LAB-1FIX]/[LAB-2FIX]/[LAB-PROG]) if D-One prefers those; swap the values to those names to use them.",
+    "fix1_cabling": "CLH",
+    "fix2_installation": "INSTL",
+    "programming": "PROGL"
+  }
 }

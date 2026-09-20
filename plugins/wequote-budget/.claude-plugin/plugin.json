@@ -1,6 +1,6 @@
 {
   "name": "wequote-budget",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Build accurate Entry/Mid/Premium budgets for D-One proposals from floorplan icon counts, a WeQuote URL, or manual quantities.",
   "author": {
     "name": "D-One"

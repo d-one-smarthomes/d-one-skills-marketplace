@@ -85,12 +85,20 @@ json
   "quote_ref": "Q-1234",
   "customer": "Smith Family Trust",
   "items": [
-    {"query": "IPMX-E20F-IRB2", "qty": 4, "room": "Lounge"},
-    {"query": "8 zone ceiling speaker", "qty": 8, "room": "Main Bedroom"}
+    {"query": "IPMX-E20F-IRB2", "qty": 4, "area": "Ground Floor", "room": "Lounge", "system": "Video Distribution"},
+    {"query": "8 zone ceiling speaker", "qty": 8, "area": "First Floor", "room": "Main Bedroom"}
   ]
 }
 
-room is optional per item — the area/room the hardware goes in. It shows in the Excel Room / Area column (the quote sorts room-by-room), is editable there, and imports into Odoo's native Room field (x_room) on each order line. Set it from the take-off / design where you can; blank is fine and can be filled in the Excel later. Labour lines are aggregated across the whole quote, so they carry no room.
+Area, Room and System — always three separate columns. Every equipment line carries all three, each in its own Excel column and each imported into its own Odoo order-line field:
+
+Area (e.g. Ground Floor, Grounds, Whole Site) → x_studio_area (free text).
+Room (e.g. Lounge, Main Bedroom) → x_room (free text).
+System → x_system. This is a fixed list in Odoo (WiFi and Network, Lighting Control, CCTV, Multiroom Audio, etc.). The skill reads the list LIVE from Odoo every run — never hard-code it — and the Excel System column is a dropdown limited to that list (held on a hidden "Lists" tab), so nobody can type a value Odoo would reject.
+
+Set area and room from the take-off / design wherever you can. For system: if you know it, put it in items.json (label or key, any case); otherwise leave it out and Estimator pre-fills it from the System that product has most often been quoted under on past Odoo quote lines (products themselves carry no System in Odoo). A line is flagged amber when the product has no System history, when its history is split across more than one System (the note shows the split — confirm it), or when a given system isn't a valid Odoo System type. Don't invent a mapping from the local category to fill gaps — leave it blank and flagged for a person to pick from the dropdown.
+
+Labour lines carry NO Area, Room or System. Labour is aggregated across the whole quote, so it isn't tied to one system — in particular, do not tag labour as "Professional Installation". Those three fields stay blank on labour lines in the import.
 
 query is whatever you have — a SKU (best, exact match) or a product description. quote_ref (→ Odoo Order Reference) and customer (→ Odoo Customer/partner) are both optional. If you know the client, set customer — it saves setting it by hand in Odoo. It must match a Customer name that already exists in Odoo, so use the exact name from Odoo if you have it; otherwise leave it out and set the Customer at import time. Use the project name the user gives you, or a sensible default.
 
@@ -121,7 +129,7 @@ Don't silently smooth these over — call them out to the user in your summary, 
 
 Step 5: Present the result
 
-Save both files and hand them to the user. Briefly note the grand total, and mention anything flagged (unmatched items, name-matched items worth double-checking, snapshot-priced items, zero-hour items, and any lines left out of the import file). Keep this brief — the spreadsheets themselves have the detail.
+Save both files and hand them to the user. Briefly note the grand total, and mention anything flagged (lines with no System or a split System history, unmatched items, name-matched items worth double-checking, snapshot-priced items, zero-hour items, and any lines left out of the import file). Keep this brief — the spreadsheets themselves have the detail.
 
 The Odoo import file — format and how to import
 
@@ -129,10 +137,10 @@ The Odoo import file — format and how to import
 
 How the file is structured (don't reformat it — Odoo relies on this shape):
 
-Columns: id, name, partner_id, order_line/product_id/.id, order_line/name, order_line/product_uom_qty, order_line/price_unit.
+Columns: id, name, partner_id, order_line/product_id/.id, order_line/name, order_line/product_uom_qty, order_line/price_unit, order_line/x_studio_area, order_line/x_room, order_line/x_system. System is written as Odoo's selection key (e.g. wifi, av, Lighting Control), which Odoo's importer accepts directly.
 One order, many lines. The order-level fields (id, name = Order Reference, partner_id = Customer) appear only on the first row; every following row leaves them blank so Odoo attaches the line to the same order.
 Products are referenced by database id via order_line/product_id/.id — the exact id fetched live from Odoo, so there's no name-matching ambiguity on import.
-Labour is aggregated into up to three service lines (1st Fix Cabling, 2nd Fix Installation, Programming): quantity = total hours across the whole quote, unit price = the phase's hourly rate. These only appear if odoo_labour_products is set (see the reference-data section); otherwise they're left out and flagged.
+Labour is aggregated into up to three service lines (1st Fix Cabling, 2nd Fix Installation, Programming): quantity = total hours across the whole quote, unit price = the phase's hourly rate. Labour lines leave Area, Room and System blank. These only appear if odoo_labour_products is set (see the reference-data section); otherwise they're left out and flagged.
 Only lines that resolved to a real Odoo product id are written, so the file imports cleanly. Anything held back (snapshot-priced, unmatched, or labour with no mapped product) is listed in the run summary and stays in the Excel for a human to add manually.
 
 There are two ways to get it into Odoo — the CSV is the default, and Claude can do the import directly when asked:
@@ -153,7 +161,7 @@ python scripts/refresh_import.py <EditedQuote>.xlsx
 
 This reads the edited workbook and rebuilds <EditedQuote>_OdooImport.csv to match exactly what's in the Excel right now:
 
-Quantities, prices, labour hours and the Room / Area come straight from the edited cells — a manual price override in the Excel is preserved (the price is NOT re-pulled from Odoo), and an edited room flows to Odoo's Room field. Only the Odoo product id is looked up live (by SKU, then name), so lines still import unambiguously.
+Quantities, prices, labour hours, Area, Room and System come straight from the edited cells — a manual price override in the Excel is preserved (the price is NOT re-pulled from Odoo), and edited Area / Room / System values flow to their Odoo fields. System is checked against Odoo's live list: an invalid value imports blank and is reported, and equipment lines with no System are listed in the summary. (Older workbooks with a single "Room / Area" column are still read — that column is treated as Room.) Only the Odoo product id is looked up live (by SKU, then name), so lines still import unambiguously.
 Added lines are picked up automatically — put the SKU in the SKU column (best) or a clear product name, and the refresh resolves it to an Odoo product. Removed lines simply don't appear. Labour is re-aggregated from the current hour columns.
 Anything that can't be matched to an Odoo product is left out and reported, same as the initial build.
 

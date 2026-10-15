@@ -251,16 +251,56 @@ def assign_system(line, explicit, options, history):
         line["flag"] = " | ".join(x for x in (line.get("flag"), note) if x)
 
 
+# --------------------------------------------------------------------------- #
+# LABOUR SKU POLICY (house rule, set by Darren)
+# Labour is billed ONLY through these three Odoo service products, and these
+# three products are used ONLY for their own labour phase. They are hard-coded
+# on purpose: rate_card.json cannot override them, and no other SKU may be used
+# for labour.
+LABOUR_SKUS = {
+    "fix1_cabling": ("CLH", "Cabling Labour"),
+    "fix2_installation": ("INSTL", "Installation Labour"),
+    "programming": ("PROGL", "Programming Labour"),
+}
+# Legacy / alternative labour products that must NOT be used on quotes.
+BANNED_LABOUR_SKUS = {"LAB-1FIX", "LAB-2FIX", "LAB-PROG", "D+PM", "COD&PM"}
+
+# PROFESSIONAL FEES (house rule, 2026-10-15): project management and design are
+# billed as hours x hourly rate on whole-quote lines, using ONLY these products.
+FEE_SKUS = {
+    "project_management": ("Labour - PM", "Project Management Labour"),
+    "design": ("DLPU", "Design Labour per Unit"),
+}
+FEE_LABELS = {"project_management": "Project Management", "design": "Design"}
+
+
+def is_labour_item(*values):
+    """True if any value (SKU, query or item name) is one of the labour products
+    (or a banned legacy labour code). Such items must never be entered as
+    equipment lines - labour is generated from hours only."""
+    allowed = ({c.upper() for c, _n in LABOUR_SKUS.values()} | {n.upper() for _c, n in LABOUR_SKUS.values()}
+               | {c.upper() for c, _n in FEE_SKUS.values()} | {n.upper() for _c, n in FEE_SKUS.values()})
+    banned = {c.upper() for c in BANNED_LABOUR_SKUS}
+    for v in values:
+        t = (v or "").strip().upper()
+        if t and (t in allowed or t in banned):
+            return True
+    return False
+
+
+def labour_category(cat):
+    return (cat or "").strip().lower().startswith("labour")
+
+
 def resolve_labour_products(rates):
     """
     Resolve the three labour phases to Odoo product ids using rate_card ->
     odoo_labour_products. Returns (map phase->{"id","name"}, note). Empty if Odoo
     unavailable or none configured/resolvable.
     """
-    cfg = (rates.get("odoo_labour_products") or {})
-    wanted = {k: cfg.get(k, "") for k in ("fix1_cabling", "fix2_installation", "programming")}
-    if not any(wanted.values()):
-        return {}, "labour products not configured (odoo_labour_products blank) — labour left out of import."
+    # Hard-locked: always CLH / INSTL / PROGL (see LABOUR_SKUS). rate_card.json
+    # cannot change these.
+    wanted = {phase: code for phase, (code, _n) in LABOUR_SKUS.items()}
     if odoo_client is None or not odoo_client.available():
         return {}, "labour products not resolved — Odoo unavailable."
     try:
@@ -281,6 +321,30 @@ def resolve_labour_products(rates):
         else:
             unresolved.append(f"{phase}='{ref}'")
     note = f"labour products resolved: {len(out)}/{sum(1 for v in wanted.values() if v)}."
+    if unresolved:
+        note += " unresolved: " + ", ".join(unresolved)
+    return out, note
+
+
+def resolve_fee_products():
+    """Resolve the PM and design fee products (hard-coded in FEE_SKUS) to Odoo ids."""
+    if odoo_client is None or not odoo_client.available():
+        return {}, "fee products not resolved — Odoo unavailable."
+    try:
+        od = odoo_client.Odoo()
+    except Exception:
+        return {}, "fee products not resolved — Odoo unreachable."
+    out, unresolved = {}, []
+    for key, (code, _n) in FEE_SKUS.items():
+        try:
+            prod = odoo_client.resolve_service_product(od, code)
+        except Exception:
+            prod = None
+        if prod:
+            out[key] = {"id": prod["id"], "name": prod.get("name") or code}
+        else:
+            unresolved.append(f"{key}='{code}'")
+    note = f"fee products resolved: {len(out)}/{len(FEE_SKUS)}."
     if unresolved:
         note += " unresolved: " + ", ".join(unresolved)
     return out, note
@@ -342,7 +406,7 @@ def compute_line(query, qty, odoo_hit, inventory, inventory_by_name, equip_cost,
 # --------------------------------------------------------------------------- #
 # Excel output
 # --------------------------------------------------------------------------- #
-def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_labels=()):
+def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_labels=(), fees=None):
     wb = Workbook()
     ws = wb.active
     ws.title = "Quote"
@@ -359,6 +423,7 @@ def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_l
                "Equip Total", "Equip Cost Total", "1st Fix Hrs", "2nd Fix Hrs", "Prog Hrs",
                "Labour Total", "Price Source", "Notes"]
     COL_SYSTEM = 3
+    COL_QTY = 7
     COL_UNIT_PRICE, COL_UNIT_COST = 8, 9
     COL_EQUIP_TOTAL, COL_EQUIP_COST, COL_LABOUR_TOTAL = 10, 11, 15
     money_cols = (COL_UNIT_PRICE, COL_UNIT_COST, COL_EQUIP_TOTAL, COL_EQUIP_COST, COL_LABOUR_TOTAL)
@@ -443,8 +508,30 @@ def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_l
     ws.cell(row=row, column=1, value="Equipment margin (price - cost)")
     ws.cell(row=row, column=COL_EQUIP_TOTAL, value=round(margin, 2)).number_format = '#,##0.00'
     row += 1
-    ws.cell(row=row, column=1, value="GRAND TOTAL (equip + labour, ex VAT)").font = Font(bold=True, size=12)
-    ws.cell(row=row, column=COL_EQUIP_TOTAL, value=round(grand_equip_price + grand_labour_price, 2)).font = Font(bold=True, size=12)
+    # Professional fees: whole-quote lines, hours x hourly rate. Hours sit in the
+    # Qty column, rate in Unit Price, cost (50% of sell) in Unit Cost. refresh_import.py
+    # reads these rows back by their "FEE:" label, so don't rename them.
+    fees = fees or {}
+    fee_rates = rates.get("fee_rates_per_hour", {})
+    grand_fees = 0
+    for key in ("project_management", "design"):
+        hrs = float(fees.get(key, 0) or 0)
+        rate = fee_rates.get(key, {}).get("sell", 0)
+        cost = fee_rates.get(key, {}).get("cost", rate / 2.0)
+        total = hrs * rate
+        grand_fees += total
+        ws.cell(row=row, column=1, value=f"FEE: {FEE_LABELS[key]} (hrs x rate)").font = Font(bold=True)
+        ws.cell(row=row, column=COL_QTY, value=hrs)
+        ws.cell(row=row, column=COL_UNIT_PRICE, value=rate).number_format = '#,##0.00'
+        ws.cell(row=row, column=COL_UNIT_COST, value=cost).number_format = '#,##0.00'
+        ws.cell(row=row, column=COL_EQUIP_TOTAL, value=round(total, 2)).number_format = '#,##0.00'
+        if hrs <= 0:
+            for c in range(1, ncols + 1):
+                ws.cell(row=row, column=c).fill = PatternFill("solid", fgColor=FLAG_AMBER)
+            ws.cell(row=row, column=ncols, value="No hours entered — enter estimated hours in the Qty column")
+        row += 1
+    ws.cell(row=row, column=1, value="GRAND TOTAL (equip + labour + fees, ex VAT)").font = Font(bold=True, size=12)
+    ws.cell(row=row, column=COL_EQUIP_TOTAL, value=round(grand_equip_price + grand_labour_price + grand_fees, 2)).font = Font(bold=True, size=12)
     ws.cell(row=row, column=COL_EQUIP_TOTAL).number_format = '#,##0.00'
     row += 2
     note_cell = ws.cell(row=row, column=1, value=f"Pricing: {pricing_note}")
@@ -478,7 +565,7 @@ IMPORT_HEADERS = [
 ]
 
 
-def build_odoo_import(lines, project_name, quote_ref, customer, rates, labour_products):
+def build_odoo_import(lines, project_name, quote_ref, customer, rates, labour_products, fees=None, fee_products=None):
     """
     Return (rows, skipped) for the Odoo import CSV.
     - Equipment lines with a real Odoo product id are written with product_id/.id.
@@ -537,7 +624,7 @@ def build_odoo_import(lines, project_name, quote_ref, customer, rates, labour_pr
         prod = labour_products.get(phase)
         if not prod:
             skipped.append((f"Labour — {phase_label[phase]} ({hrs} hrs)",
-                            "no Odoo service product mapped (set odoo_labour_products in rate_card.json)"))
+                            "labour product (CLH / INSTL / PROGL) not found in Odoo"))
             continue
         rows.append({
             "id": ext_id if first else "",
@@ -549,6 +636,33 @@ def build_odoo_import(lines, project_name, quote_ref, customer, rates, labour_pr
             "order_line/price_unit": rate_by_phase[phase],
             # labour is aggregated across the whole quote: no Area, no Room, and
             # deliberately NO System (not even Professional Installation).
+            "order_line/x_studio_area": "",
+            "order_line/x_room": "",
+            "order_line/x_system": "",
+        })
+        first = False
+
+    # professional fee lines (whole-quote, hours x rate; no Area / Room / System)
+    fees = fees or {}
+    fee_products = fee_products or {}
+    fee_rates = rates.get("fee_rates_per_hour", {})
+    for key in ("project_management", "design"):
+        hrs = round(float(fees.get(key, 0) or 0), 2)
+        if hrs <= 0:
+            continue
+        prod = fee_products.get(key)
+        if not prod:
+            skipped.append((f"Fee — {FEE_LABELS[key]} ({hrs} hrs)",
+                            f"fee product ({FEE_SKUS[key][0]}) not found in Odoo"))
+            continue
+        rows.append({
+            "id": ext_id if first else "",
+            "name": (quote_ref or "") if first else "",
+            "partner_id": (customer or "") if first else "",
+            "order_line/product_id/.id": prod["id"],
+            "order_line/name": f"{FEE_LABELS[key]} fee",
+            "order_line/product_uom_qty": hrs,
+            "order_line/price_unit": fee_rates.get(key, {}).get("sell", 0),
             "order_line/x_studio_area": "",
             "order_line/x_room": "",
             "order_line/x_system": "",
@@ -621,9 +735,29 @@ def main():
 
     inventory, inventory_by_name, equip_cost, labour_sku, labour_cat, rates = load_reference()
 
+    # Labour SKUs (CLH / INSTL / PROGL) are never entered as equipment lines -
+    # labour is generated from hours. Drop any that were passed in, and say so.
+    kept, dropped = [], []
+    for it in req["items"]:
+        if is_labour_item(it.get("query"), it.get("sku"), it.get("name")):
+            dropped.append(it.get("query"))
+        else:
+            kept.append(it)
+    req["items"] = kept
+    for q in dropped:
+        print(f"WARNING: '{q}' is a labour product - not added as an equipment line. "
+              f"Labour is billed only via CLH / INSTL / PROGL from hours.")
+
     queries = [it["query"] for it in req["items"]]
     odoo_map, pricing_note = fetch_odoo_prices(queries)
     labour_products, labour_note = resolve_labour_products(rates)
+    fee_products, fee_note = resolve_fee_products()
+    fees = {k: float((req.get("fees") or {}).get(k + "_hours", 0) or 0)
+            for k in ("project_management", "design")}
+    for k, h in fees.items():
+        if h <= 0:
+            print(f"NOTE: no {FEE_LABELS[k]} hours given - ask the user for estimated hours "
+                  f"(items.json 'fees': {{'{k}_hours': N}}). Fee line left at 0 and flagged.")
 
     lines = []
     for it in req["items"]:
@@ -644,11 +778,11 @@ def main():
     customer = req.get("customer", "")
 
     wb = build_workbook(lines, project_name, quote_ref, rates, pricing_note,
-                        [lbl for _k, lbl in sys_options])
+                        [lbl for _k, lbl in sys_options], fees=fees)
     add_meta_sheet(wb, project_name, quote_ref, customer)
     wb.save(out_path)
 
-    rows, skipped = build_odoo_import(lines, project_name, quote_ref, customer, rates, labour_products)
+    rows, skipped = build_odoo_import(lines, project_name, quote_ref, customer, rates, labour_products, fees, fee_products)
     write_odoo_import(import_path, rows)
 
     n_unmatched = sum(1 for l in lines if l["category"] == "UNMATCHED")

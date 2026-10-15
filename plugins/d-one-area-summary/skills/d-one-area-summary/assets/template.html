@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Area Summary · D-One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6F9; --surface:#FFFFFF; --ink:#0E2A47; --ink-2:#4A5D72; --rule:#D8E0E8;
+  --brand:#1379C9; --brand-ink:#FFFFFF;
+  --red:#C0392B; --red-bg:#FBE9E7; --amber:#B7790F; --amber-bg:#FDF3DF;
+  --green:#22814F; --green-bg:#E3F3EA; --grey:#7A8796; --grey-bg:#EDF0F3;
+  --track:#E3E9EF;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1724; --surface:#12233A; --ink:#E6EEF6; --ink-2:#9FB2C6; --rule:#22384F;
+  --brand:#3D9BE6; --brand-ink:#06121E;
+  --red:#F07A6C; --red-bg:#3A1C1A; --amber:#E9B64F; --amber-bg:#3A2D12;
+  --green:#5CC98F; --green-bg:#143326; --grey:#8A99A9; --grey-bg:#1C2E44; --track:#1C2E44;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0B1724; --surface:#12233A; --ink:#E6EEF6; --ink-2:#9FB2C6; --rule:#22384F;
+  --brand:#3D9BE6; --brand-ink:#06121E;
+  --red:#F07A6C; --red-bg:#3A1C1A; --amber:#E9B64F; --amber-bg:#3A2D12;
+  --green:#5CC98F; --green-bg:#143326; --grey:#8A99A9; --grey-bg:#1C2E44; --track:#1C2E44;
+  color-scheme:dark;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 Barlow,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3,.cond{font-family:"Barlow Semi Condensed",Barlow,"Arial Narrow",sans-serif}
+a{color:var(--brand)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* header */
+.top{background:var(--ink);color:var(--bg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .top{background:#071120;color:var(--ink)}}
+.top .wrap{padding-top:28px;padding-bottom:26px}
+.brandline{display:flex;align-items:center;gap:10px;font-weight:600;opacity:.8;font-size:14px}
+.brandline b{background:var(--brand);color:#fff;padding:2px 8px;border-radius:3px;font-family:"Barlow Semi Condensed",sans-serif}
+h1{font-size:clamp(34px,6vw,58px);line-height:1;margin:14px 0 8px;font-weight:700;letter-spacing:-.5px}
+.meta{font-size:14px;opacity:.75}
+.switch{margin-top:14px}
+.switch select{background:transparent;border:1px solid currentColor;border-radius:4px;padding:6px 10px;color:inherit}
+.switch option{color:#0E2A47}
+
+/* progress strip – the one bold element */
+.strip{display:flex;height:14px;background:var(--track);border-radius:2px;overflow:hidden}
+.strip span{display:block;height:100%}
+.s-rec{background:var(--green)} .s-ord{background:var(--amber)} .s-not{background:var(--red)} .s-dno{background:var(--grey)}
+.top .strip{height:22px;margin-top:22px;background:rgba(255,255,255,.12)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:14px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+/* sticky toolbar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--rule)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar .wrap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:10px;padding-bottom:10px}
+.chip{border:1px solid var(--rule);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.search{flex:1;min-width:180px;max-width:320px;margin-left:auto;padding:6px 12px;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+
+/* layout */
+.grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px;padding-top:24px;padding-bottom:60px}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}.toc{display:none}}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);align-self:start}
+.toc h3{font-size:15px;margin:0 0 8px;color:var(--ink-2);font-weight:600}
+.toc a{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;border-radius:4px;text-decoration:none;color:var(--ink);font-size:14px}
+.toc a:hover{background:var(--surface)}
+.toc small{color:var(--ink-2)}
+
+/* attention */
+.attn{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--red);border-radius:4px;padding:16px 18px;margin-bottom:28px}
+.attn h2{margin:0 0 6px;font-size:22px}
+.attn p{margin:0 0 10px;color:var(--ink-2);max-width:72ch}
+.attn details{border-top:1px solid var(--rule);padding:8px 0}
+.attn summary{cursor:pointer;font-weight:600}
+.attn ul{margin:8px 0 2px;padding-left:18px}
+.attn li{margin:2px 0;font-size:14px}
+.attn li span{color:var(--ink-2)}
+
+/* area */
+.area{margin-bottom:36px}
+.area-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:8px}
+.area-head h2{font-size:30px;margin:0;font-weight:700}
+.area-head .n{color:var(--ink-2);font-size:14px}
+.merged{font-size:13px;color:var(--ink-2)}
+.area,.attn,.room{min-width:0}
+.systems{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
+.systems span{font-size:13px;background:var(--grey-bg);border-radius:3px;padding:2px 8px}
+.room{background:var(--surface);border:1px solid var(--rule);border-radius:4px;margin-bottom:8px}
+.room>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 160px auto;gap:14px;align-items:center;padding:10px 14px}
+.room>summary::-webkit-details-marker{display:none}
+.room>summary h3{margin:0;font-size:18px;font-weight:600}
+.room>summary .strip{height:8px}
+.room>summary .cnt{font-size:13px;color:var(--ink-2);white-space:nowrap}
+@media (max-width:560px){.room>summary{grid-template-columns:1fr auto}.room>summary .strip{grid-column:1/-1;order:3}}
+.tbl{overflow-x:auto;border-top:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}
+th{text-align:left;font-weight:600;color:var(--ink-2);padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.sku{color:var(--ink-2);font-size:12.5px}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.p-received{background:var(--green-bg);color:var(--green)}
+.p-part_received,.p-on_order{background:var(--amber-bg);color:var(--amber)}
+.p-not_ordered{background:var(--red-bg);color:var(--red)}
+.p-do_not_order{background:var(--grey-bg);color:var(--grey)}
+.flag{display:block;font-size:12.5px;color:var(--red)}
+.note{font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--rule);padding-top:14px;max-width:80ch}
+.empty{padding:40px 0;color:var(--ink-2)}
+@media (prefers-reduced-motion:no-preference){.strip span{transition:width .5s ease}}
+@media print{.bar,.toc,.switch{display:none}.grid{display:block}.room{break-inside:avoid}details>*{display:block}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap" id="hdr"></div></header>
+<nav class="bar" aria-label="Filters"><div class="wrap" id="filters"></div></nav>
+<div class="wrap grid">
+  <aside class="toc" id="toc"></aside>
+  <main id="main"></main>
+</div>
+<script>
+const DATA = /*__DATA__*/null;
+const STATUS = {
+  not_ordered:{label:"Not ordered",cls:"s-not"},
+  on_order:{label:"On order",cls:"s-ord"},
+  part_received:{label:"Part received",cls:"s-ord"},
+  received:{label:"Received",cls:"s-rec"},
+  do_not_order:{label:"Do not order",cls:"s-dno"}
+};
+let state = {p:0, status:"all", q:""};
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const n = x => Number.isInteger(+x) ? String(+x) : (+x).toFixed(2).replace(/\.?0+$/,"");
+const plural = (c,w) => `${c} ${w}${c===1?"":"s"}`;
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-");
+
+function strip(t){
+  const s=t.by_status||{}, L=t.lines||1;
+  const parts=[["received","s-rec"],["part_received","s-ord"],["on_order","s-ord"],["not_ordered","s-not"],["do_not_order","s-dno"]];
+  return `<div class="strip" role="img" aria-label="${parts.map(([k])=>`${s[k]||0} ${STATUS[k].label.toLowerCase()}`).join(", ")}">`+
+    parts.map(([k,c])=>s[k]?`<span class="${c}" style="width:${100*s[k]/L}%"></span>`:"").join("")+`</div>`;
+}
+function legend(t){
+  const s=t.by_status||{};
+  return `<div class="legend">`+[["received","s-rec"],["on_order","s-ord"],["part_received","s-ord"],["not_ordered","s-not"],["do_not_order","s-dno"]]
+    .filter(([k])=>s[k]).map(([k,c])=>`<span><i class="${c}"></i>${s[k]} ${STATUS[k].label.toLowerCase()}</span>`).join("")+`</div>`;
+}
+function match(l){
+  if(state.status!=="all" && l.status!==state.status) return false;
+  if(!state.q) return true;
+  const h=(l.name+" "+l.sku+" "+l.room+" "+l.system+" "+l.po+" "+l.supplier).toLowerCase();
+  return h.includes(state.q);
+}
+function renderHeader(){
+  const P=DATA.projects[state.p], t=P.totals;
+  const sw = DATA.projects.length>1 ? `<div class="switch"><label>Project <select id="psel">${DATA.projects.map((p,i)=>`<option value="${i}" ${i===state.p?"selected":""}>${esc(p.project)} (${p.totals.lines})</option>`).join("")}</select></label></div>`:"";
+  document.getElementById("hdr").innerHTML = `
+    <div class="brandline"><b>D-One</b> Area summary</div>
+    <h1>${esc(P.project)}</h1>
+    <div class="meta">${plural(t.lines,'material line')} across ${plural(P.areas.length,'area')}. ${P.sales_orders.length?`Orders ${esc(P.sales_orders.join(", "))}. `:""}Pulled from Odoo ${esc(DATA.generated)}.</div>
+    ${sw}${strip(t)}${legend(t)}`;
+  document.title = `${P.project} area summary · D-One`;
+  const sel=document.getElementById("psel");
+  if(sel) sel.onchange=e=>{state.p=+e.target.value;state.status="all";render();window.scrollTo(0,0)};
+}
+function renderFilters(){
+  const P=DATA.projects[state.p], s=P.totals.by_status;
+  const opts=[["all",`All (${P.totals.lines})`]].concat(Object.keys(STATUS).filter(k=>s[k]).map(k=>[k,`${STATUS[k].label} (${s[k]})`]));
+  document.getElementById("filters").innerHTML = opts.map(([k,l])=>`<button class="chip" data-s="${k}" aria-pressed="${state.status===k}">${l}</button>`).join("")+
+    `<input class="search" type="search" placeholder="Find an item, room or PO" aria-label="Search" value="${esc(state.q)}">`;
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{state.status=b.dataset.s;render()});
+  const inp=document.querySelector(".search");
+  inp.oninput=e=>{state.q=e.target.value.trim().toLowerCase();renderMain();};
+}
+function attention(P){
+  const A=P.attention, off=P.off_stock_movement;
+  const sec=(title,list,why)=>list.length?`<details><summary>${list.length} ${title}</summary>${why?`<p>${why}</p>`:""}<ul>${list.slice(0,200).map(l=>`<li>${esc(l.name)} <span>${esc(l.area)}, ${esc(l.room)}${l.po?`, ${esc(l.po)}`:""}${l.flags.length?` (${esc(l.flags.join("; "))})`:""}</span></li>`).join("")}</ul></details>`:"";
+  const body = sec("not ordered yet",A.not_ordered,"No live purchase order on the Stock Movement line.")+
+    sec("marked do not order",A.do_not_order,"")+
+    sec("with PO quantity different from the quote",A.qty_mismatch,"Check these against the sales order before receiving.")+
+    sec("with no area set",A.no_area,"These show under “No area set” below. Add the area on the material line in Odoo.")+
+    (P.scope==="stock-movement" && off.count ? sec("on other tasks but not on Stock Movement",off.lines,"These goods are on the sales order and on labour or room tasks, but not on Stock Movement, so they are not counted above. Procurement may not be tracking them.") : "");
+  if(!body) return "";
+  return `<section class="attn" aria-labelledby="attn-h"><h2 id="attn-h">Needs attention</h2><p>Open a group to see the items.</p>${body}</section>`;
+}
+function renderMain(){
+  const P=DATA.projects[state.p];
+  let html=attention(P), toc=`<h3>Areas</h3>`, shown=0;
+  for(const a of P.areas){
+    const rooms=a.rooms.map(r=>({...r,lines:r.lines.filter(match)})).filter(r=>r.lines.length);
+    if(!rooms.length) continue;
+    const cnt=rooms.reduce((s,r)=>s+r.lines.length,0); shown+=cnt;
+    toc+=`<a href="#${slug(a.area)}"><span>${esc(a.area)}</span><small>${cnt}</small></a>`;
+    html+=`<section class="area" id="${slug(a.area)}">
+      <div class="area-head"><h2>${esc(a.area)}</h2><span class="n">${plural(a.totals.lines,'line')}, ${plural(a.rooms.length,'room')}, ${plural(a.totals.by_status.not_ordered||0,'line')} not ordered</span></div>
+      ${a.merged_from.length?`<div class="merged">Includes lines entered as ${a.merged_from.map(esc).join(", ")}</div>`:""}
+      ${strip(a.totals)}
+      <div class="systems">${Object.entries(a.systems).map(([s,c])=>`<span>${esc(s)} ${c}</span>`).join("")}</div>
+      ${rooms.map(r=>`<details class="room" ${state.q||state.status!=="all"?"open":""}>
+        <summary><h3>${esc(r.room)}</h3>${strip(r.totals)}<span class="cnt">${plural(r.lines.length,"item")}</span></summary>
+        <div class="tbl"><table><thead><tr><th>Item</th><th>System</th><th class="num">Quoted</th><th class="num">On PO</th><th class="num">Received</th><th class="num">Outstanding</th><th>PO / supplier</th><th>Status</th></tr></thead><tbody>
+        ${r.lines.map(l=>`<tr><td>${esc(l.name)}${l.sku?`<div class="sku">${esc(l.sku)}</div>`:""}${l.flags.filter(f=>f!=="No area").map(f=>`<span class="flag">${esc(f)}</span>`).join("")}</td>
+          <td>${esc(l.system)}</td><td class="num">${n(l.quoted)}</td><td class="num">${n(l.ordered)}</td><td class="num">${n(l.received)}</td><td class="num">${n(l.outstanding)}</td>
+          <td>${esc(l.po||"None")}${l.supplier?`<div class="sku">${esc(l.supplier)}</div>`:""}</td><td><span class="pill p-${l.status}">${STATUS[l.status].label}</span></td></tr>`).join("")}
+        </tbody></table></div></details>`).join("")}
+    </section>`;
+  }
+  if(!shown) html+=`<p class="empty">No items match this filter. Clear the search or pick “All”.</p>`;
+  html+=`<p class="note">Status comes from the Materials lines on the project's Stock Movement task. Delivered and Installed quantities are not being filled in on those lines in Odoo yet, so this page can show what is ordered and received into stores, but not what has gone to site or been installed. ${P.scope==="all-tasks"?"This version also includes goods that only appear on labour or room tasks; they are flagged “Not on Stock Movement”.":""}</p>`;
+  document.getElementById("main").innerHTML=html;
+  document.getElementById("toc").innerHTML=toc;
+}
+function render(){ if(!DATA||!DATA.projects.length){document.getElementById("main").innerHTML='<p class="empty">No projects with Stock Movement materials were found.</p>';return;} renderHeader(); renderFilters(); renderMain(); }
+render();
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 name: estimator description: > Build a detailed, itemised D-One quote — equipment plus labour (1st Fix Cabling, 2nd Fix Installation, Programming) — as an Excel spreadsheet, pricing equipment LIVE from Odoo (with a local snapshot fallback) and using D-One's historical install-hour/cost data. Also outputs an Odoo-ready Sales Order import file so a confirmed quote can be pushed straight back into Odoo. Use this skill whenever someone says "price this out", "quote this", "estimate this job", "what would this cost", "build a quote for X items", or gives a list of products/SKUs and quantities and wants a cost breakdown. Also trigger when someone uploads a BOM, takeoff spreadsheet, or floorplan-takeoff/lighting-takeoff output and asks for pricing — even if they don't say the word "estimate". This is the skill for turning a list of hardware into a real, detailed D-One quote with services included — not just a rough Entry/Mid/Premium budget (that's wequote-budget's job).
 Estimator
 
-Estimator turns a list of products (typed in chat or from an uploaded file) into a detailed, line-by-line D-One quote: equipment price and cost, plus labour hours and price for 1st Fix Cabling, 2nd Fix Installation, and Programming — the same structure D-One's own WeQuote exports use. It produces two files:
+Estimator turns a list of products (typed in chat or from an uploaded file) into a detailed, line-by-line D-One quote: equipment price and cost, plus labour hours and price for 1st Fix Cabling, 2nd Fix Installation, and Programming, plus Project Management and Design fees — the same structure D-One's own WeQuote exports use. It produces two files:
 
 <Project>_Estimate.xlsx — the human-facing quote the team can hand to a client or use internally to sanity-check a job's cost. This is the editable source of truth — the team edits quantities, prices, labour hours, and adds or removes lines here (see "Editing a quote and refreshing the import" below).
 <Project>_Estimate_OdooImport.csv — the same quote in Odoo's Sales Order import format, so once the quote is confirmed it can be imported straight into Odoo as a quotation without re-keying anything. If the Excel was edited after generation, regenerate this file from the edited Excel before uploading — don't upload the originally generated CSV, or the import won't reflect the edits.
@@ -59,9 +59,34 @@ inventory.csv — a fallback snapshot of D-One's product list (SKU, name, catego
 equip_cost_by_sku.json — historical unit cost per SKU, from past quotes. Odoo gives sell price, not D-One's cost, so cost/margin still come from here.
 labour_hours_by_sku.json — historical average install hours per SKU, split into 1st Fix Cabling / 2nd Fix Installation / Programming hours per unit.
 labour_hours_by_category.json — the same, averaged per category, used as a fallback when a specific SKU has no quote history yet.
-rate_card.json — current hourly labour rates, the fallback equipment markup (only used when a SKU has no cost history), and odoo_labour_products (see below). Read the notes inside this file — rates get revised periodically, so if D-One tells you the rates changed, update this file, don't just remember it.
+rate_card.json — current hourly labour rates and the fallback equipment markup (only used when a SKU has no cost history). Labour SKUs are locked (see the Labour SKU rule below). Read the notes inside this file — rates get revised periodically, so if D-One tells you the rates changed, update this file, don't just remember it.
 
-odoo_labour_products in rate_card.json maps the three labour phases to their Odoo service products (by Internal Reference / default_code, or name). This is what lets labour lines be written into the Odoo import file. It ships blank — set it once, after confirming the real labour product references in Odoo. While it's blank, equipment still imports fine; labour is just left out of the import file and flagged.
+Labour SKU rule (locked — house rule): labour is billed ONLY through these three Odoo service products, and each is used ONLY for its own phase:
+
+| Phase | SKU (Internal Reference) | Odoo product | Rate |
+|---|---|---|---|
+| 1st Fix Cabling | CLH | Cabling Labour | R950/hr |
+| 2nd Fix Installation | INSTL | Installation Labour | R950/hr |
+| Programming | PROGL | Programming Labour | R1,250/hr |
+
+Rules for Claude:
+- Never use any other SKU for labour — not LAB-1FIX / LAB-2FIX / LAB-PROG, not legacy "Labour - Installation" items, not a similar-looking product found by name search. If someone asks for another labour SKU, explain the rule and use CLH / INSTL / PROGL.
+- Never use CLH, INSTL or PROGL for anything other than their own labour phase, and never as an equipment line in items.json or the Quote tab. Labour lines are generated automatically from the hours columns, aggregated across the whole quote (quantity = total hours, unit price = phase rate).
+- Never create new labour products in Odoo (create_products.py is not for labour).
+- build_quote.py and refresh_import.py enforce this: the three SKUs are hard-coded (rate_card.json cannot override them), and any labour SKU or "Labour…" category row entered as an equipment line is dropped with a warning. If you see that warning, tell the user.
+- If one of the three SKUs can't be found in Odoo, that phase is left out of the import and flagged — never substitute another product.
+
+Professional fees rule (locked — house rule, 2026-10-15): every quote also carries a Project Management fee and a Design fee, billed as hours × hourly rate on two whole-quote lines (no Area, Room or System):
+
+| Fee | SKU (Internal Reference) | Odoo product | Rate | Cost |
+|---|---|---|---|---|
+| Project Management | Labour - PM | Project Management Labour | R1,250/hr | 50% of sell |
+| Design | DLPU | Design Labour per Unit | R1,250/hr | 50% of sell |
+
+- Hours are estimated per job and are NEVER defaulted. Before building a quote, ask the user for estimated PM hours and design hours (AskUserQuestion), and pass them in items.json as "fees": {"project_management_hours": N, "design_hours": N}. If they're missing, the fee rows are written at 0 hours, flagged amber, and build_quote.py prints a note — tell the user.
+- Use ONLY these two SKUs for fees. Never use D+PM, COD&PM, Design Meeting, LAB-* codes or any other product, and never use these two for anything else. They are hard-coded in build_quote.py (FEE_SKUS); rate_card.json cannot override them. Entered as equipment lines they are dropped with a warning.
+- In the Excel the fees sit in two "FEE:" rows below the equipment margin (hours in the Qty column, rate in Unit Price, cost in Unit Cost) and are included in the grand total. The team edits the hours in the Qty column; refresh_import.py reads them back and writes the two fee lines into the Odoo import. Don't rename the "FEE:" labels.
+- If a fee product can't be found in Odoo, that line is left out of the import and flagged — never substitute another product.
 
 You do not need to read these files into context directly — scripts/build_quote.py loads them for you. Just be aware of what they contain so you can explain results and flags sensibly.
 
@@ -140,7 +165,7 @@ How the file is structured (don't reformat it — Odoo relies on this shape):
 Columns: id, name, partner_id, order_line/product_id/.id, order_line/name, order_line/product_uom_qty, order_line/price_unit, order_line/x_studio_area, order_line/x_room, order_line/x_system. System is written as Odoo's selection key (e.g. wifi, av, Lighting Control), which Odoo's importer accepts directly.
 One order, many lines. The order-level fields (id, name = Order Reference, partner_id = Customer) appear only on the first row; every following row leaves them blank so Odoo attaches the line to the same order.
 Products are referenced by database id via order_line/product_id/.id — the exact id fetched live from Odoo, so there's no name-matching ambiguity on import.
-Labour is aggregated into up to three service lines (1st Fix Cabling, 2nd Fix Installation, Programming): quantity = total hours across the whole quote, unit price = the phase's hourly rate. Labour lines leave Area, Room and System blank. These only appear if odoo_labour_products is set (see the reference-data section); otherwise they're left out and flagged.
+Labour is aggregated into up to three service lines (1st Fix Cabling, 2nd Fix Installation, Programming): quantity = total hours across the whole quote, unit price = the phase's hourly rate. Labour lines leave Area, Room and System blank. They always use CLH / INSTL / PROGL (see the Labour SKU rule); if a product can't be resolved in Odoo, that phase is left out and flagged.
 Only lines that resolved to a real Odoo product id are written, so the file imports cleanly. Anything held back (snapshot-priced, unmatched, or labour with no mapped product) is listed in the run summary and stays in the Excel for a human to add manually.
 
 There are two ways to get it into Odoo — the CSV is the default, and Claude can do the import directly when asked:

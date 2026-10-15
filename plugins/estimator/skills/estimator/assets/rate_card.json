@@ -40,5 +40,12 @@
     "_note": "LOCKED by house rule (Darren, 2026-10-15): PM fee uses ONLY 'Labour - PM' (Project Management Labour, R1,250/hr); design fee uses ONLY DLPU (Design Labour per Unit, R1,250/hr). build_quote.py hard-codes these. Do NOT use D+PM, COD&PM, Design Meeting or any other SKU for fees.",
     "project_management": "Labour - PM",
     "design": "DLPU"
+  },
+  "fee_hours_suggestion": {
+    "project_management_pct": 0.1,
+    "design_pct": 0.06,
+    "basis": "percentage of (equipment sell + labour sell), ex VAT, converted to hours at the fee rate and rounded to the nearest 0.5 hr",
+    "round_to_hours": 0.5,
+    "note": "STARTING ASSUMPTIONS set by Darren on 2026-10-15 (PM 10%, design 6%). Not a verified industry standard - no citable published benchmark was found, and D-One's Odoo history (10 PM / 6 design orders) was too thin and variable to calibrate from. Suggestions are only ever proposed and must be confirmed by the user; never written to a quote automatically. Tune these percentages as real job hours accumulate."
   }
 }

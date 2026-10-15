@@ -1,0 +1,8 @@
+{
+    "name": "d-one-area-summary",
+    "version": "1.0.0",
+    "description": "Build a D-One Area Summary from Odoo: per project, group Stock Movement materials by Area and Room and show what is not ordered, on order, part received and received, as a shareable page. Read-only on Odoo.",
+    "author": {
+        "name": "D-One"
+    }
+}

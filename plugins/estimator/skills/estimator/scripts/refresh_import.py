@@ -144,6 +144,26 @@ def read_quote_lines(wb):
     return lines
 
 
+def read_fees(wb):
+    """Read the FEE: rows (project management / design hours in the Qty column)."""
+    out = {"project_management": 0.0, "design": 0.0}
+    ws = wb["Quote"]
+    qty_col = None
+    for r in range(1, 6):
+        for c in range(1, ws.max_column + 1):
+            if _norm(ws.cell(row=r, column=c).value) == "Qty":
+                qty_col = c
+    if qty_col is None:
+        return out
+    for r in range(1, ws.max_row + 1):
+        label = _norm(ws.cell(row=r, column=1).value).upper()
+        if label.startswith("FEE: PROJECT MANAGEMENT"):
+            out["project_management"] = _num(ws.cell(row=r, column=qty_col).value)
+        elif label.startswith("FEE: DESIGN"):
+            out["design"] = _num(ws.cell(row=r, column=qty_col).value)
+    return out
+
+
 def resolve_ids(raw_lines):
     """Attach a live Odoo product id to each line (by SKU, then name)."""
     if odoo_client is None or not odoo_client.available():
@@ -223,13 +243,27 @@ def main():
     wb = load_workbook(xlsx_path, data_only=True)
     meta = read_meta(wb)
     raw_lines = read_quote_lines(wb)
+    # Labour products (CLH / INSTL / PROGL) are generated from hours only. If one
+    # was typed in as an equipment line (or a banned LAB-* code), drop it so
+    # labour is never double-counted or booked against another SKU.
+    kept = []
+    for L in raw_lines:
+        if bq.is_labour_item(L.get("sku"), L.get("item"), L.get("query")) or bq.labour_category(L.get("category")):
+            print(f"WARNING: row '{L.get('item') or L.get('query')}' is a labour line - skipped. "
+                  f"Labour is billed only via CLH / INSTL / PROGL from the hours columns.")
+            continue
+        kept.append(L)
+    raw_lines = kept
     lines = resolve_ids(raw_lines)
 
     _, _, _, _, _, rates = bq.load_reference()
     labour_products, labour_note = bq.resolve_labour_products(rates)
+    fees = read_fees(wb)
+    fee_products, fee_note = bq.resolve_fee_products()
 
     rows, skipped = bq.build_odoo_import(
-        lines, meta["project"], meta["quote_ref"], meta["customer"], rates, labour_products
+        lines, meta["project"], meta["quote_ref"], meta["customer"], rates, labour_products,
+        fees, fee_products
     )
     bq.write_odoo_import(out_path, rows)
 
@@ -246,6 +280,7 @@ def main():
     print(f"  {len(lines)} lines read, {n_equip} equipment lines matched to Odoo, "
           f"{len(rows)} importable rows written")
     print(f"  labour: {labour_note}")
+    print(f"  fees: PM {fees['project_management']} hrs, design {fees['design']} hrs — {fee_note}")
     if not meta["customer"]:
         print("  NOTE: no Customer on the Meta tab — set the Customer column in Odoo at import.")
     for name, reason in skipped:

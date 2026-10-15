@@ -125,6 +125,12 @@ class Odoo:
         res = self.search_read("product.category", [["name", "=ilike", n]], ["id"], limit=1)
         return res[0]["id"] if res else None
 
+    def fields_get(self, model, attributes=("string", "type", "selection")):
+        return _rpc(
+            self.url, "object", "execute_kw",
+            [self.db, self.uid, self.key, model, "fields_get", [], {"attributes": list(attributes)}],
+        )
+
     def search_read(self, model, domain, fields, limit=0):
         # NOTE: this Odoo instance treats an explicit limit=0 as "return 0 rows",
         # not "no limit". So only send limit when it's a positive number; omit it
@@ -193,3 +199,37 @@ if __name__ == "__main__":
         print(f"Connected to {od.url} (db={od.db}) as uid {od.uid}")
     except OdooError as e:
         print(f"Odoo not available: {e}")
+
+
+# --------------------------------------------------------------------------- #
+# System types (sale.order.line.x_system) — read-only
+# --------------------------------------------------------------------------- #
+SYSTEM_FIELD = "x_system"
+
+
+def system_options(od):
+    """The System choices exactly as configured in Odoo, as [(key, label), ...].
+    Read live every run so the skill never drifts from Odoo's list."""
+    f = od.fields_get("sale.order.line").get(SYSTEM_FIELD) or {}
+    return [(k, lbl) for k, lbl in (f.get("selection") or [])]
+
+
+def system_history(od, product_ids):
+    """For each product id, a {system_key: count} of how often past quote lines in
+    Odoo used that System. Used to pre-fill System on new quote lines."""
+    ids = sorted({int(i) for i in product_ids if i})
+    hist = {}
+    if not ids:
+        return hist
+    rows = od.search_read(
+        "sale.order.line",
+        [["product_id", "in", ids], [SYSTEM_FIELD, "!=", False]],
+        ["product_id", SYSTEM_FIELD],
+    )
+    for r in rows:
+        pid = r["product_id"][0] if r.get("product_id") else None
+        if not pid:
+            continue
+        hist.setdefault(pid, {})
+        hist[pid][r[SYSTEM_FIELD]] = hist[pid].get(r[SYSTEM_FIELD], 0) + 1
+    return hist

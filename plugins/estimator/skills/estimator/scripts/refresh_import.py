@@ -15,8 +15,9 @@ Why this exists:
 
 What it reads from the Excel:
     - "Meta" tab  -> Project, Quote Ref, Customer (used for the order header).
-    - "Quote" tab -> every line's Item, SKU, Qty, Unit Price, and the three labour
-      hour columns (1st Fix / 2nd Fix / Prog), exactly as they stand after editing.
+    - "Quote" tab -> every line's Area, Room, System, Item, SKU, Qty, Unit Price,
+      and the three labour hour columns (1st Fix / 2nd Fix / Prog), exactly as they
+      stand after editing. System is checked against Odoo's live System list.
 
 What it does:
     - Re-resolves each equipment line to its live Odoo product id (by SKU, then by
@@ -112,7 +113,12 @@ def read_quote_lines(wb):
         if first_cell.upper().startswith(STOP_MARKERS):
             break
         cat = _norm(ws.cell(row=r, column=col("Category")).value) if col("Category") else ""
-        room = _norm(ws.cell(row=r, column=col("Room / Area")).value) if col("Room / Area") else ""
+        # Area / Room / System each have their own column. Older workbooks only
+        # had a combined "Room / Area" column — read that as Room.
+        area = _norm(ws.cell(row=r, column=col("Area")).value) if col("Area") else ""
+        room_col = col("Room") or col("Room / Area")
+        room = _norm(ws.cell(row=r, column=room_col).value) if room_col else ""
+        system = _norm(ws.cell(row=r, column=col("System")).value) if col("System") else ""
         item = _norm(ws.cell(row=r, column=col("Item")).value)
         sku = _norm(ws.cell(row=r, column=col("SKU")).value)
         qty = _num(ws.cell(row=r, column=col("Qty")).value)
@@ -125,7 +131,9 @@ def read_quote_lines(wb):
             "sku": sku,
             "item": item,
             "category": cat,
+            "area": area,
             "room": room,
+            "system": system,
             "qty": qty,
             "unit_price": _num(ws.cell(row=r, column=col("Unit Price")).value),
             "unit_cost": _num(ws.cell(row=r, column=col("Unit Cost")).value) if col("Unit Cost") else 0.0,
@@ -146,6 +154,11 @@ def resolve_ids(raw_lines):
     except Exception as e:
         raise SystemExit(f"ERROR: Odoo connection failed ({e}).")
 
+    try:
+        sys_options = odoo_client.system_options(od)
+    except Exception:
+        sys_options = []
+
     out = []
     for L in raw_lines:
         odoo_id = None
@@ -160,7 +173,10 @@ def resolve_ids(raw_lines):
             matched_name = L["item"] or prod.get("name") or q
         out.append({
             "query": L["query"], "matched_name": matched_name, "sku": L["sku"],
-            "item": L["item"], "category": L.get("category", ""), "room": L.get("room", ""),
+            "item": L["item"], "category": L.get("category", ""),
+            "area": L.get("area", ""), "room": L.get("room", ""),
+            "system_key": (bq.normalise_system(L.get("system"), sys_options) or ("", ""))[0],
+            "system_in": L.get("system", ""),
             "qty": L["qty"], "unit_price": L["unit_price"], "unit_cost": L.get("unit_cost", 0.0),
             "fix1_h": L["fix1_h"], "fix2_h": L["fix2_h"], "prog_h": L["prog_h"],
             "odoo_id": odoo_id,
@@ -222,6 +238,8 @@ def main():
     new_items = write_new_products_file(lines, new_path)
 
     n_equip = sum(1 for l in lines if l["odoo_id"])
+    bad_sys = [l for l in lines if l["odoo_id"] and l["system_in"] and not l["system_key"]]
+    no_sys = [l for l in lines if l["odoo_id"] and not l["system_in"]]
     print(f"Refreshed {out_path} from {os.path.basename(xlsx_path)}")
     print(f"  Project: {meta['project']} | Ref: {meta['quote_ref'] or '(none)'} | "
           f"Customer: {meta['customer'] or '(set at import)'}")
@@ -232,6 +250,13 @@ def main():
         print("  NOTE: no Customer on the Meta tab — set the Customer column in Odoo at import.")
     for name, reason in skipped:
         print(f"  SKIPPED from import: {name} — {reason}")
+    for l in bad_sys:
+        print(f'  SYSTEM NOT VALID (imported blank): {l["matched_name"]} — "{l["system_in"]}" '
+              f"is not an Odoo System type")
+    if no_sys:
+        print(f"  {len(no_sys)} equipment line(s) have no System set — they import with System blank:")
+        for l in no_sys:
+            print(f"    - {l['matched_name']}")
     if new_items:
         print(f"\n  {len(new_items)} line(s) are NOT in Odoo yet and were left out of the import.")
         print(f"  To add them to the Odoo pricelist so they import, review/complete")

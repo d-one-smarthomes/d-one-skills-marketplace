@@ -326,6 +326,30 @@ def resolve_labour_products(rates):
     return out, note
 
 
+def suggest_fee_hours(lines, rates):
+    """Suggest PM and design hours from the quote value (equipment + labour sell,
+    ex VAT) using the percentages in rate_card.json -> fee_hours_suggestion.
+    Returns {"basis_value", "project_management": {...}, "design": {...}}.
+    These are PROPOSALS only - they are never written to the quote automatically."""
+    cfg = rates.get("fee_hours_suggestion") or {}
+    r = rates["labour_rates_per_hour"]
+    equip = sum(l["unit_price"] * l["qty"] for l in lines)
+    labour = sum((l["fix1_h"] * r["fix1_cabling"]["sell"] + l["fix2_h"] * r["fix2_installation"]["sell"]
+                  + l["prog_h"] * r["programming"]["sell"]) * l["qty"] for l in lines)
+    basis = equip + labour
+    step = cfg.get("round_to_hours", 0.5) or 0.5
+    out = {"basis_value": round(basis, 2), "equipment": round(equip, 2), "labour": round(labour, 2)}
+    for key, pct_key in (("project_management", "project_management_pct"), ("design", "design_pct")):
+        pct = cfg.get(pct_key)
+        rate = rates.get("fee_rates_per_hour", {}).get(key, {}).get("sell", 0)
+        if not pct or not rate or basis <= 0:
+            out[key] = {"pct": pct, "rate": rate, "hours": 0, "fee": 0}
+            continue
+        hrs = round((basis * pct / rate) / step) * step
+        out[key] = {"pct": pct, "rate": rate, "hours": hrs, "fee": round(hrs * rate, 2)}
+    return out
+
+
 def resolve_fee_products():
     """Resolve the PM and design fee products (hard-coded in FEE_SKUS) to Odoo ids."""
     if odoo_client is None or not odoo_client.available():
@@ -406,7 +430,7 @@ def compute_line(query, qty, odoo_hit, inventory, inventory_by_name, equip_cost,
 # --------------------------------------------------------------------------- #
 # Excel output
 # --------------------------------------------------------------------------- #
-def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_labels=(), fees=None):
+def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_labels=(), fees=None, suggestion=None):
     wb = Workbook()
     ws = wb.active
     ws.title = "Quote"
@@ -528,7 +552,10 @@ def build_workbook(lines, project_name, quote_ref, rates, pricing_note, system_l
         if hrs <= 0:
             for c in range(1, ncols + 1):
                 ws.cell(row=row, column=c).fill = PatternFill("solid", fgColor=FLAG_AMBER)
-            ws.cell(row=row, column=ncols, value="No hours entered — enter estimated hours in the Qty column")
+            sg = (suggestion or {}).get(key)
+            hint = (f" Suggested: {sg['hours']} hrs ({int((sg['pct'] or 0) * 100)}% of equipment + labour) — confirm before using."
+                    if sg and sg.get("hours") else "")
+            ws.cell(row=row, column=ncols, value="No hours entered — enter estimated hours in the Qty column." + hint)
         row += 1
     ws.cell(row=row, column=1, value="GRAND TOTAL (equip + labour + fees, ex VAT)").font = Font(bold=True, size=12)
     ws.cell(row=row, column=COL_EQUIP_TOTAL, value=round(grand_equip_price + grand_labour_price + grand_fees, 2)).font = Font(bold=True, size=12)
@@ -754,10 +781,6 @@ def main():
     fee_products, fee_note = resolve_fee_products()
     fees = {k: float((req.get("fees") or {}).get(k + "_hours", 0) or 0)
             for k in ("project_management", "design")}
-    for k, h in fees.items():
-        if h <= 0:
-            print(f"NOTE: no {FEE_LABELS[k]} hours given - ask the user for estimated hours "
-                  f"(items.json 'fees': {{'{k}_hours': N}}). Fee line left at 0 and flagged.")
 
     lines = []
     for it in req["items"]:
@@ -777,8 +800,19 @@ def main():
     quote_ref = req.get("quote_ref", "")
     customer = req.get("customer", "")
 
+    suggestion = suggest_fee_hours(lines, rates)
+    for k, h in fees.items():
+        if h <= 0:
+            sg = suggestion[k]
+            print(f"NOTE: no {FEE_LABELS[k]} hours given. SUGGESTED: {sg['hours']} hrs "
+                  f"({int((sg['pct'] or 0) * 100)}% of R{suggestion['basis_value']:,.2f} equipment + labour "
+                  f"= R{sg['fee']:,.2f} at R{sg['rate']:,}/hr). Ask the user to confirm or change it, then "
+                  f"re-run with items.json 'fees': {{'{k}_hours': N}}. Fee line left at 0 and flagged.")
+    with open((out_path[:-5] if out_path.lower().endswith(".xlsx") else out_path) + "_FeeSuggestion.json", "w") as f:
+        json.dump(suggestion, f, indent=2)
+
     wb = build_workbook(lines, project_name, quote_ref, rates, pricing_note,
-                        [lbl for _k, lbl in sys_options], fees=fees)
+                        [lbl for _k, lbl in sys_options], fees=fees, suggestion=suggestion)
     add_meta_sheet(wb, project_name, quote_ref, customer)
     wb.save(out_path)
 

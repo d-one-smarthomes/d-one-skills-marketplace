@@ -64,6 +64,11 @@
       "name": "linking-a-po",
       "source": "./plugins/linking-a-po",
       "description": "Link a manually-created Purchase Order in Odoo to its originating Sales Order/quote, so it shows up alongside the other POs generated from that quote."
+    },
+    {
+      "name": "d-one-area-summary",
+      "source": "./plugins/d-one-area-summary",
+      "description": "Build a D-One Area Summary from Odoo: per project, group Stock Movement materials by Area and Room and show what is not ordered, on order, part received and received, as a shareable page. Read-only on Odoo."
     }
   ]
 }

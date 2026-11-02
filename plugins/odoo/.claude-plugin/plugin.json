@@ -1,0 +1,8 @@
+{
+    "name": "odoo",
+    "version": "0.2.0",
+    "description": "Read from and write to D-One's Odoo (projects, tasks, subtasks, CRM, purchase orders) from any chat. API key is read from the encrypted key vault.",
+    "author": {
+          "name": "D-One"
+    }
+}

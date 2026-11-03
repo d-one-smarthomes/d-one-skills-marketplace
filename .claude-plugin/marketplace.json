@@ -69,6 +69,11 @@
       "name": "d-one-area-summary",
       "source": "./plugins/d-one-area-summary",
       "description": "Build a D-One Area Summary from Odoo: per project, group Stock Movement materials by Area and Room and show what is not ordered, on order, part received and received, as a shareable page. Read-only on Odoo."
+    },
+    {
+      "name": "contractor-callout",
+      "source": "./plugins/contractor-callout",
+      "description": "Set up a contractor call-out in Odoo: confirmed SERVICE – CALL OUT Sales Order, task in the client's project and the contractor's Helpdesk ticket, plus a daily check of call-outs with anything missing for Berna."
     }
   ]
 }

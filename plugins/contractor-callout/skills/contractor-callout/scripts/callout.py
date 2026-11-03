@@ -99,9 +99,9 @@ def to_utc(date, time):
 
 
 def make_slot(ticket_id, date, time=None, hours=1.0):
-    """Planning shift for the visit. Contractors have no employee record, so
-    the shift is left without a resource and the contractor is named in it.
-    Saved as Draft so the person can move it in Planning."""
+    """Planning shift for the visit, assigned to the contractor's Planning
+    resource (found by their Odoo user). Saved as Draft so it can be moved.
+    Returns (slot_id, assigned_name_or_None)."""
     import datetime as dt
     t = sr("helpdesk.ticket", [("id", "=", ticket_id)],
            ["name", "partner_id", "user_id", "x_studio_project_1", "sale_line_id"], 1)[0]
@@ -121,18 +121,25 @@ def make_slot(ticket_id, date, time=None, hours=1.0):
         vals["partner_id"] = t["partner_id"][0]
     if task:
         vals["task_id"] = task[0]["id"]
+    res = []
+    if t["user_id"]:
+        res = sr("resource.resource", [("user_id", "=", t["user_id"][0])], ["name"], 1)
     slot_id = ex("planning.slot", "create", [vals])
+    # Odoo may auto-assign someone (e.g. the task owner): always set it explicitly
+    ex("planning.slot", "write", [[slot_id], {"resource_ids": [(6, 0, [res[0]["id"]] if res else [])]}])
     if task:  # task deadline = visit date/time
         ex("project.task", "write", [[task[0]["id"]], {"date_deadline": vals["start_datetime"]}])
-    return slot_id
+    return slot_id, (res[0]["name"] if res else None)
 
 
 def plan_cmd(a):
     g = lambda k, d=None: a[a.index(k) + 1] if k in a else d
     if not g("--ticket") or not g("--date"):
         sys.exit("Usage: plan --ticket ID --date YYYY-MM-DD [--time HH:MM] [--hours N]")
-    sid = make_slot(int(g("--ticket")), g("--date"), g("--time"), g("--hours", 1))
-    out({"ok": True, "planning_shift": link("planning.slot", sid)})
+    sid, who = make_slot(int(g("--ticket")), g("--date"), g("--time"), g("--hours", 1))
+    out({"ok": True, "planning_shift": link("planning.slot", sid), "assigned_to": who,
+         "notes": [] if who else ["Shift is unassigned: contractors aren't Planning resources. "
+                                  "The contractor's name is in the shift title."]})
 
 
 # ---------------------------------------------------------------- create
@@ -252,11 +259,16 @@ def create(plan_path, dry):
         notes.append("GUIDE NOT SENT: guide PDF missing from the skill folder.")
 
     slot_id = None
-    if p.get("date"):
+    if p.get("date") and p.get("planning", True):
         try:
-            slot_id = make_slot(ticket_id, p["date"], p.get("time"), hours)
+            slot_id, who = make_slot(ticket_id, p["date"], p.get("time"), hours)
+            if not who:
+                notes.append("Shift is unassigned: contractors aren't Planning resources. "
+                             "The contractor's name is in the shift title.")
         except RuntimeError as e:
             notes.append(f"PLANNING NOT CREATED - tell the person: {e}")
+    elif p.get("date"):
+        notes.append("Not put in Planning (the person said no).")
     else:
         notes.append("No visit date given - nothing put in Planning yet.")
 

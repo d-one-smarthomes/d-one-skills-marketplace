@@ -5,7 +5,9 @@ Credentials come ONLY from the environment: ODOO_USER and ODOO_API_KEY
 (optional ODOO_URL, ODOO_DB). Never put a key in this file.
 
 Commands
-  find-client  "<text>"          customers + their projects matching text
+  find-project "<text>"          projects matching text (by project or customer
+                                 name), each with its customer - use this first
+  find-client  "<text>"          alias of find-project
   contractors                    helpdesk teams and their members
   create       <plan.json> [--dry-run]
                                  SO (confirmed) -> task -> helpdesk ticket,
@@ -69,12 +71,13 @@ def out(obj):
 
 
 # ---------------------------------------------------------------- lookups
-def find_client(text):
-    partners = sr("res.partner", ['|', ("name", "ilike", text), ("commercial_company_name", "ilike", text)],
-                  ["name", "email", "phone"], 15)
+def find_project(text):
     projects = sr("project.project", ['|', ("name", "ilike", text), ("partner_id.name", "ilike", text)],
-                  ["name", "partner_id"], 15)
-    out({"customers": partners, "projects": projects})
+                  ["name", "partner_id"], 20)
+    out({"projects": [{"project_id": p["id"], "project": p["name"],
+                       "customer_id": p["partner_id"] and p["partner_id"][0],
+                       "customer": p["partner_id"] and p["partner_id"][1]} for p in projects],
+         "note": "Project is required. Customer comes from the project."})
 
 
 def contractors():
@@ -87,7 +90,13 @@ def contractors():
 # ---------------------------------------------------------------- create
 def create(plan_path, dry):
     p = json.loads(Path(plan_path).read_text())
-    need = ["partner_id", "project_id", "problem", "description", "team_id", "contractor_user_id"]
+    if not p.get("project_id"):
+        sys.exit("NO_PROJECT: a call-out must have the client's project. Ask which project.")
+    if not p.get("partner_id"):
+        pr = sr("project.project", [("id", "=", p["project_id"])], ["partner_id"], 1)
+        if pr and pr[0]["partner_id"]:
+            p["partner_id"] = pr[0]["partner_id"][0]
+    need = ["project_id", "partner_id", "problem", "description", "team_id", "contractor_user_id"]
     miss = [k for k in need if not p.get(k)]
     if miss:
         sys.exit(f"MISSING: {', '.join(miss)}")
@@ -191,7 +200,7 @@ def check(days, since=None):
     for so in sos:
         prob = []
         if not so["project_id"]:
-            prob.append("No project on the SO")
+            prob.append("NO PROJECT on the SO - fix first")
         tasks = sr("project.task", [("name", "ilike", so["name"])], ["name"], 5)
         if not tasks:
             prob.append("No task with the SO number")
@@ -234,8 +243,8 @@ if __name__ == "__main__":
     if not a:
         sys.exit(__doc__)
     cmd = a[0]
-    if cmd == "find-client":
-        find_client(" ".join(a[1:]))
+    if cmd in ("find-project", "find-client"):
+        find_project(" ".join(a[1:]))
     elif cmd == "contractors":
         contractors()
     elif cmd == "create":

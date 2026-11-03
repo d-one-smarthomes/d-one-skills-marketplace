@@ -147,7 +147,10 @@ def create(plan_path, dry):
     tvals = {
         "name": f"{so_name} {DASH} CALL OUT {DASH} {project['name']} {DASH} {problem}",
         "team_id": team["id"], "user_id": contractor["id"], "partner_id": partner["id"],
-        "project_id": project["id"], "x_studio_project": project["id"],
+        # x_studio_project_1 is the visible, required "Project" on the ticket form.
+        # Never write project_id here: it is related to team_id.project_id and
+        # writing it would change the contractor team's own project.
+        "x_studio_project_1": project["id"], "x_studio_project": project["id"],
         "sale_order_id": so_id, "description": desc_html,
     }
     try:
@@ -156,6 +159,10 @@ def create(plan_path, dry):
         ticket_id = ex("helpdesk.ticket", "create", [tvals])
 
     notes = []
+    tk = sr("helpdesk.ticket", [("id", "=", ticket_id)], ["x_studio_project_1"], 1)[0]
+    if not tk["x_studio_project_1"] or tk["x_studio_project_1"][0] != project["id"]:
+        ex("helpdesk.ticket", "write", [[ticket_id], {"x_studio_project_1": project["id"]}])
+    project_on_ticket = sr("helpdesk.ticket", [("id", "=", ticket_id)], ["x_studio_project_1"], 1)[0]["x_studio_project_1"]
     try:
         ex("project.task", "write", [[task_id], {"x_helpdesk_ticket_id": ticket_id}])
     except RuntimeError as e:
@@ -184,6 +191,7 @@ def create(plan_path, dry):
          "checklist": {"so_confirmed": so["state"] == "sale",
                        "reference_says_service_call_out": True, "project_set": True,
                        "task_created": True, "ticket_assigned_to_contractor": True,
+                       "project_on_ticket": bool(project_on_ticket) and project_on_ticket[0] == project["id"],
                        "so_number_on_all_three": True},
          "notes": notes, **preview})
 
@@ -205,13 +213,17 @@ def check(days, since=None):
         if not tasks:
             prob.append("No task with the SO number")
         tickets = sr("helpdesk.ticket", ['|', ("sale_order_id", "=", so["id"]), ("name", "ilike", so["name"])],
-                     ["name", "stage_id", "user_id", "timesheet_ids"], 5)
+                     ["name", "stage_id", "user_id", "timesheet_ids", "x_studio_project_1"], 5)
         if not tickets:
             prob.append("No Helpdesk ticket for the contractor")
         logged, solved = 0.0, False
         for t in tickets:
             if not t["user_id"]:
                 prob.append(f"Ticket '{t['name']}' not assigned")
+            if not t.get("x_studio_project_1"):
+                prob.append(f"Ticket '{t['name']}' has no project")
+            elif so["project_id"] and t["x_studio_project_1"][0] != so["project_id"][0]:
+                prob.append(f"Ticket project ({t['x_studio_project_1'][1]}) differs from SO project")
             if t["stage_id"] and t["stage_id"][1] == "Solved":
                 solved = True
                 if not t["timesheet_ids"]:

@@ -10,8 +10,11 @@ Commands
   find-client  "<text>"          alias of find-project
   contractors                    helpdesk teams and their members
   create       <plan.json> [--dry-run]
-                                 SO (confirmed) -> task -> helpdesk ticket,
-                                 guide PDF attached to the ticket
+                                 SO (confirmed) -> task -> helpdesk ticket ->
+                                 Planning shift on the visit date, guide PDF
+                                 sent to the contractor on the ticket
+  plan         --ticket ID --date YYYY-MM-DD [--time HH:MM] [--hours N]
+                                 add a Planning shift to an existing call-out
   check        [--days 120 | --since YYYY-MM-DD]
                                  call-outs with something missing (JSON)
 """
@@ -26,6 +29,7 @@ HERE = Path(__file__).resolve().parent
 GUIDE = HERE.parent / "assets" / "contractor-time-logging-guide.pdf"
 PL_CODE = "PL"          # [PL] Professional Labour
 DASH = "–"         # en dash used in all names
+TZ_OFFSET = 2           # Africa/Johannesburg (no DST); Odoo stores UTC
 _UID = None
 
 
@@ -87,6 +91,50 @@ def contractors():
     out(teams)
 
 
+# ---------------------------------------------------------------- planning
+def to_utc(date, time):
+    import datetime as dt
+    local = dt.datetime.strptime(f"{date} {time or '08:00'}", "%Y-%m-%d %H:%M")
+    return local - dt.timedelta(hours=TZ_OFFSET)
+
+
+def make_slot(ticket_id, date, time=None, hours=1.0):
+    """Planning shift for the visit. Contractors have no employee record, so
+    the shift is left without a resource and the contractor is named in it.
+    Saved as Draft so the person can move it in Planning."""
+    import datetime as dt
+    t = sr("helpdesk.ticket", [("id", "=", ticket_id)],
+           ["name", "partner_id", "user_id", "x_studio_project_1", "sale_line_id"], 1)[0]
+    task = sr("project.task", [("x_helpdesk_ticket_id", "=", ticket_id)], ["id"], 1)
+    start = to_utc(date, time)
+    end = start + dt.timedelta(hours=float(hours or 1))
+    vals = {
+        "name": f"{t['name']} · Contractor: {t['user_id'][1] if t['user_id'] else '?'} (ticket #{ticket_id})",
+        "start_datetime": start.strftime("%Y-%m-%d %H:%M:%S"),
+        "end_datetime": end.strftime("%Y-%m-%d %H:%M:%S"),
+        "allocated_hours": float(hours or 1), "state": "draft",
+        "helpdesk_ticket_id": ticket_id,
+    }
+    if t["x_studio_project_1"]:
+        vals["project_id"] = t["x_studio_project_1"][0]
+    if t["partner_id"]:
+        vals["partner_id"] = t["partner_id"][0]
+    if task:
+        vals["task_id"] = task[0]["id"]
+    slot_id = ex("planning.slot", "create", [vals])
+    if task:  # task deadline = visit date/time
+        ex("project.task", "write", [[task[0]["id"]], {"date_deadline": vals["start_datetime"]}])
+    return slot_id
+
+
+def plan_cmd(a):
+    g = lambda k, d=None: a[a.index(k) + 1] if k in a else d
+    if not g("--ticket") or not g("--date"):
+        sys.exit("Usage: plan --ticket ID --date YYYY-MM-DD [--time HH:MM] [--hours N]")
+    sid = make_slot(int(g("--ticket")), g("--date"), g("--time"), g("--hours", 1))
+    out({"ok": True, "planning_shift": link("planning.slot", sid)})
+
+
 # ---------------------------------------------------------------- create
 def create(plan_path, dry):
     p = json.loads(Path(plan_path).read_text())
@@ -96,6 +144,11 @@ def create(plan_path, dry):
         pr = sr("project.project", [("id", "=", p["project_id"])], ["partner_id"], 1)
         if pr and pr[0]["partner_id"]:
             p["partner_id"] = pr[0]["partner_id"][0]
+        else:
+            sys.exit("NO_CUSTOMER: this project has no customer in Odoo. Ask who the customer is "
+                     "(never use the person who is logged in).")
+    if uid() and sr("res.users", [("id", "=", uid()), ("partner_id", "=", p["partner_id"])], ["id"], 1):
+        sys.exit("CUSTOMER_IS_YOU: the customer is the logged-in user. Ask who the real customer is.")
     need = ["project_id", "partner_id", "problem", "description", "team_id", "contractor_user_id"]
     miss = [k for k in need if not p.get(k)]
     if miss:
@@ -119,6 +172,8 @@ def create(plan_path, dry):
         "sales_order": {"customer": partner["name"], "project": project["name"],
                         "customer_reference": ref, "line": f"[PL] {prod['name']} x {hours:g} hr"},
         "task": {"project": project["name"], "name": f"S#### {DASH} Call out {DASH} {problem}"},
+        "planning": ({"date": p["date"], "time": p.get("time") or "08:00", "hours": hours}
+                     if p.get("date") else "NO DATE - ask when the contractor is going"),
         "ticket": {"team": team["name"], "assigned_to": contractor["name"], "customer": partner["name"],
                    "title": f"S#### {DASH} CALL OUT {DASH} {project['name']} {DASH} {problem}"},
     }
@@ -162,6 +217,15 @@ def create(plan_path, dry):
     tk = sr("helpdesk.ticket", [("id", "=", ticket_id)], ["x_studio_project_1"], 1)[0]
     if not tk["x_studio_project_1"] or tk["x_studio_project_1"][0] != project["id"]:
         ex("helpdesk.ticket", "write", [[ticket_id], {"x_studio_project_1": project["id"]}])
+    # sale_order_id is recomputed by Odoo from sale_line_id; set and verify
+    try:
+        ex("helpdesk.ticket", "write", [[ticket_id], {"sale_line_id": line_id}])
+        ex("helpdesk.ticket", "write", [[ticket_id], {"sale_order_id": so_id}])
+    except RuntimeError as e:
+        notes.append(f"Ticket SO link: {e}")
+    so_on_ticket = sr("helpdesk.ticket", [("id", "=", ticket_id)], ["sale_order_id"], 1)[0]["sale_order_id"]
+    if not so_on_ticket:
+        notes.append("Ticket is not linked to the SO in Odoo (the SO number is in the ticket title).")
     project_on_ticket = sr("helpdesk.ticket", [("id", "=", ticket_id)], ["x_studio_project_1"], 1)[0]["x_studio_project_1"]
     try:
         ex("project.task", "write", [[task_id], {"x_helpdesk_ticket_id": ticket_id}])
@@ -183,15 +247,29 @@ def create(plan_path, dry):
                 "message_type": "comment", "subtype_xmlid": "mail.mt_comment",
                 "partner_ids": [contractor["partner_id"][0]], "attachment_ids": [att]})
         except RuntimeError as e:
-            notes.append(f"Guide not attached: {e}")
+            notes.append(f"GUIDE NOT SENT to the contractor - tell the person: {e}")
+    else:
+        notes.append("GUIDE NOT SENT: guide PDF missing from the skill folder.")
+
+    slot_id = None
+    if p.get("date"):
+        try:
+            slot_id = make_slot(ticket_id, p["date"], p.get("time"), hours)
+        except RuntimeError as e:
+            notes.append(f"PLANNING NOT CREATED - tell the person: {e}")
+    else:
+        notes.append("No visit date given - nothing put in Planning yet.")
 
     out({"ok": True, "so": so_name, "so_state": so["state"],
          "links": {"sales_order": link("sale.order", so_id), "task": link("project.task", task_id),
-                   "ticket": link("helpdesk.ticket", ticket_id)},
+                   "ticket": link("helpdesk.ticket", ticket_id),
+                   "planning": slot_id and link("planning.slot", slot_id)},
          "checklist": {"so_confirmed": so["state"] == "sale",
                        "reference_says_service_call_out": True, "project_set": True,
                        "task_created": True, "ticket_assigned_to_contractor": True,
                        "project_on_ticket": bool(project_on_ticket) and project_on_ticket[0] == project["id"],
+                       "ticket_linked_to_so": bool(so_on_ticket),
+                       "in_planning": bool(slot_id),
                        "so_number_on_all_three": True},
          "notes": notes, **preview})
 
@@ -220,6 +298,9 @@ def check(days, since=None):
         for t in tickets:
             if not t["user_id"]:
                 prob.append(f"Ticket '{t['name']}' not assigned")
+            if t["stage_id"] and t["stage_id"][1] not in ("Solved", "Cancelled") and not \
+                    ex("planning.slot", "search_count", [[("helpdesk_ticket_id", "=", t["id"])]]):
+                prob.append("No visit date in Planning")
             if not t.get("x_studio_project_1"):
                 prob.append(f"Ticket '{t['name']}' has no project")
             elif so["project_id"] and t["x_studio_project_1"][0] != so["project_id"][0]:
@@ -261,6 +342,8 @@ if __name__ == "__main__":
         contractors()
     elif cmd == "create":
         create(a[1], "--dry-run" in a)
+    elif cmd == "plan":
+        plan_cmd(a)
     elif cmd == "check":
         check(int(a[a.index("--days") + 1]) if "--days" in a else 120,
               a[a.index("--since") + 1] if "--since" in a else None)

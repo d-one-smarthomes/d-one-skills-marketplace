@@ -40,7 +40,7 @@ Script: `scripts/callout.py` (in this skill's folder). Run it with `python3`.
 2. **What's the problem?** Turn it into a short title, 3–6 words, e.g. "Gate intercom offline". This goes in the SO reference, the task and the ticket.
 3. **What must the contractor do, and any access notes?** e.g. when the client is home, gate code, who to call. Write it up as a clear description the contractor can follow. If he already said enough, don't ask again.
 4. **Which contractor?** Run `python3 scripts/callout.py contractors` to list the Helpdesk teams and their people (e.g. "Synclever(Benji)" → Eisgaaq Benjamin). If there's only one sensible choice, suggest it and let him confirm. Do not use "D-One Support" for a contractor job; that team is for D-One's own staff.
-5. **When is the contractor going?** Ask for the day (and time, if he knows). Turn "tomorrow", "Wednesday" etc. into a real date using today's date from the system clock. No time given → 08:00. This goes into **Planning** and the task deadline. He can move it later in Planning. If he doesn't know yet, carry on without it and tell him it isn't in Planning yet (Berna's check will flag it).
+5. **When is the contractor going?** Ask for the day (and time, if he knows). Turn "tomorrow", "Wednesday" etc. into a real date using today's date from the system clock. No time given → 08:00. Then ask: **"Shall I put it in the planner for [contractor]?"** If yes (`"planning": true`), it goes into Planning, assigned to the contractor, and sets the task deadline. If no, set `"planning": false`. He can move the shift later in Planning. If he doesn't know yet, carry on without it and tell him it isn't in Planning yet (Berna's check will flag it).
 6. **Hours:** don't ask. Use **1 hour**. Admin updates it once the contractor logs the real time. Only use another number if he says so.
 
 ### Confirm before creating
@@ -51,7 +51,7 @@ Write the plan to a JSON file in the scratchpad:
 {"project_id": 0, "partner_id": 0, "problem": "Gate intercom offline",
  "description": "What to check and do...\nClient home after 10:00.",
  "team_id": 0, "contractor_user_id": 0, "hours": 1,
- "date": "2026-11-04", "time": "08:00"}
+ "date": "2026-11-04", "time": "08:00", "planning": true}
 ```
 
 `project_id` is required; the script refuses without it and fills `partner_id` from the project if left out. Run `python3 scripts/callout.py create plan.json --dry-run` and show him a short summary in plain words:
@@ -71,7 +71,7 @@ Only when he says yes, run `python3 scripts/callout.py create plan.json`.
 - **Sales Order**: customer, project, Customer Reference `SERVICE – CALL OUT – <Project> – <Problem>`, one line `[PL] Professional Labour` × hours, then **confirms** it.
 - **Task** in the client's project: `S#### – Call out – <Problem>`, with the description, linked to the SO line.
 - **Helpdesk ticket** in the contractor's team: `S#### – CALL OUT – <Project> – <Problem>`, assigned to the contractor, with the client's **Project** filled in on the ticket (the visible "Project" field, `x_studio_project_1`), linked to the SO, description copied in. Never write the ticket's `project_id`: it belongs to the contractor's team. Saving it emails the contractor. The script sets the SO link on the ticket and checks it stuck.
-- **Planning shift** on the visit date: Draft, linked to the project, task, ticket and customer, named with the contractor. Contractors have no employee record, so no resource is assigned. Odoo's automation adds the calendar event. The task deadline is set to the same date and time. To add or fix a date later: `python3 scripts/callout.py plan --ticket <id> --date YYYY-MM-DD [--time HH:MM] [--hours N]`. It also posts a message to the contractor with `assets/contractor-time-logging-guide.pdf` attached (how to log time and set the ticket to Solved).
+- **Planning shift** on the visit date: Draft, linked to the project, task, ticket and customer, **assigned to the contractor** (their Planning resource, found by their Odoo user). Odoo can auto-assign someone else, so the script always sets the contractor explicitly. D-One has chosen not to add contractors as Planning resources, so contractor shifts are normally **unassigned**, with the contractor's name in the shift title. That's expected, not an error. The script never leaves it assigned to whoever Odoo picked, such as the task owner. Odoo's automation adds the calendar event. The task deadline is set to the same date and time. To add or fix a date later: `python3 scripts/callout.py plan --ticket <id> --date YYYY-MM-DD [--time HH:MM] [--hours N]`. It also posts a message to the contractor with `assets/contractor-time-logging-guide.pdf` attached (how to log time and set the ticket to Solved).
 
 ### Tell him it's done
 

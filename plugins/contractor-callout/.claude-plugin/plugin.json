@@ -1,6 +1,6 @@
 {
     "name": "contractor-callout",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Set up a contractor call-out in Odoo (confirmed SERVICE – CALL OUT Sales Order, task in the client's project, contractor Helpdesk ticket with time-logging guide), plus a daily check of call-outs with anything missing for Berna.",
     "author": {
         "name": "D-One"

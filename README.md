@@ -13,6 +13,7 @@ Private plugin marketplace for D-One's custom Claude skills. Push this repo to a
 - **floorplan-icons** — place D-One AV/tech icons onto a PDF floorplan
 - **floorplan-takeoff** — component quantities spreadsheet from an annotated floorplan
 - **lighting-takeoff** — lighting item counts from an electrical layout floorplan
+- **contractor-callout** — set up a contractor call-out in Odoo (SO, task, Helpdesk ticket) and check call-outs for anything missing
 - **wequote-budget** — Entry/Mid/Premium budgets for proposals
 
 ## 1. Push to GitHub

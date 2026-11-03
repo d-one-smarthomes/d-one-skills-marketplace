@@ -67,14 +67,14 @@ Only when he says yes, run `python3 scripts/callout.py create plan.json`.
 
 - **Sales Order**: customer, project, Customer Reference `SERVICE – CALL OUT – <Project> – <Problem>`, one line `[PL] Professional Labour` × hours, then **confirms** it.
 - **Task** in the client's project: `S#### – Call out – <Problem>`, with the description, linked to the SO line.
-- **Helpdesk ticket** in the contractor's team: `S#### – CALL OUT – <Project> – <Problem>`, assigned to the contractor, linked to the SO and project, description copied in. Saving it emails the contractor. It also posts a message to the contractor with `assets/contractor-time-logging-guide.pdf` attached (how to log time and set the ticket to Solved).
+- **Helpdesk ticket** in the contractor's team: `S#### – CALL OUT – <Project> – <Problem>`, assigned to the contractor, with the client's **Project** filled in on the ticket (the visible "Project" field, `x_studio_project_1`), linked to the SO, description copied in. Never write the ticket's `project_id`: it belongs to the contractor's team. Saving it emails the contractor. It also posts a message to the contractor with `assets/contractor-time-logging-guide.pdf` attached (how to log time and set the ticket to Solved).
 
 ### Tell him it's done
 
 Show the checklist, ticked, with the SO number and three links:
 
 > ✅ Done – **S1801**
-> ☑ SO confirmed ☑ Reference says SERVICE – CALL OUT ☑ Project set ☑ Task created ☑ Ticket assigned to Benji – he's been emailed
+> ☑ SO confirmed ☑ Reference says SERVICE – CALL OUT ☑ Project set ☑ Task created ☑ Project on the ticket ☑ Ticket assigned to Benji – he's been emailed
 > [Sales Order](link) · [Task](link) · [Ticket](link)
 
 If the result has `notes` (e.g. the guide couldn't attach), mention it in one plain line. If any step failed, say which one and what was already created, so nobody makes a duplicate SO.
@@ -96,7 +96,7 @@ python3 scripts/callout.py check --since 2026-11-03
 For each confirmed call-out SO (Customer Reference contains "call out") it flags:
 - **No project on the SO** (list these first, they block everything else)
 - No task with the SO number
-- No Helpdesk ticket, or a ticket that isn't assigned
+- No Helpdesk ticket, a ticket that isn't assigned, or a ticket with no project (or a different project from the SO)
 - Ticket Solved but no time logged
 - SO labour hours don't match the hours logged (Admin to update the SO)
 - Work done but no contractor PO with the SO number as its source

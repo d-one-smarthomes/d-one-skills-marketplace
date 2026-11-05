@@ -246,13 +246,18 @@ def create(plan_path, dry):
                 "name": "How to log your time - D-One.pdf", "res_model": "helpdesk.ticket",
                 "res_id": ticket_id, "mimetype": "application/pdf",
                 "datas": base64.b64encode(GUIDE.read_bytes()).decode()}])
-            ex("helpdesk.ticket", "message_post", [[ticket_id]], {
-                "body": ("<p>Hi, please see the job above. When you're done, open the "
-                         "<b>Timesheets</b> tab, add a line with the date, hours on site and a detailed "
-                         "description (arrival/leave time, what was wrong, what you did, how you tested). "
-                         "Then set the ticket to <b>Solved</b>. Guide attached.</p>"),
+            msg_body = ("<p>Hi, please see the job above. When you're done, open the "
+                        "<b>Timesheets</b> tab, add a line with the date, hours on site and a detailed "
+                        "description (arrival/leave time, what was wrong, what you did, how you tested). "
+                        "Then set the ticket to <b>Solved</b>. Guide attached.</p>")
+            # message_post over RPC stores the body as plain text, so the HTML tags
+            # would show. Post it, then write the real HTML onto the message.
+            mid = ex("helpdesk.ticket", "message_post", [[ticket_id]], {
+                "body": "How to log your time - guide attached.",
                 "message_type": "comment", "subtype_xmlid": "mail.mt_comment",
                 "partner_ids": [contractor["partner_id"][0]], "attachment_ids": [att]})
+            mid = mid[0] if isinstance(mid, list) else mid
+            ex("mail.message", "write", [[mid], {"body": msg_body}])
         except RuntimeError as e:
             notes.append(f"GUIDE NOT SENT to the contractor - tell the person: {e}")
     else:

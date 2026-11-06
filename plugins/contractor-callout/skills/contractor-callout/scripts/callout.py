@@ -292,6 +292,45 @@ def create(plan_path, dry):
 
 
 # ---------------------------------------------------------------- check
+
+def sla_check():
+    """SLA projects: anything that stops SLA hours counting, plus allowance alerts."""
+    items = []
+    projs = sr("project.project", [("tag_ids", "in", [57]), ("x_sla_tier", "!=", False)],
+               ["name", "date_start", "date", "x_sla_sale_order_id", "x_sla_agreement_date",
+                "x_sla_callout_hours_included", "x_sla_callout_hours_used", "x_sla_callout_hours_remaining",
+                "x_sla_overage_hours", "x_sla_maint_hours_included", "x_sla_maint_hours_used"], 100)
+    for p in projs:
+        prob = []
+        so = p["x_sla_sale_order_id"] and p["x_sla_sale_order_id"][0]
+        if not so:
+            prob.append("No SLA sales order on the project - SLA hours aren't counted at all")
+        if not p["x_sla_agreement_date"] or not p["date_start"] or not p["date"]:
+            prob.append("SLA agreement/contract dates missing - SLA hours aren't counted")
+        tickets = sr("helpdesk.ticket", [("x_studio_project_1", "=", p["id"])],
+                     ["name", "sale_order_id", "stage_id", "timesheet_ids"], 500)
+        for t in tickets:
+            if so and (not t["sale_order_id"] or t["sale_order_id"][0] != so):
+                hrs = 0.0
+                if t["timesheet_ids"]:
+                    hrs = sum(l["unit_amount"] for l in sr("account.analytic.line",
+                              [("id", "in", t["timesheet_ids"])], ["unit_amount"], 500))
+                open_t = t["stage_id"] and t["stage_id"][1] not in ("Solved", "Cancelled")
+                if hrs or open_t:
+                    prob.append(f"Ticket '{t['name']}' isn't linked to the SLA SO - "
+                                + (f"{hrs:g} hr NOT counted against the SLA" if hrs else "its time won't count"))
+        inc = p["x_sla_callout_hours_included"] or 0
+        used = p["x_sla_callout_hours_used"] or 0
+        if p["x_sla_overage_hours"]:
+            prob.append(f"{p['x_sla_overage_hours']:g} hr over the allowance - billable at R950/hr (Caren)")
+        elif inc and used >= 0.75 * inc:
+            prob.append(f"Call-out hours {used:g} of {inc:g} used ({p['x_sla_callout_hours_remaining']:g} left)")
+        if prob:
+            items.append({"project": p["name"], "sla_so": p["x_sla_sale_order_id"] and p["x_sla_sale_order_id"][1],
+                          "callout_hours": f"{used:g} of {inc:g} used",
+                          "issues": prob, "link": link("project.project", p["id"])})
+    return items
+
 def check(days, since=None):
     import datetime as dt
     since = since or (dt.date.today() - dt.timedelta(days=days)).isoformat()
@@ -345,7 +384,12 @@ def check(days, since=None):
                            "customer": so["partner_id"] and so["partner_id"][1],
                            "project": so["project_id"] and so["project_id"][1],
                            "hours_logged": logged, "issues": prob, "link": link("sale.order", so["id"])})
-    out({"checked": len(sos), "since": since, "with_issues": len(issues), "items": issues})
+    try:
+        sla_items = sla_check()
+    except RuntimeError as e:
+        sla_items = [{"project": "-", "issues": [f"SLA check failed: {e}"]}]
+    out({"checked": len(sos), "since": since, "with_issues": len(issues) + len(sla_items),
+         "items": issues, "sla_items": sla_items})
 
 
 if __name__ == "__main__":

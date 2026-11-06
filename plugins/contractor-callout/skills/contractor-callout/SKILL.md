@@ -107,4 +107,11 @@ For each confirmed call-out SO (Customer Reference contains "call out") it flags
 - Work done but no contractor PO with the SO number as its source
 - Work done but the client not invoiced yet
 
-Send the result to **Berna (operations@d-one.co.za)** as a short email: one line per SO (SO number, client, what's missing, link). Subject: `Call-outs – items missing – <date>`. **If nothing is missing, send nothing.** When it runs on a schedule, it needs Odoo credentials available without anyone in the chat (e.g. the person's own private Odoo skill). Never put a key in the scheduled task's instructions.
+It also returns `sla_items`, one per SLA project (tag SLA) that needs attention:
+- No SLA sales order, or missing agreement/contract dates on the project (the SLA hours engine then counts nothing)
+- A ticket on the SLA project that isn't linked to the SLA SO (its hours are **not counted** against the allowance; Odoo sometimes clears this link)
+- Call-out hours at 75% or more of the allowance, or hours over the allowance (billable at R950/hr, for Caren)
+
+Where SLA hours live: each SLA **project's form** shows call-out/remote hours included, used and remaining, maintenance hours, and hours over the allowance. The SLA SO's delivered quantities are updated from the same count.
+
+Send the result to **Berna (operations@d-one.co.za)** as a short email: one line per SO (SO number, client, what's missing, link), then a short **SLA** section with one line per SLA project from `sla_items`. Subject: `Call-outs – items missing – <date>`. **If nothing is missing, send nothing.** When it runs on a schedule, it needs Odoo credentials available without anyone in the chat (e.g. the person's own private Odoo skill). Never put a key in the scheduled task's instructions.
